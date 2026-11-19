@@ -29,10 +29,15 @@ Dùng hai notebook trong `pilot/kaggle/`: upload lên Kaggle bằng *File → Im
 | 1 | `01_prepare_data.ipynb` · Accelerator *None* · Internet **On** | *Save Version → Save & Run All*. Notebook tải khoảng 3 GB và tiền xử lý 7.442 clip. Raw nằm ở `/tmp` và bị xóa sau đó. | `cremad_processed.tar` (khoảng 1,6 GB) |
 | 2 | `02_train_pilot.ipynb` · **GPU T4 x2** · Internet **On** · *Add Input* = output của bước 1 | Session tương tác, `TIMING_ONLY = True`: chạy 2 job × 3 epoch song song. Notebook in ra số giây mỗi epoch và `N_SHARDS` khuyến nghị. | (chỉ in ra màn hình) |
 | 3 | Như bước 2 | `TIMING_ONLY = False`, đặt `N_SHARDS` theo bước 2. Với từng `SHARD = 0, 1, …`, bấm *Save Version → Save & Run All*. | `runs_shard{SHARD}.tar` và `pilot_report_partial.md` của từng version |
-| 4 | — | Tải tất cả `runs_shard*.tar` từ tab *Output* của từng version, rồi gửi cho Claude (upload vào chat). Claude gộp các shard và chạy `analyze.py`. | `pilot_report.md` |
+| 4 | — | **Tải `runs_shard{SHARD}.tar` ngay khi mỗi version chạy xong**, trước khi chạy shard tiếp theo. Sau đó gửi tất cả cho Claude (upload vào chat). Claude gộp các shard và chạy `analyze.py`. | `pilot_report.md` |
 
 - **Giới hạn session của Kaggle:** Claude không đọc được tài liệu chính thức (trang render bằng JavaScript), còn các nguồn bên thứ ba ghi 9 giờ hoặc 12 giờ. Vì vậy `TIME_BUDGET_H = 8`: launcher **không bắt đầu** job mới nếu ước tính job đó kết thúc sau mốc 8 giờ. Giá trị này an toàn với cả hai giới hạn.
-- **Shard chưa chạy hết:** chạy lại *đúng shard đó*, và gắn thêm `runs_shard{SHARD}.tar` của version trước làm input. Các run đã xong được khôi phục và bỏ qua; đã kiểm thử ở mục cuối.
+- **Shard chưa chạy hết** (log in ra `jobs not started because of the budget: N` với N > 0):
+  1. Upload file `runs_shard{SHARD}.tar` vừa tải về thành một **Kaggle Dataset** mới.
+  2. Gắn Dataset đó làm input của notebook 02.
+  3. Chạy lại *đúng shard đó*. Các run đã xong được khôi phục và bỏ qua (đã kiểm thử ở mục cuối).
+
+  Lý do không gắn thẳng output của version cũ: theo một [thread trên diễn đàn Kaggle](https://www.kaggle.com/discussions/product-feedback/207936), chỉ version **mới nhất** của một notebook mới dùng được làm input. Notebook 02 tìm mọi file `runs_shard*.tar` ở bất kỳ đâu trong `/kaggle/input`, nên đặt file trong Dataset vẫn hoạt động.
 - **Đã đóng gói thành file `.tar`:** output chỉ gồm vài file, nên không vướng giới hạn số lượng file nếu Kaggle có giới hạn này.
 
 ## Chạy trên máy riêng
