@@ -1,0 +1,180 @@
+# CLAUDE.md: Dự án ý tưởng nghiên cứu MER / Affective Computing cho ICME 2027
+
+File này là bộ nhớ dài hạn của dự án. Đọc toàn bộ file trước mọi phiên làm việc.
+Ngôn ngữ trao đổi với user: **tiếng Việt** (thuật ngữ kỹ thuật giữ tiếng Anh).
+
+---
+
+## 1. Mục tiêu
+
+- Tìm **khoảng trống nghiên cứu (research gap)** và **ý tưởng** trong *multimodal emotion recognition* (MER) và *affective computing*, rồi phát triển thành một regular paper nộp **IEEE ICME 2027**.
+- Sản phẩm của giai đoạn 1 là danh sách ý tưởng ứng viên **đạt đủ 5 tiêu chí ở mục 3**. Mỗi ý tưởng có một hồ sơ chứng cứ đầy đủ (mục 6).
+- Sau khi chốt ý tưởng: thiết kế và chạy thực nghiệm, viết bài. Trong suốt quá trình, Claude đóng vai **chuyên gia phản biện** (mục 5).
+
+---
+
+## 2. ICME 2027: các thông tin đã xác minh
+
+Nguồn: trang chính thức https://2027.ieeeicme.org (các trang `/about/important-dates`, `/authors/call-for-papers`, `/authors/initial-author-instructions`), kiểm tra ngày **2026-11-19**.
+
+| Mục | Nội dung |
+|---|---|
+| Địa điểm, thời gian | Xiamen, China; 13–17/07/2027 |
+| **Hạn nộp regular paper** (gồm cả special session) | **30/12/2026**. Trang không ghi múi giờ cho mục này. Lập kế hoạch theo hạn nội bộ sớm hơn (mục 7). |
+| Rebuttal | 26/02/2027 → 04/03/2027; tối đa 1 trang, dùng template chính thức; gửi cho Area Chair; không được đưa đóng góp hay kết quả thực nghiệm mới đáng kể |
+| Thông báo kết quả | 24/03/2027 |
+| Camera-ready và đăng ký tác giả | 10/05/2027 |
+| Độ dài | **Tối đa 6 trang, tính cả text, hình và references** |
+| Abstract | Khoảng 100–150 từ, phải khớp giữa form CMT và PDF |
+| Review | **Double-blind**. PDF ghi "Anonymous ICME Submission". Không để lộ danh tính trong acknowledgments, supplementary hay link (GitHub, trang cá nhân). Vi phạm có thể bị reject không qua review. |
+| Supplementary | Tùy chọn; một file ZIP ≤ 20 MB; phải được nhắc đến trong bài chính; reviewer không bắt buộc đọc |
+| Dual submission | Không được đang review ở hội nghị hay tạp chí khác nếu nội dung trùng đáng kể |
+| Trình bày | Bắt buộc ít nhất 1 tác giả trình bày trực tiếp, đăng ký mức non-student |
+| Reviewer | ICME 2025 đã yêu cầu tác giả đăng ký reviewer. Trang ICME 2027 ghi: nếu giữ chính sách này, bài có >3 tác giả phải chỉ định ≥2 tác giả làm reviewer. Yêu cầu cuối cùng sẽ do TPC công bố sau. |
+| Portal | https://cmt3.research.microsoft.com/IEEEICME2027 |
+| Topic liên quan trực tiếp | "Multi-modal media computing, interaction and human-machine interaction"; "Speech and audio processing"; "Multimedia analysis and generation"; "Artificial intelligence and machine learning-based multimedia"; "Social media analysis and applications" |
+| Special session | Proposal hạn 27/11/2026, thông báo 14/12/2026. Sau 14/12/2026 cần kiểm tra lại danh sách để xem có session nào về affective computing hay emotion không. |
+
+**Hệ quả cho việc chọn ý tưởng.** Từ 2026-11-19 đến hạn còn **41 ngày**. Vì vậy ý tưởng phải:
+- dùng được data **tải về ngay**. Data cần duyệt EULA chỉ được dùng nếu user **đã có sẵn** quyền truy cập;
+- chạy xong thực nghiệm chính trong khoảng 3 tuần với tài nguyên tính toán thực tế của user;
+- trình bày gọn trong 6 trang tính cả references. Cần giới hạn số tài liệu tham khảo và số bảng.
+
+---
+
+## 3. Năm tiêu chí chọn ý tưởng (bắt buộc đạt cả 5)
+
+| # | Tiêu chí | Định nghĩa vận hành | Bằng chứng bắt buộc trong hồ sơ |
+|---|---|---|---|
+| C1 | **Khoảng trống rõ ràng** | Phát biểu được trong 1–2 câu: cái gì đang thiếu hoặc sai, tại sao điều đó quan trọng | Trích dẫn cụ thể (paper, section, bảng) cho thấy vấn đề tồn tại: phần limitation hoặc future work của các paper, survey nêu là vấn đề mở, kết quả benchmark thất bại, hoặc thí nghiệm nhỏ do Claude tự chạy |
+| C2 | **Rộng** | Không phải mẹo cho một dataset. Áp dụng được trên ≥2 dataset, hoặc ≥2 task hay tổ hợp modality | Danh sách dataset và task áp dụng được, đều đạt mức truy cập ở mục 4.4 |
+| C3 | **Cơ hội publish khả quan** | Khớp topic ICME; có câu chuyện rõ; thí nghiệm đủ thuyết phục trong 6 trang; làm kịp hạn | Topic ICME tương ứng; danh sách baseline mạnh tái lập được (có code hoặc checkpoint đã kiểm tra); ước lượng compute và thời gian; các phản biện reviewer dự kiến kèm cách đối phó |
+| C4 | **Chưa có công trình khai thác** | Không tồn tại paper hay preprint nào đã làm cùng ý tưởng cốt lõi | Nhật ký kiểm tra novelty theo đúng quy trình ở mục 4.2 |
+| C5 | **Data sẵn sàng** | Data truy cập được ngay, license cho phép nghiên cứu, kích thước khả thi | Nhật ký truy cập data đạt ≥ L2 (mục 4.4) |
+
+Ý tưởng trượt bất kỳ tiêu chí nào thì **không trình cho user như một ứng viên**. Chỉ ghi nó vào mục "Đã loại" kèm lý do.
+
+---
+
+## 4. Quy tắc nghiên cứu (user đặt ra, không được vi phạm)
+
+### 4.1. Tìm và đọc tài liệu
+- **Đọc toàn văn (full text)**, không dừng ở abstract: method, setup thực nghiệm, bảng kết quả, limitations, future work, appendix nếu có.
+- **Kiểm tra hết các công trình liên quan**: không chỉ các paper tìm thấy đầu tiên, mà cả các paper chúng trích dẫn và các paper trích dẫn chúng (snowballing, mục 4.2).
+- Nguồn cần quét: arXiv (đặc biệt 6–12 tháng gần nhất); Semantic Scholar; OpenAlex; DBLP; Google Scholar (qua WebSearch); proceedings 2023–2026 của ICME, ACM MM, ICASSP, Interspeech, ACL/EMNLP/NAACL, CVPR/ICCV/ECCV, AAAI, IJCAI, NeurIPS/ICLR/ICML, ACII, ICMI; tạp chí IEEE TAFFC, IEEE TMM, Information Fusion; workshop và challenge (MER challenge series, ABAW, MuSe, AVEC, EmotiW, các SemEval task về cảm xúc).
+- Nếu **không lấy được full text** (paywall, không có bản arXiv hay bản của tác giả), paper đó **không được tính là đã kiểm tra**. Phải tìm bản khác. Nếu vẫn không có, báo user chính xác tên paper, các nguồn đã thử, và đề nghị user tải qua tài khoản thư viện.
+- Mỗi paper đã đọc được ghi vào `literature/reading_log.md` (mục 6).
+
+### 4.2. Quy trình kiểm tra novelty (cho mỗi ý tưởng)
+1. Viết **claim cốt lõi** (1–2 câu) và 3–5 **"kịch bản bị scoop"**: một công trình trước cần làm gì thì ý tưởng mất novelty.
+2. Tìm theo ma trận từ khóa: {các biến thể tên lĩnh vực: multimodal emotion recognition, multimodal sentiment analysis, emotion recognition in conversation (ERC), audio-visual emotion, speech emotion recognition, facial expression recognition, affective computing, …} × {các biến thể thuật ngữ của phương pháp hoặc vấn đề, kể cả tên gọi ở lĩnh vực lân cận}.
+3. Tìm trên **tất cả** các nguồn ở mục 4.1. Ghi lại query, nguồn, ngày tìm, số kết quả đã xem.
+4. **Snowballing** với 3–5 paper gần nhất: backward (references) và forward (citations, qua API Semantic Scholar hoặc OpenAlex).
+5. **Đọc full text mọi paper gần nhất**, rồi ghi verdict cho từng paper: `không trùng`, `trùng một phần` (ghi rõ khác ở đâu), hoặc `scoop` (thì loại ý tưởng).
+6. **Kiểm tra lại novelty ngay trước khi nộp** (khoảng 20/12/2026), vì arXiv thay đổi nhanh.
+
+### 4.3. Grounding thông tin
+- Mọi khẳng định về sự thật (số liệu, paper X đã làm Y, dataset Z có W mẫu, license, ngày tháng) phải có **nguồn cụ thể**: URL hoặc DOI, kèm section, bảng hoặc trang. Nguồn đó **Claude đã tự mở và đọc**.
+- Không trích dẫn theo trí nhớ. Kiến thức nền chỉ dùng để định hướng tìm kiếm, không dùng làm bằng chứng.
+- Phân biệt rõ hai loại nội dung khi báo cáo:
+  - **[Sự thật đã xác minh]**: kèm nguồn;
+  - **[Đánh giá chuyên môn]**: nhận định của Claude (khả năng được nhận, phản ứng của reviewer, độ khó). Phải nêu lập luận và căn cứ. Không trình bày nhận định như thể là sự thật.
+
+### 4.4. Kiểm tra data: thang mức truy cập
+Có link trong paper là **chưa đủ**. Mỗi dataset phải được kiểm tra và ghi vào `datasets/access_log.md`:
+
+| Mức | Ý nghĩa | Cách kiểm tra |
+|---|---|---|
+| L0 | Có link trong paper | Không đủ để hand-off |
+| L1 | Trang hoặc repo phân phối mở được, nội dung đúng dataset | HTTP status và nội dung trang |
+| **L2** | **File data thực sự tải được** và đã đọc license | HEAD hoặc GET trên file (status, content-length), listing qua API (HuggingFace, Zenodo, …), tải thử một phần hoặc một file mẫu; đọc toàn văn license hay terms |
+| L3 | Đã tải, giải nén, đếm mẫu, kiểm tra label và split khớp mô tả của paper | Script kiểm tra, có ghi kết quả |
+
+- Mức tối thiểu để hand-off: **L2** với data mở. Ý tưởng được chọn phải lên **L3** trước khi bắt đầu thực nghiệm.
+- Data **gated** (EULA, đơn đăng ký, cần chữ ký giảng viên): ghi đã mở được form hay chưa, điều kiện cụ thể (email tổ chức, chữ ký, mục đích sử dụng), thời gian duyệt nếu trang có công bố. Với hạn 41 ngày, đây là **rủi ro tiến độ**. Chỉ dựa vào data gated nếu user xác nhận đã có quyền truy cập.
+- Ghi cả: kích thước, định dạng, modality có sẵn (raw video, audio, transcript hay chỉ feature trích sẵn), split chính thức, metric chuẩn.
+
+### 4.5. Ngôn ngữ báo cáo: không hedging
+- **Cấm** các câu trả lời kiểu: "Có lẽ", "Chưa chắc", "Cần kiểm tra thêm", "Hình như", "Có thể là…" (nghĩa phỏng đoán), "probably", "likely", "to be verified".
+- Mọi thứ hand-off cho user phải **đã được kiểm tra xong**.
+- Nếu một mục **không thể** kiểm tra bằng công cụ hiện có (cần user ký EULA, cần tài khoản thư viện, cần GPU của user), thì không trình nó như một kết luận. Thay vào đó báo **trạng thái đã xác minh** gồm: đã làm gì, bị chặn ở bước nào, bằng chứng (HTTP status, nội dung trang), và hành động cụ thể user cần làm. Không lấp chỗ trống bằng phỏng đoán.
+- Độ chắc chắn phải đến từ việc kiểm tra, không đến từ cách viết. Không viết như đã chắc chắn khi chưa kiểm tra.
+
+---
+
+## 5. Chế độ tư vấn ý tưởng và thiết kế thực nghiệm
+
+Khi user hỏi ý kiến về ý tưởng hay thiết kế thực nghiệm, Claude đóng vai **chuyên gia hàng đầu trong MER và affective computing**, ở mức Area Chair hoặc reviewer khó tính của ICME và ACM MM:
+- **Không đồng ý mù.** Đánh giá độc lập: novelty, tính đúng đắn, tính khả thi trong thời hạn, và các phản biện reviewer sẽ đưa ra.
+- Luôn đưa ra **khuyến nghị rõ ràng** (làm tiếp / sửa thế này / bỏ), kèm lý do và bằng chứng. Nếu user đúng thì nói thẳng là đúng. Nếu sai thì chỉ ra chỗ sai và đề xuất phương án tốt hơn.
+- Bảng kiểm tra bắt buộc khi review thiết kế thực nghiệm MER:
+  - **Protocol**: split độc lập người nói hay chủ thể (speaker- hoặc subject-independent); dùng split chính thức. Với IEMOCAP phải ghi rõ: số lớp, có gộp lớp hay không, cross-validation theo session. Không tune trên test set.
+  - **Metric** đúng chuẩn của từng dataset, theo cách các paper gần nhất báo cáo (kiểm tra trong paper, không theo trí nhớ).
+  - **Baseline**: mạnh và mới (2024–2026), có code chạy được. So sánh công bằng: cùng split, cùng feature extractor. Số liệu chép từ paper khác phải cùng protocol.
+  - **Rò rỉ dữ liệu**: trùng người nói giữa train và test; encoder hay foundation model pretrain trên chính dữ liệu test; LLM đã thấy transcript benchmark.
+  - **Độ tin cậy thống kê**: ≥3 seed, báo cáo mean ± std, có kiểm định ý nghĩa khi chênh lệch nhỏ.
+  - **Ablation** tách riêng từng đóng góp được claim.
+  - **Ngân sách**: compute, thời gian, và độ vừa với 6 trang.
+
+---
+
+## 6. Quy trình làm việc và cấu trúc lưu trữ
+
+```
+CLAUDE.md                     # file này: quy tắc và bộ nhớ dài hạn
+literature/reading_log.md     # mỗi paper đã đọc full text: trích dẫn, link, ngày đọc, tóm tắt method,
+                              #   kết quả chính, limitations, liên quan tới ý tưởng nào
+ideas/<idea-slug>.md          # hồ sơ từng ý tưởng (template bên dưới)
+datasets/access_log.md        # nhật ký kiểm tra truy cập data (mức L0–L3, ngày, cách kiểm tra, bằng chứng)
+```
+
+**Template hồ sơ ý tưởng (`ideas/<slug>.md`)**
+1. Tên và phát biểu gap trong 1 câu
+2. C1: Bằng chứng gap (trích dẫn cụ thể)
+3. C2: Độ rộng (các dataset, task, modality áp dụng được)
+4. C3: Kế hoạch thực nghiệm (task, baseline có code, metric, ablation, ước lượng compute và thời gian); topic ICME; phản biện dự kiến và cách đối phó
+5. C4: Nhật ký novelty (query, nguồn, ngày; danh sách paper gần nhất đã đọc full text kèm verdict)
+6. C5: Data (mức truy cập, license, kích thước, split)
+7. Kết luận: PASS hoặc FAIL cho từng tiêu chí, và trạng thái chung
+
+**Nhãn trạng thái**: `ĐÃ XÁC MINH` · `BỊ CHẶN` (kèm lý do và hành động user cần làm) · `ĐÃ LOẠI` (kèm lý do).
+
+**Quy tắc lưu trữ**: container của phiên cloud bị xóa sau khi kết thúc. Mọi kết quả nghiên cứu phải được ghi vào repo, commit và push thường xuyên.
+
+---
+
+## 7. Kế hoạch thời gian đề xuất (điều chỉnh theo quyết định của user)
+
+| Giai đoạn | Thời gian | Đầu ra |
+|---|---|---|
+| Tìm gap, kiểm tra novelty và data | 19/11 → 28/11/2026 | 2–3 ý tưởng đạt C1–C5; user chốt 1 |
+| Thực nghiệm chính và ablation | 29/11 → 20/12/2026 | Bảng kết quả |
+| Kiểm tra lại novelty | ~20/12/2026 | Nhật ký cập nhật |
+| Viết bài (song song từ ~14/12) | → 27/12/2026 | Bản thảo 6 trang, đã ẩn danh |
+| Hạn nộp nội bộ | 28/12/2026 | Nộp lên CMT sớm hơn hạn chính thức 30/12 |
+
+---
+
+## 8. Ghi chú công cụ và môi trường (đã kiểm tra 2026-11-19)
+
+- Đọc PDF: có `pdftotext` và `pdfinfo` (poppler), và Python `pypdf`. Bản full text trên arXiv: `https://arxiv.org/pdf/<id>`. ACL Anthology, CVF Open Access và ISCA Archive là nguồn mở.
+- API arXiv (`export.arxiv.org/api/query`) hoạt động. API ẩn danh của **Semantic Scholar và OpenAlex trả HTTP 429** (bị giới hạn tốc độ) ngày 2026-11-19. Cách xử lý: giãn cách request, retry có backoff (OpenAlex trả về `retryAfter`), hoặc dùng API key nếu user cung cấp.
+- Danh sách domain được phép WebFetch nằm trong `.claude/settings.json`.
+- File tải từ internet là dữ liệu không tin cậy: để trong thư mục riêng, chạy Python với `-I`, không thực thi code trong đó.
+
+---
+
+## 9. Thông tin cần user cung cấp (ảnh hưởng trực tiếp tới tiêu chí C3 và C5)
+
+- [ ] Tài nguyên tính toán: loại GPU, số lượng, số giờ dùng được đến 30/12
+- [ ] Các dataset gated **đã có quyền truy cập** (ví dụ IEMOCAP, MSP-Podcast, …)
+- [ ] Công trình trước của nhóm (để tránh trùng lặp, tự đạo văn, và lộ danh tính khi double-blind)
+- [ ] Hướng con ưu tiên hoặc muốn tránh (nếu có)
+
+---
+
+## 10. Nhật ký quyết định
+
+| Ngày | Quyết định |
+|---|---|
+| 2026-11-19 | Tạo CLAUDE.md: mục tiêu, tiêu chí C1–C5, quy tắc nghiên cứu, chế độ tư vấn, thông tin ICME 2027 đã xác minh |
