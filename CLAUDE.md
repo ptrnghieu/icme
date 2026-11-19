@@ -164,12 +164,17 @@ datasets/access_log.md        # nhật ký kiểm tra truy cập data (mức L0�
 
 ---
 
-## 9. Thông tin cần user cung cấp (ảnh hưởng trực tiếp tới tiêu chí C3 và C5)
+## 9. Hồ sơ nguồn lực và ràng buộc của user (user cung cấp ngày 2026-11-19)
 
-- [ ] Tài nguyên tính toán: loại GPU, số lượng, số giờ dùng được đến 30/12
-- [ ] Các dataset gated **đã có quyền truy cập** (ví dụ IEMOCAP, MSP-Podcast, …)
-- [ ] Công trình trước của nhóm (để tránh trùng lặp, tự đạo văn, và lộ danh tính khi double-blind)
-- [ ] Hướng con ưu tiên hoặc muốn tránh (nếu có)
+| Mục | Thông tin | Hệ quả bắt buộc khi chọn ý tưởng |
+|---|---|---|
+| Compute | **200 giờ/tuần trên node 2× NVIDIA T4** (16 GB VRAM mỗi GPU; kiến trúc Turing, có FP16, không có BF16) | Không full fine-tune MLLM ≥7B. Chỉ được: encoder cỡ nhỏ và vừa, trích đặc trưng từ model pretrained đông cứng, LoRA hoặc QLoRA cỡ nhỏ, inference MLLM ≤7B (FP16 hoặc lượng tử hóa). Ước lượng giờ GPU cho từng thí nghiệm. |
+| Data gated | **Chưa có quyền truy cập dataset gated nào** | Chỉ dùng data **mở, tải được ngay** (L2 trở lên, mục 4.4). Mọi ý tưởng phụ thuộc IEMOCAP, MSP-*, MER2023–2025, DFEW, MAFW, Aff-Wild2, K-EmoCon, … bị loại khỏi kế hoạch ICME 2027. |
+| Bài đang review | **Một bài về Emotion Forecasting đã nộp COLING 2027** (chưa có kết quả) | (a) Dual submission: bài ICME **không được trùng đáng kể** với bài COLING. Hướng thuần forecasting có rủi ro, phải đối chiếu nội dung bài COLING trước khi chọn. (b) Double-blind: không tự trích dẫn kiểu lộ danh tính. |
+| Hướng ưu tiên | Không ưu tiên hay tránh hướng nào | User có một survey sơ bộ gồm 19 mục, lưu ở `survey/user_survey_2026-11-19.md`. Đây chỉ là **đầu vào tham khảo**: user mới xem lướt, các số liệu trong đó chưa được kiểm chứng. Phải tự xác minh lại trước khi dùng bất kỳ số liệu nào. |
+
+Còn mở:
+- [ ] Nội dung chính của bài COLING 2027 (task, data, method), để kiểm tra trùng lặp nếu chọn hướng gần forecasting
 
 ---
 
@@ -178,3 +183,5 @@ datasets/access_log.md        # nhật ký kiểm tra truy cập data (mức L0�
 | Ngày | Quyết định |
 |---|---|
 | 2026-11-19 | Tạo CLAUDE.md: mục tiêu, tiêu chí C1–C5, quy tắc nghiên cứu, chế độ tư vấn, thông tin ICME 2027 đã xác minh |
+| 2026-11-19 | Ghi nhận nguồn lực của user (2×T4, 200 giờ/tuần), không có data gated, bài COLING 2027 về forecasting đang review. Lưu survey của user. |
+| 2026-11-19 | Phân loại 19 mục trong survey (`ideas/triage_user_survey.md`): giữ 5 (VEATIC) và 18 (AFFEC), hoãn 6, loại các mục còn lại. Thêm ứng viên A của Claude. Hiện **A là ứng viên chính**; B và C tạm dừng (B trượt C2, C có C1 yếu). Còn chờ user quyết hướng. |
