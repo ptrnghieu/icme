@@ -1,0 +1,9 @@
+torch>=2.1
+torchvision>=0.16
+librosa>=0.10
+soundfile
+opencv-python-headless>=4.8
+pandas
+numpy
+scipy
+Pillow

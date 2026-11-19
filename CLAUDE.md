@@ -185,3 +185,4 @@ Còn mở:
 | 2026-11-19 | Tạo CLAUDE.md: mục tiêu, tiêu chí C1–C5, quy tắc nghiên cứu, chế độ tư vấn, thông tin ICME 2027 đã xác minh |
 | 2026-11-19 | Ghi nhận nguồn lực của user (2×T4, 200 giờ/tuần), không có data gated, bài COLING 2027 về forecasting đang review. Lưu survey của user. |
 | 2026-11-19 | Phân loại 19 mục trong survey (`ideas/triage_user_survey.md`): giữ 5 (VEATIC) và 18 (AFFEC), hoãn 6, loại các mục còn lại. Thêm ứng viên A của Claude. Hiện **A là ứng viên chính**; B và C tạm dừng (B trượt C2, C có C1 yếu). Còn chờ user quyết hướng. |
+| 2026-11-19 | User chốt cách đóng khung A: nhãn unimodal của người là **thước đo** (Q1: cân bằng có đúng hướng không; Q2/H: có giúp tổng quát hóa sang diễn viên mới không), **không phải** "giải quyết imbalance bằng nhãn người". Đã viết code pilot ở `pilot/` (49 run); go/no-go trước 28/11/2026 theo quy tắc trong `pilot/README.md`. |
