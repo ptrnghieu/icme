@@ -23,7 +23,9 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--root", required=True)
     args = ap.parse_args()
-    path = os.path.join(args.root, "CREMA-D", "finishedResponses.csv")
+    path = os.path.join(args.root, "finishedResponses.csv")  # copied here by prepare_cremad.py
+    if not os.path.exists(path):
+        path = os.path.join(args.root, "CREMA-D", "finishedResponses.csv")
     r = pd.read_csv(path, low_memory=False)
     r["intended"] = r["clipName"].str.split("_").str[2].map(LETTER)
     r["correct"] = (r["respEmo"] == r["intended"]).astype(float)

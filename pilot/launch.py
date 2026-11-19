@@ -1,6 +1,12 @@
 """Run a job list on several GPUs (resumable: finished runs are skipped).
 
-Usage: python launch.py --jobs jobs.txt --gpus 0,1 --per_gpu 1
+Kaggle-friendly options
+  --shard i --n_shards N : run only jobs whose index % N == i (split the grid over several sessions)
+  --time_budget_h H      : do not START a job if it would likely end after H hours from launch
+                           (estimate = longest finished job so far, or --est_job_h before any job finished).
+                           Running jobs are always allowed to finish.
+
+Usage: python launch.py --jobs jobs.txt --gpus 0,1 --per_gpu 1 [--shard 0 --n_shards 3 --time_budget_h 8]
 """
 import argparse
 import os
@@ -26,14 +32,29 @@ def main():
     ap.add_argument("--jobs", default="jobs.txt")
     ap.add_argument("--gpus", default="0")
     ap.add_argument("--per_gpu", type=int, default=1)
+    ap.add_argument("--shard", type=int, default=0)
+    ap.add_argument("--n_shards", type=int, default=1)
+    ap.add_argument("--time_budget_h", type=float, default=0.0, help="0 = no budget")
+    ap.add_argument("--est_job_h", type=float, default=1.5, help="job-duration estimate until one job finishes")
     a = ap.parse_args()
     jobs = [l.strip() for l in open(a.jobs) if l.strip()]
-    todo = [j for j in jobs if not os.path.exists(os.path.join(run_dir(j), "metrics.json"))]
-    print(f"{len(jobs)} jobs, {len(jobs)-len(todo)} already done, {len(todo)} to run")
+    mine = [j for i, j in enumerate(jobs) if i % a.n_shards == a.shard]
+    todo = [j for j in mine if not os.path.exists(os.path.join(run_dir(j), "metrics.json"))]
+    print(f"{len(jobs)} jobs in grid, {len(mine)} in shard {a.shard}/{a.n_shards}, "
+          f"{len(mine)-len(todo)} already done, {len(todo)} to run", flush=True)
     slots = [g for g in a.gpus.split(",") for _ in range(a.per_gpu)]
-    running = {}
+    running, durations, skipped = {}, [], []
+    t0 = time.time()
     while todo or running:
         for s in [s for s in range(len(slots)) if s not in running and todo]:
+            elapsed_h = (time.time() - t0) / 3600
+            est = max(durations) if durations else a.est_job_h
+            if a.time_budget_h and elapsed_h + est > a.time_budget_h:
+                skipped.extend(todo)
+                todo = []
+                print(f"time budget: {elapsed_h:.2f} h elapsed + {est:.2f} h estimate > {a.time_budget_h} h; "
+                      f"not starting {len(skipped)} remaining job(s)", flush=True)
+                break
             j = todo.pop(0)
             d = run_dir(j)
             os.makedirs(d, exist_ok=True)
@@ -41,14 +62,20 @@ def main():
             f = open(os.path.join(d, "stdout.log"), "w")
             p = subprocess.Popen([sys.executable, os.path.join(HERE, "train.py")] + shlex.split(j),
                                  env=env, stdout=f, stderr=subprocess.STDOUT, cwd=os.getcwd())
-            running[s] = (p, j, f)
-            print(f"[gpu {slots[s]}] start {d}")
-        for s, (p, j, f) in list(running.items()):
+            running[s] = (p, j, f, time.time())
+            print(f"[gpu {slots[s]}] start {d}", flush=True)
+        for s, (p, j, f, ts) in list(running.items()):
             if p.poll() is not None:
                 f.close()
-                print(f"[gpu {slots[s]}] {'done' if p.returncode == 0 else 'FAILED rc=%d' % p.returncode}: {run_dir(j)}")
+                dur = (time.time() - ts) / 3600
+                if p.returncode == 0:
+                    durations.append(dur)
+                print(f"[gpu {slots[s]}] {'done' if p.returncode == 0 else 'FAILED rc=%d' % p.returncode} "
+                      f"({dur:.2f} h): {run_dir(j)}", flush=True)
                 del running[s]
         time.sleep(10)
+    print(f"finished in {(time.time()-t0)/3600:.2f} h; jobs not started because of the budget: {len(skipped)} "
+          f"(they will run in the next session thanks to resume)", flush=True)
 
 
 if __name__ == "__main__":

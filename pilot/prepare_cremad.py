@@ -21,6 +21,7 @@ import argparse
 import concurrent.futures as cf
 import csv
 import os
+import shutil
 import subprocess
 import sys
 import time
@@ -141,10 +142,14 @@ def main():
     ap.add_argument("--fps", type=int, default=1, help="frames kept per second (OGM-GE uses 1)")
     ap.add_argument("--max_actors", type=int, default=0, help="smoke test: limit #actors")
     ap.add_argument("--max_clips_per_actor", type=int, default=0, help="smoke test: limit clips/actor")
+    ap.add_argument("--raw_dir", default="", help="where to put the CREMA-D clone and raw downloads "
+                    "(default: <root>); use a scratch disk on Kaggle, e.g. /tmp/cremad_raw")
+    ap.add_argument("--delete_raw", action="store_true", help="delete raw WAV/FLV downloads after preprocessing")
     args = ap.parse_args()
 
     root = os.path.abspath(args.root)
-    repo = os.path.join(root, "CREMA-D")
+    raw_dir = os.path.abspath(args.raw_dir) if args.raw_dir else root
+    repo = os.path.join(raw_dir, "CREMA-D")
     os.makedirs(os.path.join(root, "spec"), exist_ok=True)
     if not os.path.isdir(repo):
         env = dict(os.environ, GIT_LFS_SKIP_SMUDGE="1")
@@ -167,7 +172,7 @@ def main():
         for sub, ext in (("AudioWAV", ".wav"), ("VideoFlash", ".flv")):
             p = os.path.join(repo, sub, c + ext)
             if is_pointer(p):
-                dst = os.path.join(root, "raw", sub, c + ext)
+                dst = os.path.join(raw_dir, "raw", sub, c + ext)
                 jobs.append((f"{MEDIA}/{sub}/{c}{ext}", dst, pointer_size(p)))
                 src[(c, sub)] = dst
             else:
@@ -204,6 +209,12 @@ def main():
     print(f"usable clips: {ok}/{len(results)} -> {man}")
     for r in bad[:20]:
         print("  unusable:", r)
+
+    # keep the crowd ratings next to the processed data (needed by human_reliability.py)
+    shutil.copy(os.path.join(repo, "finishedResponses.csv"), os.path.join(root, "finishedResponses.csv"))
+    if args.delete_raw:
+        shutil.rmtree(os.path.join(raw_dir, "raw"), ignore_errors=True)
+        print("deleted raw downloads")
 
 
 if __name__ == "__main__":
