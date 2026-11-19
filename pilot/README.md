@@ -21,7 +21,21 @@ Mục tiêu: kiểm tra nhanh hai câu hỏi lõi của `ideas/A_human_modality_
 2. Frame lúc train được lấy ngẫu nhiên đúng nghĩa; frame lúc eval cách đều nhau. Code OGM-GE tính chỉ số ngẫu nhiên nhưng không dùng tới.
 3. Dùng ResNet-18 của torchvision (train từ đầu, không pretrained) thay cho bản sao ResNet-18 trong repo OGM-GE.
 
-## Chạy
+## Chạy trên Kaggle (cách user dùng)
+Dùng hai notebook trong `pilot/kaggle/`: upload lên Kaggle bằng *File → Import Notebook*. Notebook tự clone code từ branch `claude/eager-noether-4f8c81` của repo public `ptrnghieu/icme`, nên không cần upload code.
+
+| Bước | Notebook và cài đặt | Làm gì | Output |
+|---|---|---|---|
+| 1 | `01_prepare_data.ipynb` · Accelerator *None* · Internet **On** | *Save Version → Save & Run All*. Notebook tải khoảng 3 GB và tiền xử lý 7.442 clip. Raw nằm ở `/tmp` và bị xóa sau đó. | `cremad_processed.tar` (khoảng 1,6 GB) |
+| 2 | `02_train_pilot.ipynb` · **GPU T4 x2** · Internet **On** · *Add Input* = output của bước 1 | Session tương tác, `TIMING_ONLY = True`: chạy 2 job × 3 epoch song song. Notebook in ra số giây mỗi epoch và `N_SHARDS` khuyến nghị. | (chỉ in ra màn hình) |
+| 3 | Như bước 2 | `TIMING_ONLY = False`, đặt `N_SHARDS` theo bước 2. Với từng `SHARD = 0, 1, …`, bấm *Save Version → Save & Run All*. | `runs_shard{SHARD}.tar` và `pilot_report_partial.md` của từng version |
+| 4 | — | Tải tất cả `runs_shard*.tar` từ tab *Output* của từng version, rồi gửi cho Claude (upload vào chat). Claude gộp các shard và chạy `analyze.py`. | `pilot_report.md` |
+
+- **Giới hạn session của Kaggle:** Claude không đọc được tài liệu chính thức (trang render bằng JavaScript), còn các nguồn bên thứ ba ghi 9 giờ hoặc 12 giờ. Vì vậy `TIME_BUDGET_H = 8`: launcher **không bắt đầu** job mới nếu ước tính job đó kết thúc sau mốc 8 giờ. Giá trị này an toàn với cả hai giới hạn.
+- **Shard chưa chạy hết:** chạy lại *đúng shard đó*, và gắn thêm `runs_shard{SHARD}.tar` của version trước làm input. Các run đã xong được khôi phục và bỏ qua; đã kiểm thử ở mục cuối.
+- **Đã đóng gói thành file `.tar`:** output chỉ gồm vài file, nên không vướng giới hạn số lượng file nếu Kaggle có giới hạn này.
+
+## Chạy trên máy riêng
 Yêu cầu: Python ≥ 3.9, GPU NVIDIA (T4 dùng `--amp`, tức FP16), khoảng **5 GB đĩa** (raw 3,05 GB, spectrogram khoảng 0,75 GB, frame khoảng 0,8 GB, repo khoảng 0,25 GB).
 
 1. Cài thư viện:
@@ -89,4 +103,10 @@ Với ResNet-18 và 1 frame, một T4 thường còn dư VRAM. Nếu bước 5 c
 - Đã xác nhận chạy được: `prepare_cremad.py` (120/120 clip dùng được; spectrogram 257×188; 2–5 frame mỗi clip), `human_reliability.py` (7.442 clip; trung bình r_voice 0,391, r_face 0,568, r_av 0,625), `make_splits.py`, `train.py`, `launch.py` (gồm cả resume: chạy lại thì bỏ qua 21/21 run đã xong), `analyze.py` (G1, G2, G3a, G3b đều in ra kết quả; G3a được kiểm trên dữ liệu tổng hợp có quan hệ dương biết trước, cho tương quan riêng phần 0,70).
 - Hệ số OGM-GE được log đúng: α = 0,8 cho coeff_v ≈ 0,53–0,55; α = 0,1 cho khoảng 0,93.
 - `test_ogm_equivalence.py`: so `ogm_ge_modulate` với khối code chép nguyên văn từ `main.py` của OGM-GE, cùng seed nhiễu. Hệ số trùng khớp, chênh lệch gradient tối đa = 0,00 (α = 0,1 và 0,8).
+- **Notebook Kaggle:** Claude chạy chính hai file `.ipynb` bằng `nbclient` trong một thư mục giả lập `/kaggle/input` và `/kaggle/working`. Bản test chỉ khác hai điểm: đổi 3 biến đường dẫn, và dùng tập 120 clip với lưới rút gọn.
+  - `01`: clone đúng branch, 120/120 clip dùng được, tạo `cremad_processed.tar`.
+  - `02`, chế độ đo thời gian: chạy 2 job song song và in ra `N_SHARDS` khuyến nghị.
+  - `02`, shard 0/3: xong 5/14 job, tạo `runs_shard0.tar` và `pilot_report_partial.md`.
+  - **Resume:** gắn `runs_shard0.tar` làm input rồi chạy lại thì báo "5 already done, 0 to run".
+  - **Ngân sách thời gian:** với `--time_budget_h 0.001`, launcher không khởi động job nào và ghi lại số job hoãn.
 - Chưa chạy trên GPU. Đường AMP/FP16 chỉ hoạt động khi có CUDA, nên chưa được thử. Số liệu smoke test không mang ý nghĩa khoa học.
