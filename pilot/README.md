@@ -22,7 +22,7 @@ Mục tiêu: kiểm tra nhanh hai câu hỏi lõi của `ideas/A_human_modality_
 3. Dùng ResNet-18 của torchvision (train từ đầu, không pretrained) thay cho bản sao ResNet-18 trong repo OGM-GE.
 
 ## Chạy trên Kaggle (cách user dùng)
-Dùng hai notebook trong `pilot/kaggle/`: upload lên Kaggle bằng *File → Import Notebook*. Notebook tự clone code từ branch `claude/eager-noether-4f8c81` của repo public `ptrnghieu/icme`, nên không cần upload code.
+Dùng hai notebook trong `pilot/kaggle/`: upload lên Kaggle bằng *File → Import Notebook*. Notebook tự clone code từ branch `main` của repo public `ptrnghieu/icme`, nên không cần upload code.
 
 | Bước | Notebook và cài đặt | Làm gì | Output |
 |---|---|---|---|

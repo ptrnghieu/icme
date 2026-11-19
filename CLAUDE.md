@@ -139,7 +139,7 @@ datasets/access_log.md        # nhật ký kiểm tra truy cập data (mức L0�
 
 **Nhãn trạng thái**: `ĐÃ XÁC MINH` · `BỊ CHẶN` (kèm lý do và hành động user cần làm) · `ĐÃ LOẠI` (kèm lý do).
 
-**Quy tắc lưu trữ**: container của phiên cloud bị xóa sau khi kết thúc. Mọi kết quả nghiên cứu phải được ghi vào repo, commit và push thường xuyên.
+**Quy tắc lưu trữ**: container của phiên cloud bị xóa sau khi kết thúc. Mọi kết quả nghiên cứu phải được ghi vào repo, commit và push thường xuyên. **Nhánh làm việc: `main`** (theo yêu cầu của user ngày 2026-11-19). Notebook Kaggle clone code từ `main`.
 
 ---
 
@@ -187,3 +187,4 @@ Còn mở:
 | 2026-11-19 | Phân loại 19 mục trong survey (`ideas/triage_user_survey.md`): giữ 5 (VEATIC) và 18 (AFFEC), hoãn 6, loại các mục còn lại. Thêm ứng viên A của Claude. Hiện **A là ứng viên chính**; B và C tạm dừng (B trượt C2, C có C1 yếu). Còn chờ user quyết hướng. |
 | 2026-11-19 | User chốt cách đóng khung A: nhãn unimodal của người là **thước đo** (Q1: cân bằng có đúng hướng không; Q2/H: có giúp tổng quát hóa sang diễn viên mới không), **không phải** "giải quyết imbalance bằng nhãn người". Đã viết code pilot ở `pilot/` (49 run); go/no-go trước 28/11/2026 theo quy tắc trong `pilot/README.md`. |
 | 2026-11-19 | User chạy trên Kaggle: thêm notebook `pilot/kaggle/01_prepare_data.ipynb` và `02_train_pilot.ipynb` (shard, ngân sách 8 giờ, resume). Đã kiểm thử bằng nbclient trong môi trường giả lập. User gửi các file `runs_shard*.tar`; Claude gộp và phân tích. |
+| 2026-11-19 | Theo yêu cầu của user: chuyển toàn bộ code sang nhánh `main` và làm việc trên `main` từ nay. Notebook Kaggle đổi sang clone `-b main`. |
