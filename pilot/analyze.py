@@ -159,11 +159,17 @@ def main():
             X = np.c_[np.ones(len(s)), s["val_acc_z"]]
             rx = s["align_val_z"] - X @ np.linalg.lstsq(X, s["align_val_z"], rcond=None)[0]
             ry = s["test_acc_z"] - X @ np.linalg.lstsq(X, s["test_acc_z"], rcond=None)[0]
+            if rx.std() < 1e-9 or ry.std() < 1e-9:
+                return np.nan
             return np.corrcoef(rx, ry)[0, 1]
         pr = partial(np.arange(len(G)))
-        lo, hi = boot_ci(partial, len(G))
-        say(f"- G3a (model level, n={len(G)} runs): partial rank corr(align on val actors, test acc | val acc) = "
-            f"{pr:.3f}, 95% bootstrap CI [{lo:.3f}, {hi:.3f}]")
+        if not np.isfinite(pr):
+            say(f"- G3a (n={len(G)} runs): undefined - no variance left in alignment or test accuracy after "
+                f"controlling for val accuracy (test acc values: {sorted(G.test_acc.round(4).unique())[:5]})")
+        else:
+            lo, hi = boot_ci(partial, len(G))
+            say(f"- G3a (model level, n={len(G)} runs): partial rank corr(align on val actors, test acc | val acc) = "
+                f"{pr:.3f}, 95% bootstrap CI [{lo:.3f}, {hi:.3f}]")
     else:
         say(f"- G3a: not enough actor-protocol AV runs ({len(G)}); need >= 6")
 

@@ -43,6 +43,12 @@ python human_reliability.py --root /data/cremad
 ```bash
 python make_splits.py --root /data/cremad
 ```
+Số liệu mong đợi khi đủ 7.442 clip. Claude đã tính trước bằng đúng logic này trên danh sách clip thật.
+- `[standard]`: train 6.028, val 670, test 744; trùng 91/91 diễn viên.
+- `[actor0]`: diễn viên 65/7/19, clip 5.316/574/1.552.
+- `[actor1]`: diễn viên 66/7/18, clip 5.404/574/1.464.
+
+Nếu số lệch so với trên thì có clip tiền xử lý lỗi. Xem `manifest.csv`, cột `err`.
 
 5. **Đo thời gian trước (bắt buộc).** Chạy 1 run ngắn 3 epoch để biết số giây mỗi epoch trên T4:
 ```bash
@@ -80,7 +86,7 @@ Với ResNet-18 và 1 frame, một T4 thường còn dư VRAM. Nếu bước 5 c
 
 ## Trạng thái kiểm thử của code (2026-11-19)
 Đã chạy smoke test end-to-end trên CPU trong container của Claude: 10 diễn viên × 12 clip thật, tải từ media.githubusercontent.com; 21 job, mỗi job 2 epoch × 3 batch.
-- Đã xác nhận chạy được: `prepare_cremad.py` (120/120 clip dùng được; spectrogram 257×188; 2–5 frame mỗi clip), `human_reliability.py` (7.442 clip; trung bình r_voice 0,391, r_face 0,568, r_av 0,625), `make_splits.py`, `train.py`, `launch.py`.
+- Đã xác nhận chạy được: `prepare_cremad.py` (120/120 clip dùng được; spectrogram 257×188; 2–5 frame mỗi clip), `human_reliability.py` (7.442 clip; trung bình r_voice 0,391, r_face 0,568, r_av 0,625), `make_splits.py`, `train.py`, `launch.py` (gồm cả resume: chạy lại thì bỏ qua 21/21 run đã xong), `analyze.py` (G1, G2, G3a, G3b đều in ra kết quả; G3a được kiểm trên dữ liệu tổng hợp có quan hệ dương biết trước, cho tương quan riêng phần 0,70).
 - Hệ số OGM-GE được log đúng: α = 0,8 cho coeff_v ≈ 0,53–0,55; α = 0,1 cho khoảng 0,93.
 - `test_ogm_equivalence.py`: so `ogm_ge_modulate` với khối code chép nguyên văn từ `main.py` của OGM-GE, cùng seed nhiễu. Hệ số trùng khớp, chênh lệch gradient tối đa = 0,00 (α = 0,1 và 0,8).
 - Chưa chạy trên GPU. Đường AMP/FP16 chỉ hoạt động khi có CUDA, nên chưa được thử. Số liệu smoke test không mang ý nghĩa khoa học.
