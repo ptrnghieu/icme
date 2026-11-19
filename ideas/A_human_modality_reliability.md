@@ -6,6 +6,24 @@ Ký hiệu: **[SỰ THẬT]** = đã tự kiểm chứng, có nguồn · **[ĐÁ
 
 ---
 
+## 0. Novelty chính xác (bổ sung 2026-11-19, theo câu hỏi của user)
+
+**Một câu:** Các phương pháp chống modality imbalance hiện nay đều tự đo "modality nào đóng góp bao nhiêu" từ chính mô hình. Bài này lần đầu dùng **tri giác người theo từng modality, đo trên từng mẫu**, làm **chuẩn đối chiếu bên ngoài** cho đại lượng đó, rồi kiểm định giả thuyết H:
+
+> **H:** Cân bằng modality theo đúng mức người dựa vào từng modality trên từng mẫu thì **tổng quát hóa sang diễn viên chưa thấy** tốt hơn cân bằng dựa trên tín hiệu nội bộ của mô hình.
+
+| Đóng góp | Công trình gần nhất đã làm gì | Phần mới của bài này | Độ mạnh novelty |
+|---|---|---|---|
+| **N1 (lõi).** Chuẩn đối chiếu đóng góp modality cấp mẫu từ người: độ tin cậy theo modality r_i^voice, r_i^face, và chỉ số căn chỉnh giữa đóng góp unimodal của mô hình với r_i | Wei'24: định giá bằng Shapley của mô hình; phải tạo dataset tổng hợp MM-Debiased vì **không có chuẩn thật**. BalanceBenchmark và IIBalance cũng đo từ mô hình. | Chuẩn thật do người đo, ở cấp từng mẫu, ngay trên benchmark chính của cộng đồng | [ĐÁNH GIÁ] Mạnh nhất. Không tìm thấy công trình trùng trong phạm vi đã quét (còn 1 bài paywall). |
+| **N2 (hỗ trợ).** Kiểm toán protocol CREMA-D: split trùng 91/91 diễn viên; đánh giá lại theo split độc lập diễn viên | Bài SER trên PLOS ONE 2026 cho thấy split random dễ hơn split theo actor, nhưng không thuộc mảng imbalance | Kiểm tra xem các kết luận và thứ hạng của phương pháp imbalance có còn đứng khi bỏ rò rỉ diễn viên | [ĐÁNH GIÁ] Yếu nếu đứng riêng; chỉ có giá trị nếu kết luận thay đổi |
+| **N3 (phụ).** Điều biến theo prior độ tin cậy của người, kèm head dự đoán để inference không cần nhãn người | Wei'24: tái lấy mẫu cấp mẫu theo Shapley. IIBalance: prior cấp dataset từ entropy. | Prior lấy từ người, ở cấp từng mẫu | [ĐÁNH GIÁ] Thấp–vừa; vai trò là chứng minh chuẩn N1 dùng được trong thực tế |
+
+**Những gì KHÔNG phải là novelty (phải trích dẫn và phân biệt trong bài):**
+- Dùng nhãn voice-only/face-only của CREMA-D làm nhãn huấn luyện: đã có ở Lei & Cao 2023, Goncalves et al. 2025, Chou et al. 2025.
+- Dùng nhãn người cho từng modality để chống một modality áp đảo: CH-SIMS v2 AV-MC (2022) đã làm, nhưng dùng làm target cho mixup chứ không làm chuẩn đánh giá.
+
+**Rủi ro khái niệm lớn nhất** [ĐÁNH GIÁ]: tri giác người khác với lượng thông tin máy khai thác được. Mô hình có thể dùng hợp lệ những đặc trưng âm học mà người không nghe ra. Vì vậy bài **không được** viết theo kiểu "người là ground truth của thông tin". Claim phải là H, tức là gắn việc căn chỉnh theo người với một hệ quả đo được: tổng quát hóa sang diễn viên mới, hoặc độ bền khi một modality bị nhiễu. Nếu pilot không thấy liên hệ này thì N1 chỉ còn là một phép đo mô tả, không đủ cho ICME.
+
 ## 1. Phát biểu gap
 Cộng đồng *modality imbalance* coi CREMA-D là benchmark audio-visual chủ lực, và coi visual là modality "yếu" cần được kéo lên. Nhưng mọi phương pháp đều ước lượng đóng góp của từng modality **từ chính mô hình**, không có chuẩn đối chiếu bên ngoài. Trong khi đó, CREMA-D có sẵn khoảng 220 nghìn phiếu chấm của người theo **giọng / mặt / AV**: đây là một chuẩn tham chiếu do người đo, ở cấp từng mẫu, về việc modality nào thực sự mang thông tin cảm xúc. Thêm vào đó, split chuẩn của cộng đồng này để **cùng diễn viên ở cả train và test**.
 
