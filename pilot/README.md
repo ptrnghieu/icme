@@ -31,15 +31,15 @@ Dùng hai notebook trong `pilot/kaggle/`: upload lên Kaggle bằng *File → Im
 | 3 | Như bước 2 | `TIMING_ONLY = False`, đặt `N_SHARDS` theo bước 2. Với từng `SHARD = 0, 1, …`, bấm *Save Version → Save & Run All*. | `runs_shard{SHARD}.tar` và `pilot_report_partial.md` của từng version |
 | 4 | — | **Tải `runs_shard{SHARD}.tar` ngay khi mỗi version chạy xong**, trước khi chạy shard tiếp theo. Sau đó gửi tất cả cho Claude (upload vào chat). Claude gộp các shard và chạy `analyze.py`. | `pilot_report.md` |
 
-- **Giới hạn session của Kaggle:** Claude không đọc được tài liệu chính thức (trang render bằng JavaScript), còn các nguồn bên thứ ba ghi 9 giờ hoặc 12 giờ. Vì vậy `TIME_BUDGET_H = 8`: launcher **không bắt đầu** job mới nếu ước tính job đó kết thúc sau mốc 8 giờ. Giá trị này an toàn với cả hai giới hạn.
+- **Giới hạn session của Kaggle: 11 giờ** (user xác nhận trên giao diện Kaggle, 2026-11-20). `TIME_BUDGET_H = 10`, hard stop 10,5 giờ: còn 30 phút cho bước chuẩn bị (clone, giải nén data) và bước đóng gói cuối. Với `N_SHARDS = 4`, shard dài nhất (13 job, khoảng 7,35 giờ) chịu được tốc độ chậm hơn số đã đo tới 36% mà không phải hoãn job nào (với ngân sách 8 giờ cũ thì chỉ chịu được 9%).
 - **Chạy song song trên nhiều notebook:** được, vì các shard độc lập (chọn job theo `index % N_SHARDS`, mỗi shard một file tar riêng).
   - Thông báo cũ của Kaggle ghi giới hạn là **1 session GPU tương tác và 2 session commit cùng lúc** ([kaggle.com/general/105509](https://www.kaggle.com/general/105509)). Một bài hướng dẫn năm 2026 cũng ghi cộng đồng đo được 2 batch session GPU cùng lúc ([fastero.com](https://fastero.com/blog/kaggle-notebooks)).
   - Cách chạy: import `02_train_pilot.ipynb` thành 2 notebook (A và B), cùng `N_SHARDS = 4` và cùng input. Notebook A chạy shard 0, rồi đến 2. Notebook B chạy shard 1, rồi đến 3.
   - Thời gian thực giảm từ khoảng 26 giờ xuống khoảng 14 giờ (7,35 + 6,30). Tổng giờ GPU tiêu tốn **không đổi**, vẫn khoảng 26 giờ.
 
 - **Ba lớp bảo vệ trong mỗi session:**
-  1. `TIME_BUDGET_H = 8`: không *bắt đầu* job mới nếu ước tính job đó kết thúc sau 8 giờ.
-  2. Hard stop ở 8,5 giờ: dừng hẳn các job còn chạy để notebook kịp đóng gói và lưu output.
+  1. `TIME_BUDGET_H = 10`: không *bắt đầu* job mới nếu ước tính job đó kết thúc sau 10 giờ.
+  2. Hard stop ở 10,5 giờ: dừng hẳn các job còn chạy để notebook kịp đóng gói và lưu output trước mốc 11 giờ.
   3. `runs_shard{SHARD}.tar` được ghi lại sau **mỗi** job xong.
 
   Job bị hoãn hoặc bị dừng thì không mất gì đã xong. Chỉ job đó phải chạy lại từ đầu, vì mỗi job chưa lưu checkpoint giữa chừng.
