@@ -189,3 +189,4 @@ Còn mở:
 | 2026-11-19 | User chạy trên Kaggle: thêm notebook `pilot/kaggle/01_prepare_data.ipynb` và `02_train_pilot.ipynb` (shard, ngân sách 8 giờ, resume). Đã kiểm thử bằng nbclient trong môi trường giả lập. User gửi các file `runs_shard*.tar`; Claude gộp và phân tích. |
 | 2026-11-19 | Theo yêu cầu của user: chuyển toàn bộ code sang nhánh `main` và làm việc trên `main` từ nay. Notebook Kaggle đổi sang clone `-b main`. |
 | 2026-11-20 | Đo thời gian trên Kaggle 2×T4 (user chạy): 36,1 giây/epoch, 1,05 giờ/run, 49 run ≈ 25,8 giờ session → chạy **4 shard** (13/12/12/12 job; ≈ 7,35/6,30/6,30/6,30 giờ). Code chạy trên GPU với FP16, không lỗi. |
+| 2026-11-20 | Launcher thêm hard stop (8,5 giờ) và snapshot tar sau mỗi job. Chạy song song: 2 notebook (A: shard 0 rồi 2; B: shard 1 rồi 3), dựa trên giới hạn 2 commit GPU cùng lúc (thông báo cũ của Kaggle cộng báo cáo cộng đồng; chưa có tài liệu chính thức hiện hành). |
