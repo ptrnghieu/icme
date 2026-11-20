@@ -1,0 +1,224 @@
+8.2s 1 0.00s - Debugger warning: It seems that frozen modules are being used, which may
+8.2s 2 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+8.2s 3 0.00s - to python to disable frozen modules.
+8.2s 4 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+8.8s 5 0.00s - Debugger warning: It seems that frozen modules are being used, which may
+8.8s 6 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+8.8s 7 0.00s - to python to disable frozen modules.
+8.8s 8 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+10.9s 9 code commit: 2431780_Fri Nov 20 08:25:14 2026 +0000
+10.9s 10 
+10.9s 11 CPUs: 4
+18.3s 12 name, memory.total [MiB]
+18.3s 13 Tesla T4, 15360 MiB
+18.3s 14 Tesla T4, 15360 MiB
+18.3s 15 dataloader workers per job: 2
+18.3s 16 name, memory.total [MiB]
+18.3s 17 Tesla T4, 15360 MiB
+18.3s 18 Tesla T4, 15360 MiB
+18.4s 19 49 jobs -> /tmp/jobs.txt
+18.5s 20 49 jobs -> /tmp/jobs.txt
+39.1s 21 49 jobs in grid, 12 in shard 1/4, 0 already done, 12 to run
+39.1s 22 [gpu 0] start /tmp/runs/standard_ogm_ge_a0.1_s0_f1
+39.1s 23 [gpu 1] start /tmp/runs/standard_audio_only_s0_f1
+39.3s 24 49 jobs in grid, 12 in shard 1/4, 0 already done, 12 to run
+39.3s 25 [gpu 0] start /tmp/runs/standard_ogm_ge_a0.1_s0_f1
+39.3s 26 [gpu 1] start /tmp/runs/standard_audio_only_s0_f1
+3209.2s 27 [gpu 0] done (0.88 h): /tmp/runs/standard_ogm_ge_a0.1_s0_f1
+3209.2s 28 snapshot -> /kaggle/working/runs_shard1.tar
+3209.4s 29 [gpu 0] done (0.88 h): /tmp/runs/standard_ogm_ge_a0.1_s0_f1
+3209.4s 30 snapshot -> /kaggle/working/runs_shard1.tar
+3219.2s 31 [gpu 0] start /tmp/runs/standard_ogm_ge_a0.3_s1_f1
+3219.4s 32 [gpu 0] start /tmp/runs/standard_ogm_ge_a0.3_s1_f1
+3379.2s 33 [gpu 1] done (0.93 h): /tmp/runs/standard_audio_only_s0_f1
+3379.2s 34 snapshot -> /kaggle/working/runs_shard1.tar
+3379.4s 35 [gpu 1] done (0.93 h): /tmp/runs/standard_audio_only_s0_f1
+3379.4s 36 snapshot -> /kaggle/working/runs_shard1.tar
+3389.2s 37 [gpu 1] start /tmp/runs/standard_visual_only_s1_f1
+3389.4s 38 [gpu 1] start /tmp/runs/standard_visual_only_s1_f1
+6429.3s 39 [gpu 0] done (0.89 h): /tmp/runs/standard_ogm_ge_a0.3_s1_f1
+6429.3s 40 snapshot -> /kaggle/working/runs_shard1.tar
+6429.5s 41 [gpu 0] done (0.89 h): /tmp/runs/standard_ogm_ge_a0.3_s1_f1
+6429.5s 42 snapshot -> /kaggle/working/runs_shard1.tar
+6439.3s 43 [gpu 0] start /tmp/runs/standard_ogm_ge_a0.5_s2_f1
+6439.5s 44 [gpu 0] start /tmp/runs/standard_ogm_ge_a0.5_s2_f1
+6559.3s 45 [gpu 1] done (0.88 h): /tmp/runs/standard_visual_only_s1_f1
+6559.3s 46 snapshot -> /kaggle/working/runs_shard1.tar
+6559.5s 47 [gpu 1] done (0.88 h): /tmp/runs/standard_visual_only_s1_f1
+6559.5s 48 snapshot -> /kaggle/working/runs_shard1.tar
+6569.3s 49 [gpu 1] start /tmp/runs/actor0_joint_s0_f1
+6569.5s 50 [gpu 1] start /tmp/runs/actor0_joint_s0_f1
+9749.4s 51 [gpu 0] done (0.92 h): /tmp/runs/standard_ogm_ge_a0.5_s2_f1
+9749.4s 52 snapshot -> /kaggle/working/runs_shard1.tar
+9749.6s 53 [gpu 0] done (0.92 h): /tmp/runs/standard_ogm_ge_a0.5_s2_f1
+9749.6s 54 snapshot -> /kaggle/working/runs_shard1.tar
+9759.4s 55 [gpu 0] start /tmp/runs/actor0_ogm_ge_a0.8_s0_f1
+9759.6s 56 [gpu 0] start /tmp/runs/actor0_ogm_ge_a0.8_s0_f1
+9909.4s 57 [gpu 1] done (0.93 h): /tmp/runs/actor0_joint_s0_f1
+9909.5s 58 snapshot -> /kaggle/working/runs_shard1.tar
+9909.6s 59 [gpu 1] done (0.93 h): /tmp/runs/actor0_joint_s0_f1
+9909.6s 60 snapshot -> /kaggle/working/runs_shard1.tar
+9919.5s 61 [gpu 1] start /tmp/runs/actor0_ogm_ge_a0.1_s1_f1
+9919.7s 62 [gpu 1] start /tmp/runs/actor0_ogm_ge_a0.1_s1_f1
+13139.5s 63 [gpu 0] done (0.94 h): /tmp/runs/actor0_ogm_ge_a0.8_s0_f1
+13139.6s 64 snapshot -> /kaggle/working/runs_shard1.tar
+13139.7s 65 [gpu 0] done (0.94 h): /tmp/runs/actor0_ogm_ge_a0.8_s0_f1
+13139.7s 66 snapshot -> /kaggle/working/runs_shard1.tar
+13149.6s 67 [gpu 0] start /tmp/runs/actor0_audio_only_s1_f1
+13149.8s 68 [gpu 0] start /tmp/runs/actor0_audio_only_s1_f1
+13219.6s 69 [gpu 1] done (0.92 h): /tmp/runs/actor0_ogm_ge_a0.1_s1_f1
+13219.6s 70 snapshot -> /kaggle/working/runs_shard1.tar
+13219.8s 71 [gpu 1] done (0.92 h): /tmp/runs/actor0_ogm_ge_a0.1_s1_f1
+13219.8s 72 snapshot -> /kaggle/working/runs_shard1.tar
+13229.6s 73 [gpu 1] start /tmp/runs/actor1_ogm_ge_a0.3_s0_f1
+13229.8s 74 [gpu 1] start /tmp/runs/actor1_ogm_ge_a0.3_s0_f1
+16299.7s 75 [gpu 0] done (0.88 h): /tmp/runs/actor0_audio_only_s1_f1
+16299.7s 76 snapshot -> /kaggle/working/runs_shard1.tar
+16299.9s 77 [gpu 0] done (0.88 h): /tmp/runs/actor0_audio_only_s1_f1
+16299.9s 78 snapshot -> /kaggle/working/runs_shard1.tar
+16309.7s 79 [gpu 0] start /tmp/runs/actor1_visual_only_s0_f1
+16309.9s 80 [gpu 0] start /tmp/runs/actor1_visual_only_s0_f1
+16439.7s 81 [gpu 1] done (0.89 h): /tmp/runs/actor1_ogm_ge_a0.3_s0_f1
+16439.7s 82 snapshot -> /kaggle/working/runs_shard1.tar
+16439.9s 83 [gpu 1] done (0.89 h): /tmp/runs/actor1_ogm_ge_a0.3_s0_f1
+16439.9s 84 snapshot -> /kaggle/working/runs_shard1.tar
+16449.8s 85 [gpu 1] start /tmp/runs/actor1_ogm_ge_a0.5_s1_f1
+16450.0s 86 [gpu 1] start /tmp/runs/actor1_ogm_ge_a0.5_s1_f1
+19569.9s 87 [gpu 0] done (0.91 h): /tmp/runs/actor1_visual_only_s0_f1
+19569.9s 88 snapshot -> /kaggle/working/runs_shard1.tar
+19570.1s 89 [gpu 0] done (0.91 h): /tmp/runs/actor1_visual_only_s0_f1
+19570.1s 90 snapshot -> /kaggle/working/runs_shard1.tar
+19709.9s 91 [gpu 1] done (0.91 h): /tmp/runs/actor1_ogm_ge_a0.5_s1_f1
+19709.9s 92 snapshot -> /kaggle/working/runs_shard1.tar
+19710.1s 93 [gpu 1] done (0.91 h): /tmp/runs/actor1_ogm_ge_a0.5_s1_f1
+19710.1s 94 snapshot -> /kaggle/working/runs_shard1.tar
+19719.9s 95 snapshot -> /kaggle/working/runs_shard1.tar
+19719.9s 96 finished in 5.47 h; jobs not started because of the budget: 0; killed at hard stop: 0; shard jobs still missing: 0 (re-run this shard with its runs tar attached to finish them)
+19720.1s 97 snapshot -> /kaggle/working/runs_shard1.tar
+19720.1s 98 finished in 5.47 h; jobs not started because of the budget: 0; killed at hard stop: 0; shard jobs still missing: 0 (re-run this shard with its runs tar attached to finish them)
+19725.5s 99 Runs found: 12; used: 12; excluded (frame-dependent, dump_version < 2): 0
+19725.5s 100 
+19725.5s 101 ## G1 Protocol (test accuracy, %)
+19725.5s 102 | protocol | method | n runs | val-selected | test-selected (OGM-GE style) |
+19725.5s 103 |---|---|---|---|---|
+19725.5s 104 | actor | audio_only | 1 | 50.77 ± 0.00 | 52.45 ± 0.00 |
+19725.5s 105 | actor | joint | 1 | 51.74 ± 0.00 | 53.48 ± 0.00 |
+19725.5s 106 | actor | ogm_ge(a=0.1) | 1 | 53.67 ± 0.00 | 54.19 ± 0.00 |
+19725.5s 107 | actor | ogm_ge(a=0.3) | 1 | 53.96 ± 0.00 | 54.17 ± 0.00 |
+19725.5s 108 | actor | ogm_ge(a=0.5) | 1 | 46.24 ± 0.00 | 54.44 ± 0.00 |
+19725.5s 109 | actor | ogm_ge(a=0.8) | 1 | 56.70 ± 0.00 | 58.12 ± 0.00 |
+19725.5s 110 | actor | visual_only | 1 | 42.90 ± 0.00 | 45.22 ± 0.00 |
+19725.5s 111 | standard | audio_only | 1 | 53.23 ± 0.00 | 56.59 ± 0.00 |
+19725.5s 112 | standard | ogm_ge(a=0.1) | 1 | 52.15 ± 0.00 | 52.42 ± 0.00 |
+19725.5s 113 | standard | ogm_ge(a=0.3) | 1 | 53.36 ± 0.00 | 56.18 ± 0.00 |
+19725.5s 114 | standard | ogm_ge(a=0.5) | 1 | 56.18 ± 0.00 | 57.26 ± 0.00 |
+19725.5s 115 | standard | visual_only | 1 | 48.92 ± 0.00 | 49.60 ± 0.00 |
+19725.5s 116 - actor: OGM-GE alpha chosen on val = 0.8; gain over joint on test = +4.96 points
+19725.5s 117 
+19725.5s 118 Eval-frame check (same checkpoint; test accuracy %, centre frame vs first frame):
+19725.5s 119 - joint: centre 51.74 vs first 51.80 (diff -0.06, n=1)
+19725.5s 120 - ogm_ge(a=0.1): centre 52.91 vs first 52.74 (diff +0.17, n=2)
+19725.5s 121 - ogm_ge(a=0.3): centre 53.66 vs first 52.27 (diff +1.39, n=2)
+19725.5s 122 - ogm_ge(a=0.5): centre 51.21 vs first 48.47 (diff +2.74, n=2)
+19725.5s 123 - ogm_ge(a=0.8): centre 56.70 vs first 54.64 (diff +2.06, n=1)
+19725.5s 124 - visual_only: centre 45.91 vs first 27.29 (diff +18.62, n=2)
+19725.5s 125 
+19725.5s 126 ## G2 Q1: alignment of model modality reliance with humans (test clips)
+19725.5s 127 | protocol | method | n | align label-free (primary) | align label-based | visual share (label-free) |
+19725.5s 128 |---|---|---|---|---|---|
+19725.5s 129 | actor | joint | 1 | -0.020 ± 0.000 | 0.073 | 0.197 |
+19725.5s 130 | actor | ogm_ge(a=0.1) | 1 | -0.028 ± 0.000 | 0.027 | 0.232 |
+19725.5s 131 | actor | ogm_ge(a=0.3) | 1 | 0.031 ± 0.000 | 0.115 | 0.368 |
+19725.5s 132 | actor | ogm_ge(a=0.5) | 1 | 0.042 ± 0.000 | 0.178 | 0.602 |
+19725.5s 133 | actor | ogm_ge(a=0.8) | 1 | 0.128 ± 0.000 | 0.208 | 0.364 |
+19725.5s 134 | standard | ogm_ge(a=0.1) | 1 | -0.054 ± 0.000 | 0.055 | 0.330 |
+19725.5s 135 | standard | ogm_ge(a=0.3) | 1 | -0.038 ± 0.000 | 0.142 | 0.280 |
+19725.5s 136 | standard | ogm_ge(a=0.5) | 1 | 0.047 ± 0.000 | 0.129 | 0.472 |
+19725.5s 137 
+19725.5s 138 Targeting (OGM-GE minus joint, paired by split and seed; label-free):
+19725.5s 139 - actor ogm_ge(a=0.8): targeting = 0.155 ± 0.000, delta visual share = +0.167 (n=1)
+19725.5s 140 
+19725.5s 141 ## G3 Q2 / H: does human-aligned reliance predict accuracy on unseen actors?
+19725.5s 142 - G3a: not enough actor-protocol AV runs with label-free columns (5); need >= 6
+19725.5s 143 - G3b [descriptive] actor0: P(correct | label-free reliance agrees with humans) - P(correct | disagrees), stratified by human AV accuracy = +5.97 points, 95% CI [+2.49, +9.66] (clips=1436, clip-runs=4308; share agreeing = 0.42)
+19725.5s 144 - G3b [descriptive] actor1: P(correct | label-free reliance agrees with humans) - P(correct | disagrees), stratified by human AV accuracy = +4.38 points, 95% CI [+0.76, +8.28] (clips=1360, clip-runs=2720; share agreeing = 0.51)
+19725.5s 145 
+19725.5s 146 ## Decision support (rule amended 2026-11-20, before any OGM-GE result existed; see README)
+19725.5s 147 - GO (strong): G3a label-free estimate > 0 with 95% CI excluding 0 -> not met
+19725.5s 148 - GO (weak, discuss): G2 uniform visual boost (|targeting| < 0.05 and visual share rises) -> not met; AND G1 OGM-GE gain under the actor protocol < half of the standard-split gain -> not met
+19725.5s 149 - Outcome: NO-GO
+19725.5s 150 
+19725.5s 151 report -> /kaggle/working/pilot_report_partial.md
+19725.7s 152 total 2400
+19725.7s 153 drwxr-xr-x 2 root root    4096 Nov 20 14:32 .
+19725.7s 154 drwxr-xr-x 8 root root    4096 Nov 20 09:03 ..
+19725.7s 155 -rw-r--r-- 1 root root   13996 Nov 20 14:32 __notebook__.ipynb
+19725.7s 156 -rw-r--r-- 1 root root    3343 Nov 20 14:32 pilot_report_partial.md
+19725.7s 157 -rw-r--r-- 1 root root 2426880 Nov 20 14:32 runs_shard1.tar
+19725.7s 158 Runs found: 12; used: 12; excluded (frame-dependent, dump_version < 2): 0
+19725.7s 159 
+19725.7s 160 ## G1 Protocol (test accuracy, %)
+19725.7s 161 | protocol | method | n runs | val-selected | test-selected (OGM-GE style) |
+19725.7s 162 |---|---|---|---|---|
+19725.7s 163 | actor | audio_only | 1 | 50.77 ± 0.00 | 52.45 ± 0.00 |
+19725.7s 164 | actor | joint | 1 | 51.74 ± 0.00 | 53.48 ± 0.00 |
+19725.7s 165 | actor | ogm_ge(a=0.1) | 1 | 53.67 ± 0.00 | 54.19 ± 0.00 |
+19725.7s 166 | actor | ogm_ge(a=0.3) | 1 | 53.96 ± 0.00 | 54.17 ± 0.00 |
+19725.7s 167 | actor | ogm_ge(a=0.5) | 1 | 46.24 ± 0.00 | 54.44 ± 0.00 |
+19725.7s 168 | actor | ogm_ge(a=0.8) | 1 | 56.70 ± 0.00 | 58.12 ± 0.00 |
+19725.7s 169 | actor | visual_only | 1 | 42.90 ± 0.00 | 45.22 ± 0.00 |
+19725.7s 170 | standard | audio_only | 1 | 53.23 ± 0.00 | 56.59 ± 0.00 |
+19725.7s 171 | standard | ogm_ge(a=0.1) | 1 | 52.15 ± 0.00 | 52.42 ± 0.00 |
+19725.7s 172 | standard | ogm_ge(a=0.3) | 1 | 53.36 ± 0.00 | 56.18 ± 0.00 |
+19725.7s 173 | standard | ogm_ge(a=0.5) | 1 | 56.18 ± 0.00 | 57.26 ± 0.00 |
+19725.7s 174 | standard | visual_only | 1 | 48.92 ± 0.00 | 49.60 ± 0.00 |
+19725.7s 175 - actor: OGM-GE alpha chosen on val = 0.8; gain over joint on test = +4.96 points
+19725.7s 176 
+19725.7s 177 Eval-frame check (same checkpoint; test accuracy %, centre frame vs first frame):
+19725.7s 178 - joint: centre 51.74 vs first 51.80 (diff -0.06, n=1)
+19725.7s 179 - ogm_ge(a=0.1): centre 52.91 vs first 52.74 (diff +0.17, n=2)
+19725.7s 180 - ogm_ge(a=0.3): centre 53.66 vs first 52.27 (diff +1.39, n=2)
+19725.7s 181 - ogm_ge(a=0.5): centre 51.21 vs first 48.47 (diff +2.74, n=2)
+19725.7s 182 - ogm_ge(a=0.8): centre 56.70 vs first 54.64 (diff +2.06, n=1)
+19725.7s 183 - visual_only: centre 45.91 vs first 27.29 (diff +18.62, n=2)
+19725.7s 184 
+19725.7s 185 ## G2 Q1: alignment of model modality reliance with humans (test clips)
+19725.7s 186 | protocol | method | n | align label-free (primary) | align label-based | visual share (label-free) |
+19725.7s 187 |---|---|---|---|---|---|
+19725.7s 188 | actor | joint | 1 | -0.020 ± 0.000 | 0.073 | 0.197 |
+19725.7s 189 | actor | ogm_ge(a=0.1) | 1 | -0.028 ± 0.000 | 0.027 | 0.232 |
+19725.7s 190 | actor | ogm_ge(a=0.3) | 1 | 0.031 ± 0.000 | 0.115 | 0.368 |
+19725.7s 191 | actor | ogm_ge(a=0.5) | 1 | 0.042 ± 0.000 | 0.178 | 0.602 |
+19725.7s 192 | actor | ogm_ge(a=0.8) | 1 | 0.128 ± 0.000 | 0.208 | 0.364 |
+19725.7s 193 | standard | ogm_ge(a=0.1) | 1 | -0.054 ± 0.000 | 0.055 | 0.330 |
+19725.7s 194 | standard | ogm_ge(a=0.3) | 1 | -0.038 ± 0.000 | 0.142 | 0.280 |
+19725.7s 195 | standard | ogm_ge(a=0.5) | 1 | 0.047 ± 0.000 | 0.129 | 0.472 |
+19725.7s 196 
+19725.7s 197 Targeting (OGM-GE minus joint, paired by split and seed; label-free):
+19725.7s 198 - actor ogm_ge(a=0.8): targeting = 0.155 ± 0.000, delta visual share = +0.167 (n=1)
+19725.7s 199 
+19725.7s 200 ## G3 Q2 / H: does human-aligned reliance predict accuracy on unseen actors?
+19725.7s 201 - G3a: not enough actor-protocol AV runs with label-free columns (5); need >= 6
+19725.7s 202 - G3b [descriptive] actor0: P(correct | label-free reliance agrees with humans) - P(correct | disagrees), stratified by human AV accuracy = +5.97 points, 95% CI [+2.49, +9.66] (clips=1436, clip-runs=4308; share agreeing = 0.42)
+19725.7s 203 - G3b [descriptive] actor1: P(correct | label-free reliance agrees with humans) - P(correct | disagrees), stratified by human AV accuracy = +4.38 points, 95% CI [+0.76, +8.28] (clips=1360, clip-runs=2720; share agreeing = 0.51)
+19725.7s 204 
+19725.7s 205 ## Decision support (rule amended 2026-11-20, before any OGM-GE result existed; see README)
+19725.7s 206 - GO (strong): G3a label-free estimate > 0 with 95% CI excluding 0 -> not met
+19725.7s 207 - GO (weak, discuss): G2 uniform visual boost (|targeting| < 0.05 and visual share rises) -> not met; AND G1 OGM-GE gain under the actor protocol < half of the standard-split gain -> not met
+19725.7s 208 - Outcome: NO-GO
+19725.7s 209 
+19725.7s 210 report -> /kaggle/working/pilot_report_partial.md
+19725.7s 211 total 2400
+19725.7s 212 drwxr-xr-x 2 root root    4096 Nov 20 14:32 .
+19725.7s 213 drwxr-xr-x 8 root root    4096 Nov 20 09:03 ..
+19725.7s 214 -rw-r--r-- 1 root root   13996 Nov 20 14:32 __notebook__.ipynb
+19725.7s 215 -rw-r--r-- 1 root root    3343 Nov 20 14:32 pilot_report_partial.md
+19725.7s 216 -rw-r--r-- 1 root root 2426880 Nov 20 14:32 runs_shard1.tar
+19728.2s 217 /usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\|'
+19728.2s 218 cells[i][c] = re.sub('\\\\\|', '|', cell)
+19728.4s 219 /usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\_'
+19728.4s 220 text = re.sub(r'_', '\_', text) # Escape underscores in display text
+19729.2s 221 [NbConvertApp] Converting notebook __notebook__.ipynb to notebook
+19729.3s 222 [NbConvertApp] Writing 16577 bytes to __notebook__.ipynb
+19731.9s 223 [NbConvertApp] Converting notebook __notebook__.ipynb to html
+19732.4s 224 [NbConvertApp] Writing 299177 bytes to __results__.html
