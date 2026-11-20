@@ -32,7 +32,13 @@ Dùng hai notebook trong `pilot/kaggle/`: upload lên Kaggle bằng *File → Im
 | 4 | — | **Tải `runs_shard{SHARD}.tar` ngay khi mỗi version chạy xong**, trước khi chạy shard tiếp theo. Sau đó gửi tất cả cho Claude (upload vào chat). Claude gộp các shard và chạy `analyze.py`. | `pilot_report.md` |
 
 - **Giới hạn session của Kaggle:** Claude không đọc được tài liệu chính thức (trang render bằng JavaScript), còn các nguồn bên thứ ba ghi 9 giờ hoặc 12 giờ. Vì vậy `TIME_BUDGET_H = 8`: launcher **không bắt đầu** job mới nếu ước tính job đó kết thúc sau mốc 8 giờ. Giá trị này an toàn với cả hai giới hạn.
-- **Shard chưa chạy hết** (log in ra `jobs not started because of the budget: N` với N > 0):
+- **Ba lớp bảo vệ trong mỗi session:**
+  1. `TIME_BUDGET_H = 8`: không *bắt đầu* job mới nếu ước tính job đó kết thúc sau 8 giờ.
+  2. Hard stop ở 8,5 giờ: dừng hẳn các job còn chạy để notebook kịp đóng gói và lưu output.
+  3. `runs_shard{SHARD}.tar` được ghi lại sau **mỗi** job xong.
+
+  Job bị hoãn hoặc bị dừng thì không mất gì đã xong. Chỉ job đó phải chạy lại từ đầu, vì mỗi job chưa lưu checkpoint giữa chừng.
+- **Shard chưa chạy hết** (dòng cuối log báo `shard jobs still missing: N` với N > 0):
   1. Upload file `runs_shard{SHARD}.tar` vừa tải về thành một **Kaggle Dataset** mới.
   2. Gắn Dataset đó làm input của notebook 02.
   3. Chạy lại *đúng shard đó*. Các run đã xong được khôi phục và bỏ qua (đã kiểm thử ở mục cuối).
