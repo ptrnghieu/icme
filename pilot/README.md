@@ -102,12 +102,35 @@ python analyze.py --root /data/cremad --runs runs --out pilot_report.md
 
 Với ResNet-18 và 1 frame, một T4 thường còn dư VRAM. Nếu bước 5 cho thấy GPU chưa bị tận dụng hết thì thử `--per_gpu 2`.
 
-## Quy tắc go/no-go (cố định trước khi chạy)
+## Quy tắc go/no-go (bản sửa ngày 2026-11-20; `analyze.py` tự in kết luận)
 | Kết luận | Điều kiện |
 |---|---|
-| **GO (mạnh)** | G3a: tương quan riêng phần (alignment trên val, test acc trên diễn viên mới, sau khi kiểm soát val acc) dương, CI 95% không chứa 0. **Hoặc** G3b dương, CI không chứa 0 ở mọi fold. |
-| **GO (yếu, cần bàn lại)** | Chỉ G2 cho thấy tăng đồng loạt (targeting ≈ 0 trong khi tỷ trọng visual tăng), **và** G1 cho thấy lợi ích của OGM-GE so với joint giảm hơn một nửa dưới protocol A. |
+| **GO (mạnh)** | G3a, dùng alignment **label-free**: tương quan riêng phần (alignment trên val, test acc trên diễn viên mới, sau khi kiểm soát val acc) dương, CI 95% không chứa 0. |
+| **GO (yếu, cần bàn lại)** | G2 cho thấy tăng visual đồng loạt (\|targeting\| < 0,05 trong khi tỷ trọng visual tăng), **và** G1 cho thấy lợi ích của OGM-GE so với joint dưới protocol A nhỏ hơn một nửa so với dưới split chuẩn. |
 | **NO-GO** | Không đạt điều kiện nào ở trên. Khi đó dừng ứng viên A. |
+
+Bản gốc ngày 2026-11-19 có thêm nhánh "**hoặc** G3b dương, CI không chứa 0 ở mọi fold", và dùng alignment dựa trên nhãn đúng. Lý do sửa nằm ở mục dưới.
+
+## Nhật ký sửa đổi sau lần chạy shard 0 và 1 (2026-11-20)
+Lần chạy đầu (commit `f8c856d`) cho ra: **14/14 run OGM-GE bị lỗi**; joint (3), audio-only (4) và visual-only (4) chạy xong.
+
+1. **Lỗi OGM-GE khi train FP16.**
+   - Nguyên nhân: `GradScaler` tăng loss scale sau mỗi 2.000 bước, nên một bước sau đó gradient bị tràn thành `inf`. Khi đó `grad.std()` = `nan`, và `normal_(0, nan)` ném `RuntimeError`.
+   - Thời điểm khớp: 2.000 bước rơi vào epoch 21–24, khoảng 0,21–0,24 giờ; các run lỗi ở 0,15–0,26 giờ.
+   - Cách sửa: bỏ qua modulation ở đúng bước bị tràn (`GradScaler` cũng tự bỏ qua bước đó). Số bước bị bỏ qua được log vào `ogm_steps_skipped_overflow`.
+   - Kiểm thử: `test_ogm_overflow.py` tái hiện lỗi và xác nhận bản sửa không crash. `test_ogm_equivalence.py` vẫn khớp code gốc tuyệt đối khi gradient hữu hạn.
+2. **Frame dùng lúc eval.**
+   - Code cũ luôn eval trên frame đầu tiên (t = 0). Code gốc OGM-GE thì lấy file đầu tiên theo `os.listdir`, tức một frame tùy ý.
+   - Visual-only của pilot đạt 24,5–27,7% (val-selected), so với 41,9% trong bài OGM-GE. Audio-only (50,0–52,6%) và joint (51,1–51,2%) thì khớp bài báo (52,5% và 51,7%).
+   - Đã đổi sang **frame ở giữa clip**. Mỗi run giờ báo cả accuracy với frame đầu (`test_acc_other_eval_frame`), nên ảnh hưởng của lựa chọn này được đo trực tiếp.
+3. **Đo mức dựa vào modality.**
+   - Shapley tính trên log p(**nhãn đúng**) gắn chặt với việc đoán đúng hay sai. Một clip được đoán đúng nhờ audio thì `rel < 0`, mà người thường dựa vào mặt (d_human trung bình +0,18), nên những lần đoán đúng đó bị tính là "không khớp với người". Con số G3b = −19 điểm của lần chạy đầu phản ánh cách đo này, không phải bằng chứng về H.
+   - Chỉ số chính chuyển sang **label-free**: `rel_lf = KL(p_AV‖p_chỉ-audio) − KL(p_AV‖p_chỉ-visual)`, đúng bằng hiệu Shapley với giá trị −KL tới dự đoán đầy đủ.
+   - G3b chỉ còn là mô tả, vì vẫn bị nhiễu bởi chuyện mỗi nhánh mạnh hay yếu.
+   - **Thời điểm sửa:** sau khi thấy kết quả joint, audio-only và visual-only của shard 0 và 1, **trước khi có bất kỳ kết quả OGM-GE nào**, và trước khi G3a được tính trên bất kỳ dữ liệu nào (cần ≥ 6 run AV dưới protocol A).
+4. **Chạy lại.**
+   - Launcher coi một run là xong khi có `metrics.json` **và** `dump_version ≥ 2`. Riêng audio-only thì luôn giữ, vì không dùng frame.
+   - Khi chạy lại shard 0 và 1 với file tar cũ làm input, 4 run audio-only được giữ; joint, visual-only và OGM-GE được chạy lại: 11 job ở shard 0 và 10 job ở shard 1.
 
 ## Cần gửi lại cho Claude sau khi chạy
 - `pilot_report.md`

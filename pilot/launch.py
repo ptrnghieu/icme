@@ -9,6 +9,7 @@ Kaggle-friendly options
 Usage: python launch.py --jobs jobs.txt --gpus 0,1 --per_gpu 1 [--shard 0 --n_shards 3 --time_budget_h 8]
 """
 import argparse
+import json
 import os
 import shlex
 import subprocess
@@ -20,12 +21,33 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 
 
-def run_dir(argstr):
-    import train  # noqa: F401  (reuse naming logic)
+def job_args(argstr):
+    import train  # noqa: F401  (reuse argument parsing and naming logic)
 
     sys.argv = ["train.py"] + shlex.split(argstr)
-    a = train.get_args()
+    return train.get_args()
+
+
+def run_dir(argstr):
+    import train
+
+    a = job_args(argstr)
     return os.path.join(a.out, train.run_name(a))
+
+
+def is_done(argstr):
+    """A run counts as done if metrics.json exists. Runs that use video frames must also come from
+    dump_version >= 2 (centre eval frame + label-free reliance columns, 2026-11-20); older ones are re-run.
+    Audio-only runs do not depend on frames and are kept."""
+    m = os.path.join(run_dir(argstr), "metrics.json")
+    if not os.path.exists(m):
+        return False
+    if job_args(argstr).method == "audio_only":
+        return True
+    try:
+        return json.load(open(m)).get("dump_version", 1) >= 2
+    except (OSError, ValueError):
+        return False
 
 
 def main():
@@ -45,7 +67,7 @@ def main():
     a = ap.parse_args()
     jobs = [l.strip() for l in open(a.jobs) if l.strip()]
     mine = [j for i, j in enumerate(jobs) if i % a.n_shards == a.shard]
-    todo = [j for j in mine if not os.path.exists(os.path.join(run_dir(j), "metrics.json"))]
+    todo = [j for j in mine if not is_done(j)]
     print(f"{len(jobs)} jobs in grid, {len(mine)} in shard {a.shard}/{a.n_shards}, "
           f"{len(mine)-len(todo)} already done, {len(todo)} to run", flush=True)
     slots = [g for g in a.gpus.split(",") for _ in range(a.per_gpu)]
@@ -110,7 +132,7 @@ def main():
                 snapshot()
         time.sleep(10)
     snapshot()
-    left = [j for j in mine if not os.path.exists(os.path.join(run_dir(j), "metrics.json"))]
+    left = [j for j in mine if not is_done(j)]
     print(f"finished in {(time.time()-t0)/3600:.2f} h; jobs not started because of the budget: {len(skipped)}; "
           f"killed at hard stop: {len(killed)}; shard jobs still missing: {len(left)} "
           f"(re-run this shard with its runs tar attached to finish them)", flush=True)

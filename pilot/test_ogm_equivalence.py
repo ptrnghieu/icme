@@ -49,7 +49,8 @@ def main():
             q1.grad, q2.grad = p1.grad.clone(), p2.grad.clone()
         out_a, out_v = m1.decompose(a.detach(), v.detach())
         torch.manual_seed(123)
-        ca, cv, _ = ogm_ge_modulate(mA, out_a, out_v, y, alpha)
+        ca, cv, _, applied = ogm_ge_modulate(mA, out_a, out_v, y, alpha)
+        assert applied
         torch.manual_seed(123)
         ra, rv = reference(mB, out_a, out_v, y, alpha)
         assert abs(ca - ra) < 1e-6 and abs(cv - rv) < 1e-6, (ca, ra, cv, rv)

@@ -3,8 +3,10 @@
 Transforms follow OGM-GE (train: RandomResizedCrop(224) + HorizontalFlip; eval: Resize(224, 224);
 ImageNet normalisation; spectrogram not normalised, as in OGM-GE).
 Deviation from OGM-GE (documented): OGM-GE computes a random frame index but then loads the first
-`fps` files of an unsorted directory listing. Here training frames are sampled uniformly at random and
-evaluation frames are evenly spaced, both deterministic given the RNG.
+`fps` files of an unsorted directory listing. Here training frames are sampled uniformly at random; evaluation
+uses the centre frame of each of k equal segments (k = 1: the middle frame), or the first k frames with
+eval_frame="first". Until 2026-11-20 the pilot evaluated on the first frame (t = 0) only; train.py now reports
+both so the effect of this choice is measured.
 """
 import os
 
@@ -20,8 +22,8 @@ MEAN, STD = [0.485, 0.456, 0.406], [0.229, 0.224, 0.225]
 
 
 class CremadAV(Dataset):
-    def __init__(self, root, split_csv, train, n_frames=1, fps=1):
-        self.root, self.train, self.n_frames = root, train, n_frames
+    def __init__(self, root, split_csv, train, n_frames=1, fps=1, eval_frame="center"):
+        self.root, self.train, self.n_frames, self.eval_frame = root, train, n_frames, eval_frame
         self.frame_dir = os.path.join(root, f"frames_fps{fps}")
         rows = read_split(split_csv)
         self.items = []
@@ -54,8 +56,11 @@ class CremadAV(Dataset):
         n = len(files)
         if self.train:
             idx = torch.randperm(n)[: self.n_frames].sort().values.tolist()
-        else:
-            idx = np.linspace(0, n - 1, num=min(self.n_frames, n)).round().astype(int).tolist()
+        elif self.eval_frame == "first":
+            idx = list(range(min(self.n_frames, n)))
+        else:  # "center": centre of k equal segments; for k = 1 the middle frame (index n // 2)
+            k = min(self.n_frames, n)
+            idx = [int((j + 0.5) * n / k) for j in range(k)]
         while len(idx) < self.n_frames:  # clips shorter than n_frames seconds
             idx.append(idx[-1])
         imgs = torch.stack([self.tf(Image.open(os.path.join(fd, files[j])).convert("RGB")) for j in idx])
