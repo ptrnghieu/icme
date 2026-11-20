@@ -13,6 +13,7 @@ import os
 import shlex
 import subprocess
 import sys
+import tarfile
 import time
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -36,6 +37,11 @@ def main():
     ap.add_argument("--n_shards", type=int, default=1)
     ap.add_argument("--time_budget_h", type=float, default=0.0, help="0 = no budget")
     ap.add_argument("--est_job_h", type=float, default=1.5, help="job-duration estimate until one job finishes")
+    ap.add_argument("--hard_stop_h", type=float, default=0.0,
+                    help="kill still-running jobs after this many hours so the notebook can save its output "
+                         "before the platform's session limit (0 = never). Killed jobs re-run from scratch on resume.")
+    ap.add_argument("--snapshot_tar", default="", help="after every finished job, rewrite this tar with the runs "
+                    "directory (so finished runs survive even if the session is cut)")
     a = ap.parse_args()
     jobs = [l.strip() for l in open(a.jobs) if l.strip()]
     mine = [j for i, j in enumerate(jobs) if i % a.n_shards == a.shard]
@@ -43,9 +49,37 @@ def main():
     print(f"{len(jobs)} jobs in grid, {len(mine)} in shard {a.shard}/{a.n_shards}, "
           f"{len(mine)-len(todo)} already done, {len(todo)} to run", flush=True)
     slots = [g for g in a.gpus.split(",") for _ in range(a.per_gpu)]
-    running, durations, skipped = {}, [], []
+    running, durations, skipped, killed = {}, [], [], []
     t0 = time.time()
+    runs_dirs = sorted({os.path.dirname(run_dir(j)) for j in mine})
+
+    def snapshot():
+        if not a.snapshot_tar:
+            return
+        tmp = a.snapshot_tar + ".tmp"
+        with tarfile.open(tmp, "w") as tf:
+            for rd in runs_dirs:
+                if os.path.isdir(rd):
+                    tf.add(rd, arcname=os.path.basename(rd),
+                           filter=lambda ti: None if ti.name.endswith(".pt") else ti)
+        os.replace(tmp, a.snapshot_tar)
+        print(f"snapshot -> {a.snapshot_tar}", flush=True)
+
     while todo or running:
+        if a.hard_stop_h and (time.time() - t0) / 3600 > a.hard_stop_h and running:
+            for s, (p, j, f, ts) in list(running.items()):
+                p.terminate()
+                try:
+                    p.wait(timeout=60)
+                except subprocess.TimeoutExpired:
+                    p.kill()
+                f.close()
+                killed.append(j)
+                print(f"[gpu {slots[s]}] KILLED at hard stop ({a.hard_stop_h} h): {run_dir(j)}", flush=True)
+                del running[s]
+            skipped.extend(todo)
+            todo = []
+            break
         for s in [s for s in range(len(slots)) if s not in running and todo]:
             elapsed_h = (time.time() - t0) / 3600
             est = max(durations) if durations else a.est_job_h
@@ -73,9 +107,13 @@ def main():
                 print(f"[gpu {slots[s]}] {'done' if p.returncode == 0 else 'FAILED rc=%d' % p.returncode} "
                       f"({dur:.2f} h): {run_dir(j)}", flush=True)
                 del running[s]
+                snapshot()
         time.sleep(10)
-    print(f"finished in {(time.time()-t0)/3600:.2f} h; jobs not started because of the budget: {len(skipped)} "
-          f"(they will run in the next session thanks to resume)", flush=True)
+    snapshot()
+    left = [j for j in mine if not os.path.exists(os.path.join(run_dir(j), "metrics.json"))]
+    print(f"finished in {(time.time()-t0)/3600:.2f} h; jobs not started because of the budget: {len(skipped)}; "
+          f"killed at hard stop: {len(killed)}; shard jobs still missing: {len(left)} "
+          f"(re-run this shard with its runs tar attached to finish them)", flush=True)
 
 
 if __name__ == "__main__":
