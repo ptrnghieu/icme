@@ -242,11 +242,22 @@ def main():
     weak_g2 = (not T.empty) and abs(T.targeting.mean()) < 0.05 and T.d_share_v.mean() > 0
     weak_g1 = ("standard" in gains and "actor" in gains and gains["standard"] > 0
                and gains["actor"] < 0.5 * gains["standard"])
-    say(f"- GO (strong): G3a label-free estimate > 0 with 95% CI excluding 0 -> {'MET' if strong else 'not met'}")
+    say(f"- GO (strong): G3a label-free estimate > 0 with 95% CI excluding 0 -> "
+        f"{'MET' if strong else ('not computable yet' if g3a is None else 'not met')}")
     say(f"- GO (weak, discuss): G2 uniform visual boost (|targeting| < 0.05 and visual share rises) -> "
         f"{'MET' if weak_g2 else 'not met'}; AND G1 OGM-GE gain under the actor protocol < half of the standard-split "
         f"gain -> {'MET' if weak_g1 else 'not met'}")
-    say(f"- Outcome: {'GO (strong)' if strong else ('GO (weak)' if (weak_g2 and weak_g1) else 'NO-GO')}")
+    if strong:
+        outcome = "GO (strong)"
+    elif weak_g2 and weak_g1:
+        outcome = "GO (weak)"
+    elif g3a is None:
+        # G3a could not be computed (fewer than 6 actor-protocol AV runs, or no variance left): the decisive test
+        # has not been run, so no decision can be drawn from this report.
+        outcome = "UNDETERMINED - G3a not computable yet (needs >= 6 actor-protocol AV runs); not a NO-GO"
+    else:
+        outcome = "NO-GO"
+    say(f"- Outcome: {outcome}")
     open(args.out, "w").write("\n".join(L) + "\n")
     print(f"\nreport -> {args.out}")
 
