@@ -68,7 +68,7 @@ def main():
         g = R[R.cond == c]
         if len(g):
             say(f"| {c} | {len(g)} | {g.acc_last10.mean():.2f} ± {g.acc_last10.std(ddof=0):.2f} | "
-                f"{g.acc_valsel.mean():.2f} | {g.align.mean():.3f} ± {g.align.std(ddof=0):.3f} | {g.share_v.mean():.3f} |")
+                f"{g.acc_valsel.mean():.2f} | {g['align'].mean():.3f} ± {g['align'].std(ddof=0):.3f} | {g.share_v.mean():.3f} |")
     say()
 
     W = R.pivot_table(index=["fold", "seed"], columns="cond", values=["acc_last10", "acc_valsel", "align", "share_v"])

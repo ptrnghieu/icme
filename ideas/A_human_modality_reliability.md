@@ -58,6 +58,7 @@ Cộng đồng *modality imbalance* coi CREMA-D là benchmark audio-visual chủ
   - G2: căn chỉnh theo người (Q1).
   - G3: căn chỉnh trên val (diễn viên chưa thấy) có dự báo được test accuracy trên diễn viên mới không (Q2/H).
   Quy tắc go/no-go nằm trong `pilot/README.md`.
+- **Thí nghiệm can thiệp cho H (2026-11-20):** pilot cho thấy mức khớp với người gần như chỉ do α quyết định (ρ ≈ 0,96), nên G3a không tách được H khỏi cường độ cân bằng. Thí nghiệm can thiệp đã đăng ký trước ở `pilot/INTERVENTION.md`: trọng số theo clip lấy từ người (`human`), so với cùng tập trọng số bị xáo trộn (`shuffled`), cộng thêm `anti` và `uniform`; 32 run.
 - **E1 (nếu GO):** mở rộng lên 6–8 phương pháp (AGM, PMR, MMPareto, Diagnosing & Re-learning, InfoReg, Wei'24) qua BalanceBenchmark; 5 fold độc lập diễn viên; 3 seed.
 - **E2:** xếp hạng tín hiệu nội bộ theo độ khớp với người (N3).
 - **E3:** lặp lại Q1 trên CH-SIMS v2 (`label_T/A/V`) bằng feature có sẵn.
