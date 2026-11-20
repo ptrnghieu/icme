@@ -114,4 +114,6 @@ Với ResNet-18 và 1 frame, một T4 thường còn dư VRAM. Nếu bước 5 c
   - `02`, shard 0/3: xong 5/14 job, tạo `runs_shard0.tar` và `pilot_report_partial.md`.
   - **Resume:** gắn `runs_shard0.tar` làm input rồi chạy lại thì báo "5 already done, 0 to run".
   - **Ngân sách thời gian:** với `--time_budget_h 0.001`, launcher không khởi động job nào và ghi lại số job hoãn.
-- Chưa chạy trên GPU. Đường AMP/FP16 chỉ hoạt động khi có CUDA, nên chưa được thử. Số liệu smoke test không mang ý nghĩa khoa học.
+- **Đo thời gian trên Kaggle (user chạy, 2026-11-20, commit `70415b1`):** 2× Tesla T4 15.360 MiB, 4 CPU, 2 dataloader worker mỗi job. 36,1 giây/epoch khi 2 job chạy song song, ước tính 1,05 giờ/run, 49 run ≈ 25,8 giờ session. Chạy với **`N_SHARDS = 4`**: shard 0 có 13 job ≈ 7,35 giờ; shard 1–3 mỗi shard 12 job ≈ 6,30 giờ; tất cả dưới ngân sách 8 giờ. Đây là lần đầu code chạy trên GPU với `--amp` (FP16), và không có lỗi.
+- Trong log Kaggle, output của mỗi lệnh con (`launch.py`, `nvidia-smi`) bị in 2 lần, còn các dòng `print()` của Python chỉ in 1 lần. Mỗi cell chỉ gọi `launch.py` một lần, nên đây là cách Kaggle ghi log, không phải job chạy lặp.
+- Trước lần đo trên Kaggle, code chỉ chạy trên CPU. Số liệu smoke test không mang ý nghĩa khoa học.
