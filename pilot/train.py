@@ -38,7 +38,10 @@ def get_args():
     ap = argparse.ArgumentParser()
     ap.add_argument("--root", required=True)
     ap.add_argument("--split", required=True, help="standard | actor0 .. actor4")
-    ap.add_argument("--method", required=True, choices=["joint", "ogm_ge", "audio_only", "visual_only"])
+    ap.add_argument("--method", required=True, choices=["joint", "ogm_ge", "audio_only", "visual_only", "human_aux"])
+    ap.add_argument("--aux_weights", default="human", choices=["human", "shuffled", "anti", "uniform"],
+                    help="human_aux only: per-clip visual emphasis (see INTERVENTION.md)")
+    ap.add_argument("--aux_lambda", type=float, default=1.0, help="human_aux only: weight of the auxiliary losses")
     ap.add_argument("--alpha", type=float, default=0.0)
     ap.add_argument("--seed", type=int, default=0)
     ap.add_argument("--epochs", type=int, default=100)
@@ -63,6 +66,8 @@ def get_args():
 
 def run_name(a):
     m = a.method + (f"_a{a.alpha:g}" if a.method == "ogm_ge" else "")
+    if a.method == "human_aux":
+        m = f"haux_{a.aux_weights}_l{a.aux_lambda:g}"
     return a.name or f"{a.split}_{m}_s{a.seed}_f{a.n_frames}"
 
 
@@ -190,7 +195,12 @@ def main():
                         drop_last=False, generator=g if k == "train" else None, persistent_workers=a.workers > 0)
           for k, v in ds.items()}
 
-    mode = {"joint": "av", "ogm_ge": "av", "audio_only": "audio", "visual_only": "visual"}[a.method]
+    mode = {"joint": "av", "ogm_ge": "av", "human_aux": "av", "audio_only": "audio", "visual_only": "visual"}[a.method]
+    s_train = None
+    if a.method == "human_aux":  # per-clip visual emphasis from the training clips' human ratings only
+        from intervention import human_weights
+        s_train = torch.tensor(human_weights(a.root, ds["train"].clips(), a.aux_weights, a.seed),
+                               dtype=torch.float32, device=device)
     model = AVNet(len(CLASSES), mode).to(device)
     opt = torch.optim.SGD(model.parameters(), lr=a.lr, momentum=0.9, weight_decay=1e-4)
     sch = torch.optim.lr_scheduler.StepLR(opt, a.lr_step, a.lr_gamma)
@@ -198,13 +208,15 @@ def main():
     ce = nn.CrossEntropyLoss()
 
     best_val, best_state, best_ep, best_test_any, best_test_ep = -1.0, None, -1, -1.0, -1
+    test_hist = []
     log = open(os.path.join(od, "log.jsonl"), "w")
     t0 = time.time()
     for ep in range(a.epochs):
         model.train()
         te = time.time()
         tot, nb, coefs = 0.0, 0, []
-        for b, (spec, imgs, y, _) in enumerate(dl["train"]):
+        aux_tot = 0.0
+        for b, (spec, imgs, y, idx) in enumerate(dl["train"]):
             if a.max_batches and b >= a.max_batches:
                 break
             spec, imgs, y = spec.to(device, non_blocking=True), imgs.to(device, non_blocking=True), y.to(device)
@@ -212,6 +224,13 @@ def main():
             with torch.autocast(device_type=device.type, dtype=torch.float16, enabled=amp):
                 fa, fv, out = model(spec, imgs)
                 loss = ce(out, y)
+            if s_train is not None:
+                out_a, out_v = model.decompose(fa.float(), fv.float())
+                s_b = s_train[idx.to(device)]
+                aux = (s_b * F.cross_entropy(out_v, y, reduction="none")
+                       + (1 - s_b) * F.cross_entropy(out_a, y, reduction="none")).mean()
+                loss = loss + a.aux_lambda * aux
+                aux_tot += aux.item()
             scaler.scale(loss).backward()
             if a.method == "ogm_ge":
                 scaler.unscale_(opt)
@@ -230,6 +249,9 @@ def main():
         if rt["acc"] > best_test_any:
             best_test_any, best_test_ep = rt["acc"], ep
         rec = {"epoch": ep, "loss": tot / max(nb, 1), "val": rv, "test": rt, "sec": round(time.time() - te, 1)}
+        test_hist.append(rt["acc"])
+        if s_train is not None:
+            rec["aux_loss"] = aux_tot / max(nb, 1)
         if coefs:
             ok = [c for c in coefs if c[3]]
             rec["ogm_steps_modulated"] = len(ok)
@@ -264,6 +286,9 @@ def main():
         "minutes": round((time.time() - t0) / 60, 2),
         "eval_frame": a.eval_frame, "test_acc_other_eval_frame": other,
         "dump_version": 2,  # 2 = label-free reliance columns + centre eval frame (2026-11-20)
+        "last10_test_acc": sum(test_hist[-10:]) / max(len(test_hist[-10:]), 1),
+        "aux_weights": a.aux_weights if a.method == "human_aux" else None,
+        "aux_lambda": a.aux_lambda if a.method == "human_aux" else None,
     }
     json.dump(metrics, open(os.path.join(od, "metrics.json"), "w"), indent=1)
     print(json.dumps(metrics))
