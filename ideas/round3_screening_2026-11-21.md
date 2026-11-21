@@ -19,3 +19,10 @@
 | R3-2 | MER-SEMI hoặc MER-NOISE (tận dụng kho không nhãn, độ bền với nhiễu) | Ưu tiên thấp | Nhiều bài dự thi (2409.04447, 2409.07078, 2409.05015, ECMF 2508.05991, MoE 2508.06036, …). |
 | R3-3 | MER-Prefer: mô hình chấm sở thích với mô tả cảm xúc | Ưu tiên thấp | Đã có bài kiểm toán shortcut (2607.18508) và 2608.24730. Chỉ có một họ dataset (EmoPrefer). |
 | R3-4 | Dùng MER2024/2025 làm dataset thứ hai (tiếng Trung) cho các phương pháp MER tổng quát | Hạ tầng cho C2 | Data mới chỉ giải quyết C2, không tự tạo ra novelty. |
+
+## Sau khi user nới C4 và C5 (2026-11-21)
+**Rà lại các hướng đã loại:** chỉ R2-2 hồi sinh do C4 (tiền lệ cốt lõi TIER-MoE thuộc y sinh). R3-1 MER-Cross có thể xử lý C2/C5 bằng tập tự gán nhỏ hoặc EmotionTalk (gated auto). M1 music hồi sinh do C5(d) nhưng ưu tiên thấp. Các hướng C4 còn lại có tiền lệ ngay trong affective computing nên vẫn bị loại.
+
+| # | Hướng | Kết luận | Bằng chứng |
+|---|---|---|---|
+| R2-2′ | Gating fusion theo từng mẫu, học từ utility **out-of-fold** (cross-fitting), thay vì từ train-fit | **ĐÃ LOẠI** (C1: P1 chỉ 1/4 dataset ủng hộ, theo tiêu chí đặt trước) | **P1** (`explore/xling/p1_gating.py`, `p1_report_2026-11-21.md`): feature đông cứng, đầu LR, 3 seed. M − B2 trên bacc test: MOSI +0,26 [−1,23; +1,89]; CH-SIMS +0,77 [−2,48; +4,25]; CREMA-D −0,81 [−2,82; +1,04]; MELD +8,71 [+5,59; +12,13] (B2 tệ vì tập valid chỉ 184 mẫu; M chỉ hơn early concat +0,43). Headroom oracle theo mẫu +10 đến +35, nhưng gating chỉ lấy lại 0–1 điểm. M ≥ B4 ở 4/4 dataset (+0,1 đến +1,6). **C4 trong affective (đọc xong):** CONFER 2608.07867 §3 (c_m = OOF bacc toàn modality × exp(−độ bất định của mẫu), không học từ utility từng mẫu) → trùng một phần; PDF 2406.04802 (ICML 2024, CREMA-D/MVSA; học dự đoán p_true trên dữ liệu train) → trùng một phần; QMF 2306.02050 (MVSA; điều chỉnh bằng loss train) → trùng một phần. Truy vấn affective: "cross-fitting", "meta-learner" + fusion, "stacking" + MSA đều 0 kết quả. |

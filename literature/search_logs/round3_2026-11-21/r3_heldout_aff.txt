@@ -1,0 +1,31 @@
+## abs:"out-of-fold" AND (abs:emotion OR abs:sentiment OR abs:affect) -> 2
+2608.07867v1 | 2026-08-08 | CONFER: Conflict-Aware Evidence Negotiation for Regime-Calibrated Weak Supervision in Multimodal Emotion Recognition
+2512.11605v2 | 2025-12-12 | Enhancing Morpho-Kinematic analysis for Plant Water Stress Classification through Leaf Movements
+## abs:"cross-fitting" AND (abs:emotion OR abs:sentiment) -> 0
+## abs:"meta-learner" AND abs:fusion AND (abs:emotion OR abs:sentiment) -> 0
+## abs:stacking AND abs:"multimodal sentiment" -> 0
+## abs:"held-out" AND abs:fusion AND (abs:emotion OR abs:sentiment) -> 9
+2611.23005v1 | 2026-11-17 | CARE: Conversational Affective Response Retrieval for Internet Memes
+2610.20543v1 | 2026-10-14 | Reliability-Aware Multimodal Sentiment Prediction Under Local Modality Missingness
+2610.10808v1 | 2026-10-07 | Controlled Acquisition and Abstention in Three-Channel Score Conflicts
+2610.03618v2 | 2026-10-02 | Video-Time Priors for EEG-fNIRS Emotion Regression on Familiar Videos
+2609.31513v2 | 2026-09-25 | Statistical Foundations for a Google Play User-Review Sentiment Index: Signal Fusion, Shrinkage, Distributional Validation, and Dyna
+2609.05755v1 | 2026-09-04 | Emotion as a Distribution: Joint Valence-Arousal Probability Learning for Speaker-Independent Multimodal Emotion Recognition
+2509.13357v1 | 2025-09-14 | Semantic Fusion with Fuzzy-Membership Features for Controllable Language Modelling
+1812.04891v2 | 2018-12-12 | A Multimodal LSTM for Predicting Listener Empathic Responses Over Time
+1807.01122v1 | 2018-07-03 | Getting the subtext without the text: Scalable multimodal sentiment classification from visual and acoustic modalities
+## abs:"validation" AND abs:"fusion weights" AND (abs:emotion OR abs:sentiment) -> 3
+2610.20543v1 | 2026-10-14 | Reliability-Aware Multimodal Sentiment Prediction Under Local Modality Missingness
+2610.03618v2 | 2026-10-02 | Video-Time Priors for EEG-fNIRS Emotion Regression on Familiar Videos
+2111.08910v1 | 2021-11-17 | Information Fusion in Attention Networks Using Adaptive and Multi-level Factorized Bilinear Pooling for Audio-visual Emotion Recogni
+## abs:"dynamic fusion" AND abs:"emotion recognition" -> 7
+2610.30651v1 | 2026-10-22 | AGF-Net: A Robust Multimodal Emotion Recognition Model for Asynchronous Audio-Visual Signals Based on Predictive Dynamic Fusion with
+2608.09088v1 | 2026-08-10 | A Multi-Scale Temporal Framework with Dynamic Fusion for EEG-Based Emotion Recognition
+2607.20445v1 | 2026-05-13 | SCoPE: Shift-Aware Speaker-Conditioned Priors for Emotion Recognition in Conversations
+2603.22345v1 | 2026-03-22 | Dynamic Fusion-Aware Graph Convolutional Neural Network for Multimodal Emotion Recognition in Conversations
+2603.22306v1 | 2026-03-18 | Memory Bear AI Memory Science Engine for Multimodal Affective Intelligence: A Technical Report
+2509.18570v1 | 2025-09-23 | HarmoniFuse: A Component-Selective and Prompt-Adaptive Framework for Multi-Task Speech Language Modeling
+2203.02385v1 | 2022-03-04 | MM-DFN: Multimodal Dynamic Fusion Network for Emotion Recognition in Conversations
+## abs:"sample-wise" AND abs:"fusion weight" AND abs:emotion -> 0
+## abs:"modality confidence" AND abs:emotion -> 0
+## abs:"reliability" AND abs:"per-sample" AND abs:"multimodal emotion" -> 0
