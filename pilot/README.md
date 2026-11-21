@@ -103,6 +103,7 @@ python analyze.py --root /data/cremad --runs runs --out pilot_report.md
 Với ResNet-18 và 1 frame, một T4 thường còn dư VRAM. Nếu bước 5 cho thấy GPU chưa bị tận dụng hết thì thử `--per_gpu 2`.
 
 ## Thí nghiệm can thiệp cho H (thêm ngày 2026-11-20)
+- **Kết quả (2026-11-21):** **H NOT SUPPORTED** theo quy tắc đăng ký trước. Pilot G3a = +0,650 → GO (mạnh), nhưng chỉ là tương quan. Xem `results/summary_2026-11-21.md`.
 - Pilot không tách được H khỏi tác dụng của α (`results/prelim_G3a_2026-11-20.md`), nên có thêm một thí nghiệm can thiệp.
 - Thiết kế và quy tắc quyết định được **đăng ký trước** trong [`INTERVENTION.md`](INTERVENTION.md).
 - Gồm 32 run (4 điều kiện `human`/`shuffled`/`anti`/`uniform` × 4 fold × 2 seed), chạy bằng notebook `kaggle/03_train_intervention.ipynb` (2 shard song song), phân tích bằng `analyze_intervention.py`.
