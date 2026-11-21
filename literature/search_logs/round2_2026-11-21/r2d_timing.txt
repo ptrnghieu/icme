@@ -1,0 +1,42 @@
+## abs:"turn-taking" AND abs:emotion AND abs:recognition -> 2
+2505.13455v3 | 2025-04-29 | Spatiotemporal Emotional Synchrony in Dyadic Interactions: The Role of Speech Conditions in Facial and Vocal Affective Alignment
+2205.04251v1 | 2022-05-09 | A Music-Therapy Robotic Platform for Children with Autism: A Pilot Study
+## abs:"response latency" AND abs:emotion -> 9
+2611.25428v1 | 2026-11-19 | GenAI-DBT: Evaluating a DBT-Informed Generative AI Platform for Mindfulness Skills Training: A Pilot Randomized Study
+2611.09900v1 | 2026-08-15 | KR A1: Design and Preliminary Evaluation of a Humanoid-Robot Interaction Prototype Integrating Personalized Voice Synthesis, Contextual Dialogue, and Emotion-Aware Response Generation
+2607.20773v1 | 2026-07-22 | HARP: The Human--AI Research Platform
+2607.05365v1 | 2026-07-06 | SPEARBench: A Benchmark for Naturalness Evaluation in Streaming Speech-to-Speech Language Models
+2604.16408v1 | 2026-04-01 | An Edge-Host-Cloud Architecture for Robot-Agnostic, Caregiver-in-the-Loop Personalized Cognitive Exercise: Multi-Site Deployment in Dementia Care
+2601.14259v1 | 2025-11-21 | A Cloud-Based Cross-Modal Transformer for Emotion Recognition and Adaptive Human-Computer Interaction
+2506.21864v3 | 2025-06-27 | DeepOmni: Towards Seamless and Smart Speech Interaction with Adaptive Modality-Specific MoE
+2505.20277v2 | 2025-05-26 | OmniCharacter: Towards Immersive Role-Playing Agents with Seamless Speech-Language Personality Interaction
+2505.02707v1 | 2025-05-05 | Voila: Voice-Language Foundation Models for Real-Time Autonomous Interaction and Voice Role-Play
+## abs:"interruption" AND abs:"emotion recognition" -> 2
+2606.19398v1 | 2026-06-17 | S-JEPA : Soft Clustering Anchors for Self-Supervised Speech Representation Learning
+2508.03287v1 | 2025-08-05 | Directives for Function Offloading in 5G Networks Based on a Performance Characteristics Analysis
+## abs:"timing" AND abs:"emotion recognition in conversation" -> 18
+2608.22745v1 | 2026-08-24 | DiaRelay: Relaying Dialogue Context with a Constant-Size Memory for Emotion Recognition in Conversation
+2608.10448v2 | 2026-08-11 | Rationale-Guided Learning for Multimodal Emotion Recognition
+2607.20445v1 | 2026-05-13 | SCoPE: Shift-Aware Speaker-Conditioned Priors for Emotion Recognition in Conversations
+2605.02665v2 | 2026-05-04 | Fuzzy Fingerprinting Encoder Pre-trained Language Models for Emotion Recognition in Conversations: Human Assessment and Validity Study
+2509.18175v1 | 2025-09-17 | ERFC: Happy Customers with Emotion Recognition and Forecasting in Conversation in Call Centers
+2508.19533v1 | 2025-08-27 | Emotion Transfer with Enhanced Prototype for Unseen Emotion Recognition in Conversation
+2505.20511v2 | 2025-05-26 | Multimodal Emotion Recognition in Conversations: A Survey of Methods, Trends, Challenges and Prospects
+2412.02935v2 | 2024-12-04 | Dynamic Graph Neural ODE Network for Multi-modal Emotion Recognition in Conversation
+2409.05243v1 | 2024-09-08 | Mamba-Enhanced Text-Audio-Video Alignment Network for Emotion Recognition in Conversations
+2407.00119v2 | 2024-06-27 | Efficient Long-distance Latent Relation-aware Graph Neural Network for Multi-modal Emotion Recognition in Conversations
+2405.17900v1 | 2024-05-28 | Enhancing Emotion Recognition in Conversation through Emotional Cross-Modal Fusion and Inter-class Contrastive Learning
+2404.02589v1 | 2024-04-03 | Affective-NLI: Towards Accurate and Interpretable Personality Recognition in Conversation
+2402.10921v1 | 2024-01-26 | AM^2-EmoJE: Adaptive Missing-Modality Emotion Recognition in Conversation via Joint Embedding Learning
+2305.03506v3 | 2023-05-04 | SI-LSTM: Speaker Hybrid Long-short Term Memory and Cross Modal Attention for Emotion Recognition in Conversation
+2211.09172v4 | 2022-11-16 | Deep Emotion Recognition in Textual Conversations: A Survey
+2205.02524v1 | 2022-05-05 | M2R2: Missing-Modality Robust emotion Recognition framework with iterative data augmentation
+2202.02522v2 | 2022-02-05 | LEAPMood: Light and Efficient Architecture to Predict Mood with Genetic Algorithm driven Hyperparameter Tuning
+2103.12360v3 | 2021-03-23 | Discovering Emotion and Reasoning its Flip in Multi-Party Conversations using Masked Memory Network and Transformer
+## abs:"pause" AND abs:"emotion recognition in conversation" -> 0
+## abs:"overlapping speech" AND abs:emotion AND abs:conversation -> 5
+2606.19325v1 | 2026-06-17 | Reference-Driven Multi-Speaker Audio Scene Generation from In-the-Wild Priors
+2508.12186v1 | 2025-08-17 | MAD: A Benchmark for Multi-Turn Audio Dialogue Fact-Checking
+2506.10010v1 | 2025-05-08 | Multimodal Emotion Coupling via Speech-to-Facial and Bodily Gestures in Dyadic Interaction
+2505.13455v3 | 2025-04-29 | Spatiotemporal Emotional Synchrony in Dyadic Interactions: The Role of Speech Conditions in Facial and Vocal Affective Alignment
+2410.00037v2 | 2024-09-17 | Moshi: a speech-text foundation model for real-time dialogue

@@ -1,0 +1,14 @@
+## abs:"cross-domain" AND abs:"facial expression recognition" AND abs:intensity -> 2
+2408.15777v1 | 2024-08-28 | A Survey on Facial Expression Recognition of Static and Dynamic Emotions
+2207.07973v1 | 2022-07-16 | Learn-to-Decompose: Cascaded Decomposition Network for Cross-Domain Few-Shot Facial Expression Recognition
+## abs:"cross-dataset" AND abs:"facial expression" AND abs:"intensity" -> 1
+2407.15617v1 | 2024-07-22 | Norface: Improving Facial Expression Analysis by Identity Normalization
+## abs:"lab-controlled" AND abs:"in-the-wild" AND abs:"expression" AND abs:"intensity" -> 0
+## abs:"cross-corpus" AND abs:"speech emotion" AND abs:"intensity" -> 1
+2402.11747v1 | 2024-02-19 | Parameter Efficient Finetuning for Speech Emotion Recognition and Domain Adaptation
+## abs:"cross-corpus" AND abs:"speech emotion" AND abs:"acted" AND abs:"natural" -> 4
+2512.23435v2 | 2025-12-29 | Distilled HuBERT for Mobile Speech Emotion Recognition: A Cross-Corpus Validation Study
+2402.11747v1 | 2024-02-19 | Parameter Efficient Finetuning for Speech Emotion Recognition and Domain Adaptation
+2207.02104v1 | 2022-07-05 | A cross-corpus study on speech emotion recognition
+2201.03511v1 | 2022-01-10 | A study on cross-corpus speech emotion recognition and data augmentation
+## abs:"magnitude" AND abs:"emotion" AND abs:"domain shift" -> 0

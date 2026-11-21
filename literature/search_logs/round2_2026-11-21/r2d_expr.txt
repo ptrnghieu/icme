@@ -1,0 +1,29 @@
+## abs:expressivity AND abs:"domain adaptation" AND abs:emotion -> 17
+2611.01633v1 | 2026-11-01 | BanglishDepYT: Depression Detection in Native Bengali Social Media with Emotion-Preserving Preprocessing and Domain-Adaptive Pretraining
+2606.00170v1 | 2026-05-29 | UF-AMA: A unified framework for cross-domain emotion recognition via adaptive multimodal alignment
+2605.21417v2 | 2026-05-20 | Ordering Matters: Rank-Aware Selective Fusion for Blended Emotion Recognition
+2604.11730v5 | 2026-04-13 | Multimodal Ambivalence/Hesitancy Recognition in Videos for Personalized Digital Health Interventions
+2601.16240v1 | 2026-01-21 | Test-Time Adaptation for Speech Emotion Recognition
+2507.02205v2 | 2025-07-02 | Team RAS in 9th ABAW Competition: Multimodal Compound Expression Recognition Approach
+2505.19694v1 | 2025-05-26 | Knowledge-Aligned Counterfactual-Enhancement Diffusion Perception for Unsupervised Cross-Domain Visual Emotion Recognition
+2503.20771v4 | 2025-03-26 | Disentangled Source-Free Personalization for Facial Expression Recognition with Neutral Target Data
+2406.15490v2 | 2024-06-18 | Causal Discovery Inspired Unsupervised Domain Adaptation for Emotion-Cause Pair Extraction
+2308.08849v1 | 2023-08-17 | A Survey on Deep Multi-modal Learning for Body Language Recognition and Generation
+2210.05246v1 | 2022-10-11 | Cluster-level pseudo-labelling for source-free cross-domain facial expression recognition
+2108.10152v1 | 2021-08-18 | Emotion Recognition from Multiple Modalities: Fundamentals and Methodologies
+2104.01978v2 | 2021-04-05 | Acted vs. Improvised: Domain Adaptation for Elicitation Approaches in Audio-Visual Emotion Recognition
+2102.13479v1 | 2021-02-26 | Towards Explaining Expressive Qualities in Piano Recordings: Transfer of Explanatory Features via Acoustic Domain Adaptation
+2102.00912v1 | 2021-01-25 | Transfer Learning Approach for Detecting Psychological Distress in Brexit Tweets
+2012.06563v1 | 2020-12-11 | Exploring Facial Expressions and Affective Domains for Parkinson Detection
+2011.08388v4 | 2020-11-17 | Interpretable Image Emotion Recognition: A Domain Adaptation Approach Using Facial Expressions
+## abs:expressivity AND abs:"emotion recognition" AND abs:"cross-cultural" -> 2
+2511.20106v1 | 2025-11-25 | EM2LDL: A Multilingual Speech Corpus for Mixed Emotion Recognition through Label Distribution Learning
+2011.09280v2 | 2020-11-18 | Continuous Emotion Recognition with Spatiotemporal Convolutional Neural Networks
+## abs:"intensity" AND abs:"posed" AND abs:"spontaneous" AND abs:"recognition" -> 1
+1511.00423v2 | 2015-11-02 | Towards Reading Hidden Emotions: A comparative Study of Spontaneous Micro-expression Spotting and Recognition Methods
+## abs:"exaggerated" AND abs:"emotion recognition" AND abs:"acted" -> 1
+2510.13906v1 | 2025-10-14 | Switchboard-Affect: Emotion Perception Labels from Conversational Speech
+## abs:"display rules" AND abs:"emotion recognition" -> 1
+2408.04420v1 | 2024-08-08 | Recognizing Emotion Regulation Strategies from Human Behavior with Large Language Models
+## abs:"expression intensity" AND abs:"domain shift" -> 0
+## abs:"emotion intensity" AND abs:"calibration" AND abs:"domain" -> 0

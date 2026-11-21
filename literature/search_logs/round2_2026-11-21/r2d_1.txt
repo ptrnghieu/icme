@@ -1,0 +1,16 @@
+## abs:hallucination AND abs:emotion AND abs:multimodal -> 8
+2609.11154v1 | 2026-09-10 | Multi-Faceted Evaluation and Mitigation of Emotion Hallucinations in MLLMs
+2607.02089v1 | 2026-07-01 | ESC: Emotional Self-Correction for Reliable Vision-Language Models
+2606.25325v2 | 2026-06-24 | Omni-Perception Policy Optimization for Multimodal Emotion Reasoning
+2604.12735v3 | 2026-04-14 | AffectAgent: Collaborative Multi-Agent Reasoning for Retrieval-Augmented Multimodal Emotion Recognition
+2602.07054v1 | 2026-02-04 | AVERE: Improving Audiovisual Emotion Reasoning with Preference Optimization
+2601.18321v2 | 2026-01-26 | Integrating Fine-Grained Audio-Visual Evidence for Robust Multimodal Emotion Reasoning
+2509.15775v1 | 2025-09-19 | EmoQ: Speech Emotion Recognition via Speech-Aware Q-Former and Large Language Model
+2505.11405v1 | 2025-05-16 | EmotionHallucer: Evaluating Emotion Hallucinations in Multimodal Large Language Models
+## abs:"continual learning" AND abs:"multimodal emotion" -> 0
+## abs:"incremental" AND abs:"multimodal emotion recognition" -> 0
+## abs:federated AND abs:"multimodal emotion" -> 1
+2511.00344v1 | 2025-11-01 | Federated Dialogue-Semantic Diffusion for Emotion Recognition under Incomplete Modalities
+## abs:"acted" AND abs:"spontaneous" AND abs:"emotion" AND abs:transfer -> 0
+## abs:"posed" AND abs:"spontaneous" AND abs:"audio-visual" AND abs:emotion -> 0
+## abs:"in-the-wild" AND abs:"acted" AND abs:"multimodal emotion" -> 0
