@@ -1,0 +1,41 @@
+## abs:"cross-lingual" AND abs:"multimodal sentiment" -> 1
+2406.07753v1 | 2024-06-11 | The MuSe 2024 Multimodal Sentiment Analysis Challenge: Social Perception and Humor Recognition
+## abs:"cross-lingual" AND abs:"multimodal emotion" -> 3
+2607.14683v1 | 2026-07-16 | InCarEmo: A Multimodal Dataset for In-Cabin Emotion Recognition and Driver State Monitoring
+2601.07565v2 | 2026-01-12 | Expert-Guided Multimodal Fusion for Unified Emotion and Sentiment Analysis
+2512.19379v3 | 2025-12-22 | OmniMER: Auxiliary-Enhanced LLM Adaptation for Indonesian Multimodal Emotion Recognition
+## abs:"cross-dataset" AND abs:"multimodal sentiment" -> 0
+## abs:"cross-corpus" AND abs:"multimodal emotion" -> 0
+## abs:"domain generalization" AND abs:"multimodal sentiment" -> 2
+2604.00013v2 | 2026-03-10 | C2F-Thinker: Coarse-to-Fine Reasoning with Hint-Guided Reinforcement Learning for Multimodal Sentiment Analysis
+2512.07430v1 | 2025-12-08 | MIDG: Mixture of Invariant Experts with knowledge injection for Domain Generalization in Multimodal Sentiment Analysis
+## abs:"ASR" AND abs:"multimodal sentiment" AND abs:"error" -> 1
+2203.00257v1 | 2022-03-01 | Sentiment Word Aware Multimodal Refinement for Multimodal Sentiment Analysis with ASR Errors
+## abs:"Whisper" AND abs:"multimodal sentiment" -> 0
+## abs:"conformal" AND abs:"emotion recognition" -> 12
+2611.08966v1 | 2026-11-06 | Concordance-Optimal Continuous Music Emotion Estimation: Variance Decomposition, Dual-Branch Temporal Fusion, and Conformal Prediction Intervals
+2607.07773v1 | 2026-07-08 | Graph-Regularized Deep Learning for EEG-Based Emotion Recognition with Psychologically-Grounded Label Structure
+2605.00871v1 | 2026-04-24 | NAKUL-Med: Spectral-Graph State Space Models with Dynamics Kernels for Medical Signals
+2602.18802v1 | 2026-02-21 | Multi-Channel Speech Enhancement for Cocktail Party Speech Emotion Recognition
+2503.15518v2 | 2025-02-02 | Robot Character Generation and Adaptive Human-Robot Interaction with Personality Shaping
+2411.18636v1 | 2024-11-20 | Towards Advanced Speech Signal Processing: A Statistical Perspective on Convolution-Based Architectures and its Applications
+2411.09339v1 | 2024-11-14 | Re-Parameterization of Lightweight Transformer for On-Device Speech Emotion Recognition
+2406.02642v4 | 2024-06-04 | E-ICL: Enhancing Fine-Grained Emotion Recognition through the Lens of Prototype Theory
+2305.16065v2 | 2023-05-25 | ASR and Emotional Speech: A Word-Level Investigation of the Mutual Impact of Speech and Emotion Recognition
+2305.00359v3 | 2023-04-30 | A Review of Deep Learning Techniques for Speech Processing
+2206.12494v1 | 2022-06-24 | Multitask vocal burst modeling with ResNets and pre-trained paralinguistic Conformers
+2112.06346v1 | 2021-12-12 | ValueNet: A New Dataset for Human Value Driven Dialogue System
+## abs:"budget" AND abs:"multimodal emotion" -> 1
+2510.18036v1 | 2025-10-20 | Transformer Redesign for Late Fusion of Audio-Text Features on Ultra-Low-Power Edge Hardware
+## abs:"modality selection" AND abs:emotion -> 4
+2609.13857v1 | 2026-09-12 | ReH-FUSE: Reliability-Aware Hierarchical Fusion of Experts for Multimodal Emotion Recognition in Conversation
+2605.04877v1 | 2026-05-06 | To Fuse or to Drop? Dual-Path Learning for Resolving Modality Conflicts in Multimodal Emotion Recognition
+2508.01644v1 | 2025-08-03 | DRKF: Decoupled Representations with Knowledge Fusion for Multimodal Emotion Recognition
+2208.13954v1 | 2022-08-30 | Video-based Cross-modal Auxiliary Network for Multimodal Sentiment Analysis
+## abs:"identity" AND abs:"audio-visual" AND abs:"emotion" AND abs:"contrastive" -> 4
+2607.18508v1 | 2026-07-20 | Style over Substance: A Shortcut Audit of Emotion-Description Preference Evaluation
+2510.10069v2 | 2025-10-11 | SyncLipMAE: Contrastive Masked Pretraining for Audio-Visual Talking-Face Representation
+2505.01263v2 | 2025-05-02 | FlowDubber: Movie Dubbing with LLM-based Semantic-aware Learning and Flow Matching based Voice Enhancing
+2412.08988v3 | 2024-12-12 | EmoDubber: Towards High Quality and Emotion Controllable Movie Dubbing
+## abs:"speaker bias" AND abs:MELD -> 0
+## abs:"speaker identity" AND abs:"emotion recognition in conversation" AND abs:shortcut -> 0

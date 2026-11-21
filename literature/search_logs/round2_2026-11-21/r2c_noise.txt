@@ -1,0 +1,36 @@
+## abs:"noisy label" AND abs:"multimodal emotion" -> 2
+2603.26840v1 | 2026-03-27 | Dual-branch Graph Domain Adaptation for Cross-scenario Multi-modal Emotion Recognition
+2508.05991v1 | 2025-08-08 | ECMF: Enhanced Cross-Modal Fusion for Multimodal Emotion Recognition in MER-SEMI Challenge
+## abs:"label noise" AND abs:"emotion recognition in conversation" -> 1
+2603.26840v1 | 2026-03-27 | Dual-branch Graph Domain Adaptation for Cross-scenario Multi-modal Emotion Recognition
+## abs:"noisy labels" AND abs:"multimodal sentiment" -> 1
+2408.16029v2 | 2024-08-28 | Meta-Learn Unimodal Signals with Weak Supervision for Multimodal Sentiment Analysis
+## abs:"label noise" AND abs:MELD -> 1
+2603.26840v1 | 2026-03-27 | Dual-branch Graph Domain Adaptation for Cross-scenario Multi-modal Emotion Recognition
+## abs:"emotion cause" AND abs:multimodal AND abs:conversation -> 15
+2508.18740v1 | 2025-08-26 | M3HG: Multimodal, Multi-scale, and Multi-type Node Heterogeneous Graph for Emotion Cause Triplet Extraction in Conversations
+2501.11170v1 | 2025-01-19 | AIMA at SemEval-2024 Task 3: Simple Yet Powerful Emotion Cause Pair Analysis
+2411.02430v3 | 2024-11-01 | Generative Emotion Cause Explanation in Multimodal Conversations
+2409.07388v3 | 2024-09-11 | Recent Advances in Multimodal Affective Computing: An NLP Perspective
+2501.17261v1 | 2024-08-22 | NUS-Emo at SemEval-2024 Task 3: Instruction-Tuning LLM for Multimodal Emotion-Cause Analysis in Conversations
+2405.13049v3 | 2024-05-19 | SemEval-2024 Task 3: Multimodal Emotion Cause Analysis in Conversations
+2405.06483v1 | 2024-05-10 | LyS at SemEval-2024 Task 3: An Early Prototype for End-to-End Multimodal Emotion Linking as Graph-Based Parsing
+2404.16905v1 | 2024-04-25 | Samsung Research China-Beijing at SemEval-2024 Task 3: A multi-stage framework for Emotion-Cause Pair Extraction in Conversations
+2404.05502v1 | 2024-04-08 | PetKaz at SemEval-2024 Task 3: Advancing Emotion Classification with an LLM for Emotion-Cause Pair Extraction in Conversations
+2404.02088v1 | 2024-04-02 | LastResort at SemEval-2024 Task 3: Exploring Multimodal Emotion Cause Pair Extraction as Sequence Labelling Task
+2404.00511v3 | 2024-03-31 | MIPS at SemEval-2024 Task 3: Multimodal Emotion-Cause Pair Extraction in Conversations with Multimodal Language Models
+2404.00403v2 | 2024-03-30 | UniMEEC: Towards Unified Multimodal Emotion Recognition and Emotion Cause
+2403.04798v2 | 2024-03-05 | JMI at SemEval 2024 Task 3: Two-step approach for multimodal ECAC using in-context learning with GPT and instruction-tuned Llama models
+2206.05017v2 | 2022-05-09 | Empathetic Conversational Systems: A Review of Current Advances, Gaps, and Opportunities
+2110.08020v1 | 2021-10-15 | Multimodal Emotion-Cause Pair Extraction in Conversations
+## abs:"emotion-cause pair" AND abs:multimodal -> 10
+2606.18893v1 | 2026-06-17 | Learning Robust Pair Confidence for Multimodal Emotion-Cause Pair Extraction
+2606.08566v1 | 2026-06-07 | Towards Accurate Emotion-Attributed Video Captioning via Fine-grained Emotion-Cause Pair Extraction
+2501.11170v1 | 2025-01-19 | AIMA at SemEval-2024 Task 3: Simple Yet Powerful Emotion Cause Pair Analysis
+2412.08049v3 | 2024-12-11 | EmoVerse: Exploring Multimodal Large Language Models for Sentiment and Emotion Understanding
+2501.17261v1 | 2024-08-22 | NUS-Emo at SemEval-2024 Task 3: Instruction-Tuning LLM for Multimodal Emotion-Cause Analysis in Conversations
+2405.13049v3 | 2024-05-19 | SemEval-2024 Task 3: Multimodal Emotion Cause Analysis in Conversations
+2404.16905v1 | 2024-04-25 | Samsung Research China-Beijing at SemEval-2024 Task 3: A multi-stage framework for Emotion-Cause Pair Extraction in Conversations
+2404.05502v1 | 2024-04-08 | PetKaz at SemEval-2024 Task 3: Advancing Emotion Classification with an LLM for Emotion-Cause Pair Extraction in Conversations
+2404.00403v2 | 2024-03-30 | UniMEEC: Towards Unified Multimodal Emotion Recognition and Emotion Cause
+2110.08020v1 | 2021-10-15 | Multimodal Emotion-Cause Pair Extraction in Conversations

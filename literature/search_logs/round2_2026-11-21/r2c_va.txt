@@ -1,0 +1,15 @@
+## abs:arousal AND abs:valence AND abs:"categorical" AND abs:multimodal AND abs:fusion -> 3
+2609.05755v1 | 2026-09-04 | Emotion as a Distribution: Joint Valence-Arousal Probability Learning for Speaker-Independent Multimodal Emotion Recognition
+2603.13415v2 | 2026-03-12 | Distance-aware Soft Prompt Guidance for Multimodal Valence-Arousal Estimation
+2510.05749v2 | 2025-10-07 | MSF-SER: Enriching Acoustic Modeling with Multi-Granularity Semantics for Speech Emotion Recognition
+## abs:"circumplex" AND abs:multimodal AND abs:"emotion recognition" -> 1
+2605.22732v1 | 2026-05-21 | Beyond Acoustic Emotion Recognition: Multimodal Pathos Analysis in Political Speech Using LLM-Based and Acoustic Emotion Models
+## abs:"dimensional" AND abs:"categorical" AND abs:"multimodal emotion" AND abs:"auxiliary" -> 0
+## abs:"audio" AND abs:"arousal" AND abs:"visual" AND abs:"valence" AND abs:"modality-specific" -> 3
+2607.12958v1 | 2026-07-14 | CD-MED: Cross-Domain Multimodal Emotion Descriptor for Visual Comparison of Digital Objects
+2503.12623v2 | 2025-03-16 | MAVEN: Multi-modal Attention for Valence-Arousal Emotion Network
+2503.12261v2 | 2025-03-15 | United we stand, Divided we fall: Handling Weak Complementary Relationships for Audio-Visual Emotion Recognition in Valence-Arousal Space
+## abs:"valence-arousal" AND abs:"discrete emotion" AND abs:"modality" -> 1
+2503.03335v2 | 2025-03-05 | iNews: A Multimodal Dataset for Modeling Personalized Affective Responses to News
+## abs:"VAD" AND abs:"multimodal emotion recognition" -> 0
+## abs:"NRC VAD" AND abs:emotion AND abs:multimodal -> 0

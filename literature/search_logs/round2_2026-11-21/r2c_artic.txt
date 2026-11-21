@@ -1,0 +1,32 @@
+## abs:"talking" AND abs:"facial expression recognition" AND abs:speech -> 0
+## abs:"speech-related" AND abs:"facial" AND abs:emotion -> 5
+2403.12886v3 | 2024-03-19 | EmoVOCA: Speech-Driven Emotional 3D Talking Heads
+2312.06310v1 | 2023-12-11 | Development of the Lifelike Head Unit for a Humanoid Cybernetic Avatar `Yui' and Its Operation Interface
+2310.17011v1 | 2023-10-25 | Personalized Speech-driven Expressive 3D Facial Animation Synthesis with Style Control
+2209.08289v2 | 2022-09-17 | Continuously Controllable Facial Expression Editing in Talking Face Videos
+2112.00585v2 | 2021-12-01 | Neural Emotion Director: Speech-preserving semantic control of facial expressions in "in-the-wild" videos
+## abs:"articulation" AND abs:"facial expression" AND abs:emotion -> 4
+2606.00670v1 | 2026-05-30 | Beyond the Mouth: Upper-Face Affective Cues in Audiovisual Sentence Recognition under Acoustic Uncertainty
+2605.11700v1 | 2026-05-12 | MindMirror: A Local-First Multimodal State-Aware Support System for Digital Workers
+2504.13386v4 | 2025-04-18 | Supervising 3D Talking Head Avatars with Analysis-by-Audio-Synthesis
+1904.05866v1 | 2019-04-11 | Expressive Body Capture: 3D Hands, Face, and Body from a Single Image
+## abs:"lip movement" AND abs:"emotion recognition" AND abs:disentangl -> 0
+## abs:"mouth" AND abs:"speech" AND abs:"expression" AND abs:"confound" -> 0
+## abs:"viseme" AND abs:emotion -> 2
+2509.26233v1 | 2025-09-30 | 3DiFACE: Synthesizing and Editing Holistic 3D Facial Animation
+2307.09480v1 | 2023-07-18 | FACTS: Facial Animation Creation using the Transfer of Styles
+## abs:"speech content" AND abs:"facial" AND abs:"emotion" AND abs:"disentangl" -> 4
+2503.11028v1 | 2025-03-14 | EmoDiffusion: Enhancing Emotional 3D Facial Animation with Latent Diffusion Models
+2405.07257v3 | 2024-05-12 | SPEAK: Speech-Driven Pose and Emotion-Adjustable Talking Head Generation
+2303.11089v2 | 2023-03-20 | EmoTalk: Speech-Driven Emotional Disentanglement for 3D Face Animation
+2104.07452v2 | 2021-04-15 | Audio-Driven Emotional Video Portraits
+## abs:"while speaking" AND abs:"facial expression" -> 2
+2402.09107v1 | 2024-02-14 | Headset: Human emotion awareness under partial occlusions multimodal dataset
+2310.17011v1 | 2023-10-25 | Personalized Speech-driven Expressive 3D Facial Animation Synthesis with Style Control
+## abs:"action unit" AND abs:"speech" AND abs:"talking" -> 6
+2602.09534v2 | 2026-02-10 | AUHead: Realistic Emotional Talking Head Generation via Action Units Control
+2503.14517v1 | 2025-03-14 | Cafe-Talk: Generating 3D Talking Face Animation with Multimodal Coarse- and Fine-grained Control
+2401.12568v1 | 2024-01-23 | NeRF-AD: Neural Radiance Field with Attention-based Disentanglement for Talking Face Synthesis
+2204.12756v1 | 2022-04-27 | Talking Head Generation Driven by Speech-Related Facial Action Units and Audio- Based on Multimodal Representation Fusion
+2110.09951v1 | 2021-10-19 | Talking Head Generation with Audio and Speech Related Facial Action Units
+2012.07304v1 | 2020-12-14 | Multi Modal Adaptive Normalization for Audio to Video Generation

@@ -1,0 +1,60 @@
+## abs:"ASR" AND abs:"multimodal emotion recognition" -> 3
+2609.20081v2 | 2026-09-17 | From Generative to Discriminative: Lightweight Adaptation of SpeechLLMs for Multimodal Emotion Recognition
+2507.19356v1 | 2025-07-25 | Enhancing Speech Emotion Recognition Leveraging Aligning Timestamps of ASR Transcripts and Speaker Diarization
+2010.14102v2 | 2020-10-27 | Emotion recognition by fusing time synchronous and time asynchronous representations
+## abs:"ASR errors" AND abs:emotion -> 8
+2607.05365v1 | 2026-07-06 | SPEARBench: A Benchmark for Naturalness Evaluation in Streaming Speech-to-Speech Language Models
+2509.18706v1 | 2025-09-23 | M4SER: Multimodal, Multirepresentation, Multitask, and Multistrategy Learning for Speech Emotion Recognition
+2409.15551v2 | 2024-09-23 | Revise, Reason, and Recognize: LLM-Based Emotion Recognition via Emotion-Specific Prompts and ASR Error Correction
+2406.08353v3 | 2024-06-12 | Speech Emotion Recognition with ASR Transcripts: A Comprehensive Study on Word Error Rate and Fusion Techniques
+2405.16677v2 | 2024-05-26 | Crossmodal ASR Error Correction with Discrete Speech Units
+2402.11571v1 | 2024-02-18 | Ain't Misbehavin' -- Using LLMs to Generate Expressive Robot Behavior in Conversations with the Tabletop Robot Haru
+2401.13260v2 | 2024-01-24 | MF-AED-AEC: Speech Emotion Recognition by Leveraging Multimodal Fusion, Asr Error Detection, and Asr Error Correction
+2010.14102v2 | 2020-10-27 | Emotion recognition by fusing time synchronous and time asynchronous representations
+## abs:"automatic speech recognition" AND abs:"multimodal sentiment" -> 5
+2607.06611v1 | 2026-07-07 | Audio Sentiment Analysis via Distillation and Cross-Modal Integration of Generated Multilingual Transcripts
+2410.15029v2 | 2024-10-19 | Enhancing Multimodal Sentiment Analysis for Missing Modality through Self-Distillation and Unified Modality Cross-Attention
+2407.21054v5 | 2024-07-24 | Sentiment Reasoning for Healthcare
+2209.14156v2 | 2022-09-28 | TVLT: Textless Vision-Language Transformer
+2203.00257v1 | 2022-03-01 | Sentiment Word Aware Multimodal Refinement for Multimodal Sentiment Analysis with ASR Errors
+## abs:"ASR transcripts" AND abs:emotion -> 15
+2609.20081v2 | 2026-09-17 | From Generative to Discriminative: Lightweight Adaptation of SpeechLLMs for Multimodal Emotion Recognition
+2608.26162v1 | 2026-07-10 | A Safety-Gated Multimodal AI Backend for Mental-Health Support: Hierarchical State Representation, Conservative Risk Fusion, and Controlled Generation in Anian
+2606.02739v2 | 2026-06-01 | EntangleCodec: A Unified Discrete Audio Tokenizer via Semantic-Acoustic Entanglement
+2601.16225v1 | 2026-01-16 | ES4R: Speech Encoding Based on Prepositive Affective Modeling for Empathetic Response Generation
+2507.19356v1 | 2025-07-25 | Enhancing Speech Emotion Recognition Leveraging Aligning Timestamps of ASR Transcripts and Speaker Diarization
+2410.03312v1 | 2024-10-04 | Context and System Fusion in Post-ASR Emotion Recognition with Large Language Models
+2409.15551v2 | 2024-09-23 | Revise, Reason, and Recognize: LLM-Based Emotion Recognition via Emotion-Specific Prompts and ASR Error Correction
+2409.09785v3 | 2024-09-15 | Large Language Model Based Generative Error Correction: A Challenge and Baselines for Speech Recognition, Speaker Tagging, and Emotion Recognition
+2406.08353v3 | 2024-06-12 | Speech Emotion Recognition with ASR Transcripts: A Comprehensive Study on Word Error Rate and Fusion Techniques
+2311.07093v4 | 2023-11-13 | A Comprehensive Study on the Effectiveness of ASR Representations for Noise-Robust Speech Emotion Recognition
+2309.07606v2 | 2023-09-14 | Zero-shot Audio Topic Reranking using Large Language Models
+2305.16065v2 | 2023-05-25 | ASR and Emotional Speech: A Word-Level Investigation of the Mutual Impact of Speech and Emotion Recognition
+2305.12263v2 | 2023-05-20 | Self-supervised representations in speech-based depression detection
+2104.10121v1 | 2021-04-20 | On the Impact of Word Error Rate on Acoustic-Linguistic Speech Emotion Recognition: An Update for the Deep Learning Era
+1911.00432v1 | 2019-11-01 | Deep neural networks for emotion recognition combining audio and transcripts
+## abs:"word error rate" AND abs:"emotion recognition" -> 11
+2610.08276v1 | 2026-10-06 | Voice Anonymization Made Simple: Training-Free Anonymization with Projected Classifier-Free Guidance
+2609.20081v2 | 2026-09-17 | From Generative to Discriminative: Lightweight Adaptation of SpeechLLMs for Multimodal Emotion Recognition
+2510.03986v1 | 2025-10-05 | A Multilingual Framework for Dysarthria: Detection, Severity Classification, Speech-to-Text, and Clean Speech Generation
+2506.16310v1 | 2025-06-19 | Optimizing Multilingual Text-To-Speech with Accents & Emotions
+2406.08353v3 | 2024-06-12 | Speech Emotion Recognition with ASR Transcripts: A Comprehensive Study on Word Error Rate and Fusion Techniques
+2403.19224v1 | 2024-03-28 | Emotion Neural Transducer for Fine-Grained Speech Emotion Recognition
+2305.16065v2 | 2023-05-25 | ASR and Emotional Speech: A Word-Level Investigation of the Mutual Impact of Speech and Emotion Recognition
+2305.12540v2 | 2023-05-21 | On the Efficacy and Noise-Robustness of Jointly Learned Speech Emotion and Automatic Speech Recognition
+2110.15684v2 | 2021-10-29 | Fusing ASR Outputs in Joint Training for Speech Emotion Recognition
+2104.10121v1 | 2021-04-20 | On the Impact of Word Error Rate on Acoustic-Linguistic Speech Emotion Recognition: An Update for the Deep Learning Era
+2009.01309v2 | 2020-09-02 | Convolutional Speech Recognition with Pitch and Voice Quality Features
+## abs:"ASR" AND abs:"emotion recognition in conversation" -> 1
+2501.11468v1 | 2025-01-20 | LLM supervised Pre-training for Multimodal Emotion Recognition in Conversations
+## abs:fairness AND abs:"multimodal emotion" -> 4
+2509.19330v2 | 2025-09-14 | LibEMER: A novel benchmark and algorithms library for EEG-based Multimodal Emotion Recognition
+2505.06536v1 | 2025-05-10 | TACFN: Transformer-based Adaptive Cross-modal Fusion Network for Multimodal Emotion Recognition
+2401.03429v3 | 2024-01-07 | MERBench: A Unified Evaluation Benchmark for Multimodal Emotion Recognition
+2205.08383v1 | 2022-05-11 | Bias and Fairness on Multimodal Emotion Detection Algorithms
+## abs:"gender bias" AND abs:"emotion recognition" AND abs:"audio-visual" -> 0
+## abs:"demographic" AND abs:"bias" AND abs:"multimodal emotion" -> 0
+## abs:"semi-supervised" AND abs:"multimodal sentiment" -> 2
+2412.09784v1 | 2024-12-13 | Semi-IIN: Semi-supervised Intra-inter modal Interaction Learning Network for Multimodal Sentiment Analysis
+2407.07046v3 | 2024-07-09 | CorMulT: A Semi-supervised Modality Correlation-aware Multimodal Transformer for Sentiment Analysis
+## abs:"CH-SIMS v2" AND abs:unlabeled -> 0

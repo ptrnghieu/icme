@@ -1,0 +1,45 @@
+## co:"ACL 2026" AND abs:emotion AND abs:multimodal -> 7
+2606.01897v3 | 2026-06-01 | Community-Aware Assessment of Social Textual Engagement and Resonance: A Human-Centric Perspective on User-Generated Content Evaluation
+2605.08847v1 | 2026-05-09 | EmoS: A High-Fidelity Multimodal Benchmark for Fine-grained Streaming Emotional Understanding
+2604.18460v1 | 2026-04-20 | Learning Invariant Modality Representation for Robust Multimodal Learning from a Causal Inference Perspective
+2604.17037v1 | 2026-04-18 | Dynamic Emotion and Personality Profiling for Multimodal Deception Detection
+2604.05900v1 | 2026-04-07 | AICA-Bench: Holistically Examining the Capabilities of VLMs in Affective Image Content Analysis
+2601.13024v2 | 2026-01-19 | Tears or Cheers? Benchmarking LLMs via Culturally Elicited Distinct Affective Responses
+2601.09270v3 | 2026-01-14 | MCGA: A Multi-task Classical Chinese Literary Genre Audio Corpus
+## co:"EMNLP 2026" AND abs:emotion AND abs:multimodal -> 7
+2609.18385v1 | 2026-09-16 | Emotion Experience, Expression, and Perception: Emotion Analysis on Multimodal Social Media Posts
+2609.09672v1 | 2026-09-09 | SEA-SpeechBench: A Large-Scale Multitask Benchmark for Speech Understanding Across Southeast Asia
+2608.30716v1 | 2026-08-31 | SocialReasonBench: A Video-QA Benchmark for Social Reasoning with Counterfactual Narrative Videos
+2608.30563v2 | 2026-08-31 | Modality Disentangled Learning for Incomplete Multimodal Emotion Recognition: A Primitive Memory Distillation Perspective
+2608.28966v1 | 2026-08-29 | When Vocal Tone and Literal Meaning Diverge: An Acoustic-Semantic Incongruity Study for Large Audio-Language Models
+2603.23938v2 | 2026-03-25 | OmniACBench: A Benchmark for Evaluating Context-Grounded Acoustic Control in Omni-Modal Models
+2603.15020v2 | 2026-03-16 | MER-Bench: Benchmarking Multimodal Emotional Reappraisal for Image-Text Memes
+## co:"EMNLP 2025" AND abs:emotion AND abs:multimodal -> 6
+2509.11620v1 | 2025-09-15 | AesBiasBench: Evaluating Bias and Alignment in Multimodal Language Models for Personalized Image Aesthetic Assessment
+2508.16188v2 | 2025-08-22 | Seeing is Believing: Emotion-Aware Audio-Visual Language Modeling for Expressive Speech Generation
+2505.20511v2 | 2025-05-26 | Multimodal Emotion Recognition in Conversations: A Survey of Methods, Trends, Challenges and Prospects
+2504.13211v3 | 2025-04-16 | MIRROR: Multimodal Cognitive Reframing Therapy for Rolling with Resistance
+2503.19951v3 | 2025-03-25 | Audio-centric Video Understanding Benchmark without Text Shortcut
+2503.16457v2 | 2025-02-22 | Integrating Personality into Digital Humans: A Review of LLM-Driven Approaches for Virtual Reality
+## co:"ACL 2026" AND abs:sentiment AND abs:multimodal -> 1
+2604.18460v1 | 2026-04-20 | Learning Invariant Modality Representation for Robust Multimodal Learning from a Causal Inference Perspective
+## co:"EMNLP 2026" AND abs:sentiment AND abs:multimodal -> 5
+2609.10950v1 | 2026-09-10 | Robust Multimodal Sentiment Analysis with Incomplete Modalities via Semantic-aware Completeness based Reconstruction
+2609.08029v1 | 2026-09-07 | BanglaMemeX: Advancing Cultural Metaphoric Image Interpretation in Bangla with a Multimodal Explainable Dataset
+2608.28966v1 | 2026-08-29 | When Vocal Tone and Literal Meaning Diverge: An Acoustic-Semantic Incongruity Study for Large Audio-Language Models
+2608.22863v3 | 2026-08-24 | Adaptive Hierarchical Representation Alliance for Multimodal Learning
+2603.15020v2 | 2026-03-16 | MER-Bench: Benchmarking Multimodal Emotional Reappraisal for Image-Text Memes
+## co:"ACM MM 2026" AND abs:emotion -> 6
+2610.03016v1 | 2026-10-02 | From Expression to Reaction: Role-aware Visual Transfer and Stimulus-guided Reasoning for Interlocutor Emotion Recognition
+2609.08221v1 | 2026-09-08 | SoftRerank: Hierarchical Soft Fusion with Candidate-Label Reranking for Long-Tailed Micro-Action Recognition
+2608.24730v2 | 2026-08-25 | Learning to Prefer Reliably: Error-Augmented Emotion Preference Optimization with Calibrated Fusion
+2609.26255v1 | 2026-08-13 | SceneTTS-Bench: A Benchmark for Scene-Level TTS in Drama Dubbing
+2609.20195v1 | 2026-07-24 | Music Hallucination in Audio-Language Models: A Hierarchical Formulation and Empirical Study
+2604.12735v3 | 2026-04-14 | AffectAgent: Collaborative Multi-Agent Reasoning for Retrieval-Augmented Multimodal Emotion Recognition
+## co:"MM 2026" AND abs:emotion AND abs:multimodal -> 3
+2608.24730v2 | 2026-08-25 | Learning to Prefer Reliably: Error-Augmented Emotion Preference Optimization with Calibrated Fusion
+2607.27790v1 | 2026-07-30 | Semantic-Aligned Structural Abstraction for Multimodal Sentiment Analysis
+2604.12735v3 | 2026-04-14 | AffectAgent: Collaborative Multi-Agent Reasoning for Retrieval-Augmented Multimodal Emotion Recognition
+## co:"ICASSP 2027" AND abs:emotion AND abs:multimodal -> 2
+2610.31202v1 | 2026-10-22 | Predicting Music Valence and Arousal via Textual and Multimodal In-Context Learning in Large Language Models
+2609.13857v1 | 2026-09-12 | ReH-FUSE: Reliability-Aware Hierarchical Fusion of Experts for Multimodal Emotion Recognition in Conversation

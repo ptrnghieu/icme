@@ -1,0 +1,20 @@
+## abs:multilingual AND abs:"multimodal sentiment" -> 1
+2607.06611v1 | 2026-07-07 | Audio Sentiment Analysis via Distillation and Cross-Modal Integration of Generated Multilingual Transcripts
+## abs:"cross-cultural" AND abs:"multimodal" AND abs:emotion -> 8
+2601.13024v2 | 2026-01-19 | Tears or Cheers? Benchmarking LLMs via Culturally Elicited Distinct Affective Responses
+2505.23018v3 | 2025-05-29 | EmotionTalk: An Interactive Chinese Multimodal Emotion Dataset With Rich Annotations
+2505.09539v2 | 2025-05-14 | GlobalMood: A cross-cultural benchmark for music emotion recognition
+2412.17255v1 | 2024-12-23 | Unlocking Cross-Lingual Sentiment Analysis through Emoji Interpretation: A Multimodal Generative AI Approach
+2305.03369v1 | 2023-05-05 | The MuSe 2023 Multimodal Sentiment Analysis Challenge: Mimicked Emotions, Cross-Cultural Humour, and Personalisation
+2209.06496v2 | 2022-09-14 | CCOM-HuQin: an Annotated Multimodal Chinese Fiddle Performance Dataset
+2205.10237v1 | 2022-05-09 | M3ED: Multi-modal Multi-scene Multi-label Emotional Dialogue Database
+1907.11510v1 | 2019-07-10 | AVEC 2019 Workshop and Challenge: State-of-Mind, Detecting Depression with AI, and Cross-Cultural Affect Recognition
+## abs:"language shift" AND abs:multimodal AND abs:emotion -> 0
+## abs:"nonverbal" AND abs:"cross-lingual" -> 1
+2606.25529v1 | 2026-06-24 | STEB: A Speech-to-Speech Translation Expressiveness Benchmark for Evaluating Beyond Translation Fidelity
+## abs:"cross-lingual" AND abs:"emotion recognition" AND abs:"audio-visual" -> 0
+## abs:"CH-SIMS" AND abs:"MOSEI" AND abs:transfer -> 0
+## abs:"cross-lingual" AND abs:"speech emotion" AND abs:"multimodal" -> 2
+2511.04914v3 | 2025-11-07 | MERaLiON-SER: Robust Speech Emotion Recognition Model for English and SEA Languages
+1902.02120v1 | 2019-02-06 | Transfer Learning From Sound Representations For Anger Detection in Speech
+## abs:"code-switch" AND abs:"multimodal sentiment" -> 0

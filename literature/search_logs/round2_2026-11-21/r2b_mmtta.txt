@@ -1,0 +1,47 @@
+## abs:"reliability bias" AND abs:"test-time" -> 1
+2410.22373v2 | 2024-10-29 | Analytic Continual Test-Time Adaptation for Multi-Modality Corruption
+## abs:"multimodal test-time adaptation" -> 7
+2611.03232v1 | 2026-11-02 | Calibrating Multimodal Test-Time Adaptation under Reliability and Availability Modality Shifts
+2610.07499v1 | 2026-10-05 | Source-Learned Reliance for Selective Test-Time Adaptation of Multimodal Time Series
+2609.32263v1 | 2026-09-26 | Representation Editing for Multimodal Test-Time Adaptation
+2604.24602v4 | 2026-04-27 | Majorization-Guided Test-Time Adaptation for Vision-Language Models under Modality-Specific Shift
+2511.22862v2 | 2025-11-28 | Bridging Modalities via Progressive Re-alignment for Multimodal Test-Time Adaptation
+2505.11350v5 | 2025-05-16 | Search-TTA: A Multimodal Test-Time Adaptation Framework for Visual Search in the Wild
+2501.18592v4 | 2025-01-30 | Advances in Multimodal Adaptation and Generalization: From Traditional Approaches to Foundation Models
+## abs:"multi-modal test-time adaptation" -> 5
+2604.19093v1 | 2026-04-21 | Multi-modal Test-time Adaptation via Adaptive Probabilistic Gaussian Calibration
+2603.00574v2 | 2026-02-28 | Decoupling Stability and Plasticity for Multi-Modal Test-Time Adaptation
+2503.02221v1 | 2025-03-04 | Attention Bootstrapping for Multi-Modal Test-Time Adaptation
+2403.06461v5 | 2024-03-11 | Interactive Test-Time Adaptation with Reliable Spatial-Temporal Voxels for Multi-Modal Segmentation
+2204.12667v1 | 2022-04-27 | MM-TTA: Multi-Modal Test-Time Adaptation for 3D Semantic Segmentation
+## abs:"test-time adaptation" AND abs:"modality" AND abs:"reliability" -> 29
+2611.15059v1 | 2026-11-11 | Test-Time Selective Adaptation for Cross-Modal UAV Object Tracking with Token Shift
+2611.03232v1 | 2026-11-02 | Calibrating Multimodal Test-Time Adaptation under Reliability and Availability Modality Shifts
+2610.28511v1 | 2026-10-20 | SenseAlign: Understanding Vision and Touch through Language at Test Time
+2610.07499v1 | 2026-10-05 | Source-Learned Reliance for Selective Test-Time Adaptation of Multimodal Time Series
+2609.32263v1 | 2026-09-26 | Representation Editing for Multimodal Test-Time Adaptation
+2608.04623v1 | 2026-08-05 | Visual Anchoring in Diffusion: Multimodal Zero-Shot Skeleton Action Recognition
+2607.25108v1 | 2026-07-27 | OPERA: Offline Policy-guided Expert Routing and Adaptation for Universal Biomedical Image Analysis
+2607.17693v1 | 2026-07-20 | Memory-Supported Synergistic Adaptation for Training-Free Test-Time Medical Image Segmentation
+2607.09450v1 | 2026-07-10 | Robustifying Vision-Language Models via Test-Time Prompt Adaptation
+2605.17433v2 | 2026-05-17 | VISTA: Variance-Gated Inter-Sequence Test-Time Adaptation for Multi-Sequence MRI Segmentation
+2605.15611v1 | 2026-05-15 | TopoEvo: A Topology-Aware Self-Evolving Multi-Agent Framework for Root Cause Analysis in Microservices
+2604.24602v4 | 2026-04-27 | Majorization-Guided Test-Time Adaptation for Vision-Language Models under Modality-Specific Shift
+2604.19093v1 | 2026-04-21 | Multi-modal Test-time Adaptation via Adaptive Probabilistic Gaussian Calibration
+2602.15873v1 | 2026-01-31 | Test-Time Adaptation for Tactile-Vision-Language Models
+2601.07163v2 | 2026-01-12 | Test-time Adaptive Hierarchical Co-enhanced Denoising Network for Reliable Multimodal Classification
+2512.02497v1 | 2025-12-02 | A Large Scale Benchmark for Test Time Adaptation Methods in Medical Image Segmentation
+2512.01300v1 | 2025-12-01 | RoboDriveVLM: A Novel Benchmark and Baseline towards Robust Vision-Language Models for Autonomous Driving
+2510.09473v2 | 2025-10-10 | D-TPT: Dimensional Entropy Maximization for Calibrating Test-Time Prompt Tuning in Vision-Language Models
+2506.20254v2 | 2025-06-25 | Recognizing Surgical Phases Anywhere: Few-Shot Test-time Adaptation and Task-graph Guided Refinement
+2503.02221v1 | 2025-03-04 | Attention Bootstrapping for Multi-Modal Test-Time Adaptation
+2411.17002v3 | 2024-11-26 | Semantic Anchor Transport: Robust Test-Time Adaptation for Vision-Language Models
+2410.22373v2 | 2024-10-29 | Analytic Continual Test-Time Adaptation for Multi-Modality Corruption
+2409.11884v4 | 2024-09-18 | Out-of-Distribution Detection: A Task-Oriented Survey of Recent Advances
+2403.06461v5 | 2024-03-11 | Interactive Test-Time Adaptation with Reliable Spatial-Temporal Voxels for Multi-Modal Segmentation
+2312.07374v3 | 2023-12-12 | Relax Image-Specific Prompt Requirement in SAM: A Single Generic Prompt for Segmenting Camouflaged Objects
+2307.04470v2 | 2023-07-10 | Test-Time Adaptation for Nighttime Color-Thermal Semantic Segmentation
+2306.02544v1 | 2023-06-05 | Fourier Test-time Adaptation with Multi-level Consistency for Robust Classification
+2303.10457v1 | 2023-03-18 | Multi-Modal Continual Test-Time Adaptation for 3D Semantic Segmentation
+2204.12667v1 | 2022-04-27 | MM-TTA: Multi-Modal Test-Time Adaptation for 3D Semantic Segmentation
+## abs:"domain shift" AND abs:"modality reliability" AND abs:unsupervised -> 0

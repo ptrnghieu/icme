@@ -1,0 +1,18 @@
+## abs:"domain adaptation" AND abs:"multimodal sentiment" -> 0
+## abs:"unsupervised domain adaptation" AND abs:multimodal AND abs:emotion -> 2
+2605.21417v2 | 2026-05-20 | Ordering Matters: Rank-Aware Selective Fusion for Blended Emotion Recognition
+2604.11730v5 | 2026-04-13 | Multimodal Ambivalence/Hesitancy Recognition in Videos for Personalized Digital Health Interventions
+## abs:"co-training" AND abs:emotion AND abs:modal -> 0
+## abs:"cross-modal" AND abs:"pseudo-label" AND abs:"domain adaptation" AND abs:emotion -> 1
+2606.13030v1 | 2026-06-11 | A Multi-Modal Framework with Cross-Subject Pseudo-Labeling and Semantic Alignment for Micro-Gesture Recognition
+## abs:"modality-specific" AND abs:"domain shift" AND abs:emotion -> 1
+2506.00865v1 | 2025-06-01 | GIA-MIC: Multimodal Emotion Recognition with Gated Interactive Attention and Modality-Invariant Learning Constraints
+## abs:"cross-corpus" AND abs:"facial" AND abs:"speech" AND abs:emotion -> 0
+## abs:"asymmetric" AND abs:"domain adaptation" AND abs:multimodal -> 3
+2609.39413v1 | 2026-09-30 | Aligning the Incomplete: Joint Distribution Calibration for Multimodal EEG-Eye Emotion Recognition
+2609.04947v2 | 2026-09-04 | MCPO: Modality-Contrastive Preference Optimization for Multimodal Chain-of-Thought Compression
+2604.19379v1 | 2026-04-21 | PanDA: Unsupervised Domain Adaptation for Multimodal 3D Panoptic Segmentation in Autonomous Driving
+## abs:"cross-modal" AND abs:"domain adaptation" AND abs:"audio-visual" -> 3
+2610.14961v1 | 2026-10-10 | HiPAD: A Unified Gait, Audio-Visual, and Personality Fusion Network for Depression Detection, with a Hierarchical Personality Ablation and the Calibration Limits of Domain-Adapted LLMs
+2208.05220v2 | 2022-08-10 | Dual Domain-Adversarial Learning for Audio-Visual Saliency Prediction
+2203.14240v2 | 2022-03-27 | Audio-Adaptive Activity Recognition Across Video Domains

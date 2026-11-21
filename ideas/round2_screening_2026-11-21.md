@@ -65,3 +65,23 @@ Riêng `abs:"music emotion recognition"`: chỉ có **49 kết quả cho mọi t
 - Đã có phương pháp cho: thống nhất nhãn categorical và dimensional (2502.03979), căn nhãn bằng LLM embedding (2410.11522), train chung DEAM+PMEmo (2611.08966).
 - ICME 2025 đã nhận một bài về music emotion (2409.15545).
 - Ứng viên dataset mở (**chưa kiểm tra L2**): DEAM, PMEmo, EMOPIA, MERGE, MTG-Jamendo mood/theme, Memo2496.
+
+## Đợt 2b–2c (2026-11-21, sau khi user yêu cầu ưu tiên multimodal + emotion)
+Truy vấn thô: `r2b_*.txt`, `r2c_*.txt`, `abs_mmtta.txt` trong `literature/search_logs/round2_2026-11-21/`.
+
+Nguồn ngoài arXiv bị chặn ngày 2026-11-21:
+- Semantic Scholar và OpenAlex trả HTTP 429 (OpenAlex báo hết ngân sách miễn phí của IP dùng chung).
+- DBLP trả trang chống bot.
+- Vì vậy đã dùng WebSearch cho phần ngoài arXiv.
+
+| # | Hướng | Kết luận | Lý do và bằng chứng |
+|---|---|---|---|
+| D | MER/MSA chéo ngôn ngữ với shift bất đối xứng giữa modality | **ĐANG KIỂM TRA** (thí nghiệm premise P0) | Xem `ideas/D_crosslingual_modality_shift.md` sau khi có P0. |
+| E1 | MER với transcript ASR (WER, confidence) | **ĐÃ LOẠI** (C4) | 2406.08353 (SLT 2024): sửa lỗi ASR + fusion có gating cho SER trên IEMOCAP/MOSI/MSP-Podcast. SWRM 2203.00257: MSA với lỗi ASR, tinh chỉnh bằng audio/visual. Santoso et al. 2021 (trích trong 2406.08353): chỉnh trọng số attention bằng confidence theo từ. 2305.16065: phân tích lỗi và confidence ASR theo cảm xúc. Bằng chứng gap vẫn giá trị cho bài khác: 2609.20081 báo WER 32,38% trên MELD và kết luận có thể đổi dấu khi dùng transcript ASR. |
+| E2 | Công bằng theo nhân khẩu học trong MER đa phương thức | **ĐÃ LOẠI** (C2/C3) | Thưa (2205.08383 năm 2022: text ít bias nhất), nhưng chỉ CREMA-D có đủ nhân khẩu học, mà 91 diễn viên thì yếu về thống kê. RAVDESS chỉ có giới tính. |
+| E3 | Bán giám sát cho MSA (CH-SIMS v2(u)) | **ĐÃ LOẠI** (C4) | Semi-IIN 2412.09784, CorMulT 2407.07046, AV-MC (bài CH-SIMS v2). |
+| E4 | Dùng audio để trừ thành phần khẩu hình khỏi feature khuôn mặt khi nhận diện cảm xúc | **ĐÃ LOẠI** (C4) | Mariooryad & Busso, *Facial Expression Recognition in the Presence of Speech Using Blind Lexical Compensation*, IEEE TAFFC 7(4):346–359, 2016 (WebSearch kèm trang của lab MSP): bù biến thiên do khẩu hình mà không cần nhãn âm vị, đánh giá trên IEMOCAP và SEMAINE; có bài FG 2013 đi trước. Trên arXiv, các bài "khử lời nói khỏi khuôn mặt" đều thuộc mảng sinh talking-head. |
+| E5 | Phân rã lớp theo circumplex, giao arousal cho audio và valence cho mặt/text | **ĐÃ LOẠI** (C3/C4 yếu) | Phụ trợ VA cho MER categorical đã có; 2609.05755 ghi rằng phụ trợ VA đơn giản cho mức cải thiện tương đương. Quy luật audio–arousal, mặt–valence đã quá quen thuộc. |
+| E6 | Nhãn nhiễu trong MER, phát hiện bằng bất đồng giữa các modality; dùng phiếu cảm nhận CREMA-D để kiểm chứng | **ĐÃ LOẠI** (C4/C3 yếu) | MUG 2408.16029 (meta-learn sửa nhãn unimodal), DGDA-Net 2603.26840, MELD-FAIR 2211.15377 (video MELD lệch so với utterance), MER-SEMI (2508.05991: tinh chỉnh nhãn bằng bỏ phiếu). Cơ chế "được ít nhất một modality ủng hộ" về bản chất là co-teaching đa góc nhìn. Pilot can thiệp trên CREMA-D cho thấy trọng số theo clip tạo hiệu ứng nhỏ. |
+| E7 | Phân tích nguyên nhân cảm xúc đa phương thức trong hội thoại (ECF, SemEval-2024 Task 3) | **ĐÃ LOẠI** (bão hòa) | Hơn 10 bài của đội thi SemEval-2024, cùng M3HG 2508.18740, UniMEEC 2404.00403, 2606.18893. |
+| D-rủi ro | Cơ chế chung "ước lượng modality nào bị shift rồi điều chỉnh fusion" | Ghi nhận cho C4 của D | MG-MTTA 2604.24602 (ACM MM 2026): ước lượng độ trôi tương đối của từng nhánh bằng running-anchor consistency khi shift visual/text bất đối xứng. BriMPR 2511.22862 (AAAI 2026), ABPEM 2503.02221, AdaPGC 2611.03232, CARAT 2610.07499. Audio-Adaptive (CVPR 2022): hướng dạy cố định. **D chỉ đứng được nếu cơ chế khai thác cấu trúc riêng của cảm xúc/ngôn ngữ.** |
