@@ -76,7 +76,7 @@ Nguồn ngoài arXiv bị chặn ngày 2026-11-21:
 
 | # | Hướng | Kết luận | Lý do và bằng chứng |
 |---|---|---|---|
-| D | MER/MSA chéo ngôn ngữ với shift bất đối xứng giữa modality | **ĐANG KIỂM TRA** (thí nghiệm premise P0) | Xem `ideas/D_crosslingual_modality_shift.md` sau khi có P0. |
+| D | MER/MSA chéo ngôn ngữ với shift bất đối xứng giữa modality (text bị shift nặng nhất, tín hiệu phi ngôn ngữ làm điểm neo) | **ĐÃ LOẠI** (C1: premise bị bác bỏ, 2026-11-21) | P0 (`explore/xling/`): thực tế ngược chiều; text chuyển giao tốt nhất (TR +0,67/+0,48, lên +0,95 khi chuẩn hóa theo dữ liệu đích), audio và face mất hướng phân biệt (AUC chéo 52–58). Phương án đảo chiều (dùng text dự đoán trên dữ liệu đích để thích nghi audio/face) có cơ chế trùng với S²LIF (text bất biến trước), Audio-Adaptive (hướng dạy cố định) và pseudo-label kiểu LFD-RT/CASP → C4 yếu, không đề xuất. |
 | E1 | MER với transcript ASR (WER, confidence) | **ĐÃ LOẠI** (C4) | 2406.08353 (SLT 2024): sửa lỗi ASR + fusion có gating cho SER trên IEMOCAP/MOSI/MSP-Podcast. SWRM 2203.00257: MSA với lỗi ASR, tinh chỉnh bằng audio/visual. Santoso et al. 2021 (trích trong 2406.08353): chỉnh trọng số attention bằng confidence theo từ. 2305.16065: phân tích lỗi và confidence ASR theo cảm xúc. Bằng chứng gap vẫn giá trị cho bài khác: 2609.20081 báo WER 32,38% trên MELD và kết luận có thể đổi dấu khi dùng transcript ASR. |
 | E2 | Công bằng theo nhân khẩu học trong MER đa phương thức | **ĐÃ LOẠI** (C2/C3) | Thưa (2205.08383 năm 2022: text ít bias nhất), nhưng chỉ CREMA-D có đủ nhân khẩu học, mà 91 diễn viên thì yếu về thống kê. RAVDESS chỉ có giới tính. |
 | E3 | Bán giám sát cho MSA (CH-SIMS v2(u)) | **ĐÃ LOẠI** (C4) | Semi-IIN 2412.09784, CorMulT 2407.07046, AV-MC (bài CH-SIMS v2). |
