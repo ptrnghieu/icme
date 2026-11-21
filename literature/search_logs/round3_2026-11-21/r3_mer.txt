@@ -1,0 +1,30 @@
+## ti:"MER 2023" -> 2
+2309.07925v1 | 2023-09-11 | Hierarchical Audio-Visual Information Fusion with Multi-label Joint Decoding for MER 2023
+2304.08981v2 | 2023-04-18 | MER 2023: Multi-label Learning, Modality Robustness, and Semi-Supervised Learning
+## ti:"MER 2024" -> 1
+2404.17113v4 | 2024-04-26 | MER 2024: Semi-Supervised Learning, Noise Robustness, and Open-Vocabulary Multimodal Emotion Recognition
+## ti:MER2024 -> 1
+2408.10500v2 | 2024-08-20 | SZTU-CMU at MER2024: Improving Emotion-LLaMA with Conv-Attention for Multimodal Emotion Recognition
+## ti:MER2025 -> 0
+## ti:"MER 2025" -> 1
+2504.19423v2 | 2025-04-28 | MER 2025: When Affective Computing Meets Large Language Models
+## ti:MER2026 -> 0
+## ti:"MER 2026" -> 1
+2604.19417v5 | 2026-04-21 | MER 2026: From Discriminative Emotion Recognition to Generative Emotion Understanding
+## abs:"MER2024" AND abs:challenge -> 10
+2604.19417v5 | 2026-04-21 | MER 2026: From Discriminative Emotion Recognition to Generative Emotion Understanding
+2603.11397v1 | 2026-03-12 | Edge-Cloud Collaborative Speech Emotion Captioning via Token-Level Speculative Decoding in Audio-Language Models
+2504.19423v2 | 2025-04-28 | MER 2025: When Affective Computing Meets Large Language Models
+2409.07901v2 | 2024-09-12 | Bridging Discrete and Continuous: A Multimodal Strategy for Complex Emotion Detection
+2409.18971v1 | 2024-09-12 | Early Joint Learning of Emotion Information Makes MultiModal Model Understand You Better
+2409.07078v1 | 2024-09-11 | Multimodal Emotion Recognition with Vision-language Prompting and Modality Dropout
+2409.05015v2 | 2024-09-08 | Improving Multimodal Emotion Recognition by Leveraging Acoustic Adaptation and Visual Alignment
+2409.04447v1 | 2024-08-23 | Leveraging Contrastive Learning and Self-Training for Multimodal Emotion Recognition with Limited Labeled Samples
+2408.11286v2 | 2024-08-21 | Video Emotion Open-vocabulary Recognition Based on Multimodal Large Language Model
+2408.10500v2 | 2024-08-20 | SZTU-CMU at MER2024: Improving Emotion-LLaMA with Conv-Attention for Multimodal Emotion Recognition
+## abs:"MER2025" AND abs:challenge -> 5
+2610.31685v1 | 2026-10-03 | An Agentic Approach with Evidence-Grounded Verification for Multimodal Emotion Reasoning in Conversation
+2604.19417v5 | 2026-04-21 | MER 2026: From Discriminative Emotion Recognition to Generative Emotion Understanding
+2508.06036v1 | 2025-08-08 | More Is Better: A MoE-Based Emotion Recognition Framework with Human Preference Alignment
+2508.05991v1 | 2025-08-08 | ECMF: Enhanced Cross-Modal Fusion for Multimodal Emotion Recognition in MER-SEMI Challenge
+2504.19423v2 | 2025-04-28 | MER 2025: When Affective Computing Meets Large Language Models

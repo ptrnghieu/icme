@@ -1,0 +1,47 @@
+## abs:"interlocutor emotion" -> 7
+2610.03016v1 | 2026-10-02 | From Expression to Reaction: Role-aware Visual Transfer and Stimulus-guided Reasoning for Interlocutor Emotion Recognition
+2307.12221v1 | 2023-07-23 | FATRER: Full-Attention Topic Regularizer for Accurate and Robust Conversational Emotion Recognition
+2305.13724v1 | 2023-05-23 | ChatGPT-EDSS: Empathetic Dialogue Speech Synthesis Trained from ChatGPT-derived Context Word Embeddings
+2302.01935v2 | 2023-02-03 | CAB: Empathetic Dialogue Generation with Cognition, Affection and Behavior
+2212.10030v1 | 2022-12-20 | InterMulti:Multi-view Multimodal Interactions with Text-dominated Hierarchical High-order Fusion for Emotion Analysis
+2212.08661v1 | 2022-12-16 | EffMulti: Efficiently Modeling Complex Multimodal Interactions for Emotion Analysis
+2203.14757v2 | 2022-03-28 | STUDIES: Corpus of Japanese Empathetic Dialogue Speech Towards Friendly Voice Agent
+## abs:"MER-Cross" -> 2
+2610.03016v1 | 2026-10-02 | From Expression to Reaction: Role-aware Visual Transfer and Stimulus-guided Reasoning for Interlocutor Emotion Recognition
+2604.19417v5 | 2026-04-21 | MER 2026: From Discriminative Emotion Recognition to Generative Emotion Understanding
+## abs:"listener emotion" -> 10
+2611.25189v1 | 2026-11-18 | Cultural invariance in music-evoked emotions
+2610.03016v1 | 2026-10-02 | From Expression to Reaction: Role-aware Visual Transfer and Stimulus-guided Reasoning for Interlocutor Emotion Recognition
+2609.33749v1 | 2026-09-27 | ResDiffFRG: Residual Diffusion for Multiple Appropriate Facial Reaction Generation
+2608.16686v1 | 2026-08-17 | Closing the Affective Loop: Multimodal Speaker-Listener Emotion-Dynamics-Aware Empathetic Social Robots
+2601.15348v1 | 2026-01-21 | Abusive music and song transformation using GenAI and LLMs
+2506.08200v1 | 2025-06-09 | AffectMachine-Pop: A controllable expert system for real-time pop music generation
+2503.08540v1 | 2025-03-11 | Mellow: a small audio language model for reasoning
+2502.04476v1 | 2025-02-06 | ADIFF: Explaining audio difference using natural language
+2405.06747v1 | 2024-05-10 | Music Emotion Prediction Using Recurrent Neural Networks
+2203.13926v3 | 2022-03-25 | CICERO: A Dataset for Contextualized Commonsense Inference in Dialogues
+## abs:"listener" AND abs:"emotion recognition" AND abs:dyadic -> 0
+## abs:"interlocutor" AND abs:"emotion recognition" -> 14
+2610.03016v1 | 2026-10-02 | From Expression to Reaction: Role-aware Visual Transfer and Stimulus-guided Reasoning for Interlocutor Emotion Recognition
+2608.22399v2 | 2026-08-23 | Dual-Scale State-Space Modeling with Speaker-Wise Dynamic CRF for Speech Emotion Recognition in Conversation
+2403.07260v2 | 2024-03-12 | LaERC-S: Improving LLM-based Emotion Recognition in Conversation with Speaker Characteristics
+2310.02281v1 | 2023-10-02 | End-to-End Continuous Speech Emotion Recognition in Real-life Customer Service Call Center Conversations
+2304.08216v2 | 2023-04-17 | Context-Dependent Embedding Utterance Representations for Emotion Recognition in Conversations
+2302.02419v1 | 2023-02-05 | deep learning of segment-level feature representation for speech emotion recognition in conversations
+2212.03102v1 | 2022-12-05 | A comparative study of emotion recognition methods using facial expressions
+2207.13254v1 | 2022-07-27 | Contextual Information and Commonsense Based Prompt for Emotion Recognition in Conversation
+2205.11867v1 | 2022-05-24 | Building a Dialogue Corpus Annotated with Expressed and Experienced Emotions
+2205.10237v1 | 2022-05-09 | M3ED: Multi-modal Multi-scene Multi-label Emotional Dialogue Database
+2109.06112v1 | 2021-09-13 | Beyond Isolated Utterances: Conversational Emotion Recognition
+2104.07252v2 | 2021-04-15 | Emotion Dynamics Modeling via BERT
+2010.02795v1 | 2020-10-06 | COSMIC: COmmonSense knowledge for eMotion Identification in Conversations
+1908.11540v1 | 2019-08-30 | DialogueGCN: A Graph Convolutional Neural Network for Emotion Recognition in Conversation
+## abs:"MER2026" -> 3
+2608.24730v2 | 2026-08-25 | Learning to Prefer Reliably: Error-Augmented Emotion Preference Optimization with Calibrated Fusion
+2607.18508v1 | 2026-07-20 | Style over Substance: A Shortcut Audit of Emotion-Description Preference Evaluation
+2604.19417v5 | 2026-04-21 | MER 2026: From Discriminative Emotion Recognition to Generative Emotion Understanding
+## abs:"addressee" AND abs:emotion -> 2
+2409.06562v1 | 2024-09-10 | Teacher-student relationship and teaching styles in primary education. A model of analysis
+2109.10255v4 | 2021-09-21 | Multi-Task Learning with Sentiment, Emotion, and Target Detection to Recognize Hate Speech and Offensive Language
+## abs:"non-speaking" AND abs:emotion -> 1
+2410.17262v2 | 2024-10-07 | EmoGene: Audio-Driven Emotional 3D Talking-Head Generation
