@@ -34,3 +34,13 @@ Mọi kiểm tra chạy từ container cloud ngày **2026-11-19**, không đăng
 ## Ghi chú kỹ thuật về môi trường kiểm tra
 - Proxy của container không lấy được Git LFS qua `git lfs pull` với repo chưa attach. Đường `media.githubusercontent.com/media/<owner>/<repo>/<branch>/<path>` thì tải được. Đây là giới hạn của container này, không phải giới hạn của dataset.
 - Có thể liệt kê nội dung zip lớn từ xa bằng HTTP Range (Zenodo và Google Drive đều hỗ trợ), không cần tải cả file: `tools/remote_zip_ls.py` (đã đưa vào repo).
+
+## L3 cho MER2023–2026 (user chạy `datasets/verify/04_verify_gated.ipynb` trên Kaggle, gửi báo cáo ngày 2026-11-21)
+**Sự cố:** bản báo cáo gốc có lộ mật khẩu giải nén của MER2023, do bộ lọc README của script không chặn được dòng bảng và dòng lệnh 7z. Vì vậy báo cáo gốc **không** được đưa vào repo. Đã sửa script để chỉ in heading an toàn, kèm test hồi quy `tests/test_verify_readme_filter.py`. Bảng dưới chỉ ghi số đếm.
+
+| Repo | Đếm được (file nhãn và listing) | Đối chiếu với bài tổng kết | Mức |
+|---|---|---|---|
+| MER2023 | `test-labels.zip` chứa nhãn test1, test2, test3; train nằm trong 7z có mật khẩu, chưa đếm | Train&Val 3.373, test MER-SEMI 834 (2404.17113, bảng thống kê) | L2+ (chưa giải nén train) |
+| MER2024 | `label-disdim.csv` 5.030 dòng (neutral 1.248, angry 1.208, happy 1.038, sad 730, worried 616, surprise 190); `video-labeled.zip` có 5.030 video; `reference-semi.csv` 1.169, `reference-noise.csv` 1.170; OV 332 | Train&Val 5.030; MER-SEMI 1.169/115.595; MER-NOISE 1.170/115.595; MER-OV 332 (2404.17113) | **Khớp → L3** cho nhãn và số video (chưa decode video) |
+| MER2025 | `track1_train_disdim.csv` 7.369; `track1_test_dis.csv` 2.026; `subtitle_chieng.csv` 132.171 (= 7.369 + 124.802); `track2_test.csv` 1.200; OV-MERD 332; MER-Caption+ 31.327; `track2_train_mercaption.csv` 115.595 | 7.369 nhãn + 124.802 không nhãn; test 2.026; MER-FG test 1.200; OV-MERD 332; MER-Caption+ 31.327 (2504.19423, bảng 1 và bảng MER-FG) | **Khớp → L3** cho nhãn (media 442 GB chưa kiểm tra) |
+| MER2026 | `track1_train.csv` 9.395; `track1_test.csv` **572**; `track3_emoprefer.csv` 574; `track3_emopreferv2.csv` 2.096; `track3_test.csv` 379; `track2_train_human.csv` 1.532; `track2_test.csv` 998 | MER-Cross train 9.395, test **574**; EmoPrefer 574, V2 2.096, test 379 (2604.19417, bảng 1 và bảng MER-Prefer) | Khớp, **trừ test MER-Cross: 572 so với 574**. Báo cáo chỉ liệt kê CSV, nên chưa biết có file EEG–fNIRS cho MER-PS hay không (script đã sửa để liệt kê tên mọi entry) |

@@ -72,6 +72,23 @@ def verify_iemocap(root):
 
 
 # ----------------------------------------------------------------------------------------------------- MER
+SECRET_HINT = re.compile(r"(?i)pass(word)?|pwd|密码|口令|解压|key|token|secret|7z |unzip|-p\S|sha256|md5|`")
+
+
+def safe_readme_lines(txt):
+    """Only markdown headings that carry no code, digits-only tokens or credential hints (2026-11-21 fix: the earlier
+    keyword filter leaked archive passwords that sat in table rows and 7z command lines)."""
+    out = []
+    for line in txt.splitlines():
+        t = line.strip()
+        if not t.startswith("#"):
+            continue
+        if SECRET_HINT.search(t) or re.search(r"\d{6,}", t) or re.search(r"\b(?=\w*\d)(?=\w*[A-Za-z])\w{8,}\b", t):
+            continue
+        out.append(t[:120])
+    return out
+
+
 def mer_fs():
     from huggingface_hub import HfFileSystem
     return HfFileSystem(token=os.environ.get("HF_TOKEN"))
@@ -104,15 +121,14 @@ def verify_mer():
         except Exception as e:  # noqa: BLE001
             say(f"- cannot list {base}: {type(e).__name__}: {e}"); continue
         say(f"- top-level entries: {len(files)}")
+        for fdesc in files:  # names and sizes only (no content)
+            say(f"  - entry `{fdesc['name'].split('/')[-1]}` ({fdesc.get('type', '')}, {fdesc.get('size', 0) / 1e9:.2f} GB)")
         try:
             with fs.open(f"{base}/README_AFTER_APPROVAL.md", "r") as f:
                 txt = f.read()
             say(f"- README_AFTER_APPROVAL.md readable: {len(txt)} chars")
-            for line in txt.splitlines():  # headings and protocol-relevant lines only; NEVER credentials
-                if re.search(r"(?i)pass(word)?|pwd|密码|口令|key|token|secret", line):
-                    continue
-                if line.startswith("#") or re.search(r"(?i)train|test|split|fold|label|metric|f1|accuracy", line):
-                    say(f"    > {line.strip()[:200]}")
+            for line in safe_readme_lines(txt):
+                say(f"    > {line}")
         except Exception as e:  # noqa: BLE001
             say(f"- README_AFTER_APPROVAL.md not readable: {type(e).__name__}")
         for fdesc in files:
