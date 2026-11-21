@@ -1,0 +1,27 @@
+## abs:"laugh track" OR abs:"laughter track" OR abs:"canned laughter" -> 0
+## abs:"background music" AND (abs:"emotion recognition" OR abs:"sentiment analysis") AND (abs:speech OR abs:multimodal OR abs:video) -> 0
+## (abs:"source separation" OR abs:Demucs OR abs:"music separation") AND (abs:"emotion recognition" OR abs:"sentiment") -> 3
+1909.05645v2 | 2019-09-06 | Learning Alignment for Multimodal Emotion Recognition from Speech
+2409.18971v1 | 2024-09-12 | Early Joint Learning of Emotion Information Makes MultiModal Model Understand You Better
+2106.07787v2 | 2021-06-14 | Tracing Back Music Emotion Predictions to Sound Sources and Intuitive Perceptual Qualities
+## (abs:subtitle OR abs:subtitles OR abs:"burned-in" OR abs:"scene text") AND (abs:"emotion recognition" OR abs:"facial expression") AND (abs:shortcut OR abs:leakage OR abs:bias) -> 0
+## (abs:dubbing OR abs:dubbed OR abs:"lip sync" OR abs:"audio-visual synchrony" OR abs:"AV synchrony") AND abs:"emotion recognition" -> 3
+2404.12979v2 | 2024-04-19 | TRNet: Two-level Refinement Network leveraging Speech Enhancement for Noise Robust Speech Emotion Recognition
+1809.04525v1 | 2018-08-29 | Label-less Learning for Traffic Control in an Edge Network
+2309.01142v1 | 2023-09-03 | MSM-VC: High-fidelity Source Style Transfer for Non-Parallel Voice Conversion by Multi-scale Style Modeling
+## (abs:fNIRS) AND (abs:EEG) AND abs:emotion -> 4
+2508.04723v1 | 2025-08-05 | Wearable Music2Emotion : Assessing Emotions Induced by AI-Generated Music through Portable EEG-fNIRS Fusion
+2306.03112v1 | 2023-06-05 | Synthesizing Affective Neurophysiological Signals Using Generative Models: A Review Paper
+2502.17445v1 | 2025-01-29 | Interpretable Dual-Filter Fuzzy Neural Networks for Affective Brain-Computer Interfaces
+2610.03618v2 | 2026-10-02 | Video-Time Priors for EEG-fNIRS Emotion Regression on Familiar Videos
+## (abs:"neutral face" OR abs:"neutral baseline" OR abs:"resting face" OR abs:"identity-specific baseline") AND (abs:"emotion recognition" OR abs:"expression recognition") -> 6
+2510.17855v1 | 2025-10-15 | CMIS-Net: A Cascaded Multi-Scale Individual Standardization Network for Backchannel Agreement Estimation
+2208.08106v1 | 2022-08-17 | Disentangling Identity and Pose for Facial Expression Recognition
+2108.03427v1 | 2021-08-07 | Learning Facial Representations from the Cycle-consistency of Face
+1902.08788v2 | 2019-02-23 | Facial Motion Prior Networks for Facial Expression Recognition
+1907.10087v2 | 2019-07-23 | Dynamic Facial Expression Generation on Hilbert Hypersphere with Conditional Wasserstein Generative Adversarial Nets
+2611.00045v1 | 2026-10-08 | Faces or Models? Where the Age Gap in Facial Expression Recognition Comes From
+## (abs:"shot scale" OR abs:cinematographic OR abs:"film editing" OR abs:"editing") AND abs:"emotion recognition" AND (abs:video OR abs:movie OR abs:film) -> 3
+2411.10018v1 | 2024-11-15 | Once More, With Feeling: Measuring Emotion of Acting Performances in Contemporary American Film
+2603.02569v1 | 2026-03-03 | An LLM-Assisted Toolkit for Inspectable Multimodal Emotion Data Annotation
+1907.10087v2 | 2019-07-23 | Dynamic Facial Expression Generation on Hilbert Hypersphere with Conditional Wasserstein Generative Adversarial Nets
