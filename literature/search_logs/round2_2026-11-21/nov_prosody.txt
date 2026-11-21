@@ -1,0 +1,55 @@
+## abs:"content-masked" -> 12
+2012.10043v2 | 2020-12-18 | Content Masked Loss: Human-Like Brush Stroke Planning in a Reinforcement Learning Painting Agent
+2610.03510v1 | 2026-10-02 | Weave Forcing: Compositional Memory Routing for Interactive Long Video Generation
+2511.08976v1 | 2025-11-12 | Content-based Fine-grained Flow Management Supporting Out-of-Path Transparent Add-ons
+2010.10056v1 | 2020-10-20 | Real-time Localized Photorealistic Video Style Transfer
+2401.03936v1 | 2024-01-08 | Exploratory Evaluation of Speech Content Masking
+2509.16531v1 | 2025-09-20 | Leveraging Multilingual Training for Authorship Representation: Enhancing Generalization across Languages and Domains
+2602.09725v3 | 2026-02-10 | Efficient Remote KV Cache Reuse with GPU-native Video Codec
+2607.05277v1 | 2026-07-06 | Untrusted Content Masking for Web Agents with Security Guarantees
+2302.14368v5 | 2023-02-28 | Enhanced Controllability of Diffusion Models via Feature Disentanglement and Realism-Enhanced Sampling Methods
+1711.03438v1 | 2017-11-09 | Open-World Knowledge Graph Completion
+2408.12429v2 | 2024-08-22 | FlexEdit: Marrying Free-Shape Masks to VLLM for Flexible Image Editing
+2310.00436v2 | 2023-09-30 | Authorship identification under domain shift: a survey of stylistic measures and learned author representations
+## abs:"low-pass filtered" AND abs:emotion -> 2
+2404.17862v2 | 2024-04-27 | Revisiting Multimodal Emotion Recognition in Conversation from the Perspective of Graph Spectrum
+2404.06702v1 | 2024-04-10 | What is Learnt by the LEArnable Front-end (LEAF)? Adapting Per-Channel Energy Normalisation (PCEN) to Noisy Conditions
+## abs:"random splicing" -> 1
+2507.08412v2 | 2025-07-11 | Enforcing Speech Content Privacy in Environmental Sound Recordings using Segment-wise Waveform Reversal
+## abs:"contrastive decoding" AND abs:emotion -> 0
+## abs:"contrastive decoding" AND abs:"audio language model" -> 6
+2506.07233v2 | 2025-06-08 | Reducing Object Hallucination in Large Audio-Language Models via Audio-Aware Decoding
+2603.09232v2 | 2026-03-10 | How Contrastive Decoding Enhances Large Audio Language Models
+2610.28146v1 | 2026-10-20 | SKAD: Sketch-Guided Audio-Contrastive Decoding for Reasoning in Large Audio-Language Models
+2604.15383v1 | 2026-04-16 | Temporal Contrastive Decoding: A Training-Free Method for Large Audio-Language Models
+2607.00247v3 | 2026-06-30 | Adaptive Perturbation Selection for Contrastive Audio Decoding
+2610.13112v1 | 2026-10-09 | Does Location Matter? A Black-Box Causal Audit Reveals Model-Dependent Audio Grounding in LALM Hallucination
+## abs:"audio language model" AND abs:"semantic bias" -> 1
+2601.04564v1 | 2026-01-08 | When Tone and Words Disagree: Towards Robust Speech Emotion Recognition under Acoustic-Semantic Conflict
+## abs:"lexical bias" AND abs:emotion -> 0
+## abs:"prosody" AND abs:"audio language model" AND abs:emotion -> 5
+2610.33036v2 | 2026-10-15 | A Benchmark for Controllable Speaking-Style Captioning in Audio-Language Models
+2606.02739v2 | 2026-06-01 | EntangleCodec: A Unified Discrete Audio Tokenizer via Semantic-Acoustic Entanglement
+2608.04351v1 | 2026-08-05 | HyPASE: Hyperbolic Geometry for Parameter-Efficient Speech Emotion Fine-Tuning Framework for Large Audio-Language Models
+2606.18273v2 | 2026-06-05 | Continuous Audio Thinking for Large Audio Language Models
+2608.19211v1 | 2026-06-12 | Represented but Ignored: A Causal Account of Prosodic Underuse in Audio-Language Models
+## abs:"semantic dominance" AND abs:speech -> 2
+2610.20114v1 | 2026-10-14 | ACR-Net: Mitigating Semantic Dominance via Contrastive Acoustic-Semantic Decoupling
+2601.23066v1 | 2026-01-30 | Towards Explicit Acoustic Evidence Perception in Audio LLMs for Speech Deepfake Detection
+## abs:"text dominance" AND abs:audio -> 11
+2606.18924v2 | 2026-06-17 | Who Wins the Conflict? Mechanistic Interpretability of Text Bias in Audio LLMs
+2602.11488v3 | 2026-02-12 | When Audio-LLMs Don't Listen: A Cross-Linguistic Study of Modality Arbitration
+2610.25599v1 | 2026-10-19 | Text Dominance in Paralinguistic Conflict: Tracing Suppression Through Audio LLM Circuits
+2603.06854v1 | 2026-03-06 | Are Audio-Language Models Listening? Audio-Specialist Heads for Adaptive Audio Steering
+2508.10552v2 | 2025-08-14 | When Language Overrules: Revealing Text Dominance in Multimodal Large Language Models
+2603.18048v3 | 2026-03-17 | DEAF: A Benchmark for Diagnostic Evaluation of Acoustic Faithfulness in Audio Language Models
+2604.11594v2 | 2026-04-13 | HumDial-EIBench: A Human-Recorded Multi-Turn Emotional Intelligence Benchmark for Audio Language Models
+2611.15439v1 | 2026-11-11 | DeALR: Decoupled Audio-Latent Optimization with Acoustic Backtracking for Test-Time Reasoning
+2608.26879v1 | 2026-08-27 | Mitigating Strong-Modality Collapse in Multimodal Learning via Inverted Asymmetric Fusion
+2603.15818v1 | 2026-03-16 | Conflict-Aware Multimodal Fusion for Ambivalence and Hesitancy Recognition
+2606.05713v1 | 2026-06-04 | Beyond Generative Decoding: Discriminative Hidden-State Readout from a Native Omni-Modal LLM for Multimodal Sentiment Analysis
+## abs:"training-free" AND abs:"speech emotion" -> 3
+2508.03543v3 | 2025-08-05 | EmoSteer-TTS: Fine-Grained and Training-Free Emotion-Controllable Text-to-Speech via Activation Steering
+2609.34648v1 | 2026-09-28 | SEmoEdit: Probing and Harnessing the Editability of Pre-trained Speech Flows
+2509.25495v2 | 2025-09-29 | EMO-TTA: Improving Test-Time Adaptation of Audio-Language Models for Speech Emotion Recognition
+## abs:"paralinguistic" AND abs:"audio language model" AND abs:"training-free" -> 0

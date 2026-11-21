@@ -1,0 +1,549 @@
+## abs:"multimodal sentiment analysis" -> 120
+2611.04841v1 | 2026-11-03 | DGC-Net: Cross-Modal Dynamic Routing with Global-Guided Compensation in Multimodal Sentiment Analysis
+2610.31731v1 | 2026-10-22 | ConsMSA: Semantic Distribution Consistency Learning for Multimodal Sentiment Analysis
+2610.31087v1 | 2026-10-22 | I$^2$-KAN: Interpretable Intra- and Inter-Modal Multi-Pathway Representation Learning for Multimodal Sentiment Analysis
+2610.27571v2 | 2026-10-20 | Text-Anchored Modality Experts with Uncertainty-Guided Routing for Multimodal Sentiment Analysis
+2610.19981v1 | 2026-10-14 | Shared Sentiment Evidence from Frozen Multimodal Models for Continuous Sentiment Prediction
+2610.05111v1 | 2026-10-04 | InstMoE: Adaptive Multimodal Routing with Specialized Experts
+2609.37100v1 | 2026-09-29 | Prediction-Layer Branch Calibration for Multimodal Sentiment Analysis
+2609.30470v1 | 2026-09-24 | Reliability-aware Cross-sample Enhancement for Robust Multimodal Sentiment Analysis
+2609.30238v2 | 2026-09-24 | SemMSA: Latent Semantic-Aided Robust Multimodal Sentiment Analysis with Incomplete Data
+2609.18470v1 | 2026-09-16 | Divide and Conquer: Mixture-of-Bottleneck Experts in Informative Ordinal Space for Video-based Multimodal Sentiment Analysis
+2609.11247v1 | 2026-09-10 | The Illusion of Balanced Multimodal Sentiment Analysis: Beyond the Limits of Optimization-Based Methods
+2609.10950v1 | 2026-09-10 | Robust Multimodal Sentiment Analysis with Incomplete Modalities via Semantic-aware Completeness based Reconstruction
+2609.07010v1 | 2026-09-07 | Fine-Grained Visual Preprocessing and Dual-Stream Temporal Modeling for Multimodal Sentiment Analysis on Social Media
+2609.06497v1 | 2026-09-06 | Vision-Guided Text Prompt Tuning for Multimodal Sentiment Analysis
+2609.06188v1 | 2026-09-05 | MVFA: A Multi-View Text-Guided Multimodal Fusion LLM Adapter for Sentiment Analysis and Emotion Recognition
+2608.30726v1 | 2026-08-31 | Multimodal Adaptive Expert Selection with Text Routing and Ordinal Prototype Optimization for Sentiment Analysis
+2608.20019v1 | 2026-08-20 | Contrastive Mixed Prompt Learning for Incomplete Multimodal Sentiment Analysis with Unseen Modality Combination
+2608.19971v1 | 2026-08-20 | Robust Incomplete Multimodal Sentiment Analysis via Iterative Proxy Correction
+2608.16201v1 | 2026-08-17 | Multi-Granularity Sentiment Integration for LLM-Based Multimodal Sentiment Analysis
+2608.09986v1 | 2026-08-06 | MIDAS: Mutual Information Disentanglement with Uncertainty-Aware Fusion for Incomplete Multimodal Sentiment Analysis
+2608.03611v3 | 2026-08-04 | Rethinking Modality Reliability in Multimodal Sentiment Analysis with Incomplete Observations
+2607.27790v1 | 2026-07-30 | Semantic-Aligned Structural Abstraction for Multimodal Sentiment Analysis
+2607.17262v1 | 2026-07-19 | Should Missing Modalities Always Be Necessary to Repair for Multi-modal Sentiment Analysis?
+2607.10599v1 | 2026-07-12 | MRUF: Multi-granularity Routing with Uncertainty-Aware Fusion for Robust Multimodal Sentiment Analysis
+2606.15694v1 | 2026-06-14 | MAF: Multimodal Adaptive Few-shot Prompting for Sentiment Analysis with MLLMs
+2606.06285v1 | 2026-06-04 | TRACE: A Temporal Conditional Estimation for Multimodal Time Series Foundation Models
+2606.05713v1 | 2026-06-04 | Beyond Generative Decoding: Discriminative Hidden-State Readout from a Native Omni-Modal LLM for Multimodal Sentiment Analysis
+2605.30994v4 | 2026-05-29 | Dynamic Interaction-Aware and Causality-Disentangled Framework for Multimodal Sentiment Analysis
+2605.28575v1 | 2026-05-27 | A Conflict-Aware Penalty and Statistical Loss Framework for Balancing Modalities and Enhancing Stability in Multimodal Sentiment Analysis
+2605.16889v1 | 2026-05-16 | Controlling Decision Drift in Multimodal Sentiment Analysis with Missing Modalities
+2604.25179v2 | 2026-04-28 | Mitigating Shared-Private Branch Imbalance via Dual-Branch Rebalancing for Multimodal Sentiment Analysis
+2604.12518v2 | 2026-04-14 | Enhance-then-Balance Modality Collaboration for Robust Multimodal Sentiment Analysis
+2604.05873v1 | 2026-04-07 | Learning Shared Sentiment Prototypes for Adaptive Multimodal Sentiment Analysis
+2604.05704v2 | 2026-04-07 | QA-MoE: Towards a Continuous Reliability Spectrum with Quality-Aware Mixture of Experts for Robust Multimodal Sentiment Analysis
+2604.05558v1 | 2026-04-07 | Evaluation Before Generation: A Paradigm for Robust Multimodal Sentiment Analysis with Missing Modalities
+2604.03650v1 | 2026-04-04 | CAGMamba: Context-Aware Gated Cross-Modal Mamba Network for Multimodal Sentiment Analysis
+2603.29205v1 | 2026-03-31 | BiMoE: Brain-Inspired Experts for EEG-Dominant Affective State Recognition
+2604.00013v2 | 2026-03-10 | C2F-Thinker: Coarse-to-Fine Reasoning with Hint-Guided Reinforcement Learning for Multimodal Sentiment Analysis
+2603.09111v1 | 2026-03-10 | Progressive Representation Learning for Multimodal Sentiment Analysis with Incomplete Modalities
+2603.13291v1 | 2026-02-28 | FedUAF: Uncertainty-Aware Fusion with Reliability-Guided Aggregation for Multimodal Federated Sentiment Analysis
+2602.19585v1 | 2026-02-23 | Tri-Subspaces Disentanglement for Multimodal Sentiment Analysis
+2602.16144v5 | 2026-02-18 | Missing-by-Design: Certifiable Modality Deletion for Revocable Multimodal Sentiment Analysis
+2602.01833v1 | 2026-02-02 | Mixture of Disentangled Experts with Missing Modalities for Robust Multimodal Sentiment Analysis
+2602.00360v1 | 2026-01-30 | Leveraging Textual-Cues for Enhancing Multimodal Sentiment Analysis by Object Recognition
+2601.13659v1 | 2026-01-20 | Temporal-Spatial Decouple before Act: Disentangled Representation Learning for Multimodal Sentiment Analysis
+2601.09606v2 | 2026-01-14 | GRCF: Group-wise Ranking and Calibration Framework for Multimodal Sentiment Analysis
+2601.07235v2 | 2026-01-12 | Sentiment Analysis on Movie Reviews: A Deep Dive into Modern Techniques and Open Challenges
+2601.06870v2 | 2026-01-11 | QASA: Quality-Aware Semantic Augmentation for Robust Multimodal Sentiment Analysis
+2601.02415v1 | 2026-01-03 | Multimodal Sentiment Analysis based on Multi-channel and Symmetric Mutual Promotion Feature Fusion
+2512.23380v1 | 2025-12-29 | A unified framework for detecting point and collective anomalies in operating system logs via collaborative transformers
+2512.22603v1 | 2025-12-27 | Structured Prompting and LLM Ensembling for Multimodal Conversational Aspect-based Sentiment Analysis
+2512.20548v2 | 2025-12-23 | Advancing Multimodal Teacher Sentiment Analysis:The Large-Scale T-MED Dataset & The Effective AAM-TSA Model
+2512.07430v1 | 2025-12-08 | MIDG: Mixture of Invariant Experts with knowledge injection for Domain Generalization in Multimodal Sentiment Analysis
+2512.05515v1 | 2025-12-05 | DashFusion: Dual-stream Alignment with Hierarchical Bottleneck Fusion for Multimodal Sentiment Analysis
+2512.01442v1 | 2025-12-01 | PSA-MF: Personality-Sentiment Aligned Multi-Level Fusion for Multimodal Sentiment Analysis
+2511.20167v1 | 2025-11-25 | FINE: Factorized multimodal sentiment analysis via mutual INformation Estimation
+2511.18751v3 | 2025-11-24 | Robust Multimodal Sentiment Analysis of Image-Text Pairs by Distribution-Based Feature Recovery and Fusion
+2511.16990v1 | 2025-11-21 | Senti-iFusion: An Integrity-centered Hierarchical Fusion Framework for Multimodal Sentiment Analysis under Uncertain Modality Missingness
+2511.17585v2 | 2025-11-16 | PaSE: Prototype-aligned Calibration and Shapley-based Equilibrium for Multimodal Sentiment Analysis
+2511.10325v1 | 2025-11-13 | TMDC: A Two-Stage Modality Denoising and Complementation Framework for Multimodal Sentiment Analysis with Missing and Noisy Modalities
+2511.06328v3 | 2025-11-09 | Improving Multimodal Sentiment Analysis via Modality Optimization and Dynamic Primary Modality Selection
+2511.01444v1 | 2025-11-03 | Robust Multimodal Sentiment Analysis via Double Information Bottleneck
+2510.20256v2 | 2025-10-23 | Uncertainty-Guided Multimodal Consensus for Multimodal Sentiment Analysis
+2510.23617v1 | 2025-10-20 | An Enhanced Dual Transformer Contrastive Network for Multimodal Sentiment Analysis
+2510.16086v1 | 2025-10-17 | FSRF: Factorization-guided Semantic Recovery for Incomplete Multimodal Sentiment Analysis
+2510.11579v3 | 2025-10-13 | MS-Mix: Sentiment-Guided Adaptive Augmentation for Multimodal Sentiment Analysis
+2510.01677v1 | 2025-10-02 | Beyond Simple Fusion: Adaptive Gated Fusion for Robust Multimodal Sentiment Analysis
+2509.21805v1 | 2025-09-26 | Towards Minimal Causal Representations for Human Multimodal Language Understanding
+2509.04459v2 | 2025-08-27 | Uncertainty-Aware Collaborative System of Large and Small Models for Multimodal Sentiment Analysis
+2508.18322v1 | 2025-08-24 | Structures Meet Semantics: Multimodal Fusion via Graph Contrastive Learning
+2508.15852v1 | 2025-08-20 | PGF-Net: A Progressive Gated-Fusion Framework for Efficient Multimodal Sentiment Analysis
+2508.13196v1 | 2025-08-15 | Contextual Attention-Based Multimodal Fusion of LLM and CNN for Sentiment Analysis
+2508.07666v1 | 2025-08-11 | Towards Multimodal Sentiment Analysis via Contrastive Cross-modal Retrieval Augmentation and Hierachical Prompts
+2508.05234v2 | 2025-08-07 | Resource-Limited Joint Multimodal Sentiment Reasoning and Classification via Chain-of-Thought Enhancement and Distillation
+2508.04999v3 | 2025-08-07 | Disentangling Bias by Modeling Intra- and Inter-modal Causal Attention for Multimodal Sentiment Analysis
+2508.01168v1 | 2025-08-02 | Graph-based Interaction Augmentation Network for Robust Multimodal Sentiment Analysis
+2508.09145v2 | 2025-07-31 | MoLAN: A Unified Modality-Aware Noise Dynamic Editing Framework for Multimodal Sentiment Analysis
+2507.23444v1 | 2025-07-31 | Hybrid CNN-Mamba Enhancement Network for Robust Multimodal Sentiment Analysis
+2506.06603v1 | 2025-06-07 | CAtCh: Cognitive Assessment through Cookie Thief
+2506.01490v1 | 2025-06-02 | Confidence-Aware Self-Distillation for Multimodal Sentiment Analysis with Incomplete Modalities
+2505.16193v1 | 2025-05-22 | An Empirical Study on Configuring In-Context Learning Demonstrations for Unleashing MLLMs' Sentimental Perception Capability
+2505.14329v2 | 2025-05-20 | TF-Mamba: Text-enhanced Fusion Mamba with Missing Modalities for Robust Multimodal Sentiment Analysis
+2505.14143v1 | 2025-05-20 | Multimodal Mixture of Low-Rank Experts for Sentiment Analysis and Emotion Recognition
+2505.06110v2 | 2025-05-09 | Multimodal Sentiment Analysis on CMU-MOSEI Dataset using Transformer-based Models
+2505.04642v1 | 2025-05-05 | Rethinking Multimodal Sentiment Analysis: A High-Accuracy, Simplified Fusion Architecture
+2505.01068v1 | 2025-05-02 | Multimodal Transformers are Hierarchical Modal-wise Heterogeneous Graphs
+2504.12151v2 | 2025-04-16 | Towards Explainable Fusion and Balanced Learning in Multimodal Sentiment Analysis
+2504.11082v1 | 2025-04-15 | DeepMLF: Multimodal language model with learnable tokens for deep fusion in sentiment analysis
+2503.22715v1 | 2025-03-25 | Hierarchical Adaptive Expert for Multimodal Sentiment Analysis
+2503.07943v1 | 2025-03-11 | Enhancing Sentiment Analysis through Multimodal Fusion: A BERT-DINOv2 Approach
+2503.06380v1 | 2025-03-09 | TI-JEPA: An Innovative Energy-based Joint Embedding Strategy for Text-Image Multimodal Systems
+2502.12478v1 | 2025-02-18 | MSE-Adapter: A Lightweight Plugin Endowing LLMs with the Capability to Perform Multimodal Sentiment Analysis and Emotion Recognition
+2502.09675v1 | 2025-02-13 | Multi-level Conflict-Aware Network for Multi-modal Sentiment Analysis
+2502.02938v1 | 2025-02-05 | LLaVAC: Fine-tuning LLaVA as a Multimodal Sentiment Classifier
+2501.12424v2 | 2025-01-21 | Multi-Modality Collaborative Learning for Sentiment Analysis
+2501.08085v1 | 2025-01-14 | Dynamic Multimodal Sentiment Analysis: Leveraging Cross-Modal Attention for Enabled Classification
+2501.05474v1 | 2025-01-07 | Modality-Invariant Bidirectional Temporal Representation Distillation Network for Missing Multimodal Sentiment Analysis
+2412.12225v3 | 2024-12-16 | DLF: Disentangled-Language-Focused Multimodal Sentiment Analysis
+2412.09784v1 | 2024-12-13 | Semi-IIN: Semi-supervised Intra-inter modal Interaction Learning Network for Multimodal Sentiment Analysis
+2412.10460v1 | 2024-12-12 | Enriching Multimodal Sentiment Analysis through Textual Emotional Descriptions of Visual-Audio Content
+2412.08049v3 | 2024-12-11 | EmoVerse: Exploring Multimodal Large Language Models for Sentiment and Emotion Understanding
+2412.07292v1 | 2024-12-10 | Multimodal Sentiment Analysis Based on Causal Reasoning
+2412.07121v2 | 2024-12-10 | Bridging the Gap for Test-Time Multimodal Sentiment Analysis
+2412.03625v1 | 2024-12-04 | Multimodal Sentiment Analysis Based on BERT and ResNet
+2411.15408v1 | 2024-11-23 | Exploring Large Language Models for Multimodal Sentiment Analysis: Challenges, Benchmarks, and Future Directions
+2411.02793v1 | 2024-11-05 | Toward Robust Incomplete Multimodal Sentiment Analysis via Hierarchical Representation Learning
+2410.15029v2 | 2024-10-19 | Enhancing Multimodal Sentiment Analysis for Missing Modality through Self-Distillation and Unified Modality Cross-Attention
+2410.08692v1 | 2024-10-11 | Contrastive Knowledge Distillation for Robust Multimodal Sentiment Analysis
+2410.04491v1 | 2024-10-06 | Knowledge-Guided Dynamic Modality Attention Fusion Framework for Multimodal Sentiment Analysis
+2409.20012v2 | 2024-09-30 | Towards Robust Multimodal Sentiment Analysis with Incomplete Data
+2409.07388v3 | 2024-09-11 | Recent Advances in Multimodal Affective Computing: An NLP Perspective
+2409.04473v1 | 2024-09-05 | Learning in Order! A Sequential Strategy to Learn Invariant Features for Multimodal Sentiment Analysis
+2409.00143v3 | 2024-08-30 | Invariant Representation Guided Multimodal Sentiment Decoding with Sequential Variation Regularization
+2408.16029v2 | 2024-08-28 | Meta-Learn Unimodal Signals with Weak Supervision for Multimodal Sentiment Analysis
+2408.14809v4 | 2024-08-27 | GSIFN: A Graph-Structured and Interlaced-Masked Multimodal Transformer-based Fusion Network for Multimodal Sentiment Analysis
+2408.10248v1 | 2024-08-05 | Target-Dependent Multimodal Sentiment Analysis Via Employing Visual-to Emotional-Caption Translation Network using Visual-Caption Pairs
+2407.21536v2 | 2024-07-31 | Tracing Intricate Cues in Dialogue: Joint Graph Structure and Sentiment Dynamics for Multimodal Emotion Recognition
+2407.21054v5 | 2024-07-24 | Sentiment Reasoning for Healthcare
+2407.07046v3 | 2024-07-09 | CorMulT: A Semi-supervised Modality Correlation-aware Multimodal Transformer for Sentiment Analysis
+2407.05374v1 | 2024-07-07 | Multimodal Prompt Learning with Missing Modalities for Sentiment Analysis and Emotion Recognition
+## abs:"speech emotion recognition" -> 120
+2611.13689v1 | 2026-11-10 | Walrus Technical Report
+2611.12119v1 | 2026-11-09 | Discriminator-free adversarial domain adaptation for robust speech classification
+2611.08818v1 | 2026-11-06 | Fuzzy-FedAvg: Server-Aware Client Selection for Federated Speech Emotion Recognition in Heterogeneous Environments
+2610.40883v1 | 2026-10-29 | Incongruence-Aware Evaluation of Multimodal Speech Emotion Recognition in Audio Large Language Models
+2610.38050v1 | 2026-10-27 | Improving the Dependency on Fine-Tuning Data in Transfer Learning for Speech Emotion Recognition
+2610.33977v1 | 2026-10-25 | EmoNet: A Lightweight Attention-Based CNN for Speech Emotion Recognition
+2610.33952v1 | 2026-10-24 | Beyond Accuracy: What Are Speech Emotion Recognition Models Learning?
+2610.26446v1 | 2026-10-19 | Label Authority in Speech Emotion Recognition: Intended and Perceived Ground Truth in Emozionalmente
+2610.21941v1 | 2026-10-15 | Learning Speech Attribute Representations via Multi-Teacher Distillation
+2610.20114v1 | 2026-10-14 | ACR-Net: Mitigating Semantic Dominance via Contrastive Acoustic-Semantic Decoupling
+2610.15059v1 | 2026-10-10 | How Language-Independent Are Emotional Attributes? A Study on Training Data Scaling and Cross-Lingual Generalization
+2609.39453v1 | 2026-09-30 | From Speech to Editable Concepts: Probing Emotion Recognition with Concept Bottleneck Models
+2609.26422v1 | 2026-09-22 | Enriching Speech Emotion Representations with Conversational Context
+2609.19826v2 | 2026-09-17 | Consensus-Guided Shared-Specific Tri-View Learning for Speech Emotion Recognition
+2609.07409v1 | 2026-09-07 | RAFM-SER++: A Lightweight Multimodal Emotion Recognition Framework for Real-Time Behavioral Monitoring in Surveillance Systems
+2609.06101v1 | 2026-09-05 | SETEAB: Multiscale approach with Squeeze-and-Excitation Temporal Enhanced Aware Block for Speech Emotion Recognition
+2609.05281v1 | 2026-09-04 | KanAdapter: A Kolmogorov-Arnold Network-based Plug-and-Play Module for Efficient Fine-tuning of Foundation Speech Models
+2609.02941v1 | 2026-08-31 | SISER: Speaker-Invariant Speech Emotion Recognition with Entropy-Based Adversarial Training
+2609.26054v1 | 2026-08-24 | Benchmarking Open-Source Speech Emotion Recognition in Naturalistic Mandarin Spine Clinic Consultations: A Pilot Validation Study
+2608.22399v2 | 2026-08-23 | Dual-Scale State-Space Modeling with Speaker-Wise Dynamic CRF for Speech Emotion Recognition in Conversation
+2608.17102v1 | 2026-08-17 | Emotion Across Speech and Faces: Shared Affective Mechanisms in Multimodal Foundation Models
+2608.04351v1 | 2026-08-05 | HyPASE: Hyperbolic Geometry for Parameter-Efficient Speech Emotion Fine-Tuning Framework for Large Audio-Language Models
+2608.01560v1 | 2026-08-03 | Discriminative Axis, Not Data Volume: What a Contrastive Corpus Teaches an Audio Embedding
+2607.25289v1 | 2026-07-28 | AMRD: Adaptive Multi-Teacher Relational Distillation for Lightweight Speech Emotion Recognition
+2609.04236v1 | 2026-07-27 | Robust Speech Emotion Recognition under Tone-Word Conflict: A Benchmark and Framework
+2607.16803v1 | 2026-07-18 | Explainable Lightweight Compact Deep Models for Speech Emotion Recognition
+2606.30550v1 | 2026-06-29 | SIGMA: Saliency-Guided Sparse Mask Attacks for Speech Emotion Recognition
+2606.27536v1 | 2026-06-25 | Learning from Annotation Uncertainty: Entropy-Aware Curriculum for Speech Emotion Recognition
+2606.25990v2 | 2026-06-24 | SpeechEQ: Benchmarking Emotional Intelligence Quotient in Socially Aware Voice Conversational Models
+2606.24082v1 | 2026-06-23 | Comparative Reasoning: Making an Audio Language Model Better at Comparing Emotions
+2606.24941v2 | 2026-06-22 | EmotionAI: A Privacy-Preserving Computational Intelligence Pipeline for Speech-Emotion-Grounded Conversational Analysis
+2606.21052v2 | 2026-06-19 | Backdoor Attacks on Speech Emotion Recognition via TTS-Generated Poisoning
+2606.14086v1 | 2026-06-12 | Explainable and Trustworthy Speech Emotion Recognition Using Confidence Score and Reinforcement Learning Rectified Speech Emotion Descriptors
+2606.10360v2 | 2026-06-09 | ViP-VL: Vietnamese Self-supervised Speech Pretraining Model with Vector-Quantization Learning
+2606.10278v1 | 2026-06-09 | Towards Robust Arabic Speech Emotion Recognition with Deep Learning
+2606.08573v1 | 2026-06-07 | Titans-as-a-Layer: Test-Time Memory for Conversational Speech Emotion Recognition
+2606.07309v1 | 2026-06-05 | Acoustic Cue Alignment in Audio Language Models for Speech Emotion Recognition
+2606.06200v1 | 2026-06-04 | Learning Emotion-discriminative Representations for Zero-Shot Cross-lingual Speech Emotion Recognition
+2606.06550v1 | 2026-06-04 | Geometric Second-Order Feature Correlation Learning for Self-Supervised Speech Emotion Recognition
+2606.03359v1 | 2026-06-02 | Speech Emotion Recognition using Attention-based LSTM-Network with Residual Connection
+2608.05165v3 | 2026-05-26 | A Study of ASR Adaptation and Representation Dimensionality Reduction in Persian Speech Emotion Recognition Using Whisper
+2605.22732v1 | 2026-05-21 | Beyond Acoustic Emotion Recognition: Multimodal Pathos Analysis in Political Speech Using LLM-Based and Acoustic Emotion Models
+2605.14523v2 | 2026-05-14 | HQTN-SER: Speech Emotion Recognition with Hybrid Quantum Tensor Networks
+2604.25776v1 | 2026-04-28 | Unrequited Emotions: Investigating the Gaps in Motivation and Practice in Speech Emotion Recognition Research
+2604.18159v1 | 2026-04-20 | FreezeEmpath: Efficient Training for Empathetic Spoken Chatbots with Frozen LLMs
+2604.17647v2 | 2026-04-19 | Prosody as Supervision: Bridging the Non-Verbal--Verbal for Multilingual Speech Emotion Recognition
+2604.17000v1 | 2026-04-18 | Anonymization, Not Elimination: Utility-Preserved Speech Anonymization
+2604.25938v1 | 2026-04-16 | Speech Emotion Recognition Using MFCC Features and LSTM-Based Deep Learning Model
+2604.07417v1 | 2026-04-08 | Semantic-Emotional Resonance Embedding: A Semi-Supervised Paradigm for Cross-Lingual Speech Emotion Recognition
+2604.01711v1 | 2026-04-02 | Human-Guided Reasoning with Large Language Models for Vietnamese Speech Emotion Recognition
+2604.14186v1 | 2026-03-31 | HARNESS: Lightweight Distilled Arabic Speech Foundation Models
+2604.07357v1 | 2026-03-28 | Hybrid CNN-Transformer Architecture for Arabic Speech Emotion Recognition
+2603.26592v2 | 2026-03-27 | Evaluating Interactive 2D Visualization as a Sample Selection Strategy for Biomedical Time-Series Data Annotation
+2604.19763v1 | 2026-03-26 | Explainable Speech Emotion Recognition: Weighted Attribute Fairness to Model Demographic Contributions to Social Bias
+2603.25041v2 | 2026-03-26 | AdaLTM: Adaptive Layer-wise Task Vector Merging for Categorical Speech Emotion Recognition with ASR Knowledge Integration
+2603.23673v2 | 2026-03-24 | Crab: Multi Layer Contrastive Supervision to Improve Speech Emotion Recognition Under Both Acted and Natural Speech Condition
+2603.23057v1 | 2026-03-24 | Prompt Amplification and Zero-Shot Late Fusion in Audio-Language Models for Speech Emotion Recognition
+2603.22536v1 | 2026-03-23 | MSP-Conversation: A Corpus for Naturalistic, Time-Continuous Emotion Recognition
+2603.21050v3 | 2026-03-22 | ERM-MinMaxGAP: Benchmarking and Mitigating Gender Bias in Multilingual Multimodal Speech-LLM Emotion Recognition
+2603.16483v1 | 2026-03-17 | On the Emotion Understanding of Synthesized Speech
+2603.15120v1 | 2026-03-16 | How Attention Shapes Emotion: A Comparative Study of Attention Mechanisms for Speech Emotion Recognition
+2603.09324v1 | 2026-03-10 | Reading the Mood Behind Words: Integrating Prosody-Derived Emotional Context into Socially Responsive VR Agents
+2603.08936v1 | 2026-03-09 | VoxEmo: Benchmarking Speech Emotion Recognition with Speech LLMs
+2603.08230v1 | 2026-03-09 | Disentangling Reasoning in Large Audio-Language Models for Ambiguous Emotion Prediction
+2603.00746v1 | 2026-02-28 | SpectroFusion-ViT: A Lightweight Transformer for Speech Emotion Recognition Using Harmonic Mel-Chroma Fusion
+2602.23765v2 | 2026-02-27 | DashengTokenizer: One layer is enough for unified audio understanding and generation
+2602.21464v1 | 2026-02-25 | iMiGUE-Speech: A Spontaneous Speech Dataset for Affective Analysis
+2602.18802v1 | 2026-02-21 | Multi-Channel Speech Enhancement for Cocktail Party Speech Emotion Recognition
+2602.16256v1 | 2026-02-18 | Color-based Emotion Representation for Speech Emotion Recognition
+2602.14172v2 | 2026-02-15 | Investigation for Relative Voice Impression Estimation
+2602.10716v1 | 2026-02-11 | RE-LLM: Refining Empathetic Speech-LLM Responses by Integrating Emotion Nuance
+2602.08240v1 | 2026-02-09 | PTS-SNN: A Prompt-Tuned Temporal Shift Spiking Neural Networks for Efficient Speech Emotion Recognition
+2602.06290v1 | 2026-02-06 | B-GRPO: Unsupervised Speech Emotion Recognition based on Batched-Group Relative Policy Optimization
+2602.06000v1 | 2026-02-05 | Speech Emotion Recognition Leveraging OpenAI's Whisper Representations and Attentive Pooling Methods
+2602.13259v1 | 2026-02-03 | Learning Physiology-Informed Vocal Spectrotemporal Representations for Speech Emotion Recognition
+2602.02841v2 | 2026-02-02 | Semantics-Aware Generative Latent Data Augmentation for Learning in Low-Resource Domains
+2602.01547v1 | 2026-02-02 | Attention-weighted Centered Kernel Alignment for Knowledge Distillation in Large Audio-Language Models Applied to Speech Emotion Recognition
+2602.01170v1 | 2026-02-01 | EmoAra: Emotion-Preserving English Speech Transcription and Cross-Lingual Translation with Arabic Text-to-Speech
+2601.20573v1 | 2026-01-28 | Gen-SER: When the generative model meets speech emotion recognition
+2601.18908v1 | 2026-01-26 | Enhancing Speech Emotion Recognition using Dynamic Spectral Features and Kalman Smoothing
+2601.17901v3 | 2026-01-25 | Speech Emotion Recognition with ASR Integration
+2601.17085v1 | 2026-01-23 | Recovering Performance in Speech Emotion Recognition from Discrete Tokens via Multi-Layer Fusion and Paralinguistic Feature Integration
+2601.15668v2 | 2026-01-22 | EmotionThinker: Prosody-Aware Reinforcement Learning for Explainable Speech Emotion Reasoning
+2601.16240v1 | 2026-01-21 | Test-Time Adaptation for Speech Emotion Recognition
+2601.14620v1 | 2026-01-21 | Scaling Ambiguity: Augmenting Human Annotation in Speech Emotion Recognition with Audio-Language Models
+2601.13589v1 | 2026-01-20 | Motion-to-Response Content Generation via Multi-Agent AI System with Real-Time Safety Verification
+2601.12494v3 | 2026-01-18 | Multi-Task Instruction Tuning via Data Scheduling for Low-Resource Arabic SpeechLLMs
+2601.11027v1 | 2026-01-16 | WenetSpeech-Wu: Datasets, Benchmarks, and Models for a Unified Chinese Wu Dialect Speech Processing Ecosystem
+2601.04564v1 | 2026-01-08 | When Tone and Words Disagree: Towards Robust Speech Emotion Recognition under Acoustic-Semantic Conflict
+2512.23435v2 | 2025-12-29 | Distilled HuBERT for Mobile Speech Emotion Recognition: A Cross-Corpus Validation Study
+2512.18298v1 | 2025-12-20 | Explainable Transformer-CNN Fusion for Noise-Robust Speech Emotion Recognition
+2512.04551v2 | 2025-12-04 | Multi-Loss Learning for Speech Emotion Recognition with Energy-Adaptive Mixup and Frame-Level Attention
+2511.23178v1 | 2025-11-28 | HPSU: A Benchmark for Human-Level Perception in Real-World Spoken Speech Understanding
+2511.11691v1 | 2025-11-12 | Beyond saliency: enhancing explanation of speech emotion recognition with expert-referenced acoustic cues
+2511.07955v1 | 2025-11-11 | Speech Emotion Recognition with Phonation Excitation Information and Articulatory Kinematics
+2511.07493v1 | 2025-11-10 | Enabling Automatic Self-Talk Detection via Earables
+2511.04914v3 | 2025-11-07 | MERaLiON-SER: Robust Speech Emotion Recognition Model for English and SEA Languages
+2511.01670v1 | 2025-11-03 | SeaLLMs-Audio: Large Audio-Language Models for Southeast Asia
+2511.00402v1 | 2025-11-01 | Emotion Detection in Speech Using Lightweight and Transformer-Based Models: A Comparative and Ablation Study
+2510.25577v2 | 2025-10-29 | Lost in Phonation: Voice Quality Variation as an Evaluation Dimension for Speech Foundation Models
+2510.25054v2 | 2025-10-29 | Evaluating Emotion Recognition in Spoken Language Models on Emotionally Incongruent Speech
+2510.26823v1 | 2025-10-28 | Cross-Corpus Validation of Speech Emotion Recognition in Urdu using Domain-Knowledge Acoustic Features
+2510.21388v1 | 2025-10-24 | Compressing Quaternion Convolutional Neural Networks for Audio Classification
+2510.13906v1 | 2025-10-14 | Switchboard-Affect: Emotion Perception Labels from Conversational Speech
+2510.10078v4 | 2025-10-11 | Improving Speech Emotion Recognition with Mutual Information Regularized Generative Model
+2510.09072v1 | 2025-10-10 | Emotion-Disentangled Embedding Alignment for Noise-Robust and Cross-Corpus Speech Emotion Recognition
+2510.07052v1 | 2025-10-08 | Enhancing Speech Emotion Recognition via Fine-Tuning Pre-Trained Models and Hyper-Parameter Optimisation
+2510.06072v1 | 2025-10-07 | EmoHRNet: High-Resolution Neural Network Based Speech Emotion Recognition
+2510.05934v1 | 2025-10-07 | Revisiting Modeling and Evaluation Approaches in Speech Emotion Recognition: Considering Subjectivity of Annotators and Ambiguity of Emotions
+2510.05749v2 | 2025-10-07 | MSF-SER: Enriching Acoustic Modeling with Multi-Granularity Semantics for Speech Emotion Recognition
+2510.04251v3 | 2025-10-05 | Retain-Free Machine Unlearning for Speech Emotion Recognition
+2510.03060v1 | 2025-10-03 | Semantic Differentiation in Speech Emotion Recognition: Insights from Descriptive and Expressive Speech Roles
+2509.25495v2 | 2025-09-29 | EMO-TTA: Improving Test-Time Adaptation of Audio-Language Models for Speech Emotion Recognition
+2509.25458v2 | 2025-09-29 | Plug-and-Play Emotion Graphs for Compositional Prompting in Zero-Shot Speech Emotion Recognition
+2509.24187v2 | 2025-09-29 | Reasoning Beyond Majority Vote: An Explainable SpeechLM Framework for Speech Emotion Recognition
+2509.23795v1 | 2025-09-28 | An Efficient Transfer Learning Method Based on Adapter with Local Attributes for Speech Emotion Recognition
+2509.20706v1 | 2025-09-25 | MI-Fuse: Label Fusion for Unsupervised Domain Adaptation with Closed-Source Large-Audio Language Model
+2509.18706v1 | 2025-09-23 | M4SER: Multimodal, Multirepresentation, Multitask, and Multistrategy Learning for Speech Emotion Recognition
+2509.18570v1 | 2025-09-23 | HarmoniFuse: A Component-Selective and Prompt-Adaptive Framework for Multi-Task Speech Language Modeling
+2509.20373v1 | 2025-09-19 | Speaker Style-Aware Phoneme Anchoring for Improved Cross-Lingual Speech Emotion Recognition
+## abs:"emotion recognition in conversation" -> 120
+2611.11987v1 | 2026-11-09 | When Audio and Video Mislead: Evaluating Multimodal AI for Conversational Emotion Recognition
+2611.08860v1 | 2026-11-06 | Mind the Divergence: Divergence-Guided Reliability-Aware Fusion and Adaptive LLM Prompting for Conversational Emotion Recognition
+2609.39072v1 | 2026-09-30 | Beyond Text: LLM-Based Dimensional Emotion Evaluation in Multimodal Dialogue
+2609.17977v1 | 2026-09-16 | When to Call an LLM: A Confidence-Gated Hybrid for Cost-Effective Emotion Recognition in Conversational AI
+2609.13857v1 | 2026-09-12 | ReH-FUSE: Reliability-Aware Hierarchical Fusion of Experts for Multimodal Emotion Recognition in Conversation
+2609.09924v1 | 2026-09-09 | Multimodal Emotion Recognition in Conversations via Class-Wise Adaptive Modality Fusion and Affective Geometry
+2609.06188v1 | 2026-09-05 | MVFA: A Multi-View Text-Guided Multimodal Fusion LLM Adapter for Sentiment Analysis and Emotion Recognition
+2609.05806v2 | 2026-09-05 | Exposing Weaknesses in Emotion Recognition in Conversations
+2608.29035v1 | 2026-08-29 | EmoLASP: Emotion Recognition with Language Models and Answer Set Programming
+2608.22745v1 | 2026-08-24 | DiaRelay: Relaying Dialogue Context with a Constant-Size Memory for Emotion Recognition in Conversation
+2608.14029v1 | 2026-08-14 | S2Dialog: Multimodal Dialogue Retrieval with Semantic and Acoustic-Style Modeling
+2608.10448v2 | 2026-08-11 | Rationale-Guided Learning for Multimodal Emotion Recognition
+2607.26726v2 | 2026-07-29 | AtmosERC: Modeling Dialogue-Level Affective Atmosphere for Emotion Recognition in Conversation
+2607.17366v1 | 2026-07-19 | EII-SCL: Harnessing Emotional Inertia for Multimodal Emotion Recognition in Conversation
+2607.18336v1 | 2026-07-19 | EmoEUS: Uncertainty Supervision for Multimodal Emotion Recognition in Conversation
+2605.23328v3 | 2026-05-22 | Emotion Recognition in Sign Language Conversation
+2605.21565v1 | 2026-05-20 | Leveraging Self-Paced Curriculum Learning for Enhanced Modality Balance in Multimodal Conversational Emotion Recognition
+2605.18547v2 | 2026-05-18 | CLEAR: Coupling Local Evidence with Affective Representations for Multimodal Emotion Recognition in Conversation
+2607.20445v1 | 2026-05-13 | SCoPE: Shift-Aware Speaker-Conditioned Priors for Emotion Recognition in Conversations
+2605.02665v2 | 2026-05-04 | Fuzzy Fingerprinting Encoder Pre-trained Language Models for Emotion Recognition in Conversations: Human Assessment and Validity Study
+2608.04013v1 | 2026-04-22 | C$^2$MOE: Consistency and Complementarity-guided Mixture of Experts for Incomplete Multimodal Emotion Learning
+2604.18003v1 | 2026-04-20 | SELF-EMO: Emotional Self-Evolution from Recognition to Consistent Expression
+2604.14204v1 | 2026-04-03 | Disentangled Dual-Branch Graph Learning for Conversational Emotion Recognition
+2604.01916v1 | 2026-04-02 | SURE: Synergistic Uncertainty-aware Reasoning for Multimodal Emotion Recognition in Conversations
+2603.26840v1 | 2026-03-27 | Dual-branch Graph Domain Adaptation for Cross-scenario Multi-modal Emotion Recognition
+2603.22345v1 | 2026-03-22 | Dynamic Fusion-Aware Graph Convolutional Neural Network for Multimodal Emotion Recognition in Conversations
+2603.09212v1 | 2026-03-10 | Acoustic and Semantic Modeling of Emotion in Spoken Language
+2603.07138v1 | 2026-03-07 | Emotion Transcription in Conversation: A Benchmark for Capturing Subtle and Complex Emotional States through Natural Language
+2602.23300v1 | 2026-02-26 | A Mixture-of-Experts Model for Multimodal Emotion Recognition in Conversations
+2602.00914v1 | 2026-01-31 | A Baseline Multimodal Approach to Emotion Recognition in Conversations
+2601.14274v1 | 2026-01-10 | Divide and Refine: Enhancing Multimodal Representation and Explainability for Emotion Recognition in Conversation
+2601.00181v3 | 2026-01-01 | Causal Emotion Recognition in Conversation: Context Saturation and Discourse-Marker Evidence
+2512.03521v3 | 2025-12-03 | Cross-Space Synergy: A Unified Framework for Multimodal Emotion Recognition in Conversation
+2511.22463v3 | 2025-11-27 | Orthogonal Disentanglement with Projected Feature Alignment for Multimodal Emotion Recognition in Conversation
+2511.22447v2 | 2025-11-27 | Angle-Optimized Partial Disentanglement for Multimodal Emotion Recognition in Conversation
+2511.14969v1 | 2025-11-18 | Quality-Controlled Multimodal Emotion Recognition in Conversations with Identity-Based Transfer Learning and MAMBA Fusion
+2511.07061v3 | 2025-11-10 | Do LLMs Feel? Teaching Emotion Recognition with Prompts, Retrieval, and Curriculum Learning
+2511.00344v1 | 2025-11-01 | Federated Dialogue-Semantic Diffusion for Emotion Recognition under Incomplete Modalities
+2510.08606v1 | 2025-10-07 | Centering Emotion Hotspots: Multimodal Local-Global Fusion and Cross-Modal Alignment for Emotion Recognition in Conversations
+2509.18175v1 | 2025-09-17 | ERFC: Happy Customers with Emotion Recognition and Forecasting in Conversation in Call Centers
+2508.19533v1 | 2025-08-27 | Emotion Transfer with Enhanced Prototype for Unseen Emotion Recognition in Conversation
+2508.11889v1 | 2025-08-16 | In-Context Examples Matter: Improving Emotion Recognition in Conversation with Instruction Tuning
+2508.08925v1 | 2025-08-12 | LPGNet: A Lightweight Network with Parallel Attention and Gated Fusion for Multimodal Emotion Recognition
+2508.05474v1 | 2025-08-07 | Can Large Language Models Generate Effective Datasets for Emotion Recognition in Conversations?
+2508.06564v2 | 2025-08-06 | Grounding Emotion Recognition with Visual Prototypes: VEGA -- Revisiting CLIP in MERC
+2507.15205v2 | 2025-07-21 | Long-Short Distance Graph Neural Networks and Improved Curriculum Learning for Emotion Recognition in Conversation
+2507.09076v2 | 2025-07-11 | Dynamic Parameter Memory: Temporary LoRA-Enhanced LLM for Long-Sequence Emotion Recognition in Conversation
+2506.18716v1 | 2025-06-23 | Multi-modal Anchor Gated Transformer with Knowledge Distillation for Emotion Recognition in Conversation
+2506.12325v1 | 2025-06-14 | GSDNet: Revisiting Incomplete Multimodal-Diffusion from Graph Spectrum Perspective for Conversation Emotion Recognition
+2505.20511v2 | 2025-05-26 | Multimodal Emotion Recognition in Conversations: A Survey of Methods, Trends, Challenges and Prospects
+2503.23990v1 | 2025-03-31 | BeMERC: Behavior-Aware MLLM-based Framework for Multimodal Emotion Recognition in Conversation
+2503.23721v1 | 2025-03-31 | Unimodal-driven Distillation in Multimodal Emotion Recognition with Dynamic Fusion
+2503.20919v1 | 2025-03-26 | GatedxLSTM: A Multimodal Affective Computing Approach for Emotion Recognition in Conversations
+2503.06405v3 | 2025-03-09 | Heterogeneous bimodal attention fusion for speech emotion recognition
+2502.21154v3 | 2025-02-28 | Hypergraph Multi-Modal Learning for EEG-based Emotion Recognition in Conversation
+2502.12478v1 | 2025-02-18 | MSE-Adapter: A Lightweight Plugin Endowing LLMs with the Capability to Perform Multimodal Sentiment Analysis and Emotion Recognition
+2502.04424v4 | 2025-02-06 | EmoBench-M: Benchmarking Emotional Intelligence for Multimodal Large Language Models
+2501.11468v1 | 2025-01-20 | LLM supervised Pre-training for Multimodal Emotion Recognition in Conversations
+2501.11166v1 | 2025-01-19 | AIMA at SemEval-2024 Task 10: History-Based Emotion Recognition in Hindi-English Code-Mixed Conversations
+2501.01123v1 | 2025-01-02 | TED: Turn Emphasis with Dialogue Feature Attention for Emotion Recognition in Conversation
+2412.16444v1 | 2024-12-21 | Effective Context Modeling Framework for Emotion Recognition in Conversations
+2412.02935v2 | 2024-12-04 | Dynamic Graph Neural ODE Network for Multi-modal Emotion Recognition in Conversation
+2411.19822v1 | 2024-11-29 | SDR-GNN: Spectral Domain Reconstruction Graph Neural Network for Incomplete Multimodal Learning in Conversational Emotion Recognition
+2411.13917v1 | 2024-11-21 | SpikEmo: Enhancing Emotion Recognition With Spiking Temporal Dynamics in Conversations
+2411.10060v1 | 2024-11-15 | CMATH: Cross-Modality Augmented Transformer with Hierarchical Variational Distillation for Multimodal Emotion Recognition in Conversation
+2409.07388v3 | 2024-09-11 | Recent Advances in Multimodal Affective Computing: An NLP Perspective
+2409.05243v1 | 2024-09-08 | Mamba-Enhanced Text-Audio-Video Alignment Network for Emotion Recognition in Conversations
+2408.12895v1 | 2024-08-23 | Ada2I: Enhancing Modality Balance for Multimodal Conversational Emotion Recognition
+2501.17261v1 | 2024-08-22 | NUS-Emo at SemEval-2024 Task 3: Instruction-Tuning LLM for Multimodal Emotion-Cause Analysis in Conversations
+2408.04547v1 | 2024-08-08 | Emotional Cues Extraction and Fusion for Multi-modal Emotion Prediction and Recognition in Conversation
+2408.00970v3 | 2024-08-02 | Multimodal Fusion via Hypergraph Autoencoder and Contrastive Learning for Emotion Recognition in Conversation
+2407.21536v2 | 2024-07-31 | Tracing Intricate Cues in Dialogue: Joint Graph Structure and Sentiment Dynamics for Multimodal Emotion Recognition
+2407.16714v1 | 2024-07-23 | Masked Graph Learning with Recurrent Alignment for Multimodal Emotion Recognition in Conversation
+2407.04279v1 | 2024-07-05 | BiosERC: Integrating Biography Speakers Supported by LLMs for ERC Tasks
+2407.00581v1 | 2024-06-30 | MasonTigers at SemEval-2024 Task 10: Emotion Discovery and Flip Reasoning in Conversation with Ensemble of Transformers and Prompting
+2407.00119v2 | 2024-06-27 | Efficient Long-distance Latent Relation-aware Graph Neural Network for Multi-modal Emotion Recognition in Conversations
+2405.17900v1 | 2024-05-28 | Enhancing Emotion Recognition in Conversation through Emotional Cross-Modal Fusion and Inter-class Contrastive Learning
+2405.13049v3 | 2024-05-19 | SemEval-2024 Task 3: Multimodal Emotion Cause Analysis in Conversations
+2404.17862v2 | 2024-04-27 | Revisiting Multimodal Emotion Recognition in Conversation from the Perspective of Graph Spectrum
+2404.17858v2 | 2024-04-27 | Revisiting Multi-modal Emotion Learning with Broad State Space Models and Probability-guidance Fusion
+2404.11141v1 | 2024-04-17 | Context-Aware Siamese Networks for Efficient Emotion Recognition in Conversation
+2407.00743v1 | 2024-04-12 | AIMDiT: Modality Augmentation and Interaction via Multimodal Dimension Transformation for Emotion Recognition in Conversations
+2404.04525v1 | 2024-04-06 | IITK at SemEval-2024 Task 10: Who is the speaker? Improving Emotion Recognition and Flip Reasoning in Conversations via Speaker Embeddings
+2404.02589v1 | 2024-04-03 | Affective-NLI: Towards Accurate and Interpretable Personality Recognition in Conversation
+2404.00403v2 | 2024-03-30 | UniMEEC: Towards Unified Multimodal Emotion Recognition and Emotion Cause
+2403.20289v1 | 2024-03-29 | Emotion-Anchored Contrastive Learning Framework for Emotion Recognition in Conversation
+2403.07260v2 | 2024-03-12 | LaERC-S: Improving LLM-based Emotion Recognition in Conversation with Speaker Characteristics
+2402.18944v1 | 2024-02-29 | SemEval 2024 -- Task 10: Emotion Discovery and Reasoning its Flip in Conversation (EDiReF)
+2402.17269v2 | 2024-02-27 | Curriculum Learning Meets Directed Acyclic Graph for Multimodal Emotion Recognition
+2402.10921v1 | 2024-01-26 | AM^2-EmoJE: Adaptive Missing-Modality Emotion Recognition in Conversation via Joint Embedding Learning
+2401.12987v2 | 2024-01-16 | TelME: Teacher-leading Multimodal Fusion Network for Emotion Recognition in Conversation
+2312.06337v1 | 2023-12-11 | Deep Imbalanced Learning for Multimodal Emotion Recognition in Conversations
+2312.03756v1 | 2023-12-04 | LineConGraphs: Line Conversation Graphs for Effective Emotion Recognition using Graph Neural Networks
+2310.20494v1 | 2023-10-31 | A Transformer-Based Model With Self-Distillation for Multimodal Emotion Recognition in Conversations
+2310.16676v3 | 2023-10-25 | SSLCL: An Efficient Model-Agnostic Supervised Contrastive Learning Framework for Emotion Recognition in Conversations
+2310.14614v1 | 2023-10-23 | Efficient Cross-Task Prompt Tuning for Few-Shot Conversational Emotion Recognition
+2310.13080v1 | 2023-10-19 | From Multilingual Complexity to Emotional Clarity: Leveraging Commonsense to Unveil Emotions in Code-Mixed Dialogues
+2310.11374v4 | 2023-10-17 | DialogueLLM: Context and Emotion Knowledge-Tuned Large Language Models for Emotion Recognition in Conversations
+2310.04456v1 | 2023-10-04 | Multimodal Prompt Transformer with Hybrid Contrastive Learning for Emotion Recognition in Conversation
+2309.11911v6 | 2023-09-21 | InstructERC: Reforming Emotion Recognition in Conversation with Multi-task Retrieval-Augmented Large Language Models
+2309.09799v2 | 2023-09-18 | Watch the Speakers: A Hybrid Continuous Attribution Network for Emotion Recognition in Conversation With Emotion Disentanglement
+2309.04292v1 | 2023-09-08 | Fuzzy Fingerprinting Transformer Language-Models for Emotion Recognition in Conversations
+2309.01339v1 | 2023-09-04 | UniSA: Unified Generative Framework for Sentiment Analysis
+2308.14894v1 | 2023-08-28 | Multiscale Contextual Learning for Speech Emotion Recognition in Emergency Call Center Conversations
+2308.12648v1 | 2023-08-24 | From Chatter to Matter: Addressing Critical Steps of Emotion Recognition Learning in Task-oriented Dialogue
+2308.11029v2 | 2023-08-18 | RBA-GCN: Relational Bilevel Aggregation Graph Convolutional Network for Emotion Recognition
+2308.06450v2 | 2023-08-12 | ERNetCL: A novel emotion recognition network in textual conversation based on curriculum learning strategy
+2307.15432v2 | 2023-07-28 | CFN-ESA: A Cross-Modal Fusion Network with Emotion-Shift Awareness for Dialogue Emotion Recognition
+2307.00449v2 | 2023-07-02 | A Dual-Stream Recurrence-Attention Network With Global-Local Awareness for Emotion Recognition in Textual Dialog
+2306.15376v1 | 2023-06-27 | Exploiting Pseudo Future Contexts for Emotion Recognition in Conversations
+2306.06601v1 | 2023-06-11 | Mimicking the Thinking Process for Emotion Recognition in Conversation with Prompts and Paraphrasing
+2306.02193v1 | 2023-06-03 | LDEB -- Label Digitization with Emotion Binarization and Machine Learning for Emotion Recognition in Conversational Dialogues
+2306.01505v2 | 2023-06-02 | Supervised Adversarial Contrastive Learning for Emotion Recognition in Conversations
+2305.14071v1 | 2023-05-23 | Disentangled Variational Autoencoder for Emotion Recognition in Conversations
+2305.03506v3 | 2023-05-04 | SI-LSTM: Speaker Hybrid Long-short Term Memory and Cross Modal Attention for Emotion Recognition in Conversation
+2304.08216v2 | 2023-04-17 | Context-Dependent Embedding Utterance Representations for Emotion Recognition in Conversations
+2304.06910v2 | 2023-04-14 | HCAM -- Hierarchical Cross Attention Model for Multi-modal Emotion Recognition
+2303.11117v5 | 2023-03-20 | EmotionIC: emotional inertia and contagion-driven dependency modeling for emotion recognition in conversation
+2302.03508v1 | 2023-02-07 | Cluster-Level Contrastive Learning for Emotion Recognition in Conversations
+2301.06745v1 | 2023-01-17 | BERT-ERC: Fine-tuning BERT is Enough for Emotion Recognition in Conversation
+## abs:"audio-visual emotion recognition" -> 14
+2610.30651v1 | 2026-10-22 | AGF-Net: A Robust Multimodal Emotion Recognition Model for Asynchronous Audio-Visual Signals Based on Predictive Dynamic Fusion with Negative Learning
+2603.11095v1 | 2026-03-11 | Multimodal Self-Attention Network with Temporal Alignment for Audio-Visual Emotion Recognition
+2405.16701v1 | 2024-05-26 | Detail-Enhanced Intra- and Inter-modal Interaction for Audio-Visual Emotion Recognition
+2401.05698v2 | 2024-01-11 | HiCMAE: Hierarchical Contrastive Masked Autoencoder for Self-Supervised Audio-Visual Emotion Recognition
+2305.07216v2 | 2023-05-12 | Versatile audio-visual learning for emotion recognition
+2305.03369v1 | 2023-05-05 | The MuSe 2023 Multimodal Sentiment Analysis Challenge: Mimicked Emotions, Cross-Cultural Humour, and Personalisation
+2207.05691v2 | 2022-06-23 | The MuSe 2022 Multimodal Sentiment Analysis Challenge: Humor, Emotional Reactions, and Stress
+2111.08910v1 | 2021-11-17 | Information Fusion in Attention Networks Using Adaptive and Multi-level Factorized Bilinear Pooling for Audio-visual Emotion Recognition
+2107.03465v3 | 2021-07-07 | An audiovisual and contextual approach for categorical and continuous emotion recognition in-the-wild
+2104.07123v2 | 2021-04-14 | The MuSe 2021 Multimodal Sentiment Analysis Challenge: Sentiment, Emotion, Physiological-Emotion, and Stress
+2103.09154v2 | 2021-03-16 | Leveraging Recent Advances in Deep Learning for Audio-Visual Emotion Recognition
+2004.14858v3 | 2020-04-30 | MuSe 2020 -- The First International Multimodal Sentiment Analysis in Real-life Media Challenge and Workshop
+1809.04931v1 | 2018-08-12 | Multimodal Local-Global Ranking Fusion for Emotion Recognition
+1603.08321v1 | 2016-03-28 | Audio Visual Emotion Recognition with Temporal Alignment and Perception Attention
+## abs:"music emotion recognition" -> 49
+2611.08966v1 | 2026-11-06 | Concordance-Optimal Continuous Music Emotion Estimation: Variance Decomposition, Dual-Branch Temporal Fusion, and Conformal Prediction Intervals
+2610.23063v1 | 2026-10-16 | Known Music, Unknown Response: Leakage-Audited Dynamic Arousal Forecasting With Scheduled Future Music
+2609.15675v1 | 2026-09-14 | Sectional Structure and Emotional Dynamics in Chinese Pop Songs: An Empirical Analysis of Valence-Arousal Trajectories across 100 Songs
+2608.29987v1 | 2026-08-30 | How Well Do Generative Music Models Follow Emotion Conditioning?
+2608.25621v1 | 2026-08-26 | Dissonance Spectrum explicitly models perceptual frequency interactions for better music understanding
+2603.11796v1 | 2026-03-12 | Enhancing Music Recommendation with User Mood Input
+2512.13998v4 | 2025-12-16 | Memo2496: Expert-Annotated Dataset and Dual-view Adaptive Framework for Music Emotion Recognition
+2512.17946v1 | 2025-12-15 | Let the Model Learn to Feel: Mode-Guided Tonality Injection for Symbolic Music Emotion Recognition
+2511.18146v1 | 2025-11-22 | GeeSanBhava: Sentiment Tagged Sinhala Music Video Comment Data Set
+2510.17879v1 | 2025-10-17 | Decoding Listeners Identity: Person Identification from EEG Signals Using a Lightweight Spiking Transformer
+2510.04688v1 | 2025-10-06 | A Study on the Data Distribution Gap in Music Emotion Recognition
+2508.03780v1 | 2025-08-05 | Are Inherently Interpretable Models More Robust? A Study In Music Emotion Recognition
+2504.18799v1 | 2025-04-26 | A Survey on Multimodal Music Emotion Recognition
+2502.03979v3 | 2025-02-06 | Towards Unified Music Emotion Recognition across Dimensional and Categorical Models
+2501.18633v1 | 2025-01-28 | Linguistic Analysis of Sinhala YouTube Comments on Sinhala Music Videos: A Dataset Study
+2501.11570v1 | 2025-01-20 | Uncertainty Estimation in the Real World: A Study on Music Emotion Recognition
+2412.19200v1 | 2024-12-26 | Personalized Dynamic Music Emotion Recognition with Dual-Scale Attention-Based Meta-Learning
+2411.09080v1 | 2024-11-13 | Language Models for Music Medicine Generation
+2410.21897v3 | 2024-10-29 | Semi-Supervised Self-Learning Enhanced Music Emotion Recognition
+2410.11522v2 | 2024-10-15 | Leveraging LLM Embeddings for Cross Dataset Label Alignment and Zero Shot Music Emotion Prediction
+2409.17899v2 | 2024-09-26 | Exploring Acoustic Similarity in Emotional Speech and Music via Self-Supervised Representations
+2409.15545v3 | 2024-09-23 | Addressing Emotion Bias in Music Emotion Recognition and Generation with Frechet Audio Distance
+2407.06060v3 | 2024-07-08 | MERGE -- A Bimodal Audio-Lyrics Dataset for Static Music Emotion Recognition
+2406.08809v3 | 2024-06-13 | Are We There Yet? A Brief Survey of Music Emotion Prediction Datasets, Models and Outstanding Challenges
+2308.14317v1 | 2023-08-28 | Symbolic & Acoustic: Multi-domain Music Emotion Modeling for Instrumental Music
+2303.09364v1 | 2023-03-16 | Tollywood Emotions: Annotation of Valence-Arousal in Telugu Song Lyrics
+2302.13321v1 | 2023-02-26 | Multi-Modality in Music: Predicting Emotion in Music from High-Level Audio Features and Lyrics
+2212.13369v1 | 2022-12-27 | Feature Selection Approaches for Optimising Music Emotion Recognition Methods
+2210.09434v1 | 2022-10-17 | Modelling Emotion Dynamics in Song Lyrics with State Space Models
+2204.05649v2 | 2022-04-12 | ADFF: Attention Based Deep Feature Fusion Approach for Music Emotion Recognition
+2201.05782v1 | 2022-01-15 | A Novel Multi-Task Learning Method for Symbolic Music Emotion Recognition
+2112.07192v5 | 2021-12-14 | Embedding-based Music Emotion Recognition Using Composite Loss
+2112.04975v1 | 2021-12-09 | Personalized musically induced emotions of not-so-popular Colombian music
+2112.00702v2 | 2021-12-01 | Semi-supervised music emotion recognition using noisy student training and harmonic pitch class profiles
+2107.13231v1 | 2021-07-28 | On Perceived Emotion in Expressive Piano Performance: Further Experimental Evidence for the Relevance of Mid-level Perceptual Features
+2106.14323v2 | 2021-06-27 | Use of Variational Inference in Music Emotion Recognition
+2106.07787v2 | 2021-06-14 | Tracing Back Music Emotion Predictions to Sound Sources and Intuitive Perceptual Qualities
+2106.02556v2 | 2021-06-04 | Musical Prosody-Driven Emotion Classification: Interpreting Vocalists Portrayal of Emotions Through Machine Learning
+2104.06517v1 | 2021-04-13 | Comparison and Analysis of Deep Audio Embeddings for Music Emotion Recognition
+2102.00616v1 | 2021-02-01 | Neural Network architectures to classify emotions in Indian Classical Music
+2101.02051v1 | 2021-01-06 | Transformer-based approach towards music emotion recognition from lyrics
+2101.00132v1 | 2021-01-01 | Audio Content Analysis
+2002.09021v1 | 2020-02-20 | A Comparative Study of Western and Chinese Classical Music based on Soundscape Models
+1909.05882v2 | 2019-09-12 | The emotions that we perceive in music: the influence of language and lyrics comprehension on agreement
+1905.11760v1 | 2019-05-28 | Two-level Explanations in Music Emotion Recognition
+1806.10570v1 | 2018-06-27 | Modeling Majorness as a Perceptual Property in Music from Listener Ratings
+1806.04903v1 | 2018-06-13 | A data-driven approach to mid-level perceptual musical feature modeling
+1704.05665v1 | 2017-04-19 | CNN based music emotion classification
+1611.10120v1 | 2016-11-30 | Fusion of EEG and Musical Features in Continuous Music-emotion Recognition
+## abs:"multimodal emotion recognition" -> 120
+2611.24481v2 | 2026-11-18 | UEmo-D1: An Efficient and Calibrated Decision Model for Unified Multimodal Emotion Recognition
+2611.11987v1 | 2026-11-09 | When Audio and Video Mislead: Evaluating Multimodal AI for Conversational Emotion Recognition
+2611.08860v1 | 2026-11-06 | Mind the Divergence: Divergence-Guided Reliability-Aware Fusion and Adaptive LLM Prompting for Conversational Emotion Recognition
+2611.01943v1 | 2026-11-01 | Beyond Multimodal Emotion Conflict: Temporal Context-Aware Hidden Emotion Detection with Multimodal Large Language Models
+2610.32481v1 | 2026-10-23 | CASE: Confusion-Aware Skill Evolution for Frozen Multimodal Emotion Models
+2610.29430v1 | 2026-10-21 | MERP: A Latent-Bottleneck Framework for Robust Multi-Modal Multi-Label Emotion Recognition
+2610.27521v1 | 2026-10-20 | Multiscale Temporal-Spectral-Spatial EEG Learning With Modality-Specific and Modality-Invariant Representations for Emotion Recognition
+2610.18587v1 | 2026-10-13 | GeoMER: A Joint Euclidean-Hyperbolic Geometry Framework for Multimodal Emotion Recognition
+2610.13013v1 | 2026-10-09 | Evidential Multimodal Transformers with Dempster-Shafer Fusion for Emotion Recognition
+2609.39413v1 | 2026-09-30 | Aligning the Incomplete: Joint Distribution Calibration for Multimodal EEG-Eye Emotion Recognition
+2609.31399v1 | 2026-09-25 | Differential Attention Unlocks Complementary EEG and Speech Fusion for Emotion Recognition
+2609.27615v1 | 2026-09-23 | BiCFlow-MER: Orchestrating Discriminative and Generative Multimodal Emotion Recognition via Conditional Transport
+2609.20081v2 | 2026-09-17 | From Generative to Discriminative: Lightweight Adaptation of SpeechLLMs for Multimodal Emotion Recognition
+2609.16962v1 | 2026-09-15 | Affect-Prototype Guided Fusion for Open-Vocabulary Incomplete Multi-modal Emotion Recognition
+2609.13857v1 | 2026-09-12 | ReH-FUSE: Reliability-Aware Hierarchical Fusion of Experts for Multimodal Emotion Recognition in Conversation
+2609.04690v1 | 2026-09-04 | Enhancing Multimodal Emotion Recognition via Multi-Feature Encoding and Attention-Based Fusion
+2609.03569v1 | 2026-09-03 | Occlusion-Robust Multimodal Emotion Recognition in VR via Fusion of Facial Images and EMG
+2609.29556v2 | 2026-09-02 | Cross-Modal Emotion Understanding: A Transformer-GAT Approach for Dialogue Emotion Recognition
+2608.30563v2 | 2026-08-31 | Modality Disentangled Learning for Incomplete Multimodal Emotion Recognition: A Primitive Memory Distillation Perspective
+2608.28966v1 | 2026-08-29 | When Vocal Tone and Literal Meaning Diverge: An Acoustic-Semantic Incongruity Study for Large Audio-Language Models
+2608.18386v1 | 2026-08-18 | TTSD-FAR: Test-Time Self-Distillation with Fisher-Anchored Restoration for Missing-Modality Emotion Recognition in LVLMs
+2608.10448v2 | 2026-08-11 | Rationale-Guided Learning for Multimodal Emotion Recognition
+2608.07867v1 | 2026-08-08 | CONFER: Conflict-Aware Evidence Negotiation for Regime-Calibrated Weak Supervision in Multimodal Emotion Recognition
+2609.38182v1 | 2026-08-04 | EmAvatar: Multimodal Empathetic Response Generation via Conflict Resolution and Expressive Guidance
+2607.21013v2 | 2026-07-23 | EmoAgent-R1: Towards Multimodal Emotion Understanding with Reinforcement Learning-based Dynamic Agent Specialization
+2607.18109v1 | 2026-07-20 | SpEmoC: A Balanced Speaker-Segment Multimodal Emotion Benchmark
+2607.17366v1 | 2026-07-19 | EII-SCL: Harnessing Emotional Inertia for Multimodal Emotion Recognition in Conversation
+2607.18336v1 | 2026-07-19 | EmoEUS: Uncertainty Supervision for Multimodal Emotion Recognition in Conversation
+2607.14683v1 | 2026-07-16 | InCarEmo: A Multimodal Dataset for In-Cabin Emotion Recognition and Driver State Monitoring
+2607.12787v2 | 2026-07-14 | Do We Really Need Multimodal Emotion Language Models Larger Than 1B Parameters?
+2606.27652v1 | 2026-06-26 | MER-R1: Multimodal Emotion Reasoning via Slow-Fast Thinking Synergy
+2606.18228v1 | 2026-06-16 | MAJIC: Leveraging Articulatory Motion for Speech-based Emotion Recognition
+2606.00170v1 | 2026-05-29 | UF-AMA: A unified framework for cross-domain emotion recognition via adaptive multimodal alignment
+2605.29590v1 | 2026-05-28 | State-Anchored Complete-View Distillation for Robust Conversational Multimodal Emotion Recognition
+2605.21565v1 | 2026-05-20 | Leveraging Self-Paced Curriculum Learning for Enhanced Modality Balance in Multimodal Conversational Emotion Recognition
+2605.21239v1 | 2026-05-20 | Multimodal Emotion Recognition with Large Language Models
+2605.18547v2 | 2026-05-18 | CLEAR: Coupling Local Evidence with Affective Representations for Multimodal Emotion Recognition in Conversation
+2605.18884v1 | 2026-05-16 | Navigating the Emotion Tree: Hierarchical Hyperbolic RAG for Multimodal Emotion Recognition
+2605.08252v1 | 2026-05-07 | Multimodal Emotion Recognition via Causal-Diffusion Bridge (Affect-Diff)
+2605.06245v1 | 2026-05-07 | Modality-Aware Contrastive and Uncertainty-Regularized Emotion Recognition
+2605.06126v2 | 2026-05-07 | AffectGPT-RL: Revealing Roles of Reinforcement Learning in Open-Vocabulary Emotion Recognition
+2605.04877v1 | 2026-05-06 | To Fuse or to Drop? Dual-Path Learning for Resolving Modality Conflicts in Multimodal Emotion Recognition
+2605.01024v1 | 2026-05-01 | EmoMM: Benchmarking and Steering MLLM for Multimodal Emotion Recognition under Conflict and Missingness
+2604.25383v1 | 2026-04-28 | ML-SAN: Multi-Level Speaker-Adaptive Network for Emotion Recognition in Conversations
+2608.04013v1 | 2026-04-22 | C$^2$MOE: Consistency and Complementarity-guided Mixture of Experts for Incomplete Multimodal Emotion Learning
+2604.12735v3 | 2026-04-14 | AffectAgent: Collaborative Multi-Agent Reasoning for Retrieval-Augmented Multimodal Emotion Recognition
+2605.20200v1 | 2026-04-06 | Evaluating multimodal emotion recognition in proactive conversational agents: A user study
+2604.14204v1 | 2026-04-03 | Disentangled Dual-Branch Graph Learning for Conversational Emotion Recognition
+2604.01916v1 | 2026-04-02 | SURE: Synergistic Uncertainty-aware Reasoning for Multimodal Emotion Recognition in Conversations
+2603.26840v1 | 2026-03-27 | Dual-branch Graph Domain Adaptation for Cross-scenario Multi-modal Emotion Recognition
+2603.22345v1 | 2026-03-22 | Dynamic Fusion-Aware Graph Convolutional Neural Network for Multimodal Emotion Recognition in Conversations
+2603.20894v1 | 2026-03-21 | AcoustEmo: Open-Vocabulary Emotion Reasoning via Utterance-Aware Acoustic Q-Former
+2603.19718v1 | 2026-03-20 | BALM: A Model-Agnostic Framework for Balanced Multimodal Learning under Imbalanced Missing Rates
+2603.22306v1 | 2026-03-18 | Memory Bear AI Memory Science Engine for Multimodal Affective Intelligence: A Technical Report
+2603.16463v1 | 2026-03-17 | Follow the Clues, Frame the Truth: Hybrid-evidential Deductive Reasoning in Open-Vocabulary Multimodal Emotion Recognition
+2603.11971v2 | 2026-03-12 | Multimodal Emotion Recognition via Bi-directional Cross-Attention and Temporal Modeling
+2603.13340v1 | 2026-03-07 | Complementarity-Supervised Spectral-Band Routing for Multimodal Emotion Recognition
+2603.02569v1 | 2026-03-03 | An LLM-Assisted Toolkit for Inspectable Multimodal Emotion Data Annotation
+2602.09121v1 | 2026-02-09 | Uncertainty-Aware Multimodal Emotion Recognition through Dirichlet Parameterization
+2602.05496v1 | 2026-02-05 | XEmoGPT: An Explainable Multimodal Emotion Recognition Framework with Cue-Level Perception and Reasoning
+2602.04260v1 | 2026-02-04 | Decoupled Hierarchical Distillation for Multimodal Emotion Recognition
+2601.14274v1 | 2026-01-10 | Divide and Refine: Enhancing Multimodal Representation and Explainability for Emotion Recognition in Conversation
+2601.22161v2 | 2026-01-07 | Attention Isn't All You Need for Emotion Recognition:Domain Features Outperform Transformers on the EAV Dataset
+2601.02414v1 | 2026-01-03 | MIAR: Modality Interaction and Alignment Representation Fuison for Multimodal Emotion
+2512.20938v1 | 2025-12-24 | Pioneering Multimodal Emotion Recognition in the Era of Large Models: From Closed Sets to Open Vocabularies
+2512.19379v3 | 2025-12-22 | OmniMER: Auxiliary-Enhanced LLM Adaptation for Indonesian Multimodal Emotion Recognition
+2512.16485v1 | 2025-12-18 | Smile on the Face, Sadness in the Eyes: Bridging the Emotion Gap with a Multimodal Dataset of Eye and Facial Behaviors
+2512.03521v3 | 2025-12-03 | Cross-Space Synergy: A Unified Framework for Multimodal Emotion Recognition in Conversation
+2512.10975v1 | 2025-12-02 | Agent-Based Modular Learning for Multimodal Emotion Recognition in Human-Agent Systems
+2511.22463v3 | 2025-11-27 | Orthogonal Disentanglement with Projected Feature Alignment for Multimodal Emotion Recognition in Conversation
+2511.22447v2 | 2025-11-27 | Angle-Optimized Partial Disentanglement for Multimodal Emotion Recognition in Conversation
+2601.14259v1 | 2025-11-21 | A Cloud-Based Cross-Modal Transformer for Emotion Recognition and Adaptive Human-Computer Interaction
+2511.15085v1 | 2025-11-19 | TiCAL:Typicality-Based Consistency-Aware Learning for Multimodal Emotion Recognition
+2511.14969v1 | 2025-11-18 | Quality-Controlled Multimodal Emotion Recognition in Conversations with Identity-Based Transfer Learning and MAMBA Fusion
+2511.10892v1 | 2025-11-14 | MCN-CL: Multimodal Cross-Attention Network and Contrastive Learning for Multimodal Emotion Recognition
+2511.02794v1 | 2025-11-04 | When One Modality Sabotages the Others: A Diagnostic Lens on Multimodal Reasoning
+2511.00344v1 | 2025-11-01 | Federated Dialogue-Semantic Diffusion for Emotion Recognition under Incomplete Modalities
+2510.24827v1 | 2025-10-28 | MCIHN: A Hybrid Network Model Based on Multi-path Cross-modal Interaction for Multimodal Emotion Recognition
+2510.23506v4 | 2025-10-27 | Emotion-Coherent Reasoning for Multimodal LLMs via Emotional Rationale Verifier
+2510.18036v1 | 2025-10-20 | Transformer Redesign for Late Fusion of Audio-Text Features on Ultra-Low-Power Edge Hardware
+2510.10078v4 | 2025-10-11 | Improving Speech Emotion Recognition with Mutual Information Regularized Generative Model
+2509.24322v1 | 2025-09-29 | Multimodal Large Language Models Meet Multimodal Emotion Recognition and Reasoning: A Survey
+2509.16858v2 | 2025-09-21 | Towards an Adaptive Social Game-Playing Robot: An Offline Reinforcement Learning-Based Framework
+2509.19330v2 | 2025-09-14 | LibEMER: A novel benchmark and algorithms library for EEG-based Multimodal Emotion Recognition
+2508.17502v1 | 2025-08-24 | Social-MAE: A Transformer-Based Multimodal Autoencoder for Face and Voice
+2508.06800v2 | 2025-08-09 | Hardness-Aware Dynamic Curriculum Learning for Robust Multimodal Emotion Recognition with Missing Modalities
+2508.05991v1 | 2025-08-08 | ECMF: Enhanced Cross-Modal Fusion for Multimodal Emotion Recognition in MER-SEMI Challenge
+2508.06564v2 | 2025-08-06 | Grounding Emotion Recognition with Visual Prototypes: VEGA -- Revisiting CLIP in MERC
+2508.02133v4 | 2025-08-04 | Hierarchical MoE: Continuous Multimodal Emotion Recognition with Incomplete and Asynchronous Inputs
+2508.01644v1 | 2025-08-03 | DRKF: Decoupled Representations with Knowledge Fusion for Multimodal Emotion Recognition
+2508.01318v3 | 2025-08-02 | AffectGPT-R1: Leveraging Reinforcement Learning for Open-Vocabulary Multimodal Emotion Recognition
+2508.03722v1 | 2025-07-29 | Multimodal Video Emotion Recognition with Reliable Reasoning Priors
+2507.21395v1 | 2025-07-29 | Sync-TVA: A Graph-Attention Framework for Multimodal Emotion Recognition with Cross-Modal Fusion
+2507.19356v1 | 2025-07-25 | Enhancing Speech Emotion Recognition Leveraging Aligning Timestamps of ASR Transcripts and Speaker Diarization
+2507.11202v1 | 2025-07-15 | A Robust Incomplete Multimodal Low-Rank Adaptation Approach for Emotion Recognition
+2507.04278v4 | 2025-07-06 | EmoPrefer: Can Large Language Models Understand Human Emotion Preferences?
+2507.02080v1 | 2025-07-02 | TAGF: Time-aware Gated Fusion for Multimodal Valence-Arousal Estimation
+2506.15497v1 | 2025-06-18 | Foundation of Affective Computing and Interaction
+2506.12325v1 | 2025-06-14 | GSDNet: Revisiting Incomplete Multimodal-Diffusion from Graph Spectrum Perspective for Conversation Emotion Recognition
+2506.10452v1 | 2025-06-12 | Towards Robust Multimodal Emotion Recognition under Missing Modalities and Distribution Shifts
+2506.00903v1 | 2025-06-01 | Leveraging CLIP Encoder for Multimodal Emotion Recognition
+2506.00865v1 | 2025-06-01 | GIA-MIC: Multimodal Emotion Recognition with Gated Interactive Attention and Modality-Invariant Learning Constraints
+2505.23018v3 | 2025-05-29 | EmotionTalk: An Interactive Chinese Multimodal Emotion Dataset With Rich Annotations
+2505.20511v2 | 2025-05-26 | Multimodal Emotion Recognition in Conversations: A Survey of Methods, Trends, Challenges and Prospects
+2505.17501v1 | 2025-05-23 | RoHyDR: Robust Hybrid Diffusion Recovery for Incomplete Multimodal Emotion Recognition
+2505.17090v1 | 2025-05-20 | EmoSign: A Multimodal Dataset for Understanding Emotions in American Sign Language
+2505.14143v1 | 2025-05-20 | Multimodal Mixture of Low-Rank Experts for Sentiment Analysis and Emotion Recognition
+2505.06536v1 | 2025-05-10 | TACFN: Transformer-based Adaptive Cross-modal Fusion Network for Multimodal Emotion Recognition
+2504.19549v2 | 2025-04-28 | DEEMO: De-identity Multimodal Emotion Recognition and Reasoning
+2504.16573v1 | 2025-04-23 | PsyCounAssist: A Full-Cycle AI-Powered Psychological Counseling Assistant System
+2504.05158v1 | 2025-04-07 | Leveraging Label Potential for Enhanced Multimodal Emotion Recognition
+2503.23990v1 | 2025-03-31 | BeMERC: Behavior-Aware MLLM-based Framework for Multimodal Emotion Recognition in Conversation
+2503.23721v1 | 2025-03-31 | Unimodal-driven Distillation in Multimodal Emotion Recognition with Dynamic Fusion
+2503.20919v1 | 2025-03-26 | GatedxLSTM: A Multimodal Affective Computing Approach for Emotion Recognition in Conversations
+2503.17453v1 | 2025-03-21 | Feature-Based Dual Visual Feature Extraction Model for Compound Multimodal Emotion Recognition
+2503.16584v1 | 2025-03-20 | EVA-MED: An Enhanced Valence-Arousal Multimodal Emotion Dataset for Emotion Recognition
+2502.08573v1 | 2025-02-12 | A Novel Approach to for Multimodal Emotion Recognition : Multimodal semantic information fusion
+2501.16566v2 | 2025-01-27 | AffectGPT: A New Dataset, Model, and Benchmark for Emotion Understanding with Multimodal Large Language Models
+2501.15063v1 | 2025-01-25 | Cross-modal Context Fusion and Adaptive Graph Convolutional Network for Multimodal Conversational Emotion Recognition
+2501.12674v1 | 2025-01-22 | EmoTech: A Multi-modal Speech Emotion Recognition Using Multi-source Low-level Information with Hybrid Recurrent Network

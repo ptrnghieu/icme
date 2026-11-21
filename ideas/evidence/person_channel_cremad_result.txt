@@ -1,0 +1,12 @@
+human_reliability columns: ['clip', 'n_voice', 'r_voice', 'dist_voice_N', 'dist_voice_H', 'dist_voice_S', 'dist_voice_F', 'dist_voice_D', 'dist_voice_A', 'agree_voice', 'n_face', 'r_face']
+actors 91; clips/actor 76-82
+per-actor mean d_human (face-voice): mean 0.177, SD 0.062, min 0.045, max 0.332
+actors with d<0 (voice more recognizable than face): 0/91
+ICC(1) of d_human by actor = 0.016  (MSB 0.3157, MSW 0.1340)
+split-half r of per-actor d = 0.104; Spearman-Brown = 0.188
+model per-actor (n=74 actor x run): visual-audio acc diff mean -0.091, SD 0.118; actors where audio-only beats visual-only: 78.38%
+Spearman(model per-actor visual-audio diff, human per-actor d) = 0.124
+  actor0 seed0: best single modality (global) 53.23 | per-actor oracle modality 53.75 | headroom +0.51
+  actor0 seed1: best single modality (global) 50.79 | per-actor oracle modality 52.02 | headroom +1.23
+  actor1 seed0: best single modality (global) 50.02 | per-actor oracle modality 51.79 | headroom +1.77
+  actor1 seed1: best single modality (global) 50.82 | per-actor oracle modality 52.04 | headroom +1.22

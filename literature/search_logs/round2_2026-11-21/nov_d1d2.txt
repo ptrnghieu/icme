@@ -1,0 +1,40 @@
+## abs:"speaker normalization" AND abs:emotion -> 0
+## abs:"speaker-level" AND abs:calibration AND abs:emotion -> 0
+## abs:"batch calibration" AND abs:audio -> 0
+## abs:"test-time adaptation" AND abs:"speech emotion" -> 2
+2509.25495v2 | 2025-09-29 | EMO-TTA: Improving Test-Time Adaptation of Audio-Language Models for Speech Emotion Recognition
+2601.16240v1 | 2026-01-21 | Test-Time Adaptation for Speech Emotion Recognition
+## abs:"personalized" AND abs:"speech emotion recognition" AND abs:"unlabeled" -> 1
+2202.02611v1 | 2022-02-05 | Privacy-preserving Speech Emotion Recognition through Semi-Supervised Federated Learning
+## abs:"speaker-conditioned" AND abs:emotion -> 4
+2110.04153v2 | 2021-10-08 | Cross-speaker Emotion Transfer Based on Speaker Condition Layer Normalization and Semi-Supervised Training in Text-To-Speech
+2607.20445v1 | 2026-05-13 | SCoPE: Shift-Aware Speaker-Conditioned Priors for Emotion Recognition in Conversations
+2604.13229v1 | 2026-04-14 | ProSDD: Learning Prosodic Representations for Speech Deepfake Detection against Expressive and Emotional Attacks
+2501.08791v1 | 2025-01-15 | Speech Synthesis along Perceptual Voice Quality Dimensions
+## abs:"zero-shot" AND abs:"speech emotion" AND abs:"bias" AND abs:"audio language model" -> 1
+2601.04564v1 | 2026-01-08 | When Tone and Words Disagree: Towards Robust Speech Emotion Recognition under Acoustic-Semantic Conflict
+## abs:"frame selection" AND abs:emotion -> 4
+1808.02668v1 | 2018-08-08 | An Occam's Razor View on Learning Audiovisual Emotion Recognition with Small Training Sets
+2509.20724v1 | 2025-09-25 | Visual Authority and the Rhetoric of Health Misinformation: A Multimodal Analysis of Social Media Videos
+2102.03513v1 | 2021-02-06 | Privacy-Preserving Video Classification with Convolutional Neural Networks
+2204.01915v2 | 2022-04-05 | An Exploration of Active Learning for Affective Digital Phenotyping
+## abs:"audio-guided" AND abs:"frame" -> 12
+2611.03393v2 | 2026-11-02 | TaoMate-FVSR: Audio-Guided Facial Video Restoration
+2604.25455v1 | 2026-04-28 | Generative UI as an Accessibility Bridge: Lessons from C2C E-Commerce
+2512.23646v2 | 2025-12-29 | Active Perception Agent for Omnimodal Audio-Video Understanding
+2601.17323v2 | 2026-01-24 | SkyReels-V3 Technique Report
+2603.01431v1 | 2026-03-02 | SeaVIS: Sound-Enhanced Association for Online Audio-Visual Instance Segmentation
+2308.08488v2 | 2023-08-14 | Improving Audio-Visual Speech Recognition by Lip-Subword Correlation Based Visual Pre-training and Cross-Modal Fusion Encoder
+2608.29121v1 | 2026-08-29 | Acoustically Grounded Cost Learning for Open-Vocabulary Audio-Visual Semantic Segmentation
+2309.11500v4 | 2023-09-20 | Auto-ACD: A Large-scale Dataset for Audio-Language Representation Learning
+2403.20153v1 | 2024-03-29 | Talk3D: High-Fidelity Talking Portrait Synthesis via Personalized 3D Generative Prior
+2405.07202v1 | 2024-05-12 | Unified Video-Language Pre-training with Synchronized Audio
+2505.22141v2 | 2025-05-28 | FaceEditTalker: Controllable Talking Head Generation with Facial Attribute Editing
+2512.10945v1 | 2025-12-11 | MeViS: A Multi-Modal Dataset for Referring Motion Expression Video Segmentation
+## abs:"keyframe" AND abs:"emotion recognition" -> 3
+2403.16263v1 | 2024-03-24 | Emotion Recognition from the perspective of Activity Recognition
+2603.02569v1 | 2026-03-03 | An LLM-Assisted Toolkit for Inspectable Multimodal Emotion Data Annotation
+2604.15280v2 | 2026-04-16 | Why Do Vision Language Models Struggle To Recognize Human Emotions?
+## abs:"apex frame" AND abs:"audio" -> 0
+## abs:"frame sampling" AND abs:"emotion" -> 1
+2408.15777v1 | 2024-08-28 | A Survey on Facial Expression Recognition of Static and Dynamic Emotions

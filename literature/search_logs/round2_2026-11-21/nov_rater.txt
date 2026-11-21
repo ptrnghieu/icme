@@ -1,0 +1,35 @@
+## abs:perspectivist AND abs:emotion -> 2
+2608.29446v1 | 2026-08-29 | Whose Assessment of Distress? Community Perspectives and LLM Alignment on Well-Being Posts
+2605.11166v1 | 2026-05-11 | Unpacking the Eye of the Beholder: Social Location, Identity, and the Moving Target of Political Perspectives
+## abs:"annotator-specific" AND abs:emotion -> 1
+2611.01539v1 | 2026-11-01 | The Structure of Disagreement in Emotion Annotation
+## abs:"individual annotator" AND abs:emotion -> 9
+2608.03358v1 | 2026-08-04 | ArtECulture: Benchmarking Culture-Conditioned Visual Emotion Understanding in Multimodal Large Language Models
+2605.09955v1 | 2026-05-11 | Beyond Majority Voting: Agreement-Based Clustering to Model Annotator Perspectives in Subjective NLP Tasks
+2603.26592v2 | 2026-03-27 | Evaluating Interactive 2D Visualization as a Sample Selection Strategy for Biomedical Time-Series Data Annotation
+2510.05934v1 | 2025-10-07 | Revisiting Modeling and Evaluation Approaches in Speech Emotion Recognition: Considering Subjectivity of Annotators and Ambiguity of Emotions
+2510.01976v1 | 2025-10-02 | Taking a SEAT: Predicting Value Interpretations from Sentiment, Emotion, Argument, and Topic Annotations
+2408.11956v2 | 2024-08-21 | The Whole Is Bigger Than the Sum of Its Parts: Modeling Individual Annotators to Capture Emotional Variability
+2402.12862v1 | 2024-02-20 | Handling Ambiguity in Emotion: From Out-of-Domain Detection to Distribution Estimation
+2402.01355v2 | 2024-02-02 | FindingEmo: An Image Dataset for Emotion Recognition in the Wild
+2310.04481v1 | 2023-10-06 | Acoustic and linguistic representations for speech continuous emotion recognition in call center conversations
+## abs:"rater-specific" AND abs:emotion -> 0
+## abs:"annotator modeling" AND abs:speech -> 9
+2611.03271v1 | 2026-11-02 | A Human-Verified AI Workflow for Annotating Environmental Sound Data
+2606.11795v1 | 2026-06-10 | Tight Boundary Prediction in Speaker Diarization Using Causal-Anticausal Consistency
+2605.09955v1 | 2026-05-11 | Beyond Majority Voting: Agreement-Based Clustering to Model Annotator Perspectives in Subjective NLP Tasks
+2508.17164v1 | 2025-08-23 | The Impact of Annotator Personas on LLM Behavior Across the Perspectivism Spectrum
+2406.08111v1 | 2024-06-12 | Audio-conditioned phonemic and prosodic annotation for building text-to-speech models from unlabeled speech data
+2110.05719v1 | 2021-10-12 | Dealing with Disagreements: Looking Beyond the Majority Vote in Subjective Annotations
+2002.12196v3 | 2020-02-27 | Annotation of Emotion Carriers in Personal Narratives
+0711.2486v1 | 2007-11-15 | An annotation based approach to support design communication
+cmp-lg/9506006v1 | 1995-06-08 | Automatic Extraction of Tagset Mappings from Parallel-Annotated Corpora
+## abs:"personalized perception" AND abs:emotion -> 5
+2611.21690v1 | 2026-11-16 | EgoLink: Egocentric Language-Vision Interactive Network Knowledge Challenge Summary
+2412.19200v1 | 2024-12-26 | Personalized Dynamic Music Emotion Recognition with Dual-Scale Attention-Based Meta-Learning
+2305.16076v2 | 2023-05-25 | Transfer Learning for Personality Perception via Speech Emotion Recognition
+2002.03773v1 | 2020-02-03 | Deriving Emotions and Sentiments from Visual Content: A Disaster Analysis Use Case
+1909.05568v2 | 2019-09-12 | On the Effect of Observed Subject Biases in Apparent Personality Analysis from Audio-visual Signals
+## abs:"label distribution" AND abs:"emotion recognition in conversation" -> 0
+## abs:"ambiguity" AND abs:"emotion recognition in conversation" AND abs:"large language model" -> 1
+2609.05806v2 | 2026-09-05 | Exposing Weaknesses in Emotion Recognition in Conversations

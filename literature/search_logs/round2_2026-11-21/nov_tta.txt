@@ -1,0 +1,46 @@
+## abs:"test-time adaptation" AND abs:multimodal AND abs:emotion -> 1
+2412.07121v2 | 2024-12-10 | Bridging the Gap for Test-Time Multimodal Sentiment Analysis
+## abs:"test-time adaptation" AND abs:"sentiment" -> 2
+2601.21012v1 | 2026-01-28 | Order-Aware Test-Time Adaptation: Leveraging Temporal Dynamics for Robust Streaming Inference
+2412.07121v2 | 2024-12-10 | Bridging the Gap for Test-Time Multimodal Sentiment Analysis
+## abs:"test-time" AND abs:"facial expression" -> 18
+2610.24926v2 | 2026-10-18 | Stable Signer V3: 4D Deformable Primitive Splatting Is All You Need for Sign Language Production
+2608.18386v1 | 2026-08-18 | TTSD-FAR: Test-Time Self-Distillation with Fisher-Anchored Restoration for Missing-Modality Emotion Recognition in LVLMs
+2608.06467v1 | 2026-08-06 | Test-Time Adaptation with Online Personalized Energy-Based Cache for Fine-Grained Video Expression Recognition
+2603.27999v3 | 2026-03-30 | CLIP-AUTT: Test-Time Personalization with Action Unit Prompting for Fine-Grained Video Emotion Recognition
+2603.21309v4 | 2026-03-22 | Test-Time Adaptation via Cache Personalization for Facial Expression Recognition in Videos
+2603.17998v1 | 2026-03-18 | The Unreasonable Effectiveness of Text Embedding Interpolation for Continuous Image Steering
+2512.01895v1 | 2025-12-01 | StyleYourSmile: Cross-Domain Face Retargeting Without Paired Multi-Style Data
+2509.12583v3 | 2025-09-16 | Robust Audio-Visual Target Speaker Extraction with Emotion-Aware Multiple Enrollment Fusion
+2503.23450v1 | 2025-03-30 | AU-TTT: Vision Test-Time Training model for Facial Action Unit Detection
+2503.23257v1 | 2025-03-29 | FIESTA: Fisher Information-based Efficient Selective Test-time Adaptation
+2408.09035v1 | 2024-08-16 | Multi Teacher Privileged Knowledge Distillation for Multimodal Expression Recognition
+2401.14861v1 | 2024-01-26 | Implicit Neural Representation for Physics-driven Actuated Soft Bodies
+2303.14471v1 | 2023-03-25 | HQ3DAvatar: High Quality Controllable 3D Head Avatar
+2303.10536v2 | 2023-03-19 | TempT: Temporal consistency for Test-time adaptation
+2203.12905v2 | 2022-03-24 | Privileged Attribution Constrained Deep Networks for Facial Expression Recognition
+2108.03427v1 | 2021-08-07 | Learning Facial Representations from the Cycle-consistency of Face
+1711.10914v1 | 2017-11-29 | Learning Spatio-temporal Features with Partial Expression Sequences for on-the-Fly Prediction
+1611.09961v1 | 2016-11-30 | Semantic Facial Expression Editing using Autoencoded Flow
+## abs:"test-time adaptation" AND abs:"audio-visual" -> 4
+2610.23117v1 | 2026-10-16 | Advancing Sentence-Level Dysarthric Audio-Visual Speech Recognition via Test-Time Adaptation
+2610.08192v2 | 2026-10-06 | MacJEPA: Missingness-Robust Audio-Visual Recognition from Untrimmed Egocentric Videos
+2602.18528v4 | 2026-02-20 | Audio-Visual Continual Test-Time Adaptation without Forgetting
+2506.00358v3 | 2025-05-31 | $\texttt{AVROBUSTBENCH}$: Benchmarking the Robustness of Audio-Visual Recognition Models at Test-Time
+## abs:"source-free" AND abs:emotion -> 8
+2606.28202v1 | 2026-06-26 | An Enhanced Source-Free Unsupervised Domain Adaptation Framework for Cross-Dataset EEG Emotion Recognition via Predictive Coding and Test-Time Training
+2605.00857v1 | 2026-04-21 | Foundation Model Guided Dual-Branch Co-Adaptation for Source-Free EEG Decoding
+2503.20771v4 | 2025-03-26 | Disentangled Source-Free Personalization for Facial Expression Recognition with Neutral Target Data
+2504.03707v2 | 2025-03-26 | Towards Practical Emotion Recognition: An Unsupervised Source-Free Approach for EEG Domain Adaptation
+2501.15519v1 | 2025-01-26 | Fuzzy-aware Loss for Source-free Domain Adaptation in Visual Emotion Recognition
+2412.13577v1 | 2024-12-18 | Bridge then Begin Anew: Generating Target-relevant Intermediate Model for Source-free Visual Emotion Adaptation
+2401.12925v1 | 2024-01-23 | Emotion-Aware Contrastive Adaptation Network for Source-Free Cross-Corpus Speech Emotion Recognition
+2210.05246v1 | 2022-10-11 | Cluster-level pseudo-labelling for source-free cross-domain facial expression recognition
+## abs:"cross-corpus" AND abs:"audio-visual" AND abs:emotion -> 2
+2403.12687v2 | 2024-03-19 | Audio-Visual Compound Expression Recognition Method based on Late Modality Fusion and Rule-based Decision
+1805.06652v1 | 2018-05-17 | Affective computing using speech and eye gaze: a review and bimodal system proposal for continuous affect prediction
+## abs:"domain adaptation" AND abs:"multimodal emotion" -> 4
+2609.39413v1 | 2026-09-30 | Aligning the Incomplete: Joint Distribution Calibration for Multimodal EEG-Eye Emotion Recognition
+2606.00170v1 | 2026-05-29 | UF-AMA: A unified framework for cross-domain emotion recognition via adaptive multimodal alignment
+2603.26840v1 | 2026-03-27 | Dual-branch Graph Domain Adaptation for Cross-scenario Multi-modal Emotion Recognition
+2508.03722v1 | 2025-07-29 | Multimodal Video Emotion Recognition with Reliable Reasoning Priors

@@ -1,0 +1,67 @@
+## au:Kaffeza -> 1
+2609.11247v1 | 2026-09-10 | The Illusion of Balanced Multimodal Sentiment Analysis: Beyond the Limits of Optimization-Based Methods
+## au:Potamianos AND abs:multimodal AND abs:modality -> 9
+2607.12686v1 | 2026-07-14 | Segregate, Refine, Integrate: Decomposing Multimodal Fusion for Sentiment Analysis
+2201.09828v1 | 2022-01-24 | MMLatch: Bottom-up Top-down Fusion for Multimodal Sentiment Analysis
+2504.11082v1 | 2025-04-15 | DeepMLF: Multimodal language model with learnable tokens for deep fusion in sentiment analysis
+2609.11247v1 | 2026-09-10 | The Illusion of Balanced Multimodal Sentiment Analysis: Beyond the Limits of Optimization-Based Methods
+2312.12334v1 | 2023-12-19 | PowMix: A Versatile Regularizer for Multimodal Sentiment Analysis
+2210.01191v1 | 2022-10-03 | Extending Compositional Attention Networks for Social Reasoning in Videos
+2609.27094v1 | 2026-09-22 | Pose-Aware Multimodal Automatic Tagging for Greek Traditional Music
+2505.23268v1 | 2025-05-29 | Unsupervised Transcript-assisted Video Summarization and Highlight Detection
+2506.09556v2 | 2025-06-11 | MEDUSA: A Multimodal Deep Fusion Multi-Stage Training Framework for Speech Emotion Recognition in Naturalistic Conditions
+## abs:"out-of-fold" AND abs:multimodal -> 10
+2607.27289v1 | 2026-07-29 | TIER-MoE: Trust-Informed Expert Routing via Conditional Modality Risk for Multimodal Fusion in Biomedical Classification
+2608.07867v1 | 2026-08-08 | CONFER: Conflict-Aware Evidence Negotiation for Regime-Calibrated Weak Supervision in Multimodal Emotion Recognition
+2610.07678v1 | 2026-10-06 | Accurate Molecular Property Regression Using Simple Fusion of Complementary Classical and Graph Predictors
+2608.20383v1 | 2026-06-29 | Infrared Hotspot-Guided Early Warning of Lithium-Ion Battery Thermal Runaway Under Mechanical Abuse
+2609.09948v1 | 2026-09-09 | Robust Rank Aggregation for Multimodal Speech-Based Alzheimer's Disease Detection
+2609.17649v1 | 2026-09-15 | Multimodal Three-Class Alzheimer's Disease Classification: The MCI Bottleneck
+2607.10530v1 | 2026-07-12 | Integrating Physics-Informed Neural Networks and 3D Vascular Geometry Learning for Cerebral Aneurysm Detection and Multimodal Rupture-Risk Prediction
+2611.09224v1 | 2026-11-06 | HMMF-Net: A Lightweight Hierarchical Multi-Frame Multimodal Fusion Network for Accurate Fish Feeding Intensity Assessment
+2611.23710v1 | 2026-11-18 | CONCORD-Rec: Catalog-Conditioned Modality Utility for Semantic-ID Diffusion Recommendation
+2610.21613v2 | 2026-10-15 | To Think or Not to Think: Pre-Decisional Reasoning Budgets for Referring Audio-Visual Segmentation
+## abs:"cross-fitting" AND abs:multimodal -> 5
+2610.30220v1 | 2026-10-21 | When Reconstruction Is Not Enough: Doubly Robust Counterfactual and Interventional Mediation Analysis with Learned Multimodal Representations
+2610.01935v3 | 2026-10-01 | Pragmatic DML with AI-Learned Representations
+2609.26848v1 | 2026-09-22 | A Leakage-Aware Multimodal Evaluation Framework for Early Intraoperative Acute Kidney Injury Prediction
+2610.36583v1 | 2026-10-27 | MM-Net: A Multimodal Multi-Task Network for Sleep Staging and Sleep Apnea Assessment After Ischemic Stroke
+2609.01909v1 | 2026-09-01 | The Ceiling Is in the Channel: Auditing Learner Gaps and Measurement Frontiers in Clinical Prediction
+## abs:"stacking" AND abs:multimodal AND abs:emotion -> 6
+2505.20007v2 | 2025-05-26 | Improving Speech Emotion Recognition Through Cross Modal Attention Alignment and Balanced Stacking Model
+2511.17926v1 | 2025-11-22 | Three-Class Emotion Classification for Audiovisual Scenes Based on Ensemble Learning Scheme
+2508.08925v1 | 2025-08-12 | LPGNet: A Lightweight Network with Parallel Attention and Gated Fusion for Multimodal Emotion Recognition
+2511.21908v2 | 2025-11-26 | Multi-Modal Machine Learning for Early Trust Prediction in Human-AI Interaction Using Face Image and GSR Bio Signals
+1805.00705v2 | 2018-05-02 | Investigating Audio, Visual, and Text Fusion Methods for End-to-End Automatic Personality Prediction
+2606.22699v1 | 2026-06-21 | Catching Lies Without Sending the Video: Privacy-Preserving Multimodal Deception Detection
+## abs:"dynamic ensemble selection" AND abs:multimodal -> 0
+## abs:"held-out" AND abs:"fusion weights" -> 6
+2610.33639v1 | 2026-10-24 | UniQuery: Unifying Vision Models with a Joint Query Head for Cross-Domain Pedestrian Attribute Recognition
+2608.02112v1 | 2026-08-03 | Do Static Embeddings Add Value to Hybrid Dutch Retrieval?
+2610.13422v1 | 2026-10-09 | SADL: A Size-Adaptive Decision Layer for Chronic Stroke Lesion Segmentation in ISLES 2026
+2610.20543v1 | 2026-10-14 | Reliability-Aware Multimodal Sentiment Prediction Under Local Modality Missingness
+2610.03618v2 | 2026-10-02 | Video-Time Priors for EEG-fNIRS Emotion Regression on Familiar Videos
+2609.14765v1 | 2026-09-13 | A Personalized Dynamic Balance Evaluation Paradigm for Hip Exoskeleton-Assisted Walking under Unexpected Ground Perturbations
+## abs:"validation" AND abs:"sample-level" AND abs:fusion AND abs:modality -> 3
+2506.00030v2 | 2025-05-26 | Modality Equilibrium Matters: Minor-Modality-Aware Adaptive Alternating for Cross-Modal Memory Enhancement
+2507.08574v2 | 2025-07-11 | Knowledge-Guided Brain Tumor Segmentation via Synchronized Visual-Semantic-Topological Prior Fusion
+2503.04151v2 | 2025-03-06 | Robust Multi-View Learning via Representation Fusion of Sample-Level Attention and Alignment of Simulated Perturbation
+## abs:"meta-learning" AND abs:"fusion weights" AND abs:modality -> 0
+## abs:"bilevel" AND abs:"multimodal fusion" -> 1
+2104.09379v2 | 2021-04-19 | BM-NAS: Bilevel Multimodal Neural Architecture Search
+## abs:"dynamic fusion" AND abs:"sentiment" -> 1
+2512.01410v1 | 2025-12-01 | DyFuLM: An Advanced Multimodal Framework for Sentiment Analysis
+## abs:"per-sample" AND abs:"fusion weight" -> 3
+2610.26090v1 | 2026-10-19 | RGB--Event Object Detection Across Operating Frequencies via Reliability-Supervised Routing and Asymmetric-Resolution Fusion
+2607.08234v2 | 2026-07-09 | RhyMix: A Lightweight Adaptive Multi-Rhythm Network for Long-Term Time Series Forecasting
+2609.33492v2 | 2026-09-27 | FedMHAR: Federated Multimodal Human Activity Recognition using Multi-Agent Reinforcement Learning
+## abs:"modality valuation" -> 2
+2309.06255v4 | 2023-09-12 | Enhancing multimodal cooperation via sample-level modality valuation
+2609.11247v1 | 2026-09-10 | The Illusion of Balanced Multimodal Sentiment Analysis: Beyond the Limits of Optimization-Based Methods
+## abs:"gradient-blending" OR abs:"gradient blending" -> 6
+1905.12681v5 | 2019-05-29 | What Makes Training Multi-Modal Classification Networks Hard?
+2608.10316v1 | 2026-08-10 | UniMod: Enhancing Multi-Modal Medical Diagnosis through Cross-Modality and Within-Modality Alignment
+2608.25736v1 | 2026-08-26 | Moving Beyond More Views: Redundancy-Aware Ego-Exo Fusion for Proficiency Estimation
+2506.02635v5 | 2025-06-03 | Efficient Quadratic Corrections for Frank-Wolfe Algorithms
+2409.04104v1 | 2024-09-06 | MixNet: Joining Force of Classical and Modern Approaches Toward the Comprehensive Pipeline in Motor Imagery EEG Classification
+2401.03609v3 | 2024-01-07 | Multi-Modal Federated Learning for Cancer Staging over Non-IID Datasets with Unbalanced Modalities
