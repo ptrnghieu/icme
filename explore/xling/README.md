@@ -33,3 +33,28 @@ Thí nghiệm sàng lọc cho ứng viên **D** (chéo ngôn ngữ) và **F4** (
 - **D (text bị shift nặng nhất, tín hiệu phi ngôn ngữ làm điểm neo): ĐÃ LOẠI** (C1: premise bị bác bỏ bằng thí nghiệm).
 - **F4, phần chéo ngôn ngữ: không được ủng hộ.** Audio và face mất hướng phân biệt (ATR ≈ TR, AUC gần 50), không phải chỉ đổi độ lớn. Phần posed → tự nhiên chờ P0b (CREMA-D → MELD).
 - **Phát hiện phụ:** con số thất bại chéo ngôn ngữ trong CASP (mô hình nguồn 39,17% ở MOSI→SIMS) đi kèm với việc dùng hai BERT riêng cho hai ngôn ngữ. Với encoder đa ngôn ngữ dùng chung cộng chuẩn hóa theo dữ liệu đích, text chuyển giao gần trọn vẹn (TR 0,87–0,95). Không so trực tiếp được với CASP vì metric khác nhau (ACC so với balanced accuracy).
+
+## P0b: CREMA-D (posed, 91 diễn viên, 6/12 câu) → MELD (Friends, dev dùng làm train oracle, test 2.610 → 2.329 sau khi bỏ surprise)
+- **Data:** 4.173 clip CREMA-D (train/valid/test theo diễn viên: 2.931/414/828) và 3.287 utterance MELD, 6 lớp chung.
+- **Kết quả** (`p0b_report_2026-11-21.md`):
+  - WavLM: TR +0,45, ATR +0,82, ATR − TR = +0,37 [+0,19; +0,54], hệ số g = −0,11 [−0,16; −0,05].
+  - Face emb: oracle MELD gần mức ngẫu nhiên (21,0 so với 16,7).
+  - Audio + Face: TR +0,88 (oracle MELD thấp: 29,1).
+- **Chẩn đoán mô tả, làm sau khi thấy kết quả** (`p0b_diag.py`, `p0b_diag_2026-11-21.txt`):
+  - Mô hình WavLM dự đoán neutral cho **5%** clip MELD, trong khi neutral thực tế chiếm **54%**.
+  - Hiệu chỉnh prior bằng EM (Saerens 2002) làm bacc giảm (23,0 → 18,8). Shift vì vậy không phải lệch prior thuần túy, cũng không phải co cường độ.
+  - Bên trong CREMA-D, câu IEO, biên logit tăng dần LO < MD < HI (audio 2,75/3,36/4,75; face 2,51/2,88/3,39) cùng với bacc (audio 40,0/58,9/72,2).
+- **Kết luận F4: ĐÃ LOẠI.** P0 (chéo ngôn ngữ) cho thấy audio và face mất hướng phân biệt. P0b cho g âm và cho thấy hiệu chỉnh prior hay gain không gỡ được. MELD là phim diễn, nên phép thử posed → tự nhiên cũng bị nhiễu.
+
+## P0c: khái niệm cảm xúc so với embedding (ứng viên H)
+- **Khái niệm:**
+  - audio: `superb/wav2vec2-base-superb-er` (IEMOCAP, 4 lớp);
+  - face: 7 logit FER;
+  - text: `cardiffnlp/twitter-xlm-roberta-base-sentiment`.
+- **Tiêu chí cố định trước:** docstring của `p0c_analyze.py`.
+- **Kết quả MOSI↔SIMS** (`p0c_report_2026-11-21.md`):
+  - Face MOSI→SIMS: TR(khái niệm) − TR(emb) = +0,60 [+0,24; +1,00].
+  - Audio-khái niệm gần như không mang tín hiệu sentiment kể cả trong domain (51,4 trên MOSI, 53,4 trên SIMS); hiệu −1,31 [−4,44; +0,22].
+  - SIMS→MOSI: không xác định (oracle gần mức ngẫu nhiên).
+  - Kết quả: 0/2 hướng ủng hộ. Tối đa chỉ đạt 1/3 dù CREMA-D→MELD ra sao, nên **H theo quy tắc: DOES NOT HOLD → ĐÃ LOẠI**. Phần P0c của CREMA-D/MELD đã dừng vì không đổi được kết luận.
+- **Mô tả:** fusion trên khái niệm có bacc chéo 76,4 (MOSI→SIMS) và 78,4 (SIMS→MOSI), so với 68,6 và 63,1 của fusion trên embedding. Hiệu ứng chủ yếu đến từ bộ phân loại sentiment text đa ngôn ngữ có sẵn (TR 0,99/1,00), tức là chuyển giao zero-shot của một mô hình train cho đúng task. Không so trực tiếp được với CASP hay MIDG vì metric và cách xử lý nhãn 0 khác nhau.

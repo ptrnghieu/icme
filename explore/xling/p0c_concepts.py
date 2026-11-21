@@ -13,7 +13,11 @@ import numpy as np, pandas as pd, torch, soundfile as sf
 from transformers import AutoFeatureExtractor, AutoModelForAudioClassification, AutoTokenizer, AutoModelForSequenceClassification
 
 torch.set_num_threads(int(os.environ.get("NT", "2")))
-mode, src, lab, out = sys.argv[1:5]
+mode = sys.argv[1]
+if mode == "zip":
+    src, lab, out = sys.argv[2:5]
+else:
+    src, out = sys.argv[2:4]; lab = None
 fe = AutoFeatureExtractor.from_pretrained("superb/wav2vec2-base-superb-er")
 am = AutoModelForAudioClassification.from_pretrained("superb/wav2vec2-base-superb-er").eval()
 tt = AutoTokenizer.from_pretrained("cardiffnlp/twitter-xlm-roberta-base-sentiment")

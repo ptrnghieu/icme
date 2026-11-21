@@ -85,15 +85,20 @@ def run(S, T, nS, nT, sets, chance):
 
 kmosi = lambda D: [f"{v}_{c}" for v, c in zip(D["video_id"], D["clip_id"])]  # noqa: E731
 M = binary(merge("mosi_p0.npz", "mosi_p0c.npz", kmosi)); Sm = binary(merge("sims_p0.npz", "sims_p0c.npz", kmosi))
-Cr = merge("cremad_p0b.npz", "cremad_p0c.npz", lambda D: list(D["id"])); Me = merge("meld_p0b.npz", "meld_p0c.npz", lambda D: list(D["id"]))
-classes = sorted(set(Cr["label"]) & set(Me["label"])); Cr, Me = multi(Cr, classes), multi(Me, classes)
+HAVE_CM = os.path.exists(os.path.join(R, "cremad_p0c.npz")) and os.path.exists(os.path.join(R, "meld_p0c.npz"))
+if HAVE_CM:
+    Cr = merge("cremad_p0b.npz", "cremad_p0c.npz", lambda D: list(D["id"])); Me = merge("meld_p0b.npz", "meld_p0c.npz", lambda D: list(D["id"]))
+    classes = sorted(set(Cr["label"]) & set(Me["label"])); Cr, Me = multi(Cr, classes), multi(Me, classes)
 SET3 = {"text(e5)": ["text"], "text(concept)": ["t_concept"], "audio(WavLM)": ["a_wavlm"], "audio(concept)": ["a_concept"],
         "face(ViT-FER emb)": ["v_emb"], "face(concept=FER logits)": ["v_logits"],
         "fusion(embeddings)": ["text", "a_wavlm", "v_emb"], "fusion(concepts)": ["t_concept", "a_concept", "v_logits"]}
 SET2 = {k: v for k, v in SET3.items() if not k.startswith("text")}
 SET2["fusion(embeddings)"] = ["a_wavlm", "v_emb"]; SET2["fusion(concepts)"] = ["a_concept", "v_logits"]
-votes = [run(M, Sm, "MOSI", "SIMS", SET3, 50.0), run(Sm, M, "SIMS", "MOSI", SET3, 50.0),
-         run(Cr, Me, "CREMA-D", "MELD", SET2, 100.0 / len(classes))]
-say(f"\nDirections supporting H: {sum(votes)}/3 -> H premise {'HOLDS' if sum(votes) >= 2 else 'DOES NOT HOLD'}")
+votes = [run(M, Sm, "MOSI", "SIMS", SET3, 50.0), run(Sm, M, "SIMS", "MOSI", SET3, 50.0)]
+if HAVE_CM:
+    votes.append(run(Cr, Me, "CREMA-D", "MELD", SET2, 100.0 / len(classes)))
+    say(f"\nDirections supporting H: {sum(votes)}/3 -> H premise {'HOLDS' if sum(votes) >= 2 else 'DOES NOT HOLD'}")
+else:
+    say(f"\nPARTIAL (CREMA-D->MELD pending): directions supporting H so far {sum(votes)}/2; no decision yet")
 if OUT:
     open(OUT, "w").write("\n".join(L) + "\n")
