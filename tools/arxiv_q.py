@@ -1,6 +1,7 @@
 import sys, urllib.request, urllib.parse, re, time, html
 q=sys.argv[1]; n=int(sys.argv[2]) if len(sys.argv)>2 else 50
-url='https://export.arxiv.org/api/query?'+urllib.parse.urlencode({'search_query':q,'start':0,'max_results':n,'sortBy':'relevance'})
+sort=sys.argv[3] if len(sys.argv)>3 else 'relevance'  # relevance | submittedDate | lastUpdatedDate
+url='https://export.arxiv.org/api/query?'+urllib.parse.urlencode({'search_query':q,'start':0,'max_results':n,'sortBy':sort,'sortOrder':'descending'})
 for attempt in range(4):
     try:
         x=urllib.request.urlopen(url,timeout=60).read().decode(); break
