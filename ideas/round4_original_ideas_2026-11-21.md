@@ -11,7 +11,18 @@
 
 **Trạng thái:** đây là phác thảo, **chưa qua C1–C5**, chưa phải ứng viên.
 
-## E. Hậu kỳ là "modality ẩn" (ưu tiên 1)
+## E. Hậu kỳ là "modality ẩn" → **ĐÃ LOẠI theo tiêu chí đặt trước của P6** (2026-11-21)
+**Kết quả P6** (`explore/xling/p6_report_2026-11-21.md`):
+- CH-SIMS: 38,7% clip có nhạc; chỉ riêng tag hậu kỳ dự đoán cực tính được bacc 59,1 (+9,1 [+4,8; +14,5]) → đạt.
+- MELD: chỉ 9,6% clip có nhạc hoặc tiếng khán giả, dưới ngưỡng 15%. Tag hậu kỳ vẫn đạt +6,2 [+3,2; +9,5] → trượt vì tỉ lệ xuất hiện thấp.
+- Quy tắc đòi đạt cả CH-SIMS lẫn MELD → **DOES NOT HOLD**.
+
+**Post-hoc:**
+- Split của CH-SIMS dùng chung video. Tách theo video thì bacc tụt còn 54,9.
+- Mô tả thêm: khi có nhạc và tag hậu kỳ trái với nhãn, mô hình audio WavLM chỉ đúng 57,1%, so với 71,1% khi tag khớp nhãn (n = 63 và 90).
+- MER2024 không có ID video nguồn, nên không kiểm soát được kiểu rò rỉ này.
+
+### Phác thảo ban đầu (giữ lại để tham khảo)
 **Insight:**
 - Clip trong các dataset MER in-the-wild được cắt từ media đã biên tập. Hậu kỳ cài vào đó tín hiệu cảm xúc **của đạo diễn**, không phải **của nhân vật**:
   - nhạc nền (phim và phim truyền hình Trung Quốc: MER2023–2025, CH-SIMS);
