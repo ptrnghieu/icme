@@ -1,0 +1,21 @@
+2503.21806 | IEMOCAP,MELD,MOSEI, | github.com/Vincent-ZHQ/MSER 
+2505.23236 | IEMOCAP,MELD, | github.com/SEUJames23/explainable-emotionrecognition. 
+2508.01644 | IEMOCAP,MELD, | github.com/PANPANKK/DRKF. 
+2508.06564 | IEMOCAP,MELD, | github.com/dkollias/VEGA. 
+2508.10644 | CMU-MOSI,MOSEI, | github.com/sljgkjhwe/MCIB.git 
+2508.19533 | IEMOCAP,MELD, | github.com/KunPunCN/ProEmoTrans 
+2511.07061 | IEMOCAP,MELD, | github.com/LiXinran6/PRC-Emo 
+2511.23178 | MELD,MER2025, | github.com/Ichen12/HPSU-Benchmark 
+2601.15668 | IEMOCAP,MELD, | github.com/OpenBMB/MiniCPM-o github.com/dingdongwang/EmotionThinker 
+2602.00811 | CMU-MOSI,IEMOCAP,MELD,MOSEI, | github.com/RH-Lin/MissMAC-Bench. 
+2603.08936 | CREMA-D,IEMOCAP,MELD, | github.com/aniemore/Aniemore github.com/huggingface/peft 
+2603.21050 | IEMOCAP,MELD, | github.com/fixie-ai/ultravox github.com/zihaurpang/ERM-MinMaxGAP. 
+2604.01916 | IEMOCAP,MELD, | github.com/swaggy66/SURE. 
+2604.12518 | CMU-MOSI,IEMOCAP,MOSEI, | github.com/kangverse/EBMC. 
+2604.12735 | IEMOCAP,MELD,MER2023,MER2024,MER2025,MOSEI,SIMS V2, | github.com/Wz1h1NG1/AffectAgent. 
+2605.16889 | CMU-MOSI,MOSEI, | github.com/LiuXY3366/TLRA 
+2607.12787 | CH-SIMS,CMU-MOSI,IEMOCAP,MELD,MER2023,MER2024,MOSEI,SIMS V2, | github.com/GAIR-Lab/Light-MER. 
+2608.09986 | CH-SIMS,MOSEI, | github.com/thuiar/MMSA github.com/ultramarineX/MIDAS. 
+2608.28966 | CREMA-D,IEMOCAP,MELD, | github.com/RoyChao19477/SEMamba github.com/huggingface/peft. 
+2609.10950 | CH-SIMS,MOSEI, | github.com/Haoyu-ha/LNLN github.com/aoqzhu/P-RMF 
+2609.30238 | CH-SIMS,CMU-MOSI,MOSEI, | github.com/peacelwh/SemMSA 

@@ -1,0 +1,170 @@
+2610.20114	2026-10-14	ACR-Net: Mitigating Semantic Dominance via Contrastive Acoustic-Semantic Decoupling	5 pages, 1 figure, 4 tables. Published in Interspeech 2026
+2610.13013	2026-10-09	Evidential Multimodal Transformers with Dempster-Shafer Fusion for Emotion Recognition	Accepted in IEEE Transactions on Affective Computing. 18 pages, 9 figures, plus 5 pages of supplementary material
+2610.31685	2026-10-03	An Agentic Approach with Evidence-Grounded Verification for Multimodal Emotion Reasoning in Conversation	Accepted at the NeurIPS 2026 Workshop on Real-Time Multimodal Conversational AI (ReMuCAI), Paris, France. OpenReview: https://openreview.net/forum?id=NVX6A2xWmG
+2609.30238	2026-09-24	SemMSA: Latent Semantic-Aided Robust Multimodal Sentiment Analysis with Incomplete Data	Accepted by NeurIPS 2026
+2609.16581	2026-09-15	EmoPhone: A Multi-Wave Dataset for In-the-Wild Mobile and Wearable Affect Sensing	Accepted to NeurIPS 2026 (Evaluations and Datasets Track). 54 pages, 17 figures, 34 tables
+2609.11247	2026-09-10	The Illusion of Balanced Multimodal Sentiment Analysis: Beyond the Limits of Optimization-Based Methods	Accepted at Interspeech 2026
+2609.10950	2026-09-10	Robust Multimodal Sentiment Analysis with Incomplete Modalities via Semantic-aware Completeness based Reconstruction	Accepted to the Findings of EMNLP 2026
+2609.11164	2026-09-10	Multimodal Temporal Modeling for Continuous Group Emotion Recognition in Multi-party Dialogues	9 pages, 6 figures, 12 tables. To appear in the Companion Proceedings of the 28th ACM International Conference on Multimodal Interaction (ICMI Companion '26)
+2609.09864	2026-09-09	Shifting Relational Paradigms for Affective Computing: Affective Resonance, Vitality Affects, and Vocal Interaction Fields	Accepted at Interspeech 2026 for poster presentation. 5 pages, 2 figures, 2 tables
+2609.09672	2026-09-09	SEA-SpeechBench: A Large-Scale Multitask Benchmark for Speech Understanding Across Southeast Asia	Accepted to EMNLP 2026
+2609.06101	2026-09-05	SETEAB: Multiscale approach with Squeeze-and-Excitation Temporal Enhanced Aware Block for Speech Emotion Recognition	Accepted to INTERSPEECH 2026
+2609.05281	2026-09-04	KanAdapter: A Kolmogorov-Arnold Network-based Plug-and-Play Module for Efficient Fine-tuning of Foundation Speech Models	Accepted to IMPACT-SPEECH Workshop @ EMNLP 2026
+2608.30563	2026-08-31	Modality Disentangled Learning for Incomplete Multimodal Emotion Recognition: A Primitive Memory Distillation Perspective	19 Pages, 8 Figures, 13 Tables. Accepted to EMNLP 2026 Findings
+2609.02941	2026-08-31	SISER: Speaker-Invariant Speech Emotion Recognition with Entropy-Based Adversarial Training	Accepted to INTERSPEECH 2026
+2608.30526	2026-08-31	User Experience in Human-Machine Interaction: Insights from Field Studies in Autonomous Mobility	Accepted for publication at ABAW Workshop at ECCV2026
+2608.28966	2026-08-29	When Vocal Tone and Literal Meaning Diverge: An Acoustic-Semantic Incongruity Study for Large Audio-Language Models	EMNLP 2026 Findings
+2608.29035	2026-08-29	EmoLASP: Emotion Recognition with Language Models and Answer Set Programming	13 pages. Accepted to EMNLP 2026 Main Conference
+2608.24730	2026-08-25	Learning to Prefer Reliably: Error-Augmented Emotion Preference Optimization with Calibrated Fusion	Accepted at ACM MM 2026 Workshop (MRAC '26)
+2608.22387	2026-08-23	Self-Supervised Graph Representation Learning for In-The-Wild Wearable and Smartphone based Emotion Recognition	Published at ICASSP 2025. Copyright 2025 IEEE
+2608.10448	2026-08-11	Rationale-Guided Learning for Multimodal Emotion Recognition	ICASSP 2026
+2608.08702	2026-08-09	SRE-FER: Regional residual evidence learning for mitigating local evidence dilution in fine-grained facial expression recognition	10 pages, 5 figures.Accepted at the 9th International Conference on Artificial Intelligence and Pattern Recognition (AIPR 2026)
+2608.09986	2026-08-06	MIDAS: Mutual Information Disentanglement with Uncertainty-Aware Fusion for Incomplete Multimodal Sentiment Analysis	Accepted to IEEE Transactions on Pattern Analysis and Machine Intelligence (TPAMI), 2026
+2607.17366	2026-07-19	EII-SCL: Harnessing Emotional Inertia for Multimodal Emotion Recognition in Conversation	Accept by Interspeech 2026
+2607.18336	2026-07-19	EmoEUS: Uncertainty Supervision for Multimodal Emotion Recognition in Conversation	Accept by Interspeech 2026
+2607.16803	2026-07-18	Explainable Lightweight Compact Deep Models for Speech Emotion Recognition	Accepted in the IEEE ICMLA 2026 Conference
+2607.12787	2026-07-14	Do We Really Need Multimodal Emotion Language Models Larger Than 1B Parameters?	Accepted by ACM MM2026
+2607.02885	2026-07-03	Where do LLMs Fall Short in CBT-Guided Affective Reasoning?	12 pages, 7 figures, accepted for publication in Affective Computing and Intelligent Interaction (ACII) 2026
+2606.28769	2026-06-27	Generative Learning as a Tool to Improve Perception of Emotional Body Motion Expressions	Accepted by ACII 2025
+2606.27536	2026-06-25	Learning from Annotation Uncertainty: Entropy-Aware Curriculum for Speech Emotion Recognition	5 pages, 3 figures. Accepted to Interspeech 2026
+2606.25325	2026-06-24	Omni-Perception Policy Optimization for Multimodal Emotion Reasoning	Accepted at ICML 2026. Project page: https://zjycutieee.github.io/OPPO-page/ Code: https://github.com/ZhiyuanHan-Aaron/OPPO
+2606.14086	2026-06-12	Explainable and Trustworthy Speech Emotion Recognition Using Confidence Score and Reinforcement Learning Rectified Speech Emotion Descriptors	Accepted by Interspeech2026
+2606.10360	2026-06-09	ViP-VL: Vietnamese Self-supervised Speech Pretraining Model with Vector-Quantization Learning	Accepted to INTERSPEECH 2026
+2606.06200	2026-06-04	Learning Emotion-discriminative Representations for Zero-Shot Cross-lingual Speech Emotion Recognition	Accepted to Interspeech 2026
+2605.25409	2026-05-25	MTLLFM: Multimodal-Temporal Laughter Localization: UR-FUNNY-Temporal and SMILE-Temporal Benchmarks with an Adaptive Multimodal Fusion Model	Accepted to the Workshop on Affective & Behavior Analysis in-the-wild, CVPR 2026
+2605.21239	2026-05-20	Multimodal Emotion Recognition with Large Language Models	Accepted by IJCAI 2026 Survey Track
+2605.19630	2026-05-19	EMO-BOOST: Emotion-Augmented Audio-Visual Features for Improved Generalization in Deepfake Detection	Accepted at SAFE@CVPRW 2026
+2605.16889	2026-05-16	Controlling Decision Drift in Multimodal Sentiment Analysis with Missing Modalities	Accepted by IJCAI 2026
+2604.25179	2026-04-28	Mitigating Shared-Private Branch Imbalance via Dual-Branch Rebalancing for Multimodal Sentiment Analysis	This study has been Accepted by ACM MM 2026
+2605.00871	2026-04-24	NAKUL-Med: Spectral-Graph State Space Models with Dynamics Kernels for Medical Signals	Accepted CVPR Finding Track
+2604.18460	2026-04-20	Learning Invariant Modality Representation for Robust Multimodal Learning from a Causal Inference Perspective	Accepted by ACL 2026 Main
+2604.17647	2026-04-19	Prosody as Supervision: Bridging the Non-Verbal--Verbal for Multilingual Speech Emotion Recognition	Accepted to ACL 2026 (Main)
+2604.12735	2026-04-14	AffectAgent: Collaborative Multi-Agent Reasoning for Retrieval-Augmented Multimodal Emotion Recognition	Accepted by ACM MM 2026
+2604.12518	2026-04-14	Enhance-then-Balance Modality Collaboration for Robust Multimodal Sentiment Analysis	Accepted by CVPR 2026
+2604.12579	2026-04-14	EEG-Based Multimodal Learning via Hyperbolic Mixture-of-Curvature Experts	Accepted at the Forty-third International Conference on Machine Learning (ICML 2026)
+2604.09162	2026-04-10	Persona-E$^2$: A Human-Grounded Dataset for Personality-Shaped Emotional Responses to Textual Events	Accepted by ACL 2026 Main
+2604.07417	2026-04-08	Semantic-Emotional Resonance Embedding: A Semi-Supervised Paradigm for Cross-Lingual Speech Emotion Recognition	Main paper (6 pages). Accepted for publication by IEEE International conference on Multimedia and Expo 2026 (ICME 2026)
+2604.07198	2026-04-08	Beyond the Mean: Modelling Annotation Distributions in Continuous Affect Prediction	This paper has been accepted at the CVPR 2026 Workshop on Affective Behavior Analysis in-the-wild (ABAW)
+2604.05748	2026-04-07	SVC 2026: the Second Multimodal Deception Detection Challenge and the First Domain Generalized Remote Physiological Measurement Challenge	Accepted by the SVC workshop @ CVPR 2026
+2604.01916	2026-04-02	SURE: Synergistic Uncertainty-aware Reasoning for Multimodal Emotion Recognition in Conversations	ICASSP 2026
+2603.29205	2026-03-31	BiMoE: Brain-Inspired Experts for EEG-Dominant Affective State Recognition	Accepted by ICME 2026
+2603.27798	2026-03-29	Towards Emotion Recognition with 3D Pointclouds Obtained from Facial Expression Images	18 pages, 12 figures, 2 tables. Accepted for publication at IEEE Transactions on Affective Computing
+2603.25041	2026-03-26	AdaLTM: Adaptive Layer-wise Task Vector Merging for Categorical Speech Emotion Recognition with ASR Knowledge Integration	Accepted to Interspeech 2026
+2603.21050	2026-03-22	ERM-MinMaxGAP: Benchmarking and Mitigating Gender Bias in Multilingual Multimodal Speech-LLM Emotion Recognition	This paper has been accepted for presentation at INTERSPEECH 2026 and as non-archival paper at ICML 2026 Workshop on Machine Learning for Audio
+2603.21387	2026-03-22	Knowledge Priors for Identity-Disentangled Open-Set Privacy-Preserving Video FER	ICME 2026, Accepted
+2603.21038	2026-03-22	Reading Between the Lines: How Electronic Nonverbal Cues shape Emotion Decoding	Accepted at AAAI ICWSM 2026
+2603.19718	2026-03-20	BALM: A Model-Agnostic Framework for Balanced Multimodal Learning under Imbalanced Missing Rates	Accepted by CVPR 2026
+2603.18462	2026-03-19	AlignMamba-2: Enhancing Multimodal Fusion and Sentiment Analysis with Modality-Aware Mamba	Accepted by Pattern Recognition
+2603.15020	2026-03-16	MER-Bench: Benchmarking Multimodal Emotional Reappraisal for Image-Text Memes	Accepted to EMNLP 2026
+2603.14361	2026-03-15	BROTHER: Behavioral Recognition Optimized Through Heterogeneous Ensemble Regularization for Ambivalence and Hesitancy	5 pages, 2 figures, 3 tables, Ambivalence/Hesitancy (AH) Video Recognition Challenge, ABAW10th, CVPR2026
+2603.12693	2026-03-13	HSEmotion Team at ABAW-10 Competition: Facial Expression Recognition, Valence-Arousal Estimation, Action Unit Detection and Fine-Grained Violence Classification	to be submitted to ABAW-10 workshop of CVPR 2026
+2603.11095	2026-03-11	Multimodal Self-Attention Network with Temporal Alignment for Audio-Visual Emotion Recognition	5 pages, 3 figures, accepted to ICASSP 2026
+2603.08936	2026-03-09	VoxEmo: Benchmarking Speech Emotion Recognition with Speech LLMs	submitted to Interspeech 2026
+2602.23802	2026-02-27	EMO-R3: Reflective Reinforcement Learning for Emotional Reasoning in Multimodal Large Language Models	Accepted by CVPR 2026
+2602.19585	2026-02-23	Tri-Subspaces Disentanglement for Multimodal Sentiment Analysis	This study has been Accepted by CVPR 2026
+2602.19605	2026-02-23	CLCR: Cross-Level Semantic Collaborative Representation for Multimodal Learning	This study has been Accepted by CVPR 2026
+2602.19140	2026-02-22	CaReFlow: Cyclic Adaptive Rectified Flow for Multimodal Fusion	Accepted by CVPR 2026
+2602.18802	2026-02-21	Multi-Channel Speech Enhancement for Cocktail Party Speech Emotion Recognition	Accepted by ICASSP2026
+2602.06290	2026-02-06	B-GRPO: Unsupervised Speech Emotion Recognition based on Batched-Group Relative Policy Optimization	Accepted by ICASSP2026
+2602.06270	2026-02-06	VowelPrompt: Hearing Speech Emotions from Text via Vowel-level Prosodic Augmentation	Accepted to ICLR 2026
+2602.07054	2026-02-04	AVERE: Improving Audiovisual Emotion Reasoning with Preference Optimization	Accepted as a conference paper at ICLR 2026. Project page: https://avere-iclr.github.io
+2602.01547	2026-02-02	Attention-weighted Centered Kernel Alignment for Knowledge Distillation in Large Audio-Language Models Applied to Speech Emotion Recognition	Accepted to 2026 IEEE International Conference on Acoustics, Speech, and Signal Processing (ICASSP 2026)
+2602.00971	2026-02-01	Unveiling the Cognitive Compass: Theory-of-Mind-Guided Multimodal Emotion Reasoning	Accepted by ICLR 2026
+2602.00811	2026-01-31	MissMAC-Bench: Building Solid Benchmark for Missing Modality Issue in Robust Multimodal Affective Computing	Findings of EMNLP 2026
+2601.20573	2026-01-28	Gen-SER: When the generative model meets speech emotion recognition	Accepted to IEEE ICASSP 2026
+2601.18010	2026-01-25	AmbER$^2$: Dual Ambiguity-Aware Emotion Recognition Applied to Speech and Text	Accepted in ICASSP 2026
+2601.17085	2026-01-23	Recovering Performance in Speech Emotion Recognition from Discrete Tokens via Multi-Layer Fusion and Paralinguistic Feature Integration	Accepted to ICASSP 2026
+2601.15668	2026-01-22	EmotionThinker: Prosody-Aware Reinforcement Learning for Explainable Speech Emotion Reasoning	ICLR 2026 (Oral). Project page: https://github.com/dingdongwang/EmotionThinker
+2601.16240	2026-01-21	Test-Time Adaptation for Speech Emotion Recognition	Accepted by 2026 IEEE International Conference on Acoustics, Speech, and Signal Processing (ICASSP 2026)
+2601.14620	2026-01-21	Scaling Ambiguity: Augmenting Human Annotation in Speech Emotion Recognition with Audio-Language Models	Accepted by ICASSP 2026
+2601.15395	2026-01-21	Beyond Fixed Psychological Personas: State Beats Trait, but Language Models are State-Blind	Accepted to Findings of ACL 2026
+2601.13659	2026-01-20	Temporal-Spatial Decouple before Act: Disentangled Representation Learning for Multimodal Sentiment Analysis	This study has been accepted by IEEE ICASSP2026
+2601.12591	2026-01-18	SmoothCLAP: Soft-Target Enhanced Contrastive Language\--Audio Pretraining for Affective Computing	5 pages, accepted by ICASSP 2026
+2601.05564	2026-01-09	The ICASSP 2026 HumDial Challenge: Benchmarking Human-like Spoken Dialogue Systems in the LLM Era	Official summary paper for the ICASSP 2026 HumDial Challenge
+2512.23076	2025-12-28	Multimodal Functional Maximum Correlation for Emotion Recognition	manuscript accepted by IEEE Transactions on Affective Computing. Code is available at https://github.com/DY9910/MFMC
+2512.16485	2025-12-18	Smile on the Face, Sadness in the Eyes: Bridging the Emotion Gap with a Multimodal Dataset of Eye and Facial Behaviors	Accepted by TMM
+2512.15250	2025-12-17	Leveraging Foundational Models and Simple Fusion for Multi-modal Physiological Signal Analysis	Published at NeurIPS 2025 Workshop on Foundation Models for the Brain and Body
+2512.04551	2025-12-04	Multi-Loss Learning for Speech Emotion Recognition with Energy-Adaptive Mixup and Frame-Level Attention	Submitted for review to Interspeech 2026
+2512.03521	2025-12-03	Cross-Space Synergy: A Unified Framework for Multimodal Emotion Recognition in Conversation	Accepted to AAAI 2026
+2512.01442	2025-12-01	PSA-MF: Personality-Sentiment Aligned Multi-Level Fusion for Multimodal Sentiment Analysis	AAAI 2026 accepted
+2511.23178	2025-11-28	HPSU: A Benchmark for Human-Level Perception in Real-World Spoken Speech Understanding	Accepted by AAAI 2026
+2511.22188	2025-11-27	ARPGNet: Appearance- and Relation-aware Parallel Graph Attention Fusion Network for Facial Expression Recognition	Accepted by IEEE Transactions on Affective Computing. Submitted in August 2023; Accepted in October 2025
+2511.18751	2025-11-24	Robust Multimodal Sentiment Analysis of Image-Text Pairs by Distribution-Based Feature Recovery and Fusion	Accepted by ACM MM 2024
+2511.14249	2025-11-18	Towards Authentic Movie Dubbing with Retrieve-Augmented Director-Actor Interaction Learning	Accepted by AAAI 2026
+2511.17585	2025-11-16	PaSE: Prototype-aligned Calibration and Shapley-based Equilibrium for Multimodal Sentiment Analysis	Accepted by AAAI 2026
+2511.11002	2025-11-14	EmoVid: A Multimodal Emotion Video Dataset for Emotion-Centric Video Understanding and Generation	15 pages, 12 figures. Accepted as an Oral presentation at AAAI 2026. For code and dataset, see https://zane-zyqiu.github.io/EmoVid
+2511.10325	2025-11-13	TMDC: A Two-Stage Modality Denoising and Complementation Framework for Multimodal Sentiment Analysis with Missing and Noisy Modalities	Accepted by AAAI 2026
+2511.07061	2025-11-10	Do LLMs Feel? Teaching Emotion Recognition with Prompts, Retrieval, and Curriculum Learning	Accepted at AAAI 2026
+2511.05293	2025-11-07	Cross-domain EEG-based Emotion Recognition with Contrastive Learning	Accepted by IEEE ICASSP 2026
+2511.02794	2025-11-04	When One Modality Sabotages the Others: A Diagnostic Lens on Multimodal Reasoning	Accepted at the Multimodal Algorithmic Reasoning (MAR) Workshop, NeurIPS 2025
+2510.25577	2025-10-29	Lost in Phonation: Voice Quality Variation as an Evaluation Dimension for Speech Foundation Models	5 pages, 2 figures, 3 tables, accepted at Interspeech 2026
+2510.25054	2025-10-29	Evaluating Emotion Recognition in Spoken Language Models on Emotionally Incongruent Speech	Submitted to IEEE ICASSP 2026. Copyright 2026 IEEE. Personal use of this material is permitted. Permission from IEEE must be obtained for all other uses
+2510.19451	2025-10-22	Reasoning Like Experts: Leveraging Multimodal Large Language Models for Drawing-based Psychoanalysis	Accepted by ACM Multimedia 2025
+2510.08802	2025-10-09	Edu-EmotionNet: Cross-Modality Attention Alignment with Temporal Feedback Loops	6 Pages, 6 Figures, 3 Tables, Accepted as a Regular Research paper at ICMLA 2025
+2510.08606	2025-10-07	Centering Emotion Hotspots: Multimodal Local-Global Fusion and Cross-Modal Alignment for Emotion Recognition in Conversations	Under review for ICASSP 2026
+2510.05749	2025-10-07	MSF-SER: Enriching Acoustic Modeling with Multi-Granularity Semantics for Speech Emotion Recognition	Accepted by ICASSP 2026
+2510.03060	2025-10-03	Semantic Differentiation in Speech Emotion Recognition: Insights from Descriptive and Expressive Speech Roles	Accepted to the *SEM conference collocated with EMNLP2025
+2510.00725	2025-10-01	DEAP DIVE: Dataset Investigation with Vision transformers for EEG evaluation	Accepted for publication at ABAW Workshop at ICCV2025
+2509.25678	2025-09-30	Massively Multimodal Foundation Models: A Framework for Capturing Interactions with Specialized Mixture-of-Experts	Published at International Conference on Learning Representations (ICLR) 2026 as a conference paper. 28 pages, 16 figures, 10 tables
+2509.25495	2025-09-29	EMO-TTA: Improving Test-Time Adaptation of Audio-Language Models for Speech Emotion Recognition	Accepted to ICASSP 2026
+2509.25458	2025-09-29	Plug-and-Play Emotion Graphs for Compositional Prompting in Zero-Shot Speech Emotion Recognition	Accepted to ICASSP 2026
+2509.18570	2025-09-23	HarmoniFuse: A Component-Selective and Prompt-Adaptive Framework for Multi-Task Speech Language Modeling	5 pages; submitted to ICASSP 2026
+2509.15540	2025-09-19	Beyond Words: Enhancing Desire, Emotion, and Sentiment Recognition with Non-Verbal Cues	Accepted by WWW 2026
+2509.08470	2025-09-10	Joint Learning using Mixture-of-Expert-Based Representation for Speech Enhancement and Robust Emotion Recognition	Accepted by IEEE Transactions on Audio, Speech and Language Processing (TASLP)
+2509.08454	2025-09-10	Behind the Scenes: Mechanistic Interpretability of LoRA-adapted Whisper for Speech Emotion Recognition	Accepted at ICASSP 2026
+2508.19533	2025-08-27	Emotion Transfer with Enhanced Prototype for Unseen Emotion Recognition in Conversation	Accepted at EMNLP2025
+2508.18655	2025-08-26	Empathy Omni: Enabling Empathetic Speech Response Generation through Large Language Models	5 pages, 1 figure, submitted to ICASSP 2026
+2508.18092	2025-08-25	Speech-Based Depressive Mood Detection in the Presence of Multiple Sclerosis: A Cross-Corpus and Cross-Lingual Study	Accepted at the 8th International Conference on Natural Language and Speech Processing (ICNLSP 2025). To be appeared in the corresponding Proceedings at ACL Anthology
+2508.17878	2025-08-25	Enhancing Speech Emotion Recognition with Multi-Task Learning and Dynamic Feature Fusion	accepted by interspeech2025
+2508.16188	2025-08-22	Seeing is Believing: Emotion-Aware Audio-Visual Language Modeling for Expressive Speech Generation	EMNLP 2025 (Findings)
+2508.12854	2025-08-18	E3RG: Building Explicit Emotion-driven Empathetic Response Generation System with Multimodal Large Language Model	Accepted at ACM MM 2025 Grand Challenge
+2508.11362	2025-08-15	Mitigating Category Imbalance: Fosafer System for the Multimodal Emotion and Intent Joint Understanding Challenge	2 pages. pubilshed by ICASSP2025
+2508.10644	2025-08-14	Conditional Information Bottleneck for Multimodal Fusion: Overcoming Shortcut Learning in Sarcasm Detection	Accepted at AAAI 2026 Conference
+2508.07282	2025-08-10	Lessons Learnt: Revisit Key Training Strategies for Effective Speech Emotion Recognition in the Wild	Proceedings of Interspeech 2025
+2508.04999	2025-08-07	Disentangling Bias by Modeling Intra- and Inter-modal Causal Attention for Multimodal Sentiment Analysis	Accepted by IEEE Transactions on Multimedia (TMM)
+2508.06564	2025-08-06	Grounding Emotion Recognition with Visual Prototypes: VEGA -- Revisiting CLIP in MERC	accepted for publication at ACM Multimedia (ACM MM) 2025
+2508.04723	2025-08-05	Wearable Music2Emotion : Assessing Emotions Induced by AI-Generated Music through Portable EEG-fNIRS Fusion	Accepted by ACM MM 2025
+2508.01644	2025-08-03	DRKF: Decoupled Representations with Knowledge Fusion for Multimodal Emotion Recognition	Published in ACM Multimedia 2025. 10 pages, 4 figures
+2507.18929	2025-07-25	MGHFT: Multi-Granularity Hierarchical Fusion Transformer for Cross-Modal Sticker Emotion Recognition	Accepted by ACMMM2025
+2507.15765	2025-07-21	Learning from Heterogeneity: Generalizing Dynamic Facial Expression Recognition via Distributionally Robust Optimization	Accepted by ACM MM'25
+2507.13626	2025-07-18	Unifying Listener Scoring Scales: Comparison Learning Framework for Speech Quality Assessment and Continuous Speech Emotion Recognition	Accepted to Interspeech 2025
+2507.09076	2025-07-11	Dynamic Parameter Memory: Temporary LoRA-Enhanced LLM for Long-Sequence Emotion Recognition in Conversation	submitted to ICLR 2026
+2507.04048	2025-07-05	CLEP-DG: Contrastive Learning for Speech Emotion Domain Generalization via Soft Prompt Tuning	Accepted to Interspeech2025
+2507.00586	2025-07-01	Context-Aware Academic Emotion Dataset and Benchmark	Accepted to ICCV 2025
+2507.00055	2025-06-26	Leveraging Unlabeled Audio-Visual Data in Speech Emotion Recognition using Knowledge Distillation	Accepted at INTERSPEECH 2025
+2506.21017	2025-06-26	Multimodal Prompt Alignment for Facial Expression Recognition	To appear in ICCV2025
+2506.19887	2025-06-24	MATER: Multi-level Acoustic and Textual Emotion Representation for Interpretable Speech Emotion Recognition	5 pages, 4 figures, 2 tables, 1 algorithm, Accepted to INTERSPEECH 2025
+2506.18716	2025-06-23	Multi-modal Anchor Gated Transformer with Knowledge Distillation for Emotion Recognition in Conversation	This paper has been accepted by IJCAI2025
+2506.09556	2025-06-11	MEDUSA: A Multimodal Deep Fusion Multi-Stage Training Framework for Speech Emotion Recognition in Naturalistic Conditions	Interspeech 2025
+2506.08717	2025-06-10	Multi-Teacher Language-Aware Knowledge Distillation for Multilingual Speech Emotion Recognition	Accepted to INTERSPEECH 2025 conference
+2506.03403	2025-06-03	HYFuse: Aligning Heterogeneous Speech Pre-Trained Representations in Hyperbolic Space for Speech Emotion Recognition	Accepted to INTERSPEECH 2025
+2506.02230	2025-06-02	Towards Machine Unlearning for Paralinguistic Speech Processing	Accepted to INTERSPEECH 2025
+2506.00865	2025-06-01	GIA-MIC: Multimodal Emotion Recognition with Gated Interactive Attention and Modality-Invariant Learning Constraints	Accepted by INTERSPEECH 2025
+2506.01138	2025-06-01	PARROT: Synergizing Mamba and Attention-based SSL Pre-Trained Models via Parallel Branch Hadamard Optimal Transport for Speech Emotion Recognition	Accepted to INTERSPEECH 2025
+2506.02059	2025-06-01	Learning More with Less: Self-Supervised Approaches for Low-Resource Speech Emotion Recognition	Accepted at Interspeech 2025
+2505.23962	2025-05-29	Can Emotion Fool Anti-spoofing?	Accepted to Interspeech 2025
+2505.23236	2025-05-29	Towards LLM-Empowered Fine-Grained Speech Descriptors for Explainable Emotion Recognition	Accepted by INTERSPEECH2025
+2505.22133	2025-05-28	Developing a Top-tier Framework in Naturalistic Conditions Challenge for Categorized Emotion Prediction: From Speech Foundation Models and Learning Objective to Data Augmentation and Engineering Choices	Accepted to INTERSPEECH 2025
+2505.20511	2025-05-26	Multimodal Emotion Recognition in Conversations: A Survey of Methods, Trends, Challenges and Prospects	EMNLP 2025 Findings
+2505.20007	2025-05-26	Improving Speech Emotion Recognition Through Cross Modal Attention Alignment and Balanced Stacking Model	Accepted by INTERSPEECH 2025
+2505.19693	2025-05-26	EmoSphere-SER: Enhancing Speech Emotion Recognition Through Spherical Representation with Auxiliary Classification	Proceedings of Interspeech 2025
+2505.18217	2025-05-23	ABHINAYA -- A System for Speech Emotion Recognition In Naturalistic Conditions Challenge	5 pages, 2 figures, 4 tables, accepted at Interspeech 2025
+2505.16220	2025-05-22	Meta-PerSER: Few-Shot Listener Personalized Speech Emotion Recognition via Meta-learning	Accepted by INTERSPEECH 2025. 7 pages, including 2 pages of appendix
+2505.14143	2025-05-20	Multimodal Mixture of Low-Rank Experts for Sentiment Analysis and Emotion Recognition	Accepted to ICME 2025
+2505.14449	2025-05-20	Mitigating Subgroup Disparities in Multi-Label Speech Emotion Recognition: A Pseudo-Labeling and Unsupervised Learning Approach	Accepted by InterSpeech 2025. 7 pages including 2 pages of appendix
+2505.11051	2025-05-16	CAMEO: Collection of Multilingual Emotional Speech Corpora	Accepted for ICASSP 2026
+2504.19549	2025-04-28	DEEMO: De-identity Multimodal Emotion Recognition and Reasoning	Accepted by ACMMM 2025
+2504.18087	2025-04-25	Disentangle Identity, Cooperate Emotion: Correlation-Aware Emotional Talking Portrait Generation	Accepted by ACM MM'25. arXiv admin note: text overlap with arXiv:2409.03270
+2504.14882	2025-04-21	Some Optimizers are More Equal: Understanding the Role of Optimizers in Group Fairness	Accepted in NeurIPS 2025
+2506.10007	2025-04-14	Controllable Expressive 3D Facial Animation via Diffusion in a Unified Multimodal Space	Accepted by ICME2025
+2504.05368	2025-04-07	Exploring Local Interpretable Model-Agnostic Explanations for Speech Emotion Recognition with Distribution-Shift	Published in the proceedings of ICASSP 2025
+2503.21806	2025-03-25	Large Language Models Meet Contrastive Learning: Zero-Shot Emotion Recognition Across Languages	Accepted to ICME 2025
+2503.15970	2025-03-20	V-NAW: Video-based Noise-aware Adaptive Weighting for Facial Expression Recognition	Accepted by CVPRW2025
+2503.10399	2025-03-13	HSEmotion Team at ABAW-8 Competition: Audiovisual Ambivalence/Hesitancy, Emotional Mimicry Intensity and Facial Expression Recognition	submitted to ABAW CVPR 2025 Workshop
+2503.16461	2025-02-24	Rank-O-ToM: Unlocking Emotional Nuance Ranking to Enhance Affective Theory-of-Mind	Accepted to AAAI 2025 Theory of Mind for AI (ToM4AI) Workshop (Spotlight) JiHyun Kim, JuneHyoung Kwon, MiHyeon Kim, and Eunju Lee contributed equally as co-first authors. YoungBin Kim is the corresponding author
+2503.03756	2025-02-17	Efficient Finetuning for Dimensional Speech Emotion Recognition in the Age of Transformers	ICASSP 2025-2025 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)
+2502.10973	2025-02-16	Akan Cinematic Emotions (ACE): A Multimodal Multi-party Dataset for Emotion Recognition in Movie Dialogues	Accepted to Findings at ACL 2025
+2502.09993	2025-02-14	Navigating Label Ambiguity for Facial Expression Recognition in the Wild	Accepted by AAAI2025
+2502.00310	2025-02-01	SigWavNet: Learning Multiresolution Signal Wavelet Network for Speech Emotion Recognition	Published in: IEEE Transactions on Affective Computing
+2501.11468	2025-01-20	LLM supervised Pre-training for Multimodal Emotion Recognition in Conversations	ICASSP 2025; 5 pages, 4 figures, 2 tables
+2501.05474	2025-01-07	Modality-Invariant Bidirectional Temporal Representation Distillation Network for Missing Multimodal Sentiment Analysis	Accepted for publication by 2025 IEEE International Conference on Acoustics, Speech, and Signal Processing (ICASSP 2025)

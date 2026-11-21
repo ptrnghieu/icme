@@ -1,0 +1,72 @@
+a semantic dominance / incongruence | 28
+2611.08860v1 | 2026-11-06 | Mind the Divergence: Divergence-Guided Reliability-Aware Fusion and Adaptive LLM P
+2610.40883v1 | 2026-10-29 | Incongruence-Aware Evaluation of Multimodal Speech Emotion Recognition in Audio La
+2610.27567v1 | 2026-10-20 | AudiPsy: Evidence-Grounded Multimodal Reasoning over Spoken Counseling Conversatio
+b missing modality | 47
+2611.20349v2 | 2026-11-16 | Words Speak Louder? Exploring the Language Shortcut of LLM-Driven Incomplete Multi
+2610.29430v1 | 2026-10-21 | MERP: A Latent-Bottleneck Framework for Robust Multi-Modal Multi-Label Emotion Rec
+2609.39413v1 | 2026-09-30 | Aligning the Incomplete: Joint Distribution Calibration for Multimodal EEG-Eye Emo
+c annotation ambiguity / soft labels | 184
+2611.08966v1 | 2026-11-06 | Concordance-Optimal Continuous Music Emotion Estimation: Variance Decomposition, D
+2611.08860v1 | 2026-11-06 | Mind the Divergence: Divergence-Guided Reliability-Aware Fusion and Adaptive LLM P
+2611.01943v1 | 2026-11-01 | Beyond Multimodal Emotion Conflict: Temporal Context-Aware Hidden Emotion Detectio
+d MLLM emotion reasoning RL | 84
+2611.02725v1 | 2026-11-02 | AffToM: Benchmarking Recursive Affective Theory of Mind in Dynamic Multi-Party Int
+2610.27516v1 | 2026-10-20 | HealBench: A Fine-Grained Benchmark for Evaluating Psychological Comfort in Text-t
+2610.11461v1 | 2026-10-08 | Beyond Speech Captions: Speech-Rewarded Style Planning for Conversational Text-to-
+e test-time adaptation | 5
+2608.16134v1 | 2026-08-17 | Multi-Feature Riemannian Hypergraph for Online Test-Time Adaptation of Motor Image
+2604.26883v2 | 2026-04-29 | SEAL: Semantic-aware Single-image Sticker Personalization with a Large-scale Stick
+2601.21012v1 | 2026-01-28 | Order-Aware Test-Time Adaptation: Leveraging Temporal Dynamics for Robust Streamin
+f compact / distillation MER | 34
+2610.27571v2 | 2026-10-20 | Text-Anchored Modality Experts with Uncertainty-Guided Routing for Multimodal Sent
+2609.37100v1 | 2026-09-29 | Prediction-Layer Branch Calibration for Multimodal Sentiment Analysis
+2609.06188v1 | 2026-09-05 | MVFA: A Multi-View Text-Guided Multimodal Fusion LLM Adapter for Sentiment Analysi
+g fairness / bias SER | 14
+2610.20114v1 | 2026-10-14 | ACR-Net: Mitigating Semantic Dominance via Contrastive Acoustic-Semantic Decouplin
+2609.39453v1 | 2026-09-30 | From Speech to Editable Concepts: Probing Emotion Recognition with Concept Bottlen
+2605.22732v1 | 2026-05-21 | Beyond Acoustic Emotion Recognition: Multimodal Pathos Analysis in Political Speec
+h modality conflict / sabotage | 11
+2610.20114v1 | 2026-10-14 | ACR-Net: Mitigating Semantic Dominance via Contrastive Acoustic-Semantic Decouplin
+2608.07867v1 | 2026-08-08 | CONFER: Conflict-Aware Evidence Negotiation for Regime-Calibrated Weak Supervision
+2607.24191v1 | 2026-07-27 | StanceFlip: A Comprehensive Multi-Dimensional Benchmark for Multimodal Conversatio
+i group / multi-party emotion | 14
+2611.02988v1 | 2026-11-02 | Can You Predict the Next Mind? Toward Multi-Turn Multi-Party Mental World Modeling
+2611.02725v1 | 2026-11-02 | AffToM: Benchmarking Recursive Affective Theory of Mind in Dynamic Multi-Party Int
+2609.11164v1 | 2026-09-10 | Multimodal Temporal Modeling for Continuous Group Emotion Recognition in Multi-par
+j open-vocabulary / fine-grained MER | 147
+2611.16647v2 | 2026-11-12 | InertiaMPDD: Multimodal Personalized Depression Detection via Emotional Inertia-In
+2611.15306v1 | 2026-11-11 | Beyond the Explicit: Benchmarking and Detecting Implicit Harm in Short Videos
+2611.01943v1 | 2026-11-01 | Beyond Multimodal Emotion Conflict: Temporal Context-Aware Hidden Emotion Detectio
+k continuous valence-arousal multimodal | 19
+2611.08966v1 | 2026-11-06 | Concordance-Optimal Continuous Music Emotion Estimation: Variance Decomposition, D
+2610.31202v1 | 2026-10-22 | Predicting Music Valence and Arousal via Textual and Multimodal In-Context Learnin
+2610.18455v1 | 2026-10-13 | EmoGenie: Benchmarking and Evaluating Expressed and Evoked Emotion in T2I Generati
+l personalization | 73
+2611.01943v1 | 2026-11-01 | Beyond Multimodal Emotion Conflict: Temporal Context-Aware Hidden Emotion Detectio
+2610.17356v1 | 2026-10-12 | Brain2Face: A Study on the Relation of EEG Signals and Spatio-temporal Head Avatar
+2609.36563v1 | 2026-09-29 | AffectReveal: Event-Grounded Emotion Recognition Beyond Visual Appearances
+m ASR transcripts errors in MER | 5
+2610.04683v1 | 2026-10-03 | Steering Speech-Language Models: Training-Free Task Specialization via Contrastive
+2609.20081v2 | 2026-09-17 | From Generative to Discriminative: Lightweight Adaptation of SpeechLLMs for Multim
+2509.18706v1 | 2025-09-23 | M4SER: Multimodal, Multirepresentation, Multitask, and Multistrategy Learning for 
+n label noise MER | 18
+2611.01731v1 | 2026-11-01 | Robust EEG-based Emotion Recognition from Coarse Trial-level Labels under Intra-tr
+2611.09941v1 | 2026-10-14 | Topic-Aware Multi-Task Mental Health Classification with Active Learning-Based Ste
+2607.15566v1 | 2026-07-17 | Physiological Prior-Driven Label Enhancement for Cross-Subject EEG Emotion Recogni
+o calibration / uncertainty MER | 37
+2611.24481v2 | 2026-11-18 | UEmo-D1: An Efficient and Calibrated Decision Model for Unified Multimodal Emotion
+2610.27571v2 | 2026-10-20 | Text-Anchored Modality Experts with Uncertainty-Guided Routing for Multimodal Sent
+2610.13013v1 | 2026-10-09 | Evidential Multimodal Transformers with Dempster-Shafer Fusion for Emotion Recogni
+p temporal localization / emotion change points | 37
+2610.35696v1 | 2026-10-26 | Reflective Computing
+2610.25549v1 | 2026-10-18 | EmotiQ: A Quantum Residual Specialist Framework for Text Emotion Classification
+2610.22832v1 | 2026-10-16 | Too Emotional to Be Fake? Intra-Utterance Emotion Shifts Expose Failure Modes in S
+q micro / subtle / low-intensity expressions | 48
+2611.10097v1 | 2026-11-06 | A Privacy-Aware Deep Learning Benchmark for Facial Emotion Recognition
+2610.30477v1 | 2026-10-21 | EmoFI-TTS: Face-Conditioned Expressive Voice Synthesis with Intensity Modulation
+2610.15452v1 | 2026-10-11 | EmoTrace-Bench: Diagnosing Emotional Expression in Text-to-Video Generation throug
+r data scarcity / synthetic data for MER | 139
+2611.24481v2 | 2026-11-18 | UEmo-D1: An Efficient and Calibrated Decision Model for Unified Multimodal Emotion
+2611.13689v1 | 2026-11-10 | Walrus Technical Report
+2611.12119v1 | 2026-11-09 | Discriminator-free adversarial domain adaptation for robust speech classification
