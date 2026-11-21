@@ -1,7 +1,7 @@
 # Ứng viên A: Nhãn unimodal của người làm *thước đo* cho modality imbalance
 
 **Tên làm việc:** *Balancing the Wrong Modality? Human Unimodal Perception as a Yardstick for Modality Imbalance in Audio-Visual Emotion Recognition*
-**Trạng thái (2026-11-21):** **H KHÔNG ĐƯỢC ỦNG HỘ** theo thí nghiệm can thiệp đã đăng ký trước (`pilot/results/summary_2026-11-21.md`). Q1 và các phát hiện protocol vẫn đứng được. Cách đóng khung ban đầu (cần H) **không dùng được nữa**; chờ user chọn hướng đóng khung lại (xem tổng kết).
+**Trạng thái (2026-11-21, sửa sau phân tích power):** theo quy tắc đã đăng ký trước, **H NOT SUPPORTED**, nên không được claim H. Phân tích power post-hoc cho thấy phép so sánh chính không có khả năng phát hiện hiệu ứng mà H dự đoán (cần 110 cặp, chỉ có 8), nên kết quả **không bác bỏ** H. Q1 và các phát hiện protocol vẫn đứng được. Chờ user chọn hướng (`pilot/results/summary_2026-11-21.md`).
 Ký hiệu: **[SỰ THẬT]** = đã tự kiểm chứng, có nguồn · **[ĐÁNH GIÁ]** = nhận định chuyên môn.
 
 ---
