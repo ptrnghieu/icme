@@ -23,12 +23,19 @@ Mỗi hướng được xếp theo **gate đầu tiên nó trượt**. Một hư
 | C2 | 1 | E2 fairness (C3) | |
 | C5 | 1 | M1 music (0 cặp trái cảm xúc trong bản phát hành) | |
 
-## Đợt 3 (đang làm; data: MER2023–2026 + data mở)
-| Hướng | Gate đang vướng |
-|---|---|
-| R3-1 MER-Cross | Chưa loại. Rủi ro: COLING, C2 (1 tập test), C4 (RASG), C5 (nhãn test chưa rõ) |
-| R3-2 MER-SEMI/NOISE | C4 (đông bài dự thi) |
-| R3-3 MER-Prefer | C4/C2 |
+## Đợt 3 (data: MER2023–2026 + data mở; C4/C5 đã nới)
+| Hướng | Gate | Lý do |
+|---|---|---|
+| R3-1 MER-Cross | COLING (user loại) | Gần chủ đề bài COLING |
+| R3-2 MER-SEMI/NOISE | C4 | Đông bài dự thi |
+| R3-3 MER-Prefer | C4/C2 | |
+| R2-2′ gating OOF | C1 | P1: 1/4 |
+| Xóa thông tin corpus (LEACE/CORAL) | C1 | P2: 0/3 |
+| Chọn mô hình không nhãn (ALine-D) | C1 | P3: 0/3 |
+| Dawid–Skene trên các head modality | C1 | P4: 0/3 |
+| Text dạy head phi ngôn ngữ trên đích | C1 | P5: trượt |
+| Model merging | C4 | AdaLTM (SER) |
+| Group DRO, WiSE-FT/LP-FT, MixStyle, IRM, learning to defer | Không chạy | Cùng giả định với các cơ chế đã trượt ở P2–P5, hoặc không đáp ứng C3 |
 
 ## Tổng (đợt 1 + đợt 2, 47 hướng)
 | Gate | Đợt 1 | Đợt 2 | Tổng |

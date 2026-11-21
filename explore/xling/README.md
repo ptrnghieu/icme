@@ -70,3 +70,9 @@ Thí nghiệm sàng lọc cho ứng viên **D** (chéo ngôn ngữ) và **F4** (
   - SIMS→MOSI: audio LEACE −0,03, CORAL +0,20 [−0,01; +0,43]; face không xác định (oracle MOSI ở mức ngẫu nhiên).
   - CREMA-D→MELD: audio LEACE +0,14 [−0,07; +0,33], CORAL +0,03; face không ổn định (oracle 20,0 so với mức ngẫu nhiên 16,7).
 - **Khớp với bằng chứng ngoài miền:** arXiv 2610.13027 (MRI não; mới đọc abstract) báo rằng xóa tín hiệu dataset bằng INLP, LEACE, CORAL hay adversarial "never improves" chuyển giao, vì nội dung được mã hóa theo hướng khác nhau ở mỗi dataset. arXiv 2610.08069 (mới đọc abstract) chứng minh giới hạn minimax: các bộ xóa tuyến tính (MP, SAL, LEACE) chỉ gỡ được độ lệch trung bình đo được từ dữ liệu hiệu chỉnh. P0 của mình (MOSI↔SIMS) cũng cho thấy audio và face mất hướng phân biệt khi đổi corpus (AUC chéo 52–58), nên một phép chiếu không nhãn không khôi phục được hướng đó.
+
+## P3, P4, P5: ba cơ chế không dùng nhãn đích (2026-11-21)
+Chi tiết, tiêu chí và chẩn đoán ở `ideas/round3_mechanism_scan_2026-11-21.md`.
+- **P3** (`p3_selection.py`): chọn mô hình bằng Agreement-on-the-Line (ALine-D). Headroom có ở 2/3 hướng (+3,7 / +9,7 / +0,7), nhưng ALine-D − S0 chỉ +1,0 / +2,6 / +0,0, CI đều chứa 0 → **method 0/3**.
+- **P4** (`p4_ds.py`): Dawid–Skene, coi mỗi head modality là một annotator. Kết quả −2,7 / −9,2 / +0,6 → **0/3**. Nguyên nhân: lỗi tương quan giữa các modality, và các head cùng modality đồng thuận với nhau.
+- **P5** (`p5_anchor.py`): text gán pseudo-label để train head phi ngôn ngữ riêng cho corpus đích. MOSI→SIMS: M − T = −1,6 [−5,4; +2,0] → **trượt**. Cận trên dùng nhãn thật: +6,1.
