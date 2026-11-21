@@ -1,7 +1,7 @@
 # Ứng viên A: Nhãn unimodal của người làm *thước đo* cho modality imbalance
 
 **Tên làm việc:** *Balancing the Wrong Modality? Human Unimodal Perception as a Yardstick for Modality Imbalance in Audio-Visual Emotion Recognition*
-**Trạng thái (2026-11-19):** **ỨNG VIÊN CHÍNH. User đã đồng ý cách đóng khung (§0).** C1, C2, C5 đã xác minh. C4: chưa tìm thấy công trình trùng, còn 1 bài paywall chưa đọc được (§5). C3: pilot đã viết xong (`pilot/`), quyết định go/no-go trước 28/11/2026.
+**Trạng thái (2026-11-21):** **H KHÔNG ĐƯỢC ỦNG HỘ** theo thí nghiệm can thiệp đã đăng ký trước (`pilot/results/summary_2026-11-21.md`). Q1 và các phát hiện protocol vẫn đứng được. Cách đóng khung ban đầu (cần H) **không dùng được nữa**; chờ user chọn hướng đóng khung lại (xem tổng kết).
 Ký hiệu: **[SỰ THẬT]** = đã tự kiểm chứng, có nguồn · **[ĐÁNH GIÁ]** = nhận định chuyên môn.
 
 ---
