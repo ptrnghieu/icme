@@ -100,6 +100,44 @@ Có link trong paper là **chưa đủ**. Mỗi dataset phải được kiểm t
 - Nếu một mục **không thể** kiểm tra bằng công cụ hiện có (cần user ký EULA, cần tài khoản thư viện, cần GPU của user), thì không trình nó như một kết luận. Thay vào đó báo **trạng thái đã xác minh** gồm: đã làm gì, bị chặn ở bước nào, bằng chứng (HTTP status, nội dung trang), và hành động cụ thể user cần làm. Không lấp chỗ trống bằng phỏng đoán.
 - Độ chắc chắn phải đến từ việc kiểm tra, không đến từ cách viết. Không viết như đã chắc chắn khi chưa kiểm tra.
 
+### 4.6. Quy trình tìm gap v2 (từ 2026-11-21, thay cách "cơ chế trước")
+**Vì sao đổi** (tự đánh giá, 2026-11-21): đợt 2–3 sinh ý tưởng từ danh sách cơ chế ML; 7/8 pilot xoay quanh một bài toán (chéo corpus) sau khi P0 đã bác giả định chung; harness LR trên feature đông cứng không chứng minh được C3; quên tính power; user chỉ thấy kết quả sau nhiều pilot.
+
+**Nguyên tắc**
+1. **Gap lấy từ bằng chứng, không từ danh sách cơ chế.** Nguồn xếp theo độ tin cậy:
+   - (a) chỗ baseline mạnh 2024–2026 hỏng khi tái lập trên data của mình;
+   - (b) limitation, future work, kết quả âm nêu rõ trong bài 2025–2026 ở venue chính, bài tổng kết challenge, survey;
+   - (c) phê bình của reviewer trên OpenReview;
+   - (d) bảng benchmark có lát cắt thất bại.
+   Cơ chế từ miền khác chỉ dùng để **sinh lời giải sau khi** gap đã có bằng chứng.
+2. **Rẻ trước, đắt sau.** Mỗi tầng có ngân sách thời gian. Ở tầng 1–3, đọc từng phần là đủ: nội dung ghi là "thu hoạch", chưa phải "đã kiểm tra". Quy tắc full text (§4.1–4.2) và L2/L3 (§4.4) áp dụng đầy đủ từ tầng 4, và cho mọi thứ trình user như ứng viên.
+3. **Song song:** luôn giữ 2–3 hướng sống; Kaggle chạy nền trong lúc làm việc bàn giấy.
+4. **Claude đóng vai PI** (user yêu cầu): chấm theo rubric công khai, ghi lý do loại; user có quyền phủ quyết.
+
+| Tầng | Việc | Ngân sách | Đầu ra |
+|---|---|---|---|
+| 0 | Bản đồ tài sản: dataset ở L2/L3, baseline có code chạy được trên Kaggle, compute | 0,5 ngày, cập nhật dần | `ideas/assets.md` |
+| 1 | Thu hoạch gap: trích tự động đoạn limitation / future work / conclusion của bài 2025–2026 (MER, MSA, ERC, SER, FER, AVER) đã được nhận ở venue chính, bài tổng kết challenge, survey; ghi nguyên văn kèm nguồn; gom thành cụm | 1 ngày | `literature/gap_mining/gap_bank.md` |
+| 2 | Sàng lọc theo rubric (dưới) | 0,5 ngày | top 5 cụm |
+| 3 | Novelty nhanh (claim, 3–5 kịch bản scoop, khoảng 1 giờ mỗi cụm) và 2–3 phác thảo phương pháp; viết đóng góp ở dạng mạnh nhất và dạng yếu nhất còn lại | 0,5 ngày | 2–3 hướng |
+| 4 | Tín hiệu trên baseline thật: tái lập (≥3 seed) → phương sai và MDE → đo độ lớn thất bại trong lỗi của baseline → bản tối thiểu của phương pháp | 2–3 ngày, song song | go/no-go |
+| 5 | Xác minh đầy đủ cho finalist: full text, snowballing, L3, hồ sơ | 1 ngày | `ideas/<slug>.md` |
+
+**Rubric tầng 2** (mỗi mục 0–2; giữ khi tổng ≥ 9/12 và không mục nào bằng 0):
+1. Bằng chứng: số nguồn độc lập, độ mới.
+2. Đánh giá được bằng tài sản hiện có (data và baseline có code).
+3. Chưa bão hòa: ít bài 2025–2026 đã giải.
+4. Dẫn tự nhiên tới một phương pháp, không chỉ phân tích.
+5. Hiệu ứng dự kiến lớn hơn MDE của benchmark.
+6. Vừa 6 trang, kịp hạn, không trùng bài COLING.
+
+**Quy tắc dừng**
+- Một thí nghiệm bác giả định chung của một nhánh → loại cả nhánh, không thử biến thể dựa trên cùng giả định. Tối đa 2 pilot mỗi nhánh.
+- Trước mỗi pilot phải ước lượng phương sai (seed, bootstrap) và MDE. Nếu MDE lớn hơn hiệu ứng hợp lý thì không chạy, hoặc phải tăng n.
+- Pilot chạy trên chính baseline sẽ so sánh (hoặc pipeline của nó). Chỉ dùng harness LR trên feature đông cứng khi giả định là về biểu diễn.
+
+**Nhịp báo cáo:** báo user sau mỗi tầng bằng bảng ngắn; không đợi chạy xong nhiều pilot.
+
 ---
 
 ## 5. Chế độ tư vấn ý tưởng và thiết kế thực nghiệm
@@ -205,3 +243,4 @@ Còn mở:
 | 2026-11-21 | **User sửa lại: chỉ có MER2023–2026, không có IEMOCAP.** Cập nhật §9. Notebook L3 (`datasets/verify/04_verify_gated.ipynb`) đặt mặc định `RUN_IEMOCAP = False`. Đợt 3 tìm trong phạm vi MER2023–2026 cộng data mở (MELD, CH-SIMS/v2, MOSI, MOSEI mirror, CREMA-D, RAVDESS, MERGE). |
 | 2026-11-21 | **User nới C4 và C5.** C4: chỉ tính là scoop nếu ý tưởng cốt lõi đã có trong MER hoặc affective computing; cơ chế đã có ở miền khác vẫn đạt nhưng phải trích dẫn và so sánh. C5: chấp nhận thêm data gated duyệt tự động mà user lấy được ngay, nhãn hay split dẫn xuất tự động, và tập đánh giá nhỏ tự gán (≤ 2 ngày công). Bước tiếp: rà lại các hướng đã loại chỉ vì C4 (miền khác) hoặc C5, rồi tìm tiếp. |
 | 2026-11-21 | **User loại MER-Cross; quét cơ chế từ miền khác** (`ideas/round3_mechanism_scan_2026-11-21.md`). Bốn họ cơ chế không dùng nhãn đích đều trượt tiêu chí đặt trước: P2 xóa thông tin corpus bằng LEACE/CORAL (0/3), P3 chọn mô hình bằng Agreement-on-the-Line (0/3; headroom có ở 2/3 hướng), P4 Dawid–Skene trên các head modality (0/3; lỗi tương quan giữa các modality), P5 text dạy head phi ngôn ngữ trên corpus đích (trượt; cận trên khi có nhãn thật +6,1). Model merging đã có trong SER (AdaLTM). Các cơ chế còn lại (group DRO, WiSE-FT, MixStyle, IRM, learning to defer) xếp ưu tiên thấp. **Kết luận: dừng nhánh "sửa shift corpus mà không có nhãn đích".** Chờ user quyết hướng tiếp. |
+| 2026-11-21 | User thấy cách tìm gap kém hiệu quả và yêu cầu cải tiến; user không đóng vai PI. Thêm **§4.6 Quy trình tìm gap v2**: gap lấy từ bằng chứng (lỗi khi tái lập baseline, limitation và future work, phê bình reviewer, lát cắt thất bại); 6 tầng từ rẻ đến đắt, có ngân sách thời gian; rubric chấm 12 điểm; quy tắc dừng theo nhánh và theo power; pilot chạy trên baseline thật; báo user sau mỗi tầng. Claude đóng vai PI. |
