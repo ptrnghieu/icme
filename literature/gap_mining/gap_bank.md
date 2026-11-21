@@ -41,3 +41,8 @@ Rubric (CLAUDE.md §4.6), mỗi mục 0–2: B = bằng chứng · Đ = đánh g
   - kiểm novelty trong affective. Tiền lệ đã biết cần đối chiếu: AV-MC của CH-SIMS v2 (2209.02604, đã ghi trong reading log: "dùng mixup A/V để chống text-predominance"), và các phương pháp xung đột modality cho LALM ở R2-1;
   - phác thảo 2–3 phương pháp;
   - **power:** split test của CH-SIMS chỉ có **100 clip xung đột** (25,8% của 388), trong đó 64 clip có A và V đúng còn T sai. Với n = 100, sai số chuẩn của accuracy khoảng 5 điểm, nên một mình CH-SIMS không đủ power. Cần thêm CH-SIMS v2 (theo reading log, 4.402 mẫu có nhãn unimodal), hiện mới ở L1+.
+
+## Tầng 3 (2026-11-21)
+- **G8 → ĐÃ LOẠI (C4).** Tập test xung đột dựng từ nhãn unimodal của CH-SIMS v2 đã có (DiffEmo 2406.03004). Phương pháp fusion theo độ tin cậy, đánh giá trên tập con xung đột thật của CH-SIMS/v2, đã có (UMC 2510.20256). Học khi nào gộp, khi nào bỏ modality đã có (DCR 2605.04877, MiD-ERC 2611.08860). Chi tiết ở `ideas/G8_modality_conflict.md`.
+- Đếm lại cụm "xung đột / độ tin cậy modality" theo ma trận từ khóa rộng hơn (`g8_novelty_queries_2026-11-21.txt`): hơn 15 phương pháp trong 2025–2026. Điểm M của G8 ở tầng 2 (đã cho 1) là chấm quá tay; điểm đúng là 0.
+- **Kết quả:** kênh (b) (limitation và độ bão hòa) đã sàng hết 18 cụm, không còn cụm nào sống. Bước tiếp theo quy trình v2 là kênh (a): tái lập baseline mạnh và tìm lát cắt thất bại.

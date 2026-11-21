@@ -40,7 +40,17 @@ Cột "Dataset trong bài" là các tên dataset xuất hiện trong full text c
 | ERM-MinMaxGAP 2603.21050 | Fairness SER | MELD | zihaurpang/ERM-MinMaxGAP | OK |
 | MSER 2503.21806 | Zero-shot ER chéo ngôn ngữ | MELD, MOSEI | Vincent-ZHQ/MSER | OK |
 
-**Chưa kiểm tra:** code có chạy được hay không, feature hay checkpoint có kèm theo không, và license. Đó là việc của tầng 4.
+**Kiểm tra ngày 2026-11-21 (clone nông, chỉ đọc file, không chạy code):** TLRA, EBMC, SemMSA, MIDAS, LNLN và MMSA đều đọc feature dạng MMSA (`unaligned_50.pkl` / `aligned_50.pkl` / `unaligned_39.pkl`, hoặc dataloader MMSA) và có config cho MOSI, MOSEI, SIMS. MMSA còn có config cho SIMS v2. Có file LICENSE: EBMC, SemMSA, MMSA, LNLN. Không có file license: TLRA, MIDAS. **Chưa kiểm tra:** code có chạy được trên Kaggle hay không (việc của tầng 4).
+
+## Feature dạng MMSA tải được (HTTP 206 với Range request, 2026-11-21)
+| File | Kích thước | Nguồn |
+|---|---|---|
+| MOSI `Processed/unaligned_50.pkl` (cùng `aligned_50.pkl` 367 MB) | 554 MB | HF `tamb2203579/CMU-MOSI` (mirror bên thứ ba, README tự khai apache-2.0) |
+| CH-SIMS `Processed/unaligned_39.pkl` | 1,23 GB | HF `tamb2203579/CH-SIMS` (như trên) |
+| CH-SIMS v2(s) `Processed/unaligned.pkl` | 3,62 GB | HF `tamb2203579/CH-SIMSv2` (như trên) |
+| MOSEI `unaligned_50.pkl` | 13,65 GB | HF `AZYoung/MOSEI_processed` (mirror bên thứ ba, không có README license) |
+
+**Lưu ý:** CH-SIMS ⊂ CH-SIMS v2(s): 2.281/2.281 clip trùng, cùng text, cùng nhãn, cùng split (`ideas/G8_modality_conflict.md`). Không được tính là hai dataset độc lập.
 
 ## Compute
 Kaggle 2×T4, 11 giờ mỗi session, khoảng 200 giờ mỗi tuần (CLAUDE.md §9).
