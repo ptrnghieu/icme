@@ -2,11 +2,14 @@ import sys, urllib.request, urllib.parse, re, time, html
 q=sys.argv[1]; n=int(sys.argv[2]) if len(sys.argv)>2 else 50
 sort=sys.argv[3] if len(sys.argv)>3 else 'relevance'  # relevance | submittedDate | lastUpdatedDate
 url='https://export.arxiv.org/api/query?'+urllib.parse.urlencode({'search_query':q,'start':0,'max_results':n,'sortBy':sort,'sortOrder':'descending'})
-for attempt in range(4):
+x=None
+for attempt in range(6):
     try:
         x=urllib.request.urlopen(url,timeout=60).read().decode(); break
     except Exception as e:
-        time.sleep(5*(attempt+1))
+        time.sleep(min(120, 15*2**attempt))  # backoff for HTTP 429 from export.arxiv.org
+if x is None:
+    print(f'## {q} -> FAILED (rate limited or network error)'); sys.exit(0)
 ents=x.split('<entry>')[1:]
 print(f'## {q} -> {len(ents)}')
 for e in ents:

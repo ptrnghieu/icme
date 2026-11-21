@@ -94,3 +94,11 @@ Nguồn ngoài arXiv bị chặn ngày 2026-11-21:
 | F2 | Học liên tục cho MER | **ĐÃ LOẠI** (C3) | Truy vấn ra 0 kết quả, nhưng không tìm được cấu trúc riêng của cảm xúc; chỉ là phương pháp CL tổng quát áp vào cảm xúc. |
 | F3 | Federated MER, mỗi client khác tập modality | **ĐÃ LOẠI** (C4) | 2511.00344; federated thiếu modality là chủ đề tổng quát đã có nhiều bài. |
 | G2 | Tín hiệu thời gian lượt lời (độ trễ, chen ngang) cho MERC | **ĐÃ LOẠI** (C3) | Timestamp MELD lấy từ phụ đề, phim sitcom đã qua dựng, hiệu ứng dự kiến nhỏ; gần bối cảnh hội thoại của bài COLING. |
+
+## Đợt 2e (2026-11-21, trong lúc chờ P0b)
+Từ khoảng 05:10, API arXiv trả HTTP 429 (bị giới hạn tốc độ). `tools/arxiv_q.py` đã thêm backoff; phần sàng lọc còn lại dùng WebSearch.
+
+| # | Hướng | Kết luận | Lý do và bằng chứng |
+|---|---|---|---|
+| H | **Điểm neo khái niệm cảm xúc cho chuyển giao chéo corpus**: biểu diễn mỗi modality bằng đầu ra ngữ nghĩa của bộ nhận diện cảm xúc bên ngoài (FER cho mặt, SER cho giọng, sentiment đa ngôn ngữ cho text), không bằng embedding thô. | **ĐANG KIỂM TRA** (P0c) | **Gợi ý từ P0:** 7 logit FER chuyển giao MOSI→SIMS với TR +0,69, còn embedding của cùng mô hình chỉ +0,10. **Sàng lọc (WebSearch):** concept bottleneck với AU cho FER (eprints.gla.ac.uk/323499), Attention-Guided Concept Model đa phương thức (2502.10145), CBM cho SER (2609.39453: khái niệm vẫn kém đưa thẳng audio vào), SSE 2610.19981 (giao diện ở không gian đầu ra của mô hình đông cứng cho MSA, không nhắm chéo domain). Chưa thấy bài nào dùng khái niệm làm điểm neo để chuyển giao chéo corpus cho MER đa phương thức. **Chống rò rỉ:** SER `superb/wav2vec2-base-superb-er` train trên IEMOCAP; FER `trpakov/vit-face-expression` train trên FER2013; sentiment `cardiffnlp/twitter-xlm-roberta-base-sentiment` train trên tweet. Không mô hình nào train trên MOSI, CH-SIMS, CREMA-D hay MELD. **Tiêu chí cố định trước:** docstring của `explore/xling/p0c_analyze.py`. |
+| — | Các hướng mở trong survey MLLM-MER (2509.24322 §7) | không cho ứng viên mới | Căn chỉnh thời gian tinh giữa các modality, kiến trúc có nền tảng thời gian, benchmark nhãn dày theo thời gian, kiến trúc hiệu quả: đều là vùng đã đông (AGF-Net 2610.30651, EmoS 2605.08847, LongEmo 2609.40079, Light-MER 2607.12787). |
