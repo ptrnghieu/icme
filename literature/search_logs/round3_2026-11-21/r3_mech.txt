@@ -1,0 +1,114 @@
+## abs:"deep feature reweighting" AND (abs:emotion OR abs:sentiment OR abs:affective OR abs:affect) -> 1
+2210.11369v1 | 2022-10-20 | On Feature Learning in the Presence of Spurious Correlations
+## abs:"last layer retraining" AND (abs:emotion OR abs:sentiment OR abs:affective OR abs:affect) -> 0
+## abs:"LP-FT" AND (abs:emotion OR abs:sentiment OR abs:affective OR abs:affect) -> 1
+2405.16747v2 | 2024-05-27 | Understanding Linear Probing then Fine-tuning Language Models from NTK Perspective
+## abs:"WiSE-FT" AND (abs:emotion OR abs:sentiment OR abs:affective OR abs:affect) -> 0
+## abs:"model soup" AND (abs:emotion OR abs:sentiment OR abs:affective OR abs:affect) -> 1
+2603.00204v1 | 2026-02-27 | Optimisation of SOUP-GAN and CSR-GAN for High Resolution MR Images Reconstruction
+## abs:"weight averaging" AND (abs:emotion OR abs:sentiment OR abs:affective OR abs:affect) -> 20
+2611.17420v1 | 2026-11-12 | Euclid Data Release 1 (DR1). Enhancing deep-learning models: the impact of image processing and training data selection for strong-l
+2611.14030v1 | 2026-11-10 | Forecast Projection and Decision Regret: Theory and Evidence from Battery Arbitrage
+2610.12758v1 | 2026-10-08 | DistressBench: Evaluating Multi-Dimensional Crisis Support in Large Language Models
+2610.05329v1 | 2026-10-04 | Understanding the Weight Averaging Mechanism in LLM Training for Post-Training Quantization
+2609.37903v1 | 2026-09-29 | From Intraday Orderbook to Imbalance Price: Understanding Cross-Market Interaction
+2609.36838v1 | 2026-09-29 | On-Policy Visual Evidence Distillation
+2609.16917v1 | 2026-09-15 | Multi-Agent Learning with Cooperation-Driven Optimization Dynamics
+2608.25940v2 | 2026-08-26 | A Statistical Audit of Physical AI Benchmark Redundancy
+2607.11956v3 | 2026-07-12 | Exact and Certified Data Shapley for Weighted Nearest Neighbor Regression
+2601.22866v2 | 2026-01-30 | Classification of SARS-CoV-2 Variants through The Epistatical Circos Plots with Convolutional Neural Networks
+2601.12889v1 | 2026-01-19 | Simultaneous Detection of LSD and FMD in Cattle Using Ensemble Deep Learning
+2601.08141v1 | 2026-01-13 | Qalb: Largest State-of-the-Art Urdu Large Language Model for 230M Speakers with Systematic Continued Pre-training
+2512.01155v2 | 2025-12-01 | Beyond Greenfield: The D3 Framework for AI-Driven Productivity in Brownfield Engineering
+2511.17622v1 | 2025-11-18 | Neurocircuitry-Inspired Hierarchical Graph Causal Attention Networks for Explainable Depression Identification
+2511.06306v1 | 2025-11-09 | Coherency Analysis in Nonlinear Heterogeneous Power Networks: A Blended Dynamics Approach
+2509.23795v1 | 2025-09-28 | An Efficient Transfer Learning Method Based on Adapter with Local Attributes for Speech Emotion Recognition
+2509.14527v1 | 2025-09-18 | CLAIP-Emo: Parameter-Efficient Adaptation of Language-supervised models for In-the-Wild Audiovisual Emotion Recognition
+2507.15765v2 | 2025-07-21 | Learning from Heterogeneity: Generalizing Dynamic Facial Expression Recognition via Distributionally Robust Optimization
+2506.06953v1 | 2025-06-08 | Task-driven real-world super-resolution of document scans
+2506.02230v1 | 2025-06-02 | Towards Machine Unlearning for Paralinguistic Speech Processing
+## abs:"agreement-on-the-line" -> 20
+2511.16761v1 | 2025-11-20 | Ionizing radiation of [WR] stars: atmospheres and photoionization models
+2406.06702v1 | 2024-06-10 | NEATH III: a molecular line survey of a simulated star-forming cloud
+2404.01542v2 | 2024-04-02 | Predicting the Performance of Foundation Models via Agreement-on-the-Line
+2402.12601v1 | 2024-02-19 | Deep Pa$β$ Imaging of the Candidate Accreting Protoplanet AB Aur b
+2401.08493v1 | 2024-01-16 | THz to far-infrared spectra of the known crystal polymorphs of Phenylalanine
+2311.11096v1 | 2023-11-18 | On the Out of Distribution Robustness of Foundation Models in Medical Image Segmentation
+2310.04941v2 | 2023-10-07 | Test-Time Adaptation Induces Stronger Accuracy and Agreement-on-the-Line
+2206.13089v2 | 2022-06-27 | Agreement-on-the-Line: Predicting the Performance of Neural Networks under Distribution Shift
+2108.13321v1 | 2021-08-30 | Fitting spectral energy distributions of FMOS-COSMOS emission-line galaxies at z$\sim$1.6: Star formation rates, dust attenuation, a
+2010.14352v1 | 2020-10-27 | Certifying the adiabatic preparation of ultracold lattice bosons in the vicinity of the Mott transition
+2007.05243v4 | 2020-07-10 | Statistical screening model for moderately coupled and dense plasmas
+2002.07658v1 | 2020-02-18 | Calculated line lists for H$_{\text{2}} \mkern0.1mu ^{\text{16}}$O and H$_{\text{2}} \mkern0.1mu ^{\text{18}}$O with extensive compa
+1812.06113v1 | 2018-12-14 | [CII] 158 Micron Emission from z~4 HI Absorption-Selected Galaxies
+1807.01252v1 | 2018-07-03 | Opinion formation on dynamic networks: identifying conditions for the emergence of partisan echo chambers
+1711.02858v1 | 2017-11-08 | Shocks and UV radiation around low-mass protostars: the Herschel-PACS legacy
+1710.06225v1 | 2017-10-17 | A project based on Multi-Configuration Dirac-Fock calculations for plasma spectroscopy
+1704.00022v2 | 2017-03-31 | Empirical constraints on the origin of fast radio bursts: volumetric rates and host galaxy demographics as a test of millisecond mag
+1403.0390v1 | 2014-03-03 | Complex organic molecules in protoplanetary disks
+1302.0688v1 | 2013-02-04 | A three-phase chemical model of hot cores: the formation of glycine
+1302.0500v1 | 2013-02-03 | Settling accretion onto slowly rotating X-ray pulsars
+## abs:"accuracy estimation" AND abs:unlabeled AND (abs:emotion OR abs:sentiment OR abs:affective OR abs:affect) -> 0
+## abs:MixStyle AND (abs:emotion OR abs:sentiment OR abs:affective OR abs:affect) -> 1
+2609.05140v1 | 2026-09-04 | Cross-dataset transportability of pediatric chest X-ray deep learning across three countries: discrimination, calibration, operating
+## abs:"feature statistics" AND abs:"domain generalization" AND (abs:emotion OR abs:sentiment OR abs:affective OR abs:affect) -> 0
+## abs:"group DRO" AND (abs:emotion OR abs:sentiment OR abs:affective OR abs:affect) -> 1
+2305.10429v4 | 2023-05-17 | DoReMi: Optimizing Data Mixtures Speeds Up Language Model Pretraining
+## abs:"invariant risk minimization" AND (abs:emotion OR abs:sentiment OR abs:affective OR abs:affect) -> 6
+2511.14157v1 | 2025-11-18 | Learning Representation and Synergy Invariances: A Povable Framework for Generalized Multimodal Face Anti-Spoofing
+2506.01339v2 | 2025-06-02 | Invariance Makes LLM Unlearning Resilient Even to Unanticipated Downstream Fine-Tuning
+2311.03115v1 | 2023-11-06 | RELand: Risk Estimation of Landmines via Interpretable Invariant Risk Minimization
+2110.08413v2 | 2021-10-16 | Invariant Language Modeling
+2103.12947v1 | 2021-03-24 | Meta-Learned Invariant Risk Minimization
+2011.12379v2 | 2020-11-24 | Invariant Representation Learning for Treatment Effect Estimation
+## abs:"learning to defer" AND (abs:emotion OR abs:sentiment OR abs:affective OR abs:affect) -> 1
+2410.15729v5 | 2024-10-21 | A Two-Stage Learning-to-Defer Approach for Multi-Task Learning
+## abs:"task arithmetic" AND (abs:emotion OR abs:sentiment OR abs:affective OR abs:affect) -> 4
+2609.32042v1 | 2026-09-25 | Quantization Thresholds Replicate, Failure Modes Do Not: A Three-Model Study of Agentic Tool Use in Polish from 8-bit to 2-bit
+2605.03096v2 | 2026-05-04 | When Prompts Interact: Assessing Prompt Arithmetic for Deconfounding under Distribution Shift
+2510.04686v2 | 2025-10-06 | How does the optimizer implicitly bias the model merging loss landscape?
+2410.03617v1 | 2024-10-04 | What Matters for Model Merging at Scale?
+## abs:"model merging" AND (abs:emotion OR abs:sentiment OR abs:affective OR abs:affect) -> 20
+2610.06415v1 | 2026-10-05 | Training-Free Transformer Merging via Sequential Local Operator Alignment
+2609.12897v1 | 2026-09-11 | Tracing and Coordinating Cross-Layer Influence for Multimodal Model Merging
+2609.02685v1 | 2026-09-02 | DKL: Decoupled Knowledge Learning for Instruction-Tuned Language Models
+2608.28547v1 | 2026-08-28 | DARTS: Decoder-Aware Representation Tuning via Surgery for Model Merging
+2607.11997v2 | 2026-07-13 | Are we Merging the Right Models? Impact of Expert Training Duration on Model Merging for LLMs
+2603.25041v2 | 2026-03-26 | AdaLTM: Adaptive Layer-wise Task Vector Merging for Categorical Speech Emotion Recognition with ASR Knowledge Integration
+2603.05768v2 | 2026-03-06 | Bridging Domains through Subspace-Aware Model Merging
+2601.21115v1 | 2026-01-28 | Multi-task Code LLMs: Data Mix or Model Merge?
+2601.06780v1 | 2026-01-11 | Multi-Stage Evolutionary Model Merging with Meta Data Driven Curriculum Learning for Sentiment-Specialized Large Language Modeling
+2510.19782v2 | 2025-10-22 | Adapting Multilingual Models to Code-Mixed Tasks via Model Merging
+2510.04686v2 | 2025-10-06 | How does the optimizer implicitly bias the model merging loss landscape?
+2509.02555v2 | 2025-09-02 | Surrogate Benchmarks for Model Merging Optimization
+2506.14126v2 | 2025-06-17 | From Memorization to Parameter Interference: How Overtraining Experts Harms Model Merging
+2505.05464v2 | 2025-05-08 | Bring Reason to Vision: Understanding Perception and Reasoning through Model Merging
+2503.06001v2 | 2025-03-08 | Analyzing the Role of Permutation Invariance in Linear Mode Connectivity
+2502.20516v2 | 2025-02-27 | In-Model Merging for Enhancing the Robustness of Medical Imaging Classification Models
+2410.03617v1 | 2024-10-04 | What Matters for Model Merging at Scale?
+2408.12237v1 | 2024-08-22 | Weight Scope Alignment: A Frustratingly Easy Method for Model Merging
+2408.07362v2 | 2024-08-14 | BadMerging: Backdoor Attacks Against Model Merging
+2407.00766v1 | 2024-06-30 | An Attribute Interpolation Method in Speech Synthesis by Model Merging
+## abs:"spurious correlation" AND abs:"emotion recognition" -> 9
+2512.19379v3 | 2025-12-22 | OmniMER: Auxiliary-Enhanced LLM Adaptation for Indonesian Multimodal Emotion Recognition
+2508.03780v1 | 2025-08-05 | Are Inherently Interpretable Models More Robust? A Study In Music Emotion Recognition
+2507.09248v1 | 2025-07-12 | AGCD-Net: Attention Guided Context Debiasing Network for Emotion Recognition
+2506.23075v1 | 2025-06-29 | CSBrain: A Cross-scale Spatiotemporal Brain Foundation Model for EEG Decoding
+2506.06071v2 | 2025-06-06 | CO-VADA: A Confidence-Oriented Voice Augmentation Debiasing Approach for Fair Speech Emotion Recognition
+2407.04963v1 | 2024-07-06 | Towards Context-Aware Emotion Recognition Debiasing from a Causal Demystification Perspective via De-confounded Training
+2403.05963v3 | 2024-03-09 | Robust Emotion Recognition in Context Debiasing
+2303.11921v2 | 2023-03-21 | Context De-confounded Emotion Recognition
+2107.12096v2 | 2021-07-26 | Towards Unbiased Visual Emotion Recognition via Causal Intervention
+## abs:"shortcut" AND abs:"emotion recognition" -> 12
+2611.10097v1 | 2026-11-06 | A Privacy-Aware Deep Learning Benchmark for Facial Emotion Recognition
+2610.28422v1 | 2026-10-20 | How Much of Cross-Subject EEG Emotion Recognition Is Stimulus Memorization?
+2609.32804v1 | 2026-09-26 | Finding Emotions Where They Belong: Rethinking Audio Emotion Recognition through Masked Temporal Affective Grounding
+2608.26193v1 | 2026-08-24 | AffectOmni: RL-Verifiable People-Centric Grounded Affective Reasoning for Social and Art-Related Scenes
+2606.25990v2 | 2026-06-24 | SpeechEQ: Benchmarking Emotional Intelligence Quotient in Socially Aware Voice Conversational Models
+2603.16483v1 | 2026-03-17 | On the Emotion Understanding of Synthesized Speech
+2603.13340v1 | 2026-03-07 | Complementarity-Supervised Spectral-Band Routing for Multimodal Emotion Recognition
+2508.10644v2 | 2025-08-14 | Conditional Information Bottleneck for Multimodal Fusion: Overcoming Shortcut Learning in Sarcasm Detection
+2410.03057v3 | 2024-10-04 | What Causes Performance Degradation in Cross-Subject EEG Classification?
+2312.06270v4 | 2023-12-11 | Testing Correctness, Fairness, and Robustness of Speech Emotion Recognition Models
+2202.01252v2 | 2022-02-02 | Speaker Normalization for Self-supervised Speech Emotion Recognition
+2006.05331v2 | 2020-06-04 | Data Augmentation for Enhancing EEG-based Emotion Recognition with Deep Generative Models

@@ -1,0 +1,42 @@
+## abs:"model selection" AND abs:"cross-corpus" AND abs:emotion -> 0
+## abs:"unsupervised model selection" AND (abs:emotion OR abs:sentiment OR abs:affect) -> 0
+## abs:"performance estimation" AND abs:"unlabeled" AND (abs:emotion OR abs:speech) -> 0
+## abs:"accuracy-on-the-line"  -> 25
+2504.00186v3 | 2025-03-31 | Are Domain Generalization Benchmarks with Accuracy on the Line Misspecified?
+2510.24884v1 | 2025-10-28 | Aggregation Hides Out-of-Distribution Generalization Failures from Spurious Correlations
+2206.13089v2 | 2022-06-27 | Agreement-on-the-Line: Predicting the Performance of Neural Networks under Distribution Shift
+2406.19049v1 | 2024-06-27 | Accuracy on the wrong line: On the pitfalls of noisy data for out-of-distribution generalisation
+2506.17989v1 | 2025-06-22 | Data Curation Matters: Model Collapse and Spurious Shift Performance Prediction from Training on Uncurated Text Embeddings
+2012.00930v1 | 2020-12-02 | Compression modulus and symmetry energy of nuclear matter with KIDS density functional
+1704.04096v1 | 2017-04-13 | ExoMol molecular line lists XX: a comprehensive line list for H$_3^+$
+1011.1569v1 | 2010-11-06 | A variationally computed line list for hot NH3
+2101.09087v1 | 2021-01-22 | My Mouse, My Rules: Privacy Issues of Behavioral User Profiling via Mouse Tracking
+2402.02761v1 | 2024-02-05 | Transmission Line Detection Based on Improved Hough Transform
+1803.07011v1 | 2018-03-19 | Radio bearing of sources with directional antennas in urban environment
+2404.15936v2 | 2024-04-24 | Accurate Direct Positioning in Distributed MIMO Using Delay-Doppler Channel Measurements
+2010.13422v1 | 2020-10-26 | Lane detection in complex scenes based on end-to-end neural network
+2604.15375v1 | 2026-04-15 | VeriCWEty: Embedding enabled Line-Level CWE Detection in Verilog
+2211.00692v2 | 2022-11-01 | Towards Better Out-of-Distribution Generalization of Neural Algorithmic Reasoning Tasks
+2307.14477v1 | 2023-07-26 | Surface Deformation of New York City from Multitemporal Interferometric Analysis of Sentinel-1 SAR Datasets
+2603.08657v1 | 2026-03-09 | Clarity and Computational Efficiency of Orbital Boundary Labeling
+2504.17676v3 | 2025-04-24 | UNILoc: Unified Localization Combining Model-Based Geometry and Unsupervised Learning
+2006.12653v1 | 2020-06-22 | Fast Initial Access with Deep Learning for Beam Prediction in 5G mmWave Networks
+2110.15295v1 | 2021-10-28 | A high-resolution line list for AlO
+2312.15538v4 | 2023-12-24 | Exploiting Multipath Information for Integrated Localization and Sensing via PHD Filtering
+2605.27538v2 | 2026-05-26 | VROOM-SBI: A Fast Simulation-Based Bayesian Inference Methodology for Stokes QU-Fitting in Radio Interferometry
+2204.09877v1 | 2022-04-21 | Non-autoregressive Model for Full-line Code Completion
+1507.01275v1 | 2015-07-05 | ExoMol molecular line lists XII: Line Lists for 8 isotopologues of CS
+2305.02755v1 | 2023-05-04 | Star Formation History of the Small Magellanic Cloud: the shell substructure
+## abs:"validation" AND abs:"domain adaptation" AND abs:"speech emotion" -> 1
+2609.26054v1 | 2026-08-24 | Benchmarking Open-Source Speech Emotion Recognition in Naturalistic Mandarin Spine Clinic Consultations: A Pilot Validation Study
+## abs:"label-free" AND abs:"emotion recognition" -> 4
+2507.17524v2 | 2025-07-23 | SDC-Net: A Domain Adaptation Framework with Semantic-Dynamic Consistency for Cross-Subject EEG Emotion Recognition
+2610.40883v1 | 2026-10-29 | Incongruence-Aware Evaluation of Multimodal Speech Emotion Recognition in Audio Large Language Models
+2606.19398v1 | 2026-06-17 | S-JEPA : Soft Clustering Anchors for Self-Supervised Speech Representation Learning
+2608.14819v1 | 2026-08-14 | What Makes a Good Layer? Assessing the Layer-Wise Intrinsic Properties of Music Foundation Models
+## abs:"without target labels" AND abs:"emotion recognition" -> 1
+2607.27655v2 | 2026-07-30 | Checkpoint Selection and Evaluation in EEG Emotion Recognition
+### 2607.27655v2 | 2026-07-30 | Checkpoint Selection and Evaluation in EEG Emotion Recognition
+[comment] 15 pages, 3 figures, 3 tables; 27-page supplementary information and reproducibility materials in ancillary files. Substantially revised title and analysis, added SEED-IV and SEED-V experiments, and updated author list. Submitted to Neuroinformatics
+Checkpoint selection can improve an electroencephalography (EEG) emotion-recognition score without improving performance on other trials. We compared selection and scoring on disjoint trial pools along fixed training trajectories. A same-session SEED study comprised 300 trajectories from 15 participants, two models and five trial-role rotations. Another 276 trajectories extended the comparison to separate training, validation and target sessions in SEED, SEED-IV and SEED-V, with 15, 15 and 16 participants, respectively. Increasing the candidate set from five to 80 checkpoints raised the same-session dynamical graph convolutional neural network (DGCNN) selection-pool score by 6.24 percentage points, while the other-pool change was -1.24 (descriptive 95% participant-bootstrap interval -2.67 to 0.26). Under the cross-session design, DGCNN retained gains of 4.47 [1.79, 7.25], 4.27 [2.00, 6.53] and 2.75 [0.79, 4.78] points across the three datasets. Multilayer perceptron results varied across datasets. Common-time-range analysis and trial-level scoring supported the respective patterns. Both target pools supplied labels for symmetric checkpoint selection; these results concern retention across trials, not evaluation without target labels. Complete policy curves and executable reconstruction support reporting selected-score improvements alongside performance on other trials, rather than assuming a universal penalty for checkpoint search.
+

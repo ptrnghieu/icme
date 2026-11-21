@@ -58,3 +58,15 @@ Thí nghiệm sàng lọc cho ứng viên **D** (chéo ngôn ngữ) và **F4** (
   - SIMS→MOSI: không xác định (oracle gần mức ngẫu nhiên).
   - Kết quả: 0/2 hướng ủng hộ. Tối đa chỉ đạt 1/3 dù CREMA-D→MELD ra sao, nên **H theo quy tắc: DOES NOT HOLD → ĐÃ LOẠI**. Phần P0c của CREMA-D/MELD đã dừng vì không đổi được kết luận.
 - **Mô tả:** fusion trên khái niệm có bacc chéo 76,4 (MOSI→SIMS) và 78,4 (SIMS→MOSI), so với 68,6 và 63,1 của fusion trên embedding. Hiệu ứng chủ yếu đến từ bộ phân loại sentiment text đa ngôn ngữ có sẵn (TR 0,99/1,00), tức là chuyển giao zero-shot của một mô hình train cho đúng task. Không so trực tiếp được với CASP hay MIDG vì metric và cách xử lý nhãn 0 khác nhau.
+
+## P1: gating theo mẫu học từ utility out-of-fold (ứng viên R2-2′)
+- Script `p1_gating.py`, báo cáo `p1_report_2026-11-21.md`. Kết quả 1/4 dataset ủng hộ theo tiêu chí đặt trước → **R2-2′ ĐÃ LOẠI**. Chi tiết ở `ideas/round3_screening_2026-11-21.md`.
+
+## P2: xóa thông tin corpus khỏi feature phi ngôn ngữ (quét cơ chế từ miền khác, 2026-11-21)
+- **Cơ chế chuyển từ miền khác:** LEACE (xóa khái niệm tuyến tính, Belrose et al. 2023, NLP) với khái niệm = nhãn corpus; CORAL (căn chỉnh hiệp phương sai, Sun et al. 2016, vision DA). Bộ xóa fit trên feature **không nhãn** gộp từ train nguồn và phần không-test của đích; không dùng nhãn cảm xúc.
+- **Tiêu chí cố định trước** (docstring `p2_erasure.py`): HELPS khi, với audio (WavLM) hoặc face (ViT-FER emb), TR(method) − TR(none) ≥ +0,10, CI bootstrap theo nhóm không chứa 0, ở ≥ 2/3 hướng {MOSI→SIMS, SIMS→MOSI, CREMA-D→MELD}, và bacc trong domain nguồn giảm ≤ 2 điểm.
+- **Kết quả** (`p2_report_2026-11-21.md`): **0/3 hướng → DOES NOT HELP.**
+  - MOSI→SIMS: audio LEACE −0,00 [−0,16; +0,19], CORAL −0,09; face LEACE +0,07 [−0,03; +0,17], CORAL +0,02.
+  - SIMS→MOSI: audio LEACE −0,03, CORAL +0,20 [−0,01; +0,43]; face không xác định (oracle MOSI ở mức ngẫu nhiên).
+  - CREMA-D→MELD: audio LEACE +0,14 [−0,07; +0,33], CORAL +0,03; face không ổn định (oracle 20,0 so với mức ngẫu nhiên 16,7).
+- **Khớp với bằng chứng ngoài miền:** arXiv 2610.13027 (MRI não; mới đọc abstract) báo rằng xóa tín hiệu dataset bằng INLP, LEACE, CORAL hay adversarial "never improves" chuyển giao, vì nội dung được mã hóa theo hướng khác nhau ở mỗi dataset. arXiv 2610.08069 (mới đọc abstract) chứng minh giới hạn minimax: các bộ xóa tuyến tính (MP, SAL, LEACE) chỉ gỡ được độ lệch trung bình đo được từ dữ liệu hiệu chỉnh. P0 của mình (MOSI↔SIMS) cũng cho thấy audio và face mất hướng phân biệt khi đổi corpus (AUC chéo 52–58), nên một phép chiếu không nhãn không khôi phục được hướng đó.

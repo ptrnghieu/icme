@@ -1,0 +1,46 @@
+## abs:LEACE -> 18
+2611.25640v1 | 2026-11-19 | Erasing the Wrong Thing: Conditional Attribute Leakage and Concept Erasure in Shared Foundation-Model Embeddings
+2611.15681v1 | 2026-11-11 | Energy Aware Optimization of Non-Deterministic Task-Based Intermittent Computing Nodes with Thimble
+2611.11386v1 | 2026-11-08 | What Travels Across Languages? Reading, Transfer and Erasure of Cross-Lingual Concept Subspaces in Bangla Idioms
+2610.17117v2 | 2026-10-12 | Gluing Local Contexts into Global Meaning: A Sheaf-Theoretic Decomposition of Transformer Representations
+2610.13027v1 | 2026-10-09 | Dataset-Specific Encoding of Image Content Underlies Cross-Dataset Failure in Brain MRI Foundation Models
+2610.08069v1 | 2026-10-06 | Detecting a Shift Is Not Enough: Exact Minimax Limits of Linear Representation Repair
+2609.32889v1 | 2026-09-26 | Measurement-Gated Provenance Attenuation for Frozen EEG Representations
+2609.13393v1 | 2026-09-11 | Privacy-Preserving Deep Joint Source-Channel Coding with In-Loop Concept Erasure
+2608.30725v1 | 2026-08-31 | Where Do Multilingual Vision-Language Encoders Fail on Low-Resource Languages?
+2605.11410v2 | 2026-05-12 | What Do EEG Foundation Models Capture from Human Brain Signals?
+2605.05715v1 | 2026-05-07 | Decodable but Not Corrected by Fixed Residual-Stream Linear Steering: Evidence from Medical LLM Failure Regimes
+2605.01381v1 | 2026-05-02 | A framework for analyzing concept representations in neural models
+2605.05220v3 | 2026-04-17 | MidSteer: Optimal Affine Framework for Steering Generative Models
+2602.17598v2 | 2026-02-19 | The Cascade Equivalence Hypothesis: When Do Speech LLMs Behave Like ASR$\rightarrow$LLM Pipelines?
+2506.11673v1 | 2025-06-13 | Improving Causal Interventions in Amnesic Probing with Mean Projection or LEACE
+2502.02820v1 | 2025-02-05 | Slowing Learning by Erasing Simple Features
+2407.19345v4 | 2024-07-27 | Inference-Time Selective Debiasing to Enhance Fairness in Text Classification Models
+2306.03819v4 | 2023-06-06 | LEACE: Perfect linear concept erasure in closed form
+## abs:"concept erasure" AND (abs:speech OR abs:emotion OR abs:speaker) -> 3
+2609.13393v1 | 2026-09-11 | Privacy-Preserving Deep Joint Source-Channel Coding with In-Loop Concept Erasure
+2605.01381v1 | 2026-05-02 | A framework for analyzing concept representations in neural models
+2306.03819v4 | 2023-06-06 | LEACE: Perfect linear concept erasure in closed form
+## abs:"nullspace projection" AND (abs:emotion OR abs:speaker OR abs:speech) -> 0
+## abs:"iterative nullspace" -> 10
+2610.04676v1 | 2026-10-03 | Extracting Persona Subspaces Through Iterative Nullspace Projection For Modulation
+2606.13720v2 | 2026-06-11 | Refusal Beyond a Single Direction: A Preliminary Comparison of Diff-in-Means and INLP
+2606.00926v2 | 2026-05-30 | Refit the Probe: Single-Direction Ablation Is Not a Necessity Test
+2602.12659v1 | 2026-02-13 | IndicFairFace: Balanced Indian Face Dataset for Auditing and Mitigating Geographical Bias in Vision-Language Models
+2601.02400v1 | 2025-12-30 | Detecting and Mitigating Treatment Leakage in Text-Based Causal Inference: Distillation and Sensitivity Analysis
+2510.22084v1 | 2025-10-24 | Compositional Bias Control in Large Language Models: Preference Learning Fails, Supervision Succeeds
+2506.11673v1 | 2025-06-13 | Improving Causal Interventions in Amnesic Probing with Mean Projection or LEACE
+2212.04273v1 | 2022-12-08 | Better Hit the Nail on the Head than Beat around the Bush: Removing Protected Attributes with a Single Projection
+2110.08527v3 | 2021-10-16 | An Empirical Survey of the Effectiveness of Debiasing Techniques for Pre-trained Language Models
+2109.10441v1 | 2021-09-21 | Evaluating Debiasing Techniques for Intersectional Biases
+## abs:"linear erasure" AND abs:speaker -> 0
+## abs:"erase" AND abs:"speaker information" AND abs:emotion -> 0
+## abs:"speaker information" AND abs:"remov" AND abs:"emotion recognition" -> 3
+2508.08925v1 | 2025-08-12 | LPGNet: A Lightweight Network with Parallel Attention and Gated Fusion for Multimodal Emotion Recognition
+2409.00387v1 | 2024-08-31 | Progressive Residual Extraction based Pre-training for Speech Representation Learning
+1911.01533v3 | 2019-11-04 | Speaker-invariant Affective Representation Learning via Adversarial Training
+## abs:"projection" AND abs:"speaker-invariant" AND abs:emotion -> 0
+## abs:"domain-specific subspace" AND abs:emotion -> 0
+## abs:"subspace" AND abs:"cross-corpus" AND abs:emotion -> 2
+2510.09072v1 | 2025-10-10 | Emotion-Disentangled Embedding Alignment for Noise-Robust and Cross-Corpus Speech Emotion Recognition
+2312.06466v1 | 2023-12-11 | Towards Domain-Specific Cross-Corpus Speech Emotion Recognition Approach
