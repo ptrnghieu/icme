@@ -59,7 +59,10 @@
 - Premise đứng khi: tỉ lệ clip có nhạc hoặc tiếng khán giả ≥ 15%, **và** riêng các đặc trưng hậu kỳ dự đoán được nhãn cao hơn mức ngẫu nhiên ≥ 3 điểm (CI không chứa 0).
 - Phải đúng **cả ở CH-SIMS lẫn MELD**. MOSI là đối chứng.
 
-## F. Fusion EEG–fNIRS có tính độ trễ huyết động (ưu tiên 2)
+## F. Fusion EEG–fNIRS có tính độ trễ huyết động → **BỊ CHẶN (C5)** (2026-11-22)
+Repo HF `MERChallenge/MER2026` chỉ có `audio_7z/`, `openface_7z/`, `video_7z/` và CSV; không có data EEG–fNIRS cho MER-PS (`datasets/access_log.md`). Chưa có dataset EEG–fNIRS cảm xúc mở nào đã kiểm tra.
+
+### Phác thảo ban đầu
 **Insight:**
 - Tín hiệu fNIRS (HbO/HbR) trễ hơn hoạt động thần kinh mà EEG đo được khoảng vài giây, theo hàm đáp ứng huyết động. Đây là kiến thức nền, phải trích nguồn khi viết.
 - Các mô hình gộp hai tín hiệu theo cùng cửa sổ thời gian thì bỏ qua độ trễ này.
