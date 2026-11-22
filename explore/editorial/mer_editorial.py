@@ -11,7 +11,7 @@ PRE-REGISTERED DESIGN (fixed 2026-11-22, before any MER2024 result):
     bottom 35% of the frame and width >= 15% of frame width, in >= 1 of the 3 frames.
   Source groups (leakage control; MER2024 has no source-video id): agglomerative clustering (cosine, average linkage) of the RAW
     middle-frame CLIP embedding with the distance threshold calibrated on CH-SIMS against true video ids (GROUP_THRESHOLD below).
-  Classifier: multinomial logistic regression on standardised features, C in {0.01, 0.1, 1} chosen by WAF on an inner 10% split of each
+  Classifier: multinomial logistic regression (L2, full-batch L-BFGS in torch) on standardised features, C in {0.01, 0.1, 1} chosen by WAF on an inner 10% split of each
     training fold. Out-of-fold predictions for all clips; 3 fold seeds; scheme G = 5 grouped folds on source groups, random size-balanced group-to-fold assignment per seed (PRIMARY),
     scheme R = StratifiedKFold(5) (official-style, secondary).
   Tests (WAF, mean over 3 seeds; group-bootstrap over source groups, 1000 draws; 98.3% CI = Bonferroni over 3 tests):
@@ -226,21 +226,34 @@ def grouped_folds(g, k, rng):
     return [(np.where(fid != f)[0], np.where(fid == f)[0]) for f in range(k)]
 
 
-def oof(X, y, folds, rng):
-    from sklearn.linear_model import LogisticRegression
+def fit_lr(X, y, C, n_cls, dev):
+    """multinomial logistic regression (L2 = 1/(C n), as sklearn), full-batch L-BFGS in torch (GPU when available)."""
+    import torch
+    Xt = torch.as_tensor(X, dtype=torch.float32, device=dev); yt = torch.as_tensor(y, dtype=torch.long, device=dev)
+    W = torch.zeros(X.shape[1], n_cls, device=dev, requires_grad=True); b = torch.zeros(n_cls, device=dev, requires_grad=True)
+    opt = torch.optim.LBFGS([W, b], lr=1.0, max_iter=200, history_size=20, line_search_fn="strong_wolfe")
+    lam = 1.0 / (C * len(y))
+
+    def closure():
+        opt.zero_grad(); loss = torch.nn.functional.cross_entropy(Xt @ W + b, yt) + 0.5 * lam * (W ** 2).sum(); loss.backward(); return loss
+    opt.step(closure)
+    Wd, bd = W.detach(), b.detach()
+    return lambda Z: (torch.as_tensor(Z, dtype=torch.float32, device=dev) @ Wd + bd).argmax(1).cpu().numpy()
+
+
+def oof(X, y, folds, rng, dev="cpu"):
     from sklearn.metrics import f1_score
-    from sklearn.preprocessing import StandardScaler
-    pred = np.zeros_like(y)
+    pred = np.zeros_like(y); K = int(y.max()) + 1
     for tr, te in folds:
         tr = rng.permutation(tr); nv = max(1, len(tr) // 10); va, tr2 = tr[:nv], tr[nv:]
-        sc = StandardScaler().fit(X[tr2]); best = None
+        mu, sd = X[tr2].mean(0), X[tr2].std(0) + 1e-6; best = None
         for C in (0.01, 0.1, 1.0):
-            mdl = LogisticRegression(C=C, max_iter=2000).fit(sc.transform(X[tr2]), y[tr2])
-            s = f1_score(y[va], mdl.predict(sc.transform(X[va])), average="weighted")
-            if best is None or s > best[0]:
-                best = (s, C)
-        sc = StandardScaler().fit(X[tr]); mdl = LogisticRegression(C=best[1], max_iter=2000).fit(sc.transform(X[tr]), y[tr])
-        pred[te] = mdl.predict(sc.transform(X[te]))
+            f = fit_lr((X[tr2] - mu) / sd, y[tr2], C, K, dev)
+            s_ = f1_score(y[va], f((X[va] - mu) / sd), average="weighted")
+            if best is None or s_ > best[0]:
+                best = (s_, C)
+        mu, sd = X[tr].mean(0), X[tr].std(0) + 1e-6
+        pred[te] = fit_lr((X[tr] - mu) / sd, y[tr], best[1], K, dev)((X[te] - mu) / sd)
     return pred
 
 
@@ -283,7 +296,7 @@ def cmd_analyze(a):
         rng = np.random.default_rng(seed)
         fG = grouped_folds(g, 5, rng); fR = list(StratifiedKFold(5, shuffle=True, random_state=seed).split(y, y))
         for k, X in feats.items():
-            preds["G"][k].append(oof(X, y, fG, np.random.default_rng(seed))); preds["R"][k].append(oof(X, y, fR, np.random.default_rng(seed)))
+            preds["G"][k].append(oof(X, y, fG, np.random.default_rng(seed), dev)); preds["R"][k].append(oof(X, y, fR, np.random.default_rng(seed), dev))
     waf = lambda yy, pp: 100 * f1_score(yy, pp, average="weighted")  # noqa: E731
     say("\n| features | WAF scheme G (source-grouped, primary) | WAF scheme R (random, official-style) | ACC G | ACC R |")
     say("|---|---|---|---|---|")
