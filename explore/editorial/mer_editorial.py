@@ -292,7 +292,8 @@ def cmd_analyze(a):
              "F_raw": np.concatenate([T, D["a_mix"], D["v_raw"]], 1), "F_mask": np.concatenate([T, D["a_mix"], D["v_mask"]], 1),
              "F_full": np.concatenate([T, D["a_voc"], D["a_acc"], D["v_mask"]], 1)}
     preds = {s: {k: [] for k in feats} for s in ("G", "R")}
-    for seed in range(3):
+    n_seeds = 1 if os.environ.get("E_TEST_FAST") else 3  # E_TEST_FAST: local smoke tests only
+    for seed in range(n_seeds):
         rng = np.random.default_rng(seed)
         fG = grouped_folds(g, 5, rng); fR = list(StratifiedKFold(5, shuffle=True, random_state=seed).split(y, y))
         for k, X in feats.items():
@@ -308,7 +309,7 @@ def cmd_analyze(a):
 
     def delta(scheme, new, base_list):
         def d_of(s):
-            return np.mean([waf(y[s], preds[scheme][new][i][s]) - max(waf(y[s], preds[scheme][b][i][s]) for b in base_list) for i in range(3)])
+            return np.mean([waf(y[s], preds[scheme][new][i][s]) - max(waf(y[s], preds[scheme][b][i][s]) for b in base_list) for i in range(len(preds[scheme][new]))])
         point = d_of(np.arange(len(y))); bs = np.array([d_of(s) for s in boots])
         lo, hi = np.percentile(bs, [0.85, 99.15]); return point, lo, hi, 2.8 * bs.std()
 
