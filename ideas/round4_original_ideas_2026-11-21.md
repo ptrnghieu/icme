@@ -130,3 +130,21 @@ Repo HF `MERChallenge/MER2026` chỉ có `audio_7z/`, `openface_7z/`, `video_7z/
 - RGL 2608.10448 (ICASSP 2026): rationale do MLLM sinh ra dùng để căn chỉnh biểu diễn nội bộ, trên IEMOCAP và MELD.
 
 Phần còn mới chỉ là "rationale → nhãn modality → giám sát router". Phần này quá mỏng để làm đóng góp chính.
+
+### α. "Neutral" là trạng thái vắng cảm xúc, không phải một lớp → **ĐÃ LOẠI (C1, P8 trượt 0/3)** (2026-11-22)
+**Phương pháp đã thử:**
+- Tách thành hai đầu: đầu "có cảm xúc hay không", huấn luyện có trọng số theo cường độ; và đầu phân lớp cảm xúc, chỉ train trên các clip có cảm xúc.
+- So với softmax phẳng, và với softmax phẳng cộng bias neutral tinh chỉnh trên valid.
+
+**Kết quả** (`explore/xling/p8_report_2026-11-22.md`): M − max(B1, B2):
+- CREMA-D −1,5 [−3,2; +0,1] (MDE 2,4);
+- MELD +0,1 [−1,5; +1,7] (MDE 2,2);
+- CH-SIMS −4,3 [−7,1; −1,0] (MDE 4,4).
+
+**Mô tả:** "hố hút neutral" có thật ở data tự nhiên.
+- CH-SIMS: tỉ lệ clip có cảm xúc bị đoán thành neutral giảm theo cường độ, từ 37% xuống 5%.
+- MELD: 30% clip có cảm xúc bị đoán thành neutral.
+- CREMA-D (diễn viên đóng): chỉ 0–4%.
+- Cách tách hai đầu không sửa được hiện tượng này; trên CH-SIMS nó còn làm tệ hơn.
+
+Novelty nhanh: `literature/gap_mining/round4d_neutral_quick_2026-11-22.txt`.

@@ -1,0 +1,32 @@
+## abs:neutral AND (abs:"two-stage" OR abs:hierarchical OR abs:cascade OR abs:"coarse-to-fine") AND (abs:"emotion recognition" OR abs:"speech emotion") -> 2
+1801.06657v1 | 2018-01-20 | Gender-dependent emotion recognition based on HMMs and SPHMMs
+2510.17855v1 | 2025-10-15 | CMIS-Net: A Cascaded Multi-Scale Individual Standardization Network for Backchannel Agreement Estimation
+## abs:"neutral class" AND (abs:"emotion recognition" OR abs:"facial expression" OR abs:"speech emotion") -> 4
+2306.05709v1 | 2023-06-09 | Learning Emotional Representations from Imbalanced Speech Data for Speech Emotion Recognition and Emotional Text-to-Speech
+2208.04547v1 | 2022-08-09 | Emotion Detection From Tweets Using a BERT and SVM Ensemble Model
+2512.23435v2 | 2025-12-29 | Distilled HuBERT for Mobile Speech Emotion Recognition: A Cross-Corpus Validation Study
+2605.02665v2 | 2026-05-04 | Fuzzy Fingerprinting Encoder Pre-trained Language Models for Emotion Recognition in Conversations: Human Assessment and Validity Study
+## (abs:"emotion intensity" OR abs:"intensity-aware") AND abs:neutral AND (abs:recognition OR abs:classification) -> 5
+2206.13101v2 | 2022-06-27 | SpeechEQ: Speech Emotion Recognition based on Multi-scale Unified Datasets and Multitask Learning
+2103.01667v1 | 2021-03-02 | Emotion Ratings: How Intensity, Annotation Confidence and Agreements are Entangled
+2511.16952v3 | 2025-11-21 | Point-Supervised Facial Expression Spotting with Gaussian-Based Instance-Adaptive Intensity Modeling
+2507.14623v1 | 2025-07-19 | Rejection or Inclusion in the Emotion-Identity Dynamics of TikTok Refugees on RedNote
+1808.10095v2 | 2018-08-30 | MES-P: an Emotional Tonal Speech Dataset in Mandarin Chinese with Distal and Proximal Labels
+## (abs:"emotion presence" OR abs:"emotional salience" OR abs:"emotion detection") AND abs:neutral AND (abs:speech OR abs:multimodal OR abs:conversation) -> 6
+2506.10010v1 | 2025-05-08 | Multimodal Emotion Coupling via Speech-to-Facial and Bodily Gestures in Dyadic Interaction
+1906.01155v3 | 2019-06-04 | ShEMO -- A Large-Scale Validated Database for Persian Speech Emotion Detection
+2110.14957v1 | 2021-10-28 | End-to-End Speech Emotion Recognition: Challenges of Real-Life Emergency Call Centers Data Recordings
+2008.02863v2 | 2020-08-06 | A Transfer Learning Method for Speech Emotion Recognition from Automatic Speech Recognition
+2205.13908v1 | 2022-05-27 | EmoInHindi: A Multi-label Emotion and Intensity Annotated Dataset in Hindi for Emotion Recognition in Dialogues
+2501.10666v1 | 2025-01-18 | Speech Emotion Detection Based on MFCC and CNN-LSTM Architecture
+## abs:neutral AND abs:"emotion recognition" AND (abs:bias OR abs:dominance OR abs:"majority class" OR abs:sink) -> 10
+2512.19950v1 | 2025-12-23 | Bias Beneath the Tone: Empirical Characterisation of Tone Bias in LLM-Driven UX Systems
+2606.22072v2 | 2026-06-20 | A Controlled Study of CLIP-Based Body-Scene Fusion for Emotion Recognition in Context
+2510.17855v1 | 2025-10-15 | CMIS-Net: A Cascaded Multi-Scale Individual Standardization Network for Backchannel Agreement Estimation
+2609.05806v2 | 2026-09-05 | Exposing Weaknesses in Emotion Recognition in Conversations
+2511.21909v1 | 2025-11-26 | A Customer Journey in the Land of Oz: Leveraging the Wizard of Oz Technique to Model Emotions in Customer Service Interactions
+2204.00400v2 | 2022-04-01 | Probing Speech Emotion Recognition Transformers for Linguistic Knowledge
+2609.26054v1 | 2026-08-24 | Benchmarking Open-Source Speech Emotion Recognition in Naturalistic Mandarin Spine Clinic Consultations: A Pilot Validation Study
+2609.39453v1 | 2026-09-30 | From Speech to Editable Concepts: Probing Emotion Recognition with Concept Bottleneck Models
+2007.06954v8 | 2020-07-14 | COVID-19 Twitter Dataset with Latent Topics, Sentiments and Emotions Attributes
+2510.13906v1 | 2025-10-14 | Switchboard-Affect: Emotion Perception Labels from Conversational Speech
