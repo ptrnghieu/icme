@@ -1,0 +1,32 @@
+## (abs:rationale OR abs:rationales OR abs:explanation OR abs:reasoning) AND (abs:"multimodal emotion recognition" OR abs:"multimodal sentiment") AND (abs:fusion OR abs:routing OR abs:gating OR abs:weighting) -> 21
+2508.03722v1 | 2025-07-29 | Multimodal Video Emotion Recognition with Reliable Reasoning Priors
+2604.01916v1 | 2026-04-02 | SURE: Synergistic Uncertainty-aware Reasoning for Multimodal Emotion Recognition in Conversations
+2509.24322v1 | 2025-09-29 | Multimodal Large Language Models Meet Multimodal Emotion Recognition and Reasoning: A Survey
+2610.29430v1 | 2026-10-21 | MERP: A Latent-Bottleneck Framework for Robust Multi-Modal Multi-Label Emotion Recognition
+2208.11450v4 | 2022-08-24 | VISTANet: VIsual Spoken Textual Additive Net for Interpretable Multimodal Emotion Recognition
+2604.05873v1 | 2026-04-07 | Learning Shared Sentiment Prototypes for Adaptive Multimodal Sentiment Analysis
+2610.20543v1 | 2026-10-14 | Reliability-Aware Multimodal Sentiment Prediction Under Local Modality Missingness
+2511.02794v1 | 2025-11-04 | When One Modality Sabotages the Others: A Diagnostic Lens on Multimodal Reasoning
+2305.06162v3 | 2023-05-07 | Interpretable multimodal sentiment analysis based on textual modality descriptions by using large-scale language models
+2609.27615v1 | 2026-09-23 | BiCFlow-MER: Orchestrating Discriminative and Generative Multimodal Emotion Recognition via Conditional Transport
+2203.00257v1 | 2022-03-01 | Sentiment Word Aware Multimodal Refinement for Multimodal Sentiment Analysis with ASR Errors
+2607.21013v2 | 2026-07-23 | EmoAgent-R1: Towards Multimodal Emotion Understanding with Reinforcement Learning-based Dynamic Agent Specialization
+2512.20938v1 | 2025-12-24 | Pioneering Multimodal Emotion Recognition in the Era of Large Models: From Closed Sets to Open Vocabularies
+2606.15694v1 | 2026-06-14 | MAF: Multimodal Adaptive Few-shot Prompting for Sentiment Analysis with MLLMs
+2604.12735v3 | 2026-04-14 | AffectAgent: Collaborative Multi-Agent Reasoning for Retrieval-Augmented Multimodal Emotion Recognition
+2306.08657v1 | 2023-06-14 | EMERSK -- Explainable Multimodal Emotion Recognition with Situational Knowledge
+2608.19971v1 | 2026-08-20 | Robust Incomplete Multimodal Sentiment Analysis via Iterative Proxy Correction
+2606.09148v1 | 2026-06-08 | Explicit Representation Alignment for Multimodal Sentiment Analysis
+2604.25179v2 | 2026-04-28 | Mitigating Shared-Private Branch Imbalance via Dual-Branch Rebalancing for Multimodal Sentiment Analysis
+2609.06188v1 | 2026-09-05 | MVFA: A Multi-View Text-Guided Multimodal Fusion LLM Adapter for Sentiment Analysis and Emotion Recognition
+2601.06870v2 | 2026-01-11 | QASA: Quality-Aware Semantic Augmentation for Robust Multimodal Sentiment Analysis
+## (abs:"MER-Caption" OR abs:"MER-Caption+" OR abs:MERCaption OR abs:"OV-MERD") -> 3
+2501.16566v2 | 2025-01-27 | AffectGPT: A New Dataset, Model, and Benchmark for Emotion Understanding with Multimodal Large Language Models
+2609.16962v1 | 2026-09-15 | Affect-Prototype Guided Fusion for Open-Vocabulary Incomplete Multi-modal Emotion Recognition
+2512.20938v1 | 2025-12-24 | Pioneering Multimodal Emotion Recognition in the Era of Large Models: From Closed Sets to Open Vocabularies
+## abs:"rationale-guided" AND abs:emotion -> 1
+2608.10448v2 | 2026-08-11 | Rationale-Guided Learning for Multimodal Emotion Recognition
+## (abs:"modality attribution" OR abs:"cue attribution" OR abs:"evidence attribution") AND (abs:emotion OR abs:sentiment) -> 3
+2408.07922v1 | 2024-08-15 | A Deep Features-Based Approach Using Modified ResNet50 and Gradient Boosting for Visual Sentiments Classification
+1812.11771v4 | 2018-12-31 | Predicting Group Cohesiveness in Images
+2506.01157v1 | 2025-06-01 | Source Tracing of Synthetic Speech Systems Through Paralinguistic Pre-Trained Representations

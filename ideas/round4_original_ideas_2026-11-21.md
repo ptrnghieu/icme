@@ -93,7 +93,8 @@ Repo HF `MERChallenge/MER2026` chỉ có `audio_7z/`, `openface_7z/`, `video_7z/
 
 ## Lứa 4b (2026-11-22, song song với E′)
 
-### I. "Peak-end": nhãn cấp clip là đánh giá hồi tưởng, không phải trung bình
+### I. "Peak-end": nhãn cấp clip là đánh giá hồi tưởng, không phải trung bình → **BỎ trước khi chạy pilot** (2026-11-22)
+[Đánh giá] Clip của CH-SIMS, MELD và CREMA-D chỉ dài vài giây, thường là một câu nói, nên không có "đỉnh" và "đoạn cuối" tách biệt. Theo quy tắc power, không chạy phép thử khi hiệu ứng hợp lý nhỏ hơn MDE. Có thể xem lại nếu có dataset clip dài.
 **Insight:**
 - Người gán nhãn xem hết clip rồi cho một nhãn. Theo quy tắc peak-end trong tâm lý học, đánh giá hồi tưởng chủ yếu được quyết định bởi **khoảnh khắc mạnh nhất** và **đoạn cuối**. Đây là kiến thức nền, phải trích nguồn gốc khi viết.
 - Hầu hết các mô hình MER lại pool trung bình theo thời gian.
@@ -112,3 +113,12 @@ Repo HF `MERChallenge/MER2026` chỉ có `audio_7z/`, `openface_7z/`, `video_7z/
 - trên CH-SIMS, MELD, CREMA-D.
 
 **Rủi ro:** pooling thường chỉ đổi khoảng 1 điểm. Phải tính MDE trước khi chạy.
+
+### R. Dùng "lý do cảm xúc" của MER2025 để giám sát việc chọn modality khi fusion → **ĐÃ LOẠI (C4, trùng một phần)** (2026-11-22)
+**Ý:** phân tích 115 nghìn đoạn reason (MER-Caption) để biết mỗi clip có tín hiệu ở mặt, giọng hay lời. Dùng kết quả đó làm nhãn giám sát cho bộ định tuyến fusion. Mục tiêu là lấp chỗ P1 không học được gate từ confidence.
+
+**Tiền lệ trong affective** (`literature/gap_mining/round4c_quick_novelty_2026-11-22.txt`, đọc abstract):
+- 2508.03722: "Gemini to generate fine-grained, modality-separable reasoning traces, which are injected as priors during the fusion stage", trên đúng MER2024.
+- RGL 2608.10448 (ICASSP 2026): rationale do MLLM sinh ra dùng để căn chỉnh biểu diễn nội bộ, trên IEMOCAP và MELD.
+
+Phần còn mới chỉ là "rationale → nhãn modality → giám sát router". Phần này quá mỏng để làm đóng góp chính.
