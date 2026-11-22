@@ -11,7 +11,15 @@
 
 **Trạng thái:** đây là phác thảo, **chưa qua C1–C5**, chưa phải ứng viên.
 
-## E. Hậu kỳ là "modality ẩn" → **ĐÃ LOẠI theo tiêu chí đặt trước của P6** (2026-11-21)
+## E. Hậu kỳ là "modality ẩn" → **ĐÃ LOẠI, nhánh đóng hẳn** (user quyết ngày 2026-11-22)
+**Lý do đóng:**
+- P6 trượt tiêu chí đặt trước.
+- Pilot cuối E′ không thể kiểm soát rò rỉ theo nguồn: MER2024 không có ID nguồn, và trên CH-SIMS không cách gom nhóm tự động nào đưa rò rỉ xuống dưới 0,95 (`explore/editorial/group_calibration_chsims_v2.md`).
+- Thiết kế chéo dataset có xác suất thành công thấp.
+
+Code trích feature của E′ (`explore/editorial/mer_editorial.py`) được giữ lại làm hạ tầng.
+
+**Kết quả cũ của P6:**
 **Kết quả P6** (`explore/xling/p6_report_2026-11-21.md`):
 - CH-SIMS: 38,7% clip có nhạc; chỉ riêng tag hậu kỳ dự đoán cực tính được bacc 59,1 (+9,1 [+4,8; +14,5]) → đạt.
 - MELD: chỉ 9,6% clip có nhạc hoặc tiếng khán giả, dưới ngưỡng 15%. Tag hậu kỳ vẫn đạt +6,2 [+3,2; +9,5] → trượt vì tỉ lệ xuất hiện thấp.
