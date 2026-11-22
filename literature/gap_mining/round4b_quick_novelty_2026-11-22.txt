@@ -1,0 +1,9 @@
+## abs:"peak-end" AND (abs:emotion OR abs:affect OR abs:sentiment) -> 4
+2404.11055v2 | 2024-04-17 | Do LLMs Think Fast and Slow? A Causal Study on Sentiment Analysis
+2601.13904v2 | 2026-01-20 | PREFAB: PREFerence-based Affective Modeling for Low-Budget Self-Annotation
+2404.16487v2 | 2024-04-25 | Comparing Continuous and Retrospective Emotion Ratings in Remote VR Study
+2602.17910v1 | 2026-02-20 | Alignment in Time: Peak-Aware Orchestration for Long-Horizon Agentic Systems
+## (abs:"apex frame" OR abs:"peak frame" OR abs:"emotional peak") AND (abs:multimodal OR abs:speech OR abs:audio) -> 1
+2604.15336v2 | 2026-03-10 | Facial-Expression-Aware Prompting for Empathetic LLM Tutoring
+## (abs:"retrospective" OR abs:"global rating" OR abs:"overall rating") AND abs:emotion AND (abs:pooling OR abs:aggregation) AND (abs:continuous OR abs:annotation) -> 0
+## (abs:"inter-annotator agreement" OR abs:"high-agreement" OR abs:"agreement filtering") AND abs:"emotion recognition" AND (abs:shift OR abs:mismatch) -> 0

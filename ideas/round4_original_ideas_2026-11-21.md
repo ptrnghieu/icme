@@ -90,3 +90,25 @@ Repo HF `MERChallenge/MER2026` chỉ có `audio_7z/`, `openface_7z/`, `video_7z/
 **Novelty nhanh:** 6 bài về tách danh tính trong FER (2018–2022) → trùng một phần. Phần mới là làm đa modality và tìm danh tính không cần nhãn.
 
 **Rủi ro:** speaker normalization trong SER đã có (2202.01252).
+
+## Lứa 4b (2026-11-22, song song với E′)
+
+### I. "Peak-end": nhãn cấp clip là đánh giá hồi tưởng, không phải trung bình
+**Insight:**
+- Người gán nhãn xem hết clip rồi cho một nhãn. Theo quy tắc peak-end trong tâm lý học, đánh giá hồi tưởng chủ yếu được quyết định bởi **khoảnh khắc mạnh nhất** và **đoạn cuối**. Đây là kiến thức nền, phải trích nguồn gốc khi viết.
+- Hầu hết các mô hình MER lại pool trung bình theo thời gian.
+
+**Phương pháp:**
+- Pooling "peak-end" có thể học được: một đầu chọn đỉnh theo độ mạnh cảm xúc, một đầu lấy đoạn cuối.
+- Áp được cho mọi modality và mọi dataset có nhãn cấp clip: MER2024/2025, CH-SIMS, MELD, CREMA-D.
+
+**Novelty nhanh** (`literature/gap_mining/round4b_quick_novelty_2026-11-22.txt`):
+- "peak-end" × emotion: 4 kết quả. Không bài nào dùng nó làm pooling cho nhận diện; chỉ có so sánh rating liên tục với rating hồi tưởng trong VR (2404.16487) và mô hình affect dựa trên preference.
+- Apex/peak frame × multimodal/speech: 1 kết quả không liên quan.
+- Chưa đọc full text.
+
+**Phép thử premise rẻ** (trên CPU, tiêu chí sẽ đặt trước): feature theo đoạn 1 giây (WavLM), so sánh các cách gộp:
+- mean, mean+std, đoạn cuối, đoạn đỉnh, đỉnh+cuối;
+- trên CH-SIMS, MELD, CREMA-D.
+
+**Rủi ro:** pooling thường chỉ đổi khoảng 1 điểm. Phải tính MDE trước khi chạy.
