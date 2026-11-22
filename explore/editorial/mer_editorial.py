@@ -9,8 +9,10 @@ PRE-REGISTERED DESIGN (fixed 2026-11-22, before any MER2024 result):
     on frames with all EasyOCR text boxes blurred (MASKED); text multilingual-e5-base on the Chinese transcript.
   Cues: music cue = max AST prob over MUSIC classes >= 0.2 (same rule as P6); subtitle cue = any EasyOCR box with centre in the
     bottom 35% of the frame and width >= 15% of frame width, in >= 1 of the 3 frames.
-  Source groups (leakage control; MER2024 has no source-video id): agglomerative clustering (cosine, average linkage) of the RAW
-    middle-frame CLIP embedding with the distance threshold calibrated on CH-SIMS against true video ids (GROUP_THRESHOLD below).
+  Source groups (leakage control; MER2024 has no source-video id): agglomerative clustering (cosine, average linkage) of a speaker
+    x-vector (WavLM-base-plus-sv) and/or a CLIP ViT-B/32 middle-frame embedding. Features and threshold are chosen on CH-SIMS (true
+    video ids) by minimum source LEAKAGE under 5-fold grouped CV, subject to largest group <= 20% and >= 25 groups
+    (explore/editorial/group_calib2.py; v1 with CLIP-L/max-ARI was too weak: ARI 0.27). Values in GROUP_FEATURES / GROUP_THRESHOLD.
   Classifier: multinomial logistic regression (L2, full-batch L-BFGS in torch) on standardised features, C in {0.01, 0.1, 1} chosen by WAF on an inner 10% split of each
     training fold. Out-of-fold predictions for all clips; 3 fold seeds; scheme G = 5 grouped folds on source groups, random size-balanced group-to-fold assignment per seed (PRIMARY),
     scheme R = StratifiedKFold(5) (official-style, secondary).
@@ -32,9 +34,10 @@ Usage:
 import argparse, glob, os, re, subprocess, sys, tempfile, time
 import numpy as np
 
-GROUP_THRESHOLD = None  # set from CH-SIMS calibration (explore/editorial/group_calibration_chsims.md) before running
+GROUP_FEATURES = None   # "spk" | "clip" | "both"; set from CH-SIMS calibration v2 (explore/editorial/group_calibration_chsims_v2.md)
+GROUP_THRESHOLD = None  # set from the same calibration before running
 if os.environ.get("E_TEST_GROUP_THRESHOLD"):  # local smoke tests only; never set in the Kaggle notebook
-    GROUP_THRESHOLD = float(os.environ["E_TEST_GROUP_THRESHOLD"])
+    GROUP_THRESHOLD = float(os.environ["E_TEST_GROUP_THRESHOLD"]); GROUP_FEATURES = os.environ.get("E_TEST_GROUP_FEATURES", "both")
 MUSIC = re.compile(r"(?i)\bmusic\b|instrument|orchestra|song|piano|guitar|violin|drum|synthesizer")
 AUDIENCE = re.compile(r"(?i)laugh|giggle|chuckle|snicker|applause|clapping|cheering|crowd")
 PART = int(os.environ.get("E_PART", "250"))
@@ -55,6 +58,11 @@ def load_models(dev):
     m["clip_p"] = CLIPProcessor.from_pretrained("openai/clip-vit-large-patch14")
     m["clip"] = CLIPModel.from_pretrained("openai/clip-vit-large-patch14").to(dev).eval()
     m["ocr"] = easyocr.Reader(["ch_sim", "en"], gpu=(dev == "cuda"), verbose=False)
+    from transformers import WavLMForXVector
+    m["sv_fe"] = AutoFeatureExtractor.from_pretrained("microsoft/wavlm-base-plus-sv")
+    m["sv"] = WavLMForXVector.from_pretrained("microsoft/wavlm-base-plus-sv").to(dev).eval()
+    m["clipb_p"] = CLIPProcessor.from_pretrained("openai/clip-vit-base-patch32")
+    m["clipb"] = CLIPModel.from_pretrained("openai/clip-vit-base-patch32").to(dev).eval()
     m["ast_labels"] = [m["ast"].config.id2label[i] for i in range(m["ast"].config.num_labels)]
     return m
 
@@ -150,6 +158,28 @@ def clip_emb(m, imgs):
     return e.mean(0), e[len(e) // 2]
 
 
+def spk_emb(m, x):
+    torch = m["torch"]
+    x = x[: 16000 * 20]
+    if len(x) < 1600:
+        return np.zeros(512, np.float32)
+    with torch.no_grad():
+        e = m["sv"](**{k: v.to(m["dev"]) for k, v in m["sv_fe"](x, sampling_rate=16000, return_tensors="pt").items()}).embeddings[0]
+    return torch.nn.functional.normalize(e.float(), dim=-1).cpu().numpy()
+
+
+def clipb_mid(m, imgs):
+    import cv2
+    from PIL import Image
+    torch = m["torch"]
+    if not imgs:
+        return np.zeros(512, np.float32)
+    im = Image.fromarray(cv2.cvtColor(imgs[len(imgs) // 2], cv2.COLOR_BGR2RGB))
+    with torch.no_grad():
+        e = m["clipb"].get_image_features(**{k: v.to(m["dev"]) for k, v in m["clipb_p"](images=im, return_tensors="pt").items()})[0]
+    return torch.nn.functional.normalize(e.float(), dim=-1).cpu().numpy()
+
+
 def cmd_extract(a):
     import pandas as pd, soundfile as sf, torch
     dev = "cuda" if torch.cuda.is_available() else "cpu"
@@ -167,7 +197,7 @@ def cmd_extract(a):
         if (time.time() - t0) / 3600 > a.hours:
             print("time budget reached; rerun to resume", flush=True); return
         rec = {k: [] for k in ["name", "ok", "a_mix", "a_voc", "a_acc", "rms", "tags_mu", "tags_au", "v_raw", "v_mask", "v_mid",
-                               "sub_any", "text_area", "n_frames"]}
+                               "sub_any", "text_area", "n_frames", "g_spk", "g_clip"]}
         with tempfile.TemporaryDirectory() as td:
             for nm in names[start:start + PART]:
                 rec["name"].append(nm); p = vids.get(str(nm)); ok = False
@@ -188,12 +218,12 @@ def cmd_extract(a):
                     vals = dict(a_mix=wavlm(m, mix), a_voc=wavlm(m, voc), a_acc=wavlm(m, acc),
                                 rms=np.array([np.sqrt(np.mean(z ** 2)) for z in (mix, voc, acc)], np.float32),
                                 tags_mu=tg[mu_idx], tags_au=tg[au_idx], v_raw=v_raw, v_mask=v_mask, v_mid=v_mid,
-                                sub_any=float(sub), text_area=float(area), n_frames=len(fr))
+                                sub_any=float(sub), text_area=float(area), n_frames=len(fr), g_spk=spk_emb(m, mix), g_clip=clipb_mid(m, fr))
                     ok = True
                 except Exception as e:  # noqa: BLE001
                     vals = dict(a_mix=np.zeros(768), a_voc=np.zeros(768), a_acc=np.zeros(768), rms=np.zeros(3), tags_mu=np.zeros(len(mu_idx)),
                                 tags_au=np.zeros(len(au_idx)), v_raw=np.zeros(768), v_mask=np.zeros(768), v_mid=np.zeros(768),
-                                sub_any=0.0, text_area=0.0, n_frames=0)
+                                sub_any=0.0, text_area=0.0, n_frames=0, g_spk=np.zeros(512), g_clip=np.zeros(512))
                     print("fail", type(e).__name__, flush=True)
                 rec["ok"].append(ok)
                 for k, v in vals.items():
@@ -262,7 +292,7 @@ def cmd_analyze(a):
     from sklearn.cluster import AgglomerativeClustering
     from sklearn.metrics import f1_score, accuracy_score
     from sklearn.model_selection import StratifiedKFold
-    assert GROUP_THRESHOLD is not None, "set GROUP_THRESHOLD from the CH-SIMS calibration first"
+    assert GROUP_THRESHOLD is not None and GROUP_FEATURES, "set GROUP_FEATURES / GROUP_THRESHOLD from the CH-SIMS calibration first"
     out = []; say = lambda s="": (print(s, flush=True), out.append(s))  # noqa: E731
     parts = sorted(glob.glob(os.path.join(a.cache, "part_*.npz"))); P = [np.load(p, allow_pickle=True) for p in parts]
     D = {k: np.concatenate([p[k] for p in P]) for k in P[0].files}
@@ -276,9 +306,10 @@ def cmd_analyze(a):
     say(f"- clips with features: {ok.sum()} / {len(ok)}; classes {cls}")
     mu = D["tags_mu"].max(1) >= 0.2; au = D["tags_au"].max(1) >= 0.2; sub = D["sub_any"] > 0.5
     say(f"- prevalence: music cue {100 * mu.mean():.1f}%, audience cue {100 * au.mean():.1f}%, subtitle cue {100 * sub.mean():.1f}%; mean text-box area {100 * D['text_area'].mean():.2f}% of frame")
-    g = AgglomerativeClustering(n_clusters=None, metric="cosine", linkage="average", distance_threshold=GROUP_THRESHOLD).fit_predict(D["v_mid"])
+    GX = {"spk": D["g_spk"], "clip": D["g_clip"], "both": np.concatenate([D["g_spk"], D["g_clip"]], 1) / np.sqrt(2)}[GROUP_FEATURES]
+    g = AgglomerativeClustering(n_clusters=None, metric="cosine", linkage="average", distance_threshold=GROUP_THRESHOLD).fit_predict(GX)
     sizes = np.bincount(g)
-    say(f"- derived source groups: {len(sizes)} (threshold {GROUP_THRESHOLD}); size median {int(np.median(sizes))}, max {sizes.max()}, singletons {(sizes == 1).sum()}")
+    say(f"- derived source groups: {len(sizes)} (features {GROUP_FEATURES}, threshold {GROUP_THRESHOLD}); size median {int(np.median(sizes))}, max {sizes.max()}, singletons {(sizes == 1).sum()}")
     degenerate = sizes.max() > 0.2 * len(g)  # pre-registered guard: one group > 20% of clips makes scheme G meaningless
     if degenerate:
         say("- **grouping degenerate (largest group > 20% of clips): scheme G invalid -> decision INCONCLUSIVE**")
