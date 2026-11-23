@@ -28,11 +28,13 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 PROMPT = ("Watch the video, listen to the audio, and read the subtitle: \"{sub}\". Which emotions does the speaker in the video "
           "express? Answer with a comma-separated list of English emotion words (for example: worried, slightly angry, "
           "impatient). Output only the list.")
+SYSTEM = ("You are Qwen, a virtual human developed by the Qwen Team, Alibaba Group, capable of perceiving auditory and visual inputs, "
+          "as well as generating text and speech.")  # official Qwen2.5-Omni system prompt
 N_SAMPLES, MAX_LABELS = int(os.environ.get("P13_N", "16")), 8  # P13_N only for smoke tests
 
 
 def parse(text):
-    text = text.strip().split("\n\n")[0]
+    text = text.strip().split("\n")[0]  # first line only: the model may continue with an invented dialogue turn
     out = []
     for x in re.split(r"[,;\n、，]+", text):
         x = re.sub(r"^[\s\-\*\d\.\)]+", "", x).strip().strip(".").strip().lower()
@@ -61,7 +63,7 @@ def cmd_run(a):
             try:
                 wav = os.path.join(tmp, "a.wav")  # audio extracted with ffmpeg (qwen_omni_utils' in-video audio path fails with recent librosa)
                 subprocess.run(["ffmpeg", "-loglevel", "error", "-y", "-i", it["video"], "-ac", "1", "-ar", "16000", "-t", "30", wav], check=True, timeout=120)
-                conv = [{"role": "system", "content": [{"type": "text", "text": "You are an expert in human emotion understanding."}]},
+                conv = [{"role": "system", "content": [{"type": "text", "text": SYSTEM}]},
                         {"role": "user", "content": [{"type": "video", "video": it["video"], "fps": 1.0, "min_pixels": 32 * 28 * 28, "max_pixels": 64 * 28 * 28, "max_frames": 8},
                                                      {"type": "audio", "audio": wav},
                                                      {"type": "text", "text": PROMPT.format(sub=it.get("sub", "")[:300])}]}]
