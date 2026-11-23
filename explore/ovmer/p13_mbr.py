@@ -21,7 +21,7 @@ PRE-REGISTERED (2026-11-23, before any result):
 Usage (Kaggle): python p13_mbr.py run   --items items.jsonl --out out.jsonl [--hours 9] [--limit N]
                 python p13_mbr.py score --items items.jsonl --out out.jsonl --mapping wheel_mapping.npz --report p13_report.md
 """
-import argparse, json, os, re, sys, time
+import argparse, json, os, re, subprocess, sys, tempfile, time
 import numpy as np
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -50,26 +50,29 @@ def cmd_run(a):
     dev = "cuda" if torch.cuda.is_available() else "cpu"; dt = torch.float16 if dev == "cuda" else torch.bfloat16
     mid = "Qwen/Qwen2.5-Omni-3B"
     proc = Qwen2_5OmniProcessor.from_pretrained(mid)
-    model = Qwen2_5OmniThinkerForConditionalGeneration.from_pretrained(mid, torch_dtype=dt, attn_implementation="sdpa").to(dev).eval()
-    t0 = time.time(); n = 0
+    model = Qwen2_5OmniThinkerForConditionalGeneration.from_pretrained(mid, dtype=dt, attn_implementation="sdpa").to(dev).eval()
+    t0 = time.time(); n = 0; tmp = tempfile.mkdtemp()
     with open(a.out, "a") as fo:
         for it in items:
             if it["key"] in done:
                 continue
             if (time.time() - t0) / 3600 > a.hours:
                 print("time budget reached; rerun to resume", flush=True); break
-            conv = [{"role": "system", "content": [{"type": "text", "text": "You are an expert in human emotion understanding."}]},
-                    {"role": "user", "content": [{"type": "video", "video": it["video"], "fps": 1.0, "max_pixels": 224 * 224, "max_frames": 8},
-                                                 {"type": "text", "text": PROMPT.format(sub=it.get("sub", "")[:300])}]}]
             try:
+                wav = os.path.join(tmp, "a.wav")  # audio extracted with ffmpeg (qwen_omni_utils' in-video audio path fails with recent librosa)
+                subprocess.run(["ffmpeg", "-loglevel", "error", "-y", "-i", it["video"], "-ac", "1", "-ar", "16000", "-t", "30", wav], check=True, timeout=120)
+                conv = [{"role": "system", "content": [{"type": "text", "text": "You are an expert in human emotion understanding."}]},
+                        {"role": "user", "content": [{"type": "video", "video": it["video"], "fps": 1.0, "min_pixels": 32 * 28 * 28, "max_pixels": 64 * 28 * 28, "max_frames": 8},
+                                                     {"type": "audio", "audio": wav},
+                                                     {"type": "text", "text": PROMPT.format(sub=it.get("sub", "")[:300])}]}]
                 text = proc.apply_chat_template(conv, add_generation_prompt=True, tokenize=False)
-                aud, img, vid = process_mm_info(conv, use_audio_in_video=True)
-                inp = proc(text=text, audio=aud, images=img, videos=vid, return_tensors="pt", padding=True, use_audio_in_video=True)
+                aud, img, vid = process_mm_info(conv, use_audio_in_video=False)
+                inp = proc(text=text, audio=aud, images=img, videos=vid, return_tensors="pt", padding=True, use_audio_in_video=False)
                 inp = {k: (v.to(dev).to(dt) if torch.is_floating_point(v) else v.to(dev)) for k, v in inp.items()}
                 L0 = inp["input_ids"].shape[1]
                 with torch.no_grad():
-                    g = model.generate(**inp, use_audio_in_video=True, max_new_tokens=40, do_sample=False)
-                    s = model.generate(**inp, use_audio_in_video=True, max_new_tokens=40, do_sample=True, temperature=1.0, top_p=0.95,
+                    g = model.generate(**inp, use_audio_in_video=False, max_new_tokens=40, do_sample=False)
+                    s = model.generate(**inp, use_audio_in_video=False, max_new_tokens=40, do_sample=True, temperature=1.0, top_p=0.95,
                                        num_return_sequences=N_SAMPLES)
                 greedy = proc.batch_decode(g[:, L0:], skip_special_tokens=True)[0]
                 samples = proc.batch_decode(s[:, L0:], skip_special_tokens=True)
