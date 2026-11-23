@@ -47,8 +47,8 @@ def hidden_avg(model, fe, x, m):
 
 def audio_feats(m, x):
     torch = m["torch"]; x = x[: 16000 * 20]
-    if len(x) < 3200:
-        x = np.pad(x, (0, 3200 - len(x)))
+    if len(x) < 16000:  # >= 1 s: the WavLM-SV TDNN needs ~15 frames (a 0.2-s pad crashed on Kaggle, 2026-11-23)
+        x = np.pad(x, (0, 16000 - len(x)))
     h = hidden_avg(m["hub"], m["hub_fe"], x, m)
     seg = np.stack([h[i:i + 50].mean(0) for i in range(0, len(h), 50)])[:20]
     w = hidden_avg(m["wavlm"], m["wfe"], x, m).mean(0)
@@ -103,40 +103,54 @@ def main(a):
             if p.lower().endswith((".mp4", ".avi", ".mkv"))}
     os.makedirs(a.cache, exist_ok=True); m = load(dev); t0 = time.time()
     keys = ["name", "ok", "a_hub", "a_hub_seg", "n_seg", "a_wavlm", "spk", "tags", "v_clip", "n_frames", "sub", "dur"]
+    empty = dict(ok=False, a_hub=np.zeros(1024), a_hub_seg=np.zeros((20, 1024), np.float16), n_seg=0, a_wavlm=np.zeros(768),
+                 spk=np.zeros(512), tags=np.zeros(527, np.float16), v_clip=np.zeros((8, 768), np.float16), n_frames=0, sub=0.0, dur=0.0)
+    stats = {"fail": 0, "done": 0}
+
+    def process(nm, td):
+        p = vids.get(nm); w = os.path.join(td, "a.wav")
+        try:
+            if p is None:
+                raise FileNotFoundError(nm)
+            subprocess.run(["ffmpeg", "-loglevel", "error", "-y", "-i", p, "-ac", "1", "-ar", "16000", w], check=False, timeout=120)
+            x, _ = sf.read(w, dtype="float32")
+            if x.ndim > 1:
+                x = x.mean(1)
+            ah, seg, ns, aw, sp, tg = audio_feats(m, x); vc, nf, sub = visual_feats(m, p)
+            stats["done"] += 1
+            return dict(ok=True, a_hub=ah, a_hub_seg=seg, n_seg=ns, a_wavlm=aw, spk=sp, tags=tg, v_clip=vc, n_frames=nf, sub=sub, dur=len(x) / 16000)
+        except Exception as e:  # noqa: BLE001
+            stats["fail"] += 1; stats["done"] += 1
+            if stats["fail"] <= 3:
+                print("fail", type(e).__name__, "".join(traceback.format_exc().splitlines(True)[-4:]), flush=True)
+            if stats["done"] >= 20 and stats["fail"] == stats["done"]:
+                raise SystemExit("all of the first clips failed: stopping to save GPU time (see tracebacks above)")
+            return dict(empty)
+
     for start in range(0, len(names), PART):
         part = os.path.join(a.cache, f"part_{start // PART:04d}.npz")
-        if os.path.exists(part):
-            if np.load(part)["ok"].mean() >= 0.9:
-                continue
-            print(f"redoing {os.path.basename(part)} (too many failed clips)", flush=True)
         if (time.time() - t0) / 3600 > a.hours:
             print("time budget reached; rerun to resume", flush=True); return
-        rec = {k: [] for k in keys}; n_fail = n_done = 0
+        if os.path.exists(part):  # resume: keep good clips, recompute only the failed ones
+            old = dict(np.load(part, allow_pickle=True)); bad = np.where(~old["ok"].astype(bool))[0]
+            if len(bad) == 0:
+                continue
+            with tempfile.TemporaryDirectory() as td:
+                for i in bad:
+                    vals = process(str(old["name"][i]), td)
+                    for k in keys[1:]:
+                        old[k][i] = vals[k]
+            np.savez_compressed(part, **old)
+            print(f"part {start // PART} repaired: {len(bad)} failed clips retried, still failed {int((~old['ok'].astype(bool)).sum())}", flush=True)
+            continue
+        rec = {k: [] for k in keys}
         with tempfile.TemporaryDirectory() as td:
             for nm in names[start:start + PART]:
-                p = vids.get(nm); w = os.path.join(td, "a.wav")
-                try:
-                    if p is None:
-                        raise FileNotFoundError
-                    subprocess.run(["ffmpeg", "-loglevel", "error", "-y", "-i", p, "-ac", "1", "-ar", "16000", w], check=False, timeout=120)
-                    x, _ = sf.read(w, dtype="float32")
-                    if x.ndim > 1:
-                        x = x.mean(1)
-                    ah, seg, ns, aw, sp, tg = audio_feats(m, x); vc, nf, sub = visual_feats(m, p)
-                    vals = dict(ok=True, a_hub=ah, a_hub_seg=seg, n_seg=ns, a_wavlm=aw, spk=sp, tags=tg, v_clip=vc, n_frames=nf, sub=sub, dur=len(x) / 16000)
-                except Exception as e:  # noqa: BLE001
-                    n_fail += 1
-                    if n_fail <= 3:
-                        print("fail", type(e).__name__, "".join(traceback.format_exc().splitlines(True)[-4:]), flush=True)
-                    if n_done >= 20 and n_fail == n_done + 1:
-                        raise SystemExit("all of the first clips failed: stopping to save GPU time (see tracebacks above)")
-                    vals = dict(ok=False, a_hub=np.zeros(1024), a_hub_seg=np.zeros((20, 1024), np.float16), n_seg=0, a_wavlm=np.zeros(768),
-                                spk=np.zeros(512), tags=np.zeros(527, np.float16), v_clip=np.zeros((8, 768), np.float16), n_frames=0, sub=0.0, dur=0.0)
-                n_done += 1; rec["name"].append(nm)
+                vals = process(nm, td); rec["name"].append(nm)
                 for k in keys[1:]:
                     rec[k].append(vals[k])
         np.savez_compressed(part, **{k: np.array(v) for k, v in rec.items()})
-        print(f"part {start // PART} done, {min(start + PART, len(names))}/{len(names)} clips, {time.time() - t0:.0f}s", flush=True)
+        print(f"part {start // PART} done, {min(start + PART, len(names))}/{len(names)} clips, failed in part {int((~np.array(rec['ok'])).sum())}, {time.time() - t0:.0f}s", flush=True)
     print("extraction complete", flush=True)
 
 
