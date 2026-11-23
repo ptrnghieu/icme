@@ -59,13 +59,40 @@ def emos_meld(a, n=400, seed=0, exclude=(), ds="EmoS-MELD"):
     return items
 
 
+def mer26_human(a):
+    """OV-MERD+ (532, the benchmark used by AffectGPT / AffectGPT-R1 / AffectGPT-RL) and MER2025-FG (1,000) from
+    MER2026 video_7z/video_track2_train_human/video_split.zip; labels from AffectGPT-RL/dataset/*.csv (released with the repo)."""
+    sub = {r["name"]: r["chinese"] for r in csv.DictReader(open(os.path.join(a.affectgpt, "AffectGPT-RL/dataset/subtitle_chieng.csv"), encoding="utf-8"))}
+    z = zipfile.ZipFile(a.mer26zip)
+    if any(zi.flag_bits & 0x1 for zi in z.infolist()[:20]):
+        if not a.zip_pw:
+            raise SystemExit("MER2026 video zip is encrypted: add the Kaggle secret MER2026_ZIP_PW")
+        z.setpassword(a.zip_pw.encode())
+    byname = {os.path.splitext(os.path.basename(n))[0]: n for n in z.namelist() if n.lower().endswith((".mp4", ".avi", ".mkv"))}
+    out_dir = os.path.join(a.work, "mer26human"); os.makedirs(out_dir, exist_ok=True); items = []
+    for fn, ds in (("ovmerdplus-emotion.csv", "OV-MERD+"), ("mer2025ov1000-emotion.csv", "MER2025-FG")):
+        R = list(csv.DictReader(open(os.path.join(a.affectgpt, "AffectGPT-RL/dataset", fn), encoding="utf-8"))); k = 0
+        for r in R:
+            n = r["name"]
+            if n not in byname:
+                continue
+            p = os.path.join(out_dir, os.path.basename(byname[n]))
+            if not os.path.exists(p):
+                with open(p, "wb") as f:
+                    f.write(z.read(byname[n]))
+            items.append(dict(key=f"{ds}:{n}", ds=ds, video=p, sub=sub.get(n, ""), gt=[x.strip() for x in r["openset"].split(",") if x.strip()])); k += 1
+        print(ds, "clips with video:", k, "/", len(R), flush=True)
+    return items
+
+
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     for k in ("affectgpt", "emos", "mer24zip", "meld_tar", "work", "out"):
         ap.add_argument("--" + k)
-    ap.add_argument("--p14", action="store_true", help="OV-MERD + 400 fresh EmoS-MELD clips (seed 1, disjoint from P13)")
+    ap.add_argument("--p14", action="store_true", help="P14': OV-MERD+ and MER2025-FG (MER2026 human zip) + 400 fresh EmoS-MELD clips")
+    ap.add_argument("--mer26zip", default=""); ap.add_argument("--zip_pw", default=os.environ.get("MER2026_ZIP_PW", ""))
     a = ap.parse_args(); os.makedirs(a.work, exist_ok=True)
-    items = ovmerd(a) + (emos_meld(a, seed=1, ds="EmoS-MELD-fresh") if a.p14 else emos_meld(a))
+    items = (mer26_human(a) + emos_meld(a, seed=1, ds="EmoS-MELD-fresh")) if a.p14 else (ovmerd(a) + emos_meld(a))
     with open(a.out, "w", encoding="utf-8") as f:
         for it in items:
             f.write(json.dumps(it, ensure_ascii=False) + "\n")
