@@ -14,7 +14,19 @@ PRE-REGISTERED (2026-11-23, before any result; user's objection: chinese-hubert 
     the 120-clip smoke run showed a 6-epoch probe had not learned (TER 1.6); amended before any real result].
     Iterate (<= 10 times; each iteration adds the orthonormalised 6 probe rows) until held-out TER >= 0.9 x chance TER, where
     chance TER = 1 - (frequency of the most common tone in train targets).
-  Conditions (projection applied to every frame, z' = z - (zQ)Q^T, then pooling [mean(z'), std(z')] -> multinomial logistic
+  AMENDMENT 2 (2026-11-23, after the 800-clip SMOKE run, before any emotion result): the CTC criterion is confounded: TER mixes
+    syllable segmentation with tone identity, and the "chance TER" assumed known lengths (smoke: TER 0.647 vs chance 0.686).
+    PRIMARY tone subspace is therefore found where the emotion head looks: on the standardised pooled vectors [mean(z), std(z)],
+    ridge (alpha 100) predicts the clip's tone histogram (proportions of tones 1-5; clips with >= 2 tone tokens). Tone composition is
+    DECODABLE iff mean val R^2 >= 0.10; INLP then adds the 5 orthonormalised ridge directions per iteration until val R^2 < 0.02
+    (<= 30 iterations). Projection is applied to the pooled vectors. Variance-matched random subspaces are drawn in the same pooled
+    space. If not decodable -> T closed. Statistics and decision rule below are unchanged.
+    The frame-level CTC probe is kept as DESCRIPTIVE only, against a probe trained on tone sequences shuffled across clips.
+  AMENDMENT 3 (2026-11-23, after the 800-clip smoke run; STRICTER only): the smoke showed mean-only pooling beating mean+std and
+    random-subspace removal also helping (regularisation). HOLDS now additionally requires
+    D3 = WF1(TONE) - max(WF1(ORIG), WF1(ORIG_mean)) >= +0.5 (point estimate): the method must beat the best baseline pooling.
+    The smoke used the first 800 test clips; the full run uses all test clips; no other change.
+  [Original frame-level design, superseded:] Conditions (projection applied to every frame, z' = z - (zQ)Q^T, then pooling [mean(z'), std(z')] -> multinomial logistic
     regression, C in {0.01, 0.1, 1} by val WF1):
     ORIG (no projection); TONE (INLP subspace, rank r); RAND_1..5 (rank-r random subspaces inside the span of the top-K principal
     components of z, K chosen from {r, 2r, 4r, ..., D} so that the removed variance is closest to TONE's: variance-matched control);
@@ -71,7 +83,8 @@ def tones(t):
 def frames(enc, items):
     cache = os.path.join(W, f"{enc}_{len(items)}_{items[0]['uid']}.npz")
     if os.path.exists(cache):
-        d = np.load(cache); return [d["X"][a:b] for a, b in zip(d["off"][:-1], d["off"][1:])]
+        d = np.load(cache); X, off = d["X"], d["off"]  # load once: d["X"] re-reads the whole array on every access
+        return [X[a:b] for a, b in zip(off[:-1], off[1:])]
     from transformers import AutoModel, Wav2Vec2FeatureExtractor
     mid = {"hubert": "TencentGameMate/chinese-hubert-large", "wavlm": "microsoft/wavlm-base-plus"}[enc]
     fe = Wav2Vec2FeatureExtractor.from_pretrained(mid); m = AutoModel.from_pretrained(mid).eval(); out = []
@@ -171,33 +184,48 @@ def run(enc):
     ptr = [i for i in range(min(2000, len(Z["train"]))) if T["train"][i] and len(T["train"][i]) <= len(Z["train"][i])]
     pev = [i for i in range(min(500, len(Z["val"]))) if T["val"][i] and len(T["val"][i]) <= len(Z["val"][i])]
     Ztr, Ttr = [Z["train"][i] for i in ptr], [T["train"][i] for i in ptr]; Zev, Tev = [Z["val"][i] for i in pev], [T["val"][i] for i in pev]
-    cnt = np.bincount(np.concatenate(Ttr), minlength=6)[1:]; chance = 1 - cnt.max() / cnt.sum()
-    say(f"- tone tokens in probe-train: {cnt.sum()} (tones 1-5: {cnt.tolist()}); chance TER {chance:.3f}")
-    Q = None; ters = []
-    for it in range(10):
-        Wp, ter = train_probe(Ztr, Ttr, Zev, Tev, Q, seed=it); ters.append(ter)
-        if ter >= 0.9 * chance:
+    sh = np.random.default_rng(3).permutation(len(Ttr)); Tsh = [Ttr[i] for i in sh]
+    keep = [k for k in range(len(Ztr)) if len(Tsh[k]) <= len(Ztr[k])]
+    _, ter = train_probe(Ztr, Ttr, Zev, Tev, None); _, ter_sh = train_probe([Ztr[k] for k in keep], [Tsh[k] for k in keep], Zev, Tev, None)
+    say(f"- descriptive frame-level CTC probe: held-out TER {ter:.3f} vs shuffled-target probe {ter_sh:.3f}")
+    # primary: tone composition in the pooled space
+    F = {k: pool(v, None) for k, v in Z.items()}; scp = StandardScaler().fit(F["train"]); F = {k: scp.transform(v) for k, v in F.items()}
+    H = {k: np.array([np.bincount(t, minlength=6)[1:] / max(len(t), 1) for t in T[k]]) for k in T}
+    mk = {k: np.array([len(t) >= 2 for t in T[k]]) for k in T}
+    from sklearn.linear_model import Ridge
+    from sklearn.metrics import r2_score
+
+    def r2(Q):
+        Xtr = F["train"][mk["train"]]; Xva = F["val"][mk["val"]]
+        if Q is not None:
+            Xtr = Xtr - (Xtr @ Q) @ Q.T; Xva = Xva - (Xva @ Q) @ Q.T
+        m = Ridge(alpha=100).fit(Xtr, H["train"][mk["train"]]); return r2_score(H["val"][mk["val"]], m.predict(Xva)), m.coef_.T
+    r0, Wc = r2(None); say(f"- tone-composition decodability from pooled features: val R^2 = {r0:.3f} (decodable iff >= 0.10)")
+    if r0 < 0.10:
+        say("- tone composition not decodable: nothing to remove"); return None
+    Q = orth(Wc); hist = [r0]
+    for it in range(30):
+        rr, Wc = r2(Q); hist.append(rr)
+        if rr < 0.02:
             break
-        Q = orth(Wp.T) if Q is None else orth(np.c_[Q, Wp.T - Q @ (Q.T @ Wp.T)])
-    r = 0 if Q is None else Q.shape[1]
-    say(f"- held-out TER by INLP iteration: {[round(t, 3) for t in ters]} -> tone subspace rank r = {r}")
-    if r == 0:
-        say("- tone not linearly decodable above chance: nothing to remove"); return None
-    samp = allf[np.random.default_rng(0).choice(len(allf), min(60000, len(allf)), replace=False)]; Zs = (samp - mu) / sd
-    C = np.cov(Zs.T); tot = np.trace(C); vt = np.trace(Q.T @ C @ Q) / tot; ev, U = np.linalg.eigh(C); U = U[:, ::-1]
-    D = C.shape[0]; Ks = sorted({min(D, r * 2 ** j) for j in range(12)}); g = np.random.default_rng(7)
+        Q = orth(np.c_[Q, Wc - Q @ (Q.T @ Wc)])
+    r = Q.shape[1]; say(f"- INLP val R^2 by iteration: {[round(h, 3) for h in hist]} -> tone subspace rank r = {r}")
+    C = np.cov(F["train"].T); tot = np.trace(C); vt = np.trace(Q.T @ C @ Q) / tot; ev, U = np.linalg.eigh(C); U = U[:, ::-1]
+    D = C.shape[0]; Ks = sorted({min(D, r * 2 ** j) for j in range(12)})
 
     def rand_q(K, seed):
         return orth(U[:, :K] @ np.random.default_rng(seed).normal(size=(K, r)))
-    vK = {K: np.mean([np.trace(rand_q(K, s).T @ C @ rand_q(K, s)) / tot for s in range(3)]) for K in Ks}
+    vK = {K: np.mean([np.trace(rand_q(K, s_).T @ C @ rand_q(K, s_)) / tot for s_ in range(3)]) for K in Ks}
     K = min(Ks, key=lambda k: abs(vK[k] - vt))
-    say(f"- removed variance: TONE {100 * vt:.2f}%; variance-matched random (K={K}) {100 * vK[K]:.2f}%; isotropic {100 * vK[D]:.2f}%")
+    say(f"- removed variance (pooled space): TONE {100 * vt:.2f}%; variance-matched random (K={K}) {100 * vK[K]:.2f}%; isotropic {100 * vK[D]:.2f}%")
     conds = {"ORIG": None, "TONE": Q, **{f"RAND_{k}": rand_q(K, 100 + k) for k in range(1, 6)}, "ISO": rand_q(D, 99)}
     y = {k: np.array([it["y"] for it in v]) for k, v in S.items()}; P = {}
+    prj = lambda X, q: X if q is None else X - (X @ q) @ q.T  # noqa: E731
     for c, q in conds.items():
-        P[c] = fit_predict(pool(Z["train"], q), y["train"], pool(Z["val"], q), y["val"], pool(Z["test"], q))
+        P[c] = fit_predict(prj(F["train"], q), y["train"], prj(F["val"], q), y["val"], prj(F["test"], q))
+    half = F["train"].shape[1] // 2
     for c, q in (("ORIG_mean", None), ("TONE_mean", Q)):
-        P[c] = fit_predict(pool(Z["train"], q, True), y["train"], pool(Z["val"], q, True), y["val"], pool(Z["test"], q, True))
+        P[c] = fit_predict(prj(F["train"], q)[:, :half], y["train"], prj(F["val"], q)[:, :half], y["val"], prj(F["test"], q)[:, :half])
     yt = y["test"]; say("\n| condition | test WF1 |"); say("|---|---|")
     for c in P:
         say(f"| {c} | {wf1(yt, P[c]):.2f} |")
@@ -211,7 +239,9 @@ def run(enc):
     d1, d2 = d1f(full), d2f(full); lo1, hi1 = np.percentile(b1, [2.5, 97.5]); lo2, hi2 = np.percentile(b2, [2.5, 97.5]); mde = 2.8 * np.std(b1)
     say(f"\n- D1 = WF1(TONE) - mean WF1(RAND) = {d1:+.2f} [{lo1:+.2f}, {hi1:+.2f}]; MDE {mde:.2f} (dialogue clusters {len(ud)})")
     say(f"- D2 = WF1(TONE) - WF1(ORIG) = {d2:+.2f} [{lo2:+.2f}, {hi2:+.2f}]")
-    return dict(d1=d1, lo1=lo1, d2=d2, mde=mde)
+    d3 = wf1(yt, P["TONE"]) - max(wf1(yt, P["ORIG"]), wf1(yt, P["ORIG_mean"]))
+    say(f"- D3 = WF1(TONE) - best baseline pooling = {d3:+.2f}")
+    return dict(d1=d1, lo1=lo1, d2=d2, d3=d3, mde=mde)
 
 
 res = run("hubert")
@@ -219,7 +249,7 @@ if res is None:
     verdict = "tone not decodable -> T closed"
 elif res["mde"] > 1.5:
     verdict = f"UNDERPOWERED (MDE {res['mde']:.2f} > 1.5) -> T closed (power rule)"
-elif res["d1"] >= 1.0 and res["lo1"] > 0 and res["d2"] >= 0.5:
+elif res["d1"] >= 1.0 and res["lo1"] > 0 and res["d2"] >= 0.5 and res["d3"] >= 0.5:
     verdict = "HOLDS"
 else:
     verdict = "DOES NOT HOLD -> T closed"
