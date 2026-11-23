@@ -29,6 +29,11 @@ PROMPT = ("Watch the video, listen to the audio, and read the subtitle: \"{sub}\
           "express? Answer with a comma-separated list of English emotion words. Output only the list.")  # no examples: the smoke run copied them
 SYSTEM = ("You are Qwen, a virtual human developed by the Qwen Team, Alibaba Group, capable of perceiving auditory and visual inputs, "
           "as well as generating text and speech.")  # official Qwen2.5-Omni system prompt
+# Official OV-MER description prompt (zeroQiaoba/AffectGPT, OV-MER/VideoChat2/main-video.py, read 2026-11-23); labels are then
+# extracted from the description by an LLM (explore/ovmer/p14_official.py), as in the official pipeline.
+PROMPT_OFFICIAL = ("Subtitle content of the video: {sub} As an expert in the field of emotions, please focus on the facial expressions, body "
+                   "movements, environment, subtitle content, etc., in the video to discern clues related to the emotions of the individual. "
+                   "Please provide a detailed description and ultimately predict the emotional state of the individual in the video. ")
 N_SAMPLES, MAX_LABELS = int(os.environ.get("P13_N", "16")), 8  # P13_N only for smoke tests
 
 
@@ -36,7 +41,7 @@ def parse(text):
     text = text.strip().split("\n")[0]  # first line only: the model may continue with an invented dialogue turn
     out = []
     for x in re.split(r"[,;\n、，]+", text):
-        x = re.sub(r"^[\s\-\*\d\.\)]+", "", x).strip().strip(".").strip().lower()
+        x = re.sub(r"^[\s\-\*\d\.\)\[\]'\"]+", "", x).strip().strip(".[]'\"").strip().lower()
         if x and len(x) < 40 and x not in out:
             out.append(x)
     return out[:MAX_LABELS]
@@ -65,6 +70,8 @@ def cmd_run(a):
     from transformers import Qwen2_5OmniThinkerForConditionalGeneration, Qwen2_5OmniProcessor
     from qwen_omni_utils import process_mm_info
     items = [json.loads(l) for l in open(a.items)][: (a.limit or None)]
+    if a.only_ds:
+        items = [it for it in items if it["ds"] in a.only_ds.split(",")]
     if a.shard:
         i, n = map(int, a.shard.split("/")); items = items[i::n]
     done = {r["key"] for r in map(json.loads, open(a.out)) if r.get("ok")} if os.path.exists(a.out) else set()  # failed clips are retried
@@ -79,6 +86,8 @@ def cmd_run(a):
     else:
         model = Qwen2_5OmniThinkerForConditionalGeneration.from_pretrained(mid, dtype=dt, attn_implementation="sdpa").to(dev).eval()
     n_samples = a.n_samples or N_SAMPLES
+    official = a.protocol == "official"; tmpl = PROMPT_OFFICIAL if official else PROMPT
+    gen = dict(max_new_tokens=256) if official else dict(max_new_tokens=40, stop_strings=["\n"], tokenizer=proc.tokenizer)
     t0 = time.time(); n = 0; nfail = 0; tmp = tempfile.mkdtemp()
     with open(a.out, "a") as fo:
         for it in items:
@@ -93,20 +102,20 @@ def cmd_run(a):
                 conv = [{"role": "system", "content": [{"type": "text", "text": SYSTEM}]},
                         {"role": "user", "content": [{"type": "video", "video": frames, "min_pixels": 32 * 28 * 28, "max_pixels": 128 * 28 * 28},
                                                      {"type": "audio", "audio": wav},
-                                                     {"type": "text", "text": PROMPT.format(sub=it.get("sub", "")[:300])}]}]
+                                                     {"type": "text", "text": tmpl.format(sub=it.get("sub", "")[:300])}]}]
                 text = proc.apply_chat_template(conv, add_generation_prompt=True, tokenize=False)
                 aud, img, vid = process_mm_info(conv, use_audio_in_video=False)
                 inp = proc(text=text, audio=aud, images=img, videos=vid, return_tensors="pt", padding=True, use_audio_in_video=False)
                 inp = {k: (v.to(dev).to(dt) if torch.is_floating_point(v) else v.to(dev)) for k, v in inp.items()}
                 L0 = inp["input_ids"].shape[1]
                 with torch.no_grad():
-                    g = model.generate(**inp, use_audio_in_video=False, max_new_tokens=40, do_sample=False, stop_strings=["\n"], tokenizer=proc.tokenizer)
+                    g = model.generate(**inp, use_audio_in_video=False, do_sample=False, **gen)
                     samples = []; chunk = CHUNK
                     while len(samples) < n_samples:
                         k = min(chunk, n_samples - len(samples))
                         try:
-                            s = model.generate(**inp, use_audio_in_video=False, max_new_tokens=40, do_sample=True, temperature=1.0, top_p=0.95,
-                                               num_return_sequences=k, stop_strings=["\n"], tokenizer=proc.tokenizer)
+                            s = model.generate(**inp, use_audio_in_video=False, do_sample=True, temperature=1.0, top_p=0.95,
+                                               num_return_sequences=k, **gen)
                             samples += proc.batch_decode(s[:, L0:], skip_special_tokens=True); del s
                         except torch.cuda.OutOfMemoryError:
                             torch.cuda.empty_cache()
@@ -207,4 +216,5 @@ if __name__ == "__main__":
     ap.add_argument("--limit", type=int, default=0); ap.add_argument("--mapping"); ap.add_argument("--report", default="p13_report.md")
     ap.add_argument("--model", default="Qwen/Qwen2.5-Omni-3B"); ap.add_argument("--quant4", action="store_true")
     ap.add_argument("--n_samples", type=int, default=0); ap.add_argument("--shard", default="")
+    ap.add_argument("--protocol", default="direct", choices=["direct", "official"]); ap.add_argument("--only_ds", default="")
     a = ap.parse_args(); {"run": cmd_run, "score": cmd_score}[a.cmd](a)
