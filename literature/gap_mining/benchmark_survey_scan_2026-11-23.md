@@ -19,3 +19,16 @@ Full text đã tải và đọc các đoạn liên quan (pdftotext): 2604.19417 
 ## Chưa làm
 - Bảng đầy đủ: mỗi benchmark cần số SOTA, mức người (nếu có), truy cập data của user (C5), vừa compute T4, độ bão hòa.
 - Đọc kỹ 2508.09210, 2509.24322, 2505.20511, 2601.16449, 2504.19423; thêm ABAW, MuSe, EmotiW 2025–2026; các bài limitations từ 09–11/2026 (đợt tầng 1 dừng ở 21/11/2026, chỉ lấy bài có comment venue).
+
+## Task mới được giới thiệu ở hội nghị chính (2025–2026), không phải challenge (kiểm tra 2026-11-23)
+Venue đã xác minh = đọc trực tiếp trường comments trên arXiv hoặc trang ACL Anthology.
+| Task / benchmark | Venue (xác minh) | Nội dung (theo abstract đã đọc) | Data |
+|---|---|---|---|
+| EmoReAlM + AVEm-DPO (2602.07054, AVERE) | **ICLR 2026** (comments arXiv) | đo liên hệ giả giữa cue và cảm xúc, hallucination cue audio-visual do prior của text, mức đồng thuận giữa modality, trong MLLM; phương pháp DPO; đánh giá trên DFEW, RAVDESS, EMER | chưa kiểm tra bản phát hành |
+| DAR (2607.10238) | **ECCV 2026** (comments arXiv) | cảm xúc của người xem, chuyển trạng thái theo chuỗi sự kiện; 15.087 video, 36.908 đoạn, 27 lớp; 3 task (phân đoạn, phân loại chi tiết, suy luận) | chưa kiểm tra |
+| EmoS (2026.acl-long.1813) | **ACL 2026 long** (Anthology) | benchmark song ngữ, có tập Streaming Monologue cho cảm xúc biến đổi liên tục | "publicly available at github.com/NLP2CT/EmoS" (theo abstract; chưa kiểm tra L2) |
+| EmotionHallucer (2505.11405) | chưa xác minh (arXiv không ghi venue) | hallucination cảm xúc: kiến thức tâm lý học và tri giác đa modality; QA nhị phân đối kháng; 38 model | code trên GitHub (theo kết quả tìm kiếm) |
+| MMLA (2504.16427) | chưa xác minh (arXiv không ghi venue) | 61K utterance, 6 chiều (ý định, cảm xúc, dialogue act, sentiment, phong cách nói, hành vi giao tiếp); fine-tune chỉ đạt khoảng 60–70% | "open-sourced" (theo abstract) |
+| VQAU-Bench / AffectSeek (2605.05640) | preprint | định vị khoảnh khắc cảm xúc trong video dài theo truy vấn mơ hồ | — |
+| E³mo-Bench (2608.10796) | preprint | cảm xúc thể hiện và cảm xúc gợi ra; VAD bằng so sánh cặp | — |
+| EmoTrans (2604.23348) | preprint | chuyển trạng thái cảm xúc, có task Next Emotion Prediction (gần bài COLING) | — |
