@@ -42,12 +42,30 @@ def parse(text):
     return out[:MAX_LABELS]
 
 
+CHUNK = 4  # samples per generate call (halved on OOM)
+
+
+def extract_frames(video, tmp, n=8, side=336):
+    """n uniformly spaced frames, longer side <= `side`, as jpg paths (even n, as qwen-vl-utils requires)."""
+    import cv2
+    cap = cv2.VideoCapture(video); tot = int(cap.get(cv2.CAP_PROP_FRAME_COUNT)) or 1; out = []
+    for j, fr in enumerate(np.linspace(0, tot - 1, n).astype(int)):
+        cap.set(cv2.CAP_PROP_POS_FRAMES, int(fr)); ok, im = cap.read()
+        if not ok:
+            im = out_im if out else np.zeros((side, side, 3), np.uint8)
+        h, w = im.shape[:2]; sc = side / max(h, w)
+        if sc < 1:
+            im = cv2.resize(im, (int(w * sc), int(h * sc)))
+        out_im = im; p = os.path.join(tmp, f"f{j}.jpg"); cv2.imwrite(p, im); out.append("file://" + p)
+    cap.release(); return out
+
+
 def cmd_run(a):
     import torch
     from transformers import Qwen2_5OmniThinkerForConditionalGeneration, Qwen2_5OmniProcessor
     from qwen_omni_utils import process_mm_info
     items = [json.loads(l) for l in open(a.items)][: (a.limit or None)]
-    done = {json.loads(l)["key"] for l in open(a.out)} if os.path.exists(a.out) else set()
+    done = {r["key"] for r in map(json.loads, open(a.out)) if r.get("ok")} if os.path.exists(a.out) else set()  # failed clips are retried
     dev = "cuda" if torch.cuda.is_available() else "cpu"; dt = torch.float16 if dev == "cuda" else torch.bfloat16
     mid = "Qwen/Qwen2.5-Omni-3B"
     proc = Qwen2_5OmniProcessor.from_pretrained(mid)
@@ -62,8 +80,9 @@ def cmd_run(a):
             try:
                 wav = os.path.join(tmp, "a.wav")  # audio extracted with ffmpeg (qwen_omni_utils' in-video audio path fails with recent librosa)
                 subprocess.run(["ffmpeg", "-loglevel", "error", "-y", "-i", it["video"], "-ac", "1", "-ar", "16000", "-t", "30", wav], check=True, timeout=120)
+                frames = extract_frames(it["video"], tmp)  # 8 frames, <= 336 px: bounds the video tokens on any transformers version
                 conv = [{"role": "system", "content": [{"type": "text", "text": SYSTEM}]},
-                        {"role": "user", "content": [{"type": "video", "video": it["video"], "fps": 1.0, "min_pixels": 32 * 28 * 28, "max_pixels": 64 * 28 * 28, "max_frames": 8},
+                        {"role": "user", "content": [{"type": "video", "video": frames, "min_pixels": 32 * 28 * 28, "max_pixels": 128 * 28 * 28},
                                                      {"type": "audio", "audio": wav},
                                                      {"type": "text", "text": PROMPT.format(sub=it.get("sub", "")[:300])}]}]
                 text = proc.apply_chat_template(conv, add_generation_prompt=True, tokenize=False)
@@ -73,10 +92,19 @@ def cmd_run(a):
                 L0 = inp["input_ids"].shape[1]
                 with torch.no_grad():
                     g = model.generate(**inp, use_audio_in_video=False, max_new_tokens=40, do_sample=False, stop_strings=["\n"], tokenizer=proc.tokenizer)
-                    s = model.generate(**inp, use_audio_in_video=False, max_new_tokens=40, do_sample=True, temperature=1.0, top_p=0.95,
-                                       num_return_sequences=N_SAMPLES, stop_strings=["\n"], tokenizer=proc.tokenizer)
+                    samples = []; chunk = CHUNK
+                    while len(samples) < N_SAMPLES:
+                        k = min(chunk, N_SAMPLES - len(samples))
+                        try:
+                            s = model.generate(**inp, use_audio_in_video=False, max_new_tokens=40, do_sample=True, temperature=1.0, top_p=0.95,
+                                               num_return_sequences=k, stop_strings=["\n"], tokenizer=proc.tokenizer)
+                            samples += proc.batch_decode(s[:, L0:], skip_special_tokens=True); del s
+                        except torch.cuda.OutOfMemoryError:
+                            torch.cuda.empty_cache()
+                            if chunk == 1:
+                                raise
+                            chunk = max(1, chunk // 2)
                 greedy = proc.batch_decode(g[:, L0:], skip_special_tokens=True)[0]
-                samples = proc.batch_decode(s[:, L0:], skip_special_tokens=True)
                 rec = dict(key=it["key"], ds=it["ds"], greedy=greedy, samples=samples, ok=True)
                 if n == 0 and not greedy.strip():
                     print("WARNING: empty greedy output on the first clip (check fp16 overflow)", flush=True)
@@ -84,6 +112,8 @@ def cmd_run(a):
                 rec = dict(key=it["key"], ds=it["ds"], ok=False, err=f"{type(e).__name__}: {str(e)[:200]}")
                 print("fail", it["key"], rec["err"], flush=True)
             fo.write(json.dumps(rec, ensure_ascii=False) + "\n"); fo.flush(); n += 1
+            if dev == "cuda":
+                torch.cuda.empty_cache()
             if n % 20 == 0:
                 print(f"{n} clips, {time.time() - t0:.0f}s", flush=True)
     print("run finished", n, flush=True)
