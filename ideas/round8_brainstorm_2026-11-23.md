@@ -1,0 +1,9 @@
+# Đợt 8 (2026-11-23): brainstorm thêm trong lúc chờ P13
+
+| # | Hướng | Bằng chứng / kiểm tra đã làm | Trạng thái |
+|---|---|---|---|
+| N4 | **Hiệu chỉnh prior nhãn lúc test cho MLLM cảm xúc zero-shot (closed-set)**, dùng cấu trúc cảm xúc (nhóm valence/arousal, ngữ cảnh hội thoại không nhãn) thay vì hiệu chỉnh từng lớp độc lập | Bằng chứng gián tiếp: hố hút neutral ở harness (MER2024: worried→neutral 102, happy→neutral 97; M3ED: emotional→neutral 42,6% lỗi). Novelty nhanh (4 truy vấn OpenAlex): không thấy bài hiệu chỉnh prior lúc test cho MLLM cảm xúc; gần nhất 2603.23057 (prompt ensemble + late fusion cho ALM, SER) và 2604.27345 (hiệu chỉnh phân bố hậu kỳ cho LLM gán nhãn cảm xúc văn bản, GoEmotions/EmoBank). Miền khác: contextual calibration, batch calibration (NLP) → phải trích dẫn và so sánh | **SỐNG**; cần đo độ lệch prior thật của MLLM zero-shot trên MER2024/MELD/M3ED (premise) |
+| B′ | **Gộp F1 và N4 thành một câu chuyện**: luật quyết định lúc test, không huấn luyện, cho MLLM cảm xúc (MBR cho từ vựng mở; hiệu chỉnh prior cho closed-set) | C2 mạnh: nhiều task × nhiều dataset (OV-MERD, EmoS-MELD, MER2024, MELD, M3ED) | Phụ thuộc P13 và premise của N4 |
+| N1 | Khác biệt văn hóa trong cảm xúc từ vựng mở | OV-MER (2410.01495) Limitations: "this paper does not involve cultural differences … our original data is in Chinese, and the annotators … native Chinese speakers" | Dạng phân tích, chưa có phương pháp → không đạt C3 |
+| N9 | Đánh giá cảm xúc của TTS (VoiceMOS 2026 có track emotional TTS; dataset ấn tượng người nghe về TTS cảm xúc, Interspeech 2026) | Abstract 2609.13792 đã đọc; chưa kiểm data | Chưa kiểm C5 |
+| N10 | SpeechSense (ACM MM 2026 Dataset Track, 2608.17931): 8 lớp thái độ liên cá nhân qua prosody | Abstract ghi có link dataset và code; data là giọng tổng hợp (TTS) | Chỉ dùng làm dataset phụ, không phải hướng riêng |
