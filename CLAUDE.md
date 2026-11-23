@@ -156,6 +156,16 @@ Có link trong paper là **chưa đủ**. Mỗi dataset phải được kiểm t
 - Mọi probe hay đối chứng phải có cùng độ khó với điều kiện chính (bài học P11: mức ngẫu nhiên của CTC đặt sai).
 - Không bắt đầu từ một dataset mới chỉ vì nó ít người làm; dataset là phương tiện để kiểm chứng nguyên nhân.
 
+### 4.8. Quy trình v4: làm như một giáo sư đầu ngành (từ 2026-11-23; dùng cùng §4.6–4.7, ưu tiên khi chọn hướng)
+**Vì sao đổi** (tự đánh giá, 2026-11-23, sau khoảng 20 hướng và 13 pilot): quy trình cũ tối ưu cho "chưa bị bác" chứ không cho "có insight"; ý tưởng sinh từ dưới lên (đặc điểm data, cơ chế ML, lát cắt lỗi của harness LR) thay vì từ một nhận định về hướng đi của lĩnh vực; đổi phương pháp liên tục nên không vùng nào được đọc đủ sâu; pilot chạy trên harness thay vì hệ thống mạnh mà reviewer sẽ so; chưa từng viết abstract trước khi làm. Giữ lại: tiêu chí đặt trước, tính power, loại nhanh.
+
+1. **Nhận định về lĩnh vực (1 trang, cập nhật khi có bằng chứng mới):** lĩnh vực đang đi đâu, giả định cũ nào đang gãy. Bằng chứng hiện có: MER2026 (2604.19417) ghi chuyển "from discriminative emotion recognition to generative emotion understanding"; survey IJCAI 2026 (2605.21239) nêu hướng mở về đánh giá diễn giải mở, tính chủ quan, cơ chế. Chọn 1–2 vùng con ở biên chuyển đổi (6–18 tháng tuổi, baseline còn yếu, cách đánh giá chưa ổn định) và hợp với lợi thế riêng (2×T4 → phương pháp không huấn luyện hoặc rẻ; data MER đã có).
+2. **Bản đồ claim và giả định của vùng con:** đọc sâu 20–30 bài; với mỗi bài ghi giả định cốt lõi, protocol đánh giá, điều chưa kiểm, kết quả mâu thuẫn với bài khác. Gap tốt thường nằm ở: lệch giữa mục tiêu huấn luyện và cách chấm điểm; giả định gãy trong bối cảnh mới; lỗi của chính cách đánh giá; hai nhánh làm riêng mà chưa ai nối.
+3. **Phiên sinh ý tưởng có chủ đích (1 giờ, 15–20 ý tưởng)** từ bản đồ, qua các lăng kính: lệch mục tiêu và metric; giả định gãy; nguyên lý đã vững ở lĩnh vực lân cận (lý thuyết quyết định, calibration, nhân quả); nối hai nhánh; lợi thế riêng của nhóm.
+4. **Viết abstract trước:** với 5 ý tưởng tốt nhất, viết abstract 5 câu, phác bảng kết quả chính và phản biện mạnh nhất của reviewer. Ý tưởng nào không viết được một câu insight rõ thì loại.
+5. **Cược hai chiều:** thành công thì có bài không; thất bại thì còn gì; có chạy được trên T4 và data đã có không.
+6. **Một pilot quyết định trên hệ thống mạnh thật** (không phải harness), đăng ký trước, có power; rồi mới làm novelty đầy đủ và hồ sơ (§4.2, §6).
+
 ---
 
 ## 5. Chế độ tư vấn ý tưởng và thiết kế thực nghiệm
@@ -285,3 +295,4 @@ Còn mở:
 | 2026-11-23 | **P11 (hướng T, thanh điệu là nhiễu) → DOES NOT HOLD → T ĐÃ LOẠI.** M3ED, split chính thức, test 4.201. chinese-hubert mã hóa thanh điệu mạnh (TER 0,282 so với 0,812; R² 0,487) nhưng chiếu bỏ không gian con thanh điệu không giúp: D1 = −0,35 [−1,02; +0,28] (MDE 0,91), D2 = −0,43, D3 = −3,33. Phản biện của user (encoder pretrain tiếng Trung) đúng. Bài học: thiết kế probe phải có đối chứng cùng độ khó (lỗi CTC chance đã sửa trước khi chạy thật). |
 | 2026-11-23 | **User gác V và yêu cầu sửa cách tìm RQ.** Thêm **§4.7 Quy trình tìm RQ v3**: đi từ lỗi của baseline thật (bản đồ headroom ≥ 2 dataset → chẩn đoán phân biệt nguyên nhân → cận trên bằng thông tin đặc quyền ≥ 2 × MDE → novelty theo cặp nguyên nhân–cách sửa → phương pháp). Ý tưởng 'loại nhiễu X' chỉ được xét khi X đã được chứng minh gây lỗi. Bắt đầu bước 1 trên MER2024 (cache) và M3ED (audio + text, 3 annotator). |
 | 2026-11-23 | **User đồng ý chuyển sang chế độ 'đọc sâu → thẻ ý tưởng → user chọn'.** Đọc full text 12 bài, viết 6 thẻ (`ideas/cards_W_MERFG_2026-11-23.md`). **P12 → W ĐÃ LOẠI**: trên M3ED, giám sát yếu chỉ kém nhãn đầy đủ 1,03 WF1 (AT), dưới ngưỡng 2,0. **User chọn F1** (giải mã tập nhãn theo kỳ vọng EW-F cho MER từ vựng mở, không huấn luyện). Bản đồ lỗi M3ED: nhãn có annotator bất đồng chứa 66,8% lỗi (lặp lại với CH-SIMS, 73%). |
+| 2026-11-23 | **User yêu cầu nhìn lại cách tìm gap so với một giáo sư đầu ngành.** Thêm **§4.8 Quy trình v4**: nhận định về hướng đi của lĩnh vực → bản đồ claim và giả định của 1–2 vùng con ở biên chuyển đổi → phiên sinh ý tưởng có chủ đích → viết abstract trước → cược hai chiều → một pilot quyết định trên hệ thống mạnh. F1 (lệch mục tiêu huấn luyện và metric trong MER sinh) là ví dụ khớp quy trình này. |
