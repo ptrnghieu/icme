@@ -158,3 +158,6 @@ Novelty nhanh: `literature/gap_mining/round4d_neutral_quick_2026-11-22.txt`.
 - Đổi câu hỏi từ "nhạc có dự đoán được nhãn không" sang **phép thử nhân quả**: hoán đổi nhạc nền giữa các clip (tách nguồn bằng Demucs rồi ghép lại) và đo tỉ lệ dự đoán bị lật.
 - Phép thử này can thiệp trên chính clip đó, nên không cần ID nguồn và tránh được vấn đề rò rỉ trên MER2024.
 - Data: CH-SIMS và CH-SIMS v2 có video_id, dùng cho đánh giá tách theo video; MER2024 dùng cho phép thử hoán đổi. Bỏ MELD.
+
+
+**Cập nhật 2026-11-23: P9 (E2, hoán đổi nhạc nền) DOES NOT HOLD.** CH-SIMS: Δflip +1,9 [−0,7; +4,9] (MDE 3,9) < +5. Dừng M3ED theo quyết định của user vì kết luận không đổi. **Nhánh E đóng hẳn.** Chi tiết: `explore/editorial/p9_report_2026-11-23.md`.
