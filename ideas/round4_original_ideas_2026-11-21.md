@@ -148,3 +148,13 @@ Phần còn mới chỉ là "rationale → nhãn modality → giám sát router"
 - Cách tách hai đầu không sửa được hiện tượng này; trên CH-SIMS nó còn làm tệ hơn.
 
 Novelty nhanh: `literature/gap_mining/round4d_neutral_quick_2026-11-22.txt`.
+
+### E – thảo luận lại theo yêu cầu của user (2026-11-23)
+**Hai bằng chứng mới:**
+- **CI của tín hiệu sau khi tách theo video:** trên CH-SIMS, chia 5-fold tách theo video (60 video, 5 seed), bootstrap theo video. Chỉ riêng tag hậu kỳ dự đoán cực tính được bacc − 50 = **+4,7 [2,6; 7,0]**. Tín hiệu có thật và không đến từ rò rỉ theo video, nhưng nhỏ. Trong 1.936 clip có 749 clip có nhạc; tỉ lệ nhãn dương là 0,40 khi có nhạc và 0,33 khi không có.
+- **Chính ban tổ chức MER thừa nhận nhạc mang cảm xúc.** Bài MER2024 (2404.17113, phần MER-NOISE) viết về MUSAN: "The noise in the first two subsets [music, noise] may convey emotions and affect the emotion of the raw audio … Therefore, we only use the noise in the last subset [speech]". Tức là phép thử độ bền của MER2024 cố ý bỏ nhạc vì nhạc làm lẫn cảm xúc, trong khi bản thân các clip MER có sẵn nhạc nền. Đây là bằng chứng C1 trực tiếp từ bên dựng benchmark.
+
+**Hướng phát triển (E2, chưa đăng ký trước):**
+- Đổi câu hỏi từ "nhạc có dự đoán được nhãn không" sang **phép thử nhân quả**: hoán đổi nhạc nền giữa các clip (tách nguồn bằng Demucs rồi ghép lại) và đo tỉ lệ dự đoán bị lật.
+- Phép thử này can thiệp trên chính clip đó, nên không cần ID nguồn và tránh được vấn đề rò rỉ trên MER2024.
+- Data: CH-SIMS và CH-SIMS v2 có video_id, dùng cho đánh giá tách theo video; MER2024 dùng cho phép thử hoán đổi. Bỏ MELD.
