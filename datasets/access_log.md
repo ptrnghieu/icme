@@ -50,3 +50,10 @@ Mọi kiểm tra chạy từ container cloud ngày **2026-11-19**, không đăng
 - **MER2025:** `audio.zip` **11,29 GB** chứa audio của toàn bộ kho; `video/` và `openface_face/` là các archive chia nhỏ.
 - **MER2024:** `video-labeled.zip` 4,05 GB (5.030 video có nhãn); `video-unlabeled-with-test2noise/` (thư mục); `unlabeled-with-test2noise-subtitle_csv.zip` 7,97 GB.
 - **MER2023:** train gồm 6 × 21,47 GB + 10,79 GB (7z chia nhỏ); `mer2023test1&2.zip` 0,27 GB; `test-labels.zip`.
+
+## Dataset từ phim, phim truyền hình (tìm cho ý tưởng E2, 2026-11-23)
+| Dataset | Mức | Bằng chứng | Ghi chú |
+|---|---|---|---|
+| **M3ED** (ACL 2022, arXiv 2205.10237; 56 phim truyền hình Trung Quốc, 7 cảm xúc) | **L3** (nhãn và audio) | Repo chính thức github.com/AIM3-RUC/RUCM3ED (`git clone` được): có `annotation.json` và `splitInfo/movie_list_{train,val,test}.txt`. Đếm: 38/7/11 phim, không trùng nhau; train/val/test = 17.427 / 2.821 / 4.201 câu, tổng **24.449**, khớp bài báo. Bài báo: "TV-independent data split … no overlap of TV series across training, validation, and testing sets". Audio: mirror HF `UnFaZeD07/M3ED` có `m3ed_raw_utts_audio.tar.gz` (1,005 GB, tải đủ; 24.455 file wav); `annotation.json` của mirror trùng byte với bản chính thức. Mỗi câu có nhãn của **3 annotator** | **Video không được phát hành** (bản quyền; chỉ có feature visual). Repo chính thức không có file LICENSE; README phát hành audio qua Baidu Pan. Mirror HF do bên thứ ba đăng, không có license |
+| SpEmoC (ECCV 2026, arXiv 2607.18109; 30.000 clip từ 3.100 phim và phim truyền hình tiếng Anh, split tách theo phim) | **Gated (thủ công)** | Trang dự án skvipparthi.com/spemoc.html (HTTP 200): có "Request Dataset" và `spemoc_eula.pdf`. Bài báo ghi: "Access will be regulated through an End User License Agreement" | Phải xin bằng email; trang không ghi thời gian duyệt |
+| MUStARD (HF `MichiganNLP/MUStARD`, MIT) | L1+ (listing) | `mmsd_raw_data.zip` 1,40 GB | Sitcom; nhãn sarcasm, không phải cảm xúc |
