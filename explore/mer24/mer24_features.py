@@ -13,8 +13,10 @@ Per clip:
 Text features are computed in the screen stage from label-transcription.csv (batching).
 Usage: python mer24_features.py --videos DIR --labels label-disdim.csv --cache DIR [--hours 9] [--limit N]
 """
-import argparse, glob, os, subprocess, tempfile, time
+import argparse, glob, os, subprocess, tempfile, time, traceback, warnings
 import numpy as np
+
+warnings.filterwarnings("ignore")
 
 PART = int(os.environ.get("E_PART", "250"))
 
@@ -60,6 +62,18 @@ def audio_feats(m, x):
     return h.mean(0), pad.astype(np.float16), len(seg), w, s, p.float().cpu().numpy().astype(np.float16)
 
 
+def emb_tensor(out):
+    """transformers < 5 returns a tensor from get_image_features; >= 5 returns BaseModelOutputWithPooling (projected pooler_output)."""
+    import torch
+    if isinstance(out, torch.Tensor):
+        return out
+    for k in ("image_embeds", "pooler_output"):
+        v = getattr(out, k, None)
+        if v is not None:
+            return v
+    return out[0]
+
+
 def visual_feats(m, mp4):
     import cv2
     from PIL import Image
@@ -73,7 +87,7 @@ def visual_feats(m, mp4):
     out = np.zeros((8, 768), np.float16); sub = 0.0
     if frs:
         with torch.no_grad():
-            e = m["clip"].get_image_features(**{k: v.to(m["dev"]) for k, v in m["clip_p"](images=[Image.fromarray(cv2.cvtColor(f, cv2.COLOR_BGR2RGB)) for f in frs], return_tensors="pt").items()})
+            e = emb_tensor(m["clip"].get_image_features(**{k: v.to(m["dev"]) for k, v in m["clip_p"](images=[Image.fromarray(cv2.cvtColor(f, cv2.COLOR_BGR2RGB)) for f in frs], return_tensors="pt").items()}))
         e = torch.nn.functional.normalize(e.float(), dim=-1).cpu().numpy(); out[: len(e)] = e
         mid = frs[len(frs) // 2]; H, W = mid.shape[:2]; hl, fl = m["ocr"].detect(mid)
         boxes = [(b[0], b[1], b[2], b[3]) for b in (hl[0] if hl else [])]
@@ -92,10 +106,12 @@ def main(a):
     for start in range(0, len(names), PART):
         part = os.path.join(a.cache, f"part_{start // PART:04d}.npz")
         if os.path.exists(part):
-            continue
+            if np.load(part)["ok"].mean() >= 0.9:
+                continue
+            print(f"redoing {os.path.basename(part)} (too many failed clips)", flush=True)
         if (time.time() - t0) / 3600 > a.hours:
             print("time budget reached; rerun to resume", flush=True); return
-        rec = {k: [] for k in keys}
+        rec = {k: [] for k in keys}; n_fail = n_done = 0
         with tempfile.TemporaryDirectory() as td:
             for nm in names[start:start + PART]:
                 p = vids.get(nm); w = os.path.join(td, "a.wav")
@@ -109,10 +125,14 @@ def main(a):
                     ah, seg, ns, aw, sp, tg = audio_feats(m, x); vc, nf, sub = visual_feats(m, p)
                     vals = dict(ok=True, a_hub=ah, a_hub_seg=seg, n_seg=ns, a_wavlm=aw, spk=sp, tags=tg, v_clip=vc, n_frames=nf, sub=sub, dur=len(x) / 16000)
                 except Exception as e:  # noqa: BLE001
-                    print("fail", type(e).__name__, flush=True)
+                    n_fail += 1
+                    if n_fail <= 3:
+                        print("fail", type(e).__name__, "".join(traceback.format_exc().splitlines(True)[-4:]), flush=True)
+                    if n_done >= 20 and n_fail == n_done + 1:
+                        raise SystemExit("all of the first clips failed: stopping to save GPU time (see tracebacks above)")
                     vals = dict(ok=False, a_hub=np.zeros(1024), a_hub_seg=np.zeros((20, 1024), np.float16), n_seg=0, a_wavlm=np.zeros(768),
                                 spk=np.zeros(512), tags=np.zeros(527, np.float16), v_clip=np.zeros((8, 768), np.float16), n_frames=0, sub=0.0, dur=0.0)
-                rec["name"].append(nm)
+                n_done += 1; rec["name"].append(nm)
                 for k in keys[1:]:
                     rec[k].append(vals[k])
         np.savez_compressed(part, **{k: np.array(v) for k, v in rec.items()})
