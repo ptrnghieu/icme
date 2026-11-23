@@ -149,10 +149,45 @@ def screen_baseline(D, y, val, cls, dev, say):
         say(f"  - {nm}: {msk.sum()} clips ({100 * msk.mean():.1f}%); AVT accuracy on them {100 * (p[msk] == y[msk]).mean():.1f}")
 
 
+def screen_peakend(D, y, val, cls, dev, say):
+    """Peak-end pooling screen (P10 on MER2024; pre-registered 2026-11-23, before any MER2024 result).
+    Audio = chinese-hubert-large per 1-s segment (a_hub_seg, n_seg). Peak = segment farthest (L2) from the clip mean after
+    per-dimension standardisation by the pooled segment sd (label-free). End = last valid segment, First = first, Random = one
+    uniformly chosen segment (seed 0). MPE = mean+peak+end vs MFR = mean+first+random (equal dimension).
+    PRIMARY: WAF(MPE) - WAF(MFR), out-of-fold, mean over 3 fold seeds. HOLDS iff >= +1.0 WAF AND the seed-0 bootstrap CI excludes 0
+    AND the gain on clips >= 4 s exceeds the gain on clips < 4 s. Descriptive: ME-MF, MP-MR, and AVT with each audio pooling."""
+    K = len(cls); ok = D["ok"].astype(bool) & (D["n_seg"] > 0)
+    S = D["a_hub_seg"][ok].astype(np.float32); n = D["n_seg"][ok].astype(int); y, dur = y[ok], D["dur"][ok]
+    mask = np.arange(S.shape[1])[None, :] < n[:, None]; sd = S[mask].std(0) + 1e-6; rng = np.random.default_rng(0); N = len(y)
+    mean = (S * mask[..., None]).sum(1) / n[:, None]; first = S[:, 0]; end = S[np.arange(N), n - 1]
+    dist = np.linalg.norm((S - mean[:, None]) / sd, axis=2); dist[~mask] = -1; peak = S[np.arange(N), dist.argmax(1)]
+    rnd = S[np.arange(N), (rng.random(N) * n).astype(int)]
+    V = (D["v_clip"].astype(np.float32).sum(1) / np.maximum(D["n_frames"], 1)[:, None])[ok]; T = D["t_rob"][ok].astype(np.float32)
+    F = {"M": mean, "MF": np.c_[mean, first], "ME": np.c_[mean, end], "MP": np.c_[mean, peak], "MR": np.c_[mean, rnd],
+         "MPE": np.c_[mean, peak, end], "MFR": np.c_[mean, first, rnd],
+         "AVT_M": np.c_[mean, V, T], "AVT_MPE": np.c_[mean, peak, end, V, T], "AVT_MFR": np.c_[mean, first, rnd, V, T]}
+    say(f"- clips: {N}; segments per clip median {np.median(n):.0f}; clips >= 4 s: {(dur >= 4).sum()} ({100 * (dur >= 4).mean():.1f}%)")
+    P = {k: [oof_proba(X.astype(np.float32), y, s, dev, K).argmax(1) for s in range(3)] for k, X in F.items()}
+    lg = dur >= 4
+    say("\n| features | WAF mean ± sd | WAF < 4 s | WAF >= 4 s |"); say("|---|---|---|---|")
+    for k in F:
+        w = [waf(y, p) for p in P[k]]
+        say(f"| {k} | {np.mean(w):.2f} ± {np.std(w):.2f} | {np.mean([waf(y[~lg], p[~lg]) for p in P[k]]):.2f} | {np.mean([waf(y[lg], p[lg]) for p in P[k]]):.2f} |")
+    def dlt(a, b, m=None):
+        m = np.ones(N, bool) if m is None else m
+        return float(np.mean([waf(y[m], pa[m]) - waf(y[m], pb[m]) for pa, pb in zip(P[a], P[b])]))
+    d0 = dlt("MPE", "MFR"); lo, hi, mde = boot_delta(y, P["MPE"][0], P["MFR"][0]); dl, dh = dlt("MPE", "MFR", ~lg), dlt("MPE", "MFR", lg)
+    holds = d0 >= 1.0 and lo > 0 and dh > dl
+    say(f"\n- PRIMARY WAF(MPE) - WAF(MFR) = {d0:+.2f} (seed-0 CI [{lo:+.2f}, {hi:+.2f}], MDE {mde:.2f}); < 4 s {dl:+.2f}; >= 4 s {dh:+.2f}")
+    for a, b in (("ME", "MF"), ("MP", "MR"), ("AVT_MPE", "AVT_MFR"), ("AVT_MPE", "AVT_M")):
+        l2, h2, _ = boot_delta(y, P[a][0], P[b][0]); say(f"- {a} - {b}: {dlt(a, b):+.2f} (seed-0 CI [{l2:+.2f}, {h2:+.2f}])")
+    say(f"\n**Peak-end premise on MER2024 {'HOLDS' if holds else 'DOES NOT HOLD'}**")
+
+
 AST_LABELS = []
 
 
-SCREENS = {"baseline": screen_baseline}
+SCREENS = {"baseline": screen_baseline, "peakend": screen_peakend}
 
 
 def main():
