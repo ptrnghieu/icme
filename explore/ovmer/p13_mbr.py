@@ -26,8 +26,7 @@ import numpy as np
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 PROMPT = ("Watch the video, listen to the audio, and read the subtitle: \"{sub}\". Which emotions does the speaker in the video "
-          "express? Answer with a comma-separated list of English emotion words (for example: worried, slightly angry, "
-          "impatient). Output only the list.")
+          "express? Answer with a comma-separated list of English emotion words. Output only the list.")  # no examples: the smoke run copied them
 SYSTEM = ("You are Qwen, a virtual human developed by the Qwen Team, Alibaba Group, capable of perceiving auditory and visual inputs, "
           "as well as generating text and speech.")  # official Qwen2.5-Omni system prompt
 N_SAMPLES, MAX_LABELS = int(os.environ.get("P13_N", "16")), 8  # P13_N only for smoke tests
@@ -73,9 +72,9 @@ def cmd_run(a):
                 inp = {k: (v.to(dev).to(dt) if torch.is_floating_point(v) else v.to(dev)) for k, v in inp.items()}
                 L0 = inp["input_ids"].shape[1]
                 with torch.no_grad():
-                    g = model.generate(**inp, use_audio_in_video=False, max_new_tokens=40, do_sample=False)
+                    g = model.generate(**inp, use_audio_in_video=False, max_new_tokens=40, do_sample=False, stop_strings=["\n"], tokenizer=proc.tokenizer)
                     s = model.generate(**inp, use_audio_in_video=False, max_new_tokens=40, do_sample=True, temperature=1.0, top_p=0.95,
-                                       num_return_sequences=N_SAMPLES)
+                                       num_return_sequences=N_SAMPLES, stop_strings=["\n"], tokenizer=proc.tokenizer)
                 greedy = proc.batch_decode(g[:, L0:], skip_special_tokens=True)[0]
                 samples = proc.batch_decode(s[:, L0:], skip_special_tokens=True)
                 rec = dict(key=it["key"], ds=it["ds"], greedy=greedy, samples=samples, ok=True)
