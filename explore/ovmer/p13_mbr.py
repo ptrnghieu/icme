@@ -42,7 +42,7 @@ def parse(text):
     return out[:MAX_LABELS]
 
 
-CHUNK = 4  # samples per generate call (halved on OOM)
+CHUNK = int(os.environ.get("P13_CHUNK", "8"))  # samples per generate call (halved on OOM)
 
 
 def extract_frames(video, tmp, n=8, side=336):
@@ -65,12 +65,21 @@ def cmd_run(a):
     from transformers import Qwen2_5OmniThinkerForConditionalGeneration, Qwen2_5OmniProcessor
     from qwen_omni_utils import process_mm_info
     items = [json.loads(l) for l in open(a.items)][: (a.limit or None)]
+    if a.shard:
+        i, n = map(int, a.shard.split("/")); items = items[i::n]
     done = {r["key"] for r in map(json.loads, open(a.out)) if r.get("ok")} if os.path.exists(a.out) else set()  # failed clips are retried
     dev = "cuda" if torch.cuda.is_available() else "cpu"; dt = torch.float16 if dev == "cuda" else torch.bfloat16
-    mid = "Qwen/Qwen2.5-Omni-3B"
+    mid = a.model
     proc = Qwen2_5OmniProcessor.from_pretrained(mid)
-    model = Qwen2_5OmniThinkerForConditionalGeneration.from_pretrained(mid, dtype=dt, attn_implementation="sdpa").to(dev).eval()
-    t0 = time.time(); n = 0; tmp = tempfile.mkdtemp()
+    if a.quant4:  # 4-bit NF4 for the language model only; audio and vision encoders stay in fp16
+        from transformers import BitsAndBytesConfig
+        q = BitsAndBytesConfig(load_in_4bit=True, bnb_4bit_quant_type="nf4", bnb_4bit_compute_dtype=torch.float16,
+                               llm_int8_skip_modules=["visual", "audio_tower", "lm_head"])
+        model = Qwen2_5OmniThinkerForConditionalGeneration.from_pretrained(mid, dtype=dt, quantization_config=q, device_map={"": 0}).eval()
+    else:
+        model = Qwen2_5OmniThinkerForConditionalGeneration.from_pretrained(mid, dtype=dt, attn_implementation="sdpa").to(dev).eval()
+    n_samples = a.n_samples or N_SAMPLES
+    t0 = time.time(); n = 0; nfail = 0; tmp = tempfile.mkdtemp()
     with open(a.out, "a") as fo:
         for it in items:
             if it["key"] in done:
@@ -93,8 +102,8 @@ def cmd_run(a):
                 with torch.no_grad():
                     g = model.generate(**inp, use_audio_in_video=False, max_new_tokens=40, do_sample=False, stop_strings=["\n"], tokenizer=proc.tokenizer)
                     samples = []; chunk = CHUNK
-                    while len(samples) < N_SAMPLES:
-                        k = min(chunk, N_SAMPLES - len(samples))
+                    while len(samples) < n_samples:
+                        k = min(chunk, n_samples - len(samples))
                         try:
                             s = model.generate(**inp, use_audio_in_video=False, max_new_tokens=40, do_sample=True, temperature=1.0, top_p=0.95,
                                                num_return_sequences=k, stop_strings=["\n"], tokenizer=proc.tokenizer)
@@ -111,7 +120,9 @@ def cmd_run(a):
             except Exception as e:  # noqa: BLE001
                 rec = dict(key=it["key"], ds=it["ds"], ok=False, err=f"{type(e).__name__}: {str(e)[:200]}")
                 print("fail", it["key"], rec["err"], flush=True)
-            fo.write(json.dumps(rec, ensure_ascii=False) + "\n"); fo.flush(); n += 1
+            fo.write(json.dumps(rec, ensure_ascii=False) + "\n"); fo.flush(); n += 1; nfail += int(not rec["ok"])
+            if n >= 5 and nfail == n:
+                raise SystemExit("the first clips all failed: stopping (see the fail lines above)")
             if dev == "cuda":
                 torch.cuda.empty_cache()
             if n % 20 == 0:
@@ -119,17 +130,44 @@ def cmd_run(a):
     print("run finished", n, flush=True)
 
 
-def decode(rec, ew):
-    G = parse(rec["greedy"]); S = [parse(x) for x in rec["samples"]]
+def construct(S, G, ew, n_cand=12, kmax=6):
+    """Constructive MBR (frozen 2026-11-23): candidates = in-vocabulary labels ranked by sample frequency (<= n_cand); add the label
+    that most raises the mean emotion-wheel utility against the samples; stop when no label raises it or at kmax labels."""
     cnt = {}
     for s in S:
         for x in set(s):
             cnt[x] = cnt.get(x, 0) + 1
-    vote = [x for x, c in sorted(cnt.items(), key=lambda z: -z[1]) if c >= len(S) / 2] or ([max(cnt, key=cnt.get)] if cnt else [])
+    for x in G:
+        cnt.setdefault(x, 0)
+    cands = [x for x, _ in sorted(cnt.items(), key=lambda z: (-z[1], z[0])) if ew.in_vocab(x)][:n_cand]
+    cur, best = [], -1.0
+    while len(cur) < kmax:
+        gain = None
+        for x in cands:
+            if x in cur:
+                continue
+            u = float(np.mean([ew.sample_f(s, cur + [x]) for s in S if s])) if any(S) else 0.0
+            if gain is None or u > gain[0]:
+                gain = (u, x)
+        if gain is None or gain[0] <= best:
+            break
+        best = gain[0]; cur.append(gain[1])
+    return cur or (cands[:1] if cands else G)
+
+
+def decode(rec, ew, samples=None):
+    G = parse(rec["greedy"]); S = [parse(x) for x in (samples if samples is not None else rec["samples"])]
+    cnt = {}
+    for s in S:
+        for x in set(s):
+            cnt[x] = cnt.get(x, 0) + 1
+    vote = [x for x, c in sorted(cnt.items(), key=lambda z: (-z[1], z[0])) if c >= len(S) / 2] or ([min(cnt, key=lambda x: (-cnt[x], x))] if cnt else [])
     cands = S + [G]
     util = [np.mean([ew.sample_f(s, c) for s in S]) if c else -1 for c in cands]
     mbr = cands[int(np.argmax(util))]
-    return {"GREEDY": G, "VOTE": vote[:MAX_LABELS], "MBR": mbr}
+    rank = [x for x, _ in sorted(cnt.items(), key=lambda z: (-z[1], z[0]))]
+    k = int(round(np.median([len(s) for s in S if s]))) if any(S) else 1
+    return {"GREEDY": G, "VOTE": vote[:MAX_LABELS], "MBR": mbr, "TOPK": rank[:k], "CONSTRUCT": construct(S, G, ew)}
 
 
 def cmd_score(a):
@@ -167,4 +205,6 @@ def cmd_score(a):
 if __name__ == "__main__":
     ap = argparse.ArgumentParser(); ap.add_argument("cmd"); ap.add_argument("--items"); ap.add_argument("--out"); ap.add_argument("--hours", type=float, default=9.0)
     ap.add_argument("--limit", type=int, default=0); ap.add_argument("--mapping"); ap.add_argument("--report", default="p13_report.md")
+    ap.add_argument("--model", default="Qwen/Qwen2.5-Omni-3B"); ap.add_argument("--quant4", action="store_true")
+    ap.add_argument("--n_samples", type=int, default=0); ap.add_argument("--shard", default="")
     a = ap.parse_args(); {"run": cmd_run, "score": cmd_score}[a.cmd](a)

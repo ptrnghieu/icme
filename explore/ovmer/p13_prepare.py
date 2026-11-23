@@ -24,7 +24,7 @@ def ovmerd(a):
     return items
 
 
-def emos_meld(a):
+def emos_meld(a, n=400, seed=0, exclude=(), ds="EmoS-MELD"):
     import pandas as pd
     frames = [pd.read_excel(os.path.join(a.emos, f"datasets/data-final/English/goemotion/goemotion_soft_labels_{s}.xlsx")) for s in ("first3000", "last2000")]
     d = pd.concat(frames, ignore_index=True); cols = [c for c in d.columns if c.startswith("goemotion_prob_")]
@@ -34,7 +34,13 @@ def emos_meld(a):
         if gt:
             rows.append(dict(dia=int(r["Dialogue_ID"]), utt=int(r["Utterance_ID"]), text=str(r["Utterance"]), gt=gt))
     print("EmoS-MELD clips with a non-empty GT:", len(rows), "/", len(d), flush=True)
-    rng = np.random.default_rng(0); pick = [rows[i] for i in sorted(rng.choice(len(rows), min(400, len(rows)), replace=False))]
+    rng0 = np.random.default_rng(0); p13 = [rows[i] for i in sorted(rng0.choice(len(rows), min(400, len(rows)), replace=False))]
+    if seed == 0:
+        pick = p13
+    else:  # fresh clips for P14: exclude the P13 sample
+        used = {(r["dia"], r["utt"]) for r in p13} | set(exclude); pool = [r for r in rows if (r["dia"], r["utt"]) not in used]
+        rng = np.random.default_rng(seed); pick = [pool[i] for i in sorted(rng.choice(len(pool), min(n, len(pool)), replace=False))]
+        print("fresh pool", len(pool), "picked", len(pick), flush=True)
     out_dir = os.path.join(a.work, "meld"); os.makedirs(out_dir, exist_ok=True)
     want = [f"train_splits/dia{r['dia']}_utt{r['utt']}.mp4" for r in pick]
     missing = [w for w in want if not os.path.exists(os.path.join(out_dir, w))]
@@ -48,8 +54,8 @@ def emos_meld(a):
     for r, w in zip(pick, want):
         p = os.path.join(out_dir, w)
         if os.path.exists(p):
-            items.append(dict(key=f"meld:{r['dia']}_{r['utt']}", ds="EmoS-MELD", video=p, sub=r["text"], gt=r["gt"]))
-    print("EmoS-MELD clips with video:", len(items), "/", len(pick), flush=True)
+            items.append(dict(key=f"meld:{r['dia']}_{r['utt']}", ds=ds, video=p, sub=r["text"], gt=r["gt"]))
+    print(ds, "clips with video:", len(items), "/", len(pick), flush=True)
     return items
 
 
@@ -57,8 +63,9 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     for k in ("affectgpt", "emos", "mer24zip", "meld_tar", "work", "out"):
         ap.add_argument("--" + k)
+    ap.add_argument("--p14", action="store_true", help="OV-MERD + 400 fresh EmoS-MELD clips (seed 1, disjoint from P13)")
     a = ap.parse_args(); os.makedirs(a.work, exist_ok=True)
-    items = ovmerd(a) + emos_meld(a)
+    items = ovmerd(a) + (emos_meld(a, seed=1, ds="EmoS-MELD-fresh") if a.p14 else emos_meld(a))
     with open(a.out, "w", encoding="utf-8") as f:
         for it in items:
             f.write(json.dumps(it, ensure_ascii=False) + "\n")
