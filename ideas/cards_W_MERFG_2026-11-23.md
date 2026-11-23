@@ -7,6 +7,8 @@
 
 Bằng chứng chung từ bản đồ lỗi (d1, harness LR): trên M3ED, nhóm câu có annotator bất đồng chứa 66,8% lỗi (tỉ lệ lỗi 57,1% so với 35,1%); "cảm xúc → đoán neutral" chiếm 42,6% lỗi. Trên CH-SIMS, nhóm clip có nhãn unimodal mâu thuẫn chứa 73% lỗi.
 
+**Cập nhật 2026-11-23: W ĐÃ LOẠI (P12).** M3ED: gap_AT = 1,03 < 2,0 (giám sát yếu gần như không mất gì với harness này); D = +1,74 [−0,52; +3,87], MDE 3,11. Report: `explore/weak/p12_report_2026-11-23.md`.
+
 ## W1. Gán nhãn câu theo ràng buộc phủ tập (coverage-constrained assignment)
 - **Cơ chế:** trong mỗi hội thoại, mỗi cảm xúc trong tập S phải xuất hiện ở ít nhất một câu. PRODEN và DERC-PL coi từng câu độc lập (tập ứng viên = S), nên bỏ qua ràng buộc này. Đề xuất: mỗi vòng EM, giải một bài toán gán (optimal transport có entropy, biên dưới ≥ 1 câu cho mỗi cảm xúc trong S, prior tần suất lớp) giữa các câu và S; dùng nghiệm làm pseudo-label.
 - **Vì sao nên hiệu quả:** chặn nghiệm suy biến "mọi câu đều neutral", vốn là kiểu lỗi lớn nhất đo được trên M3ED.
