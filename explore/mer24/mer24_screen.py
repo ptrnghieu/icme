@@ -108,7 +108,7 @@ def screen_baseline(D, y, val, cls, dev, say):
          "VT": np.concatenate([V, D["t_rob"]], 1), "AVT": np.concatenate([D["a_hub"], V, D["t_rob"]], 1)}
     F = {k: v[ok].astype(np.float32) for k, v in F.items()}; y, val = y[ok], val[ok]
     say(f"- clips with features: {ok.sum()} / {len(ok)}; classes {cls}; class counts {np.bincount(y).tolist()}")
-    say(f"- valence: min {val.min():.2f}, max {val.max():.2f}, mean {val.mean():.2f}; distinct values {len(np.unique(val))}")
+    say(f"- valence: min {np.nanmin(val):.2f}, max {np.nanmax(val):.2f}, mean {np.nanmean(val):.2f}; NaN {int(np.isnan(val).sum())}; distinct finite values {len(np.unique(val[np.isfinite(val)]))}")
     P = {k: [oof_proba(X, y, s, dev, K) for s in range(3)] for k, X in F.items()}
     say("\n| features | WAF mean ± sd (3 fold seeds) | ACC mean | paper Train&Val WAF |"); say("|---|---|---|---|")
     for k in F:
@@ -121,7 +121,8 @@ def screen_baseline(D, y, val, cls, dev, say):
     say("- per-class recall: " + ", ".join(f"{c} {100 * (p[y == i] == i).mean():.1f}" for i, c in enumerate(cls)))
     cm = confusion_matrix(y, p, labels=range(K)); off = [(cm[i, j], cls[i], cls[j]) for i in range(K) for j in range(K) if i != j]
     say("- top confusions (true -> pred, count): " + "; ".join(f"{a}->{b} {n}" for n, a, b in sorted(off, reverse=True)[:6]))
-    av = np.abs(val); qs = np.quantile(av, [0.25, 0.5, 0.75]); bins = np.digitize(av, qs)
+    fin = np.isfinite(val); say(f"- clips with a finite valence label: {fin.sum()} / {len(val)}")
+    av = np.where(fin, np.abs(val), np.nan); qs = np.nanquantile(av, [0.25, 0.5, 0.75]); bins = np.where(fin, np.digitize(np.nan_to_num(av), qs), -1)
     say("- by |valence| quartile (Q1 lowest): " + "; ".join(f"Q{b + 1}: WAF {waf(y[bins == b], p[bins == b]):.1f} (n={(bins == b).sum()})" for b in range(4)))
     if neu is not None:
         emo = y != neu
