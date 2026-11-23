@@ -138,6 +138,24 @@ Có link trong paper là **chưa đủ**. Mỗi dataset phải được kiểm t
 
 **Nhịp báo cáo:** báo user sau mỗi tầng bằng bảng ngắn; không đợi chạy xong nhiều pilot.
 
+### 4.7. Quy trình tìm RQ v3: đi từ lỗi của baseline (từ 2026-11-23, bổ sung và thay tầng 1–3 của §4.6)
+**Vì sao đổi** (tự đánh giá, 2026-11-23): các hướng E, peak-end, T, V đều sinh từ "cách data được sản xuất" (nhiễu X trong dataset). Hai premise test đủ power (P9, P11) cho cùng một kết quả: encoder mạnh cộng head học được đã tự hấp thụ hoặc bỏ qua nhiễu đó. V thậm chí không nhắm vào chỗ hụt lớn nhất đã đo (fusion bỏ phí modality đúng, 11,6 điểm trên MER2024). Ý tưởng "loại nhiễu X" có giá trị kỳ vọng thấp và dễ bị reviewer coi là đặc thù benchmark.
+
+**Các bước (mỗi bước có cổng; trượt cổng thì dừng, không thử biến thể):**
+1. **Bản đồ headroom trên baseline thật, ≥ 2 dataset** (hiện tại: MER2024 5-fold; M3ED split chính thức). Phân rã lỗi của baseline thành các lát cắt; với mỗi lát cắt ghi *khối lượng lỗi* (số lỗi, % tổng lỗi) và *trần oracle* (lợi ích nếu sửa hết lát cắt đó).
+   - Cổng: chỉ giữ lát cắt có trần oracle ≥ 2 × MDE và xuất hiện ở cả 2 dataset.
+2. **Chẩn đoán phân biệt:** với mỗi lát cắt giữ lại, liệt kê ≥ 2 nguyên nhân cạnh tranh (ví dụ: calibration sai, thiếu thông tin, nhãn mơ hồ, lệch phân bố) và chạy một phép thử rẻ phân biệt được chúng. Nhãn mơ hồ (đo bằng bất đồng giữa annotator khi có, như M3ED) là nguyên nhân "không sửa được" và phải trừ khỏi trần.
+   - Cổng: có một nguyên nhân được bằng chứng ủng hộ rõ hơn các nguyên nhân khác.
+3. **Cận trên bằng thông tin đặc quyền:** sửa nguyên nhân đó bằng thông tin không có lúc test (nhãn, oracle) để đo lợi ích tối đa.
+   - Cổng: lợi ích ≥ 2 × MDE trên cả 2 dataset. Nếu không, phương pháp thật (yếu hơn oracle) không thể vượt MDE.
+4. **Novelty theo nguyên nhân, không theo từ khóa cơ chế:** claim là "baseline hỏng ở S vì C; sửa C bằng M". Kiểm scoop cho cặp (C, M) theo §4.2.
+5. **Phương pháp không dùng thông tin đặc quyền**, xấp xỉ cận trên; pilot trên baseline thật theo §4.6 (power, ≥ 3 seed). Viết đóng góp ở dạng mạnh nhất và dạng còn lại nếu giả thuyết chính trượt.
+
+**Quy tắc bổ sung**
+- Ý tưởng dạng "loại nhiễu X" chỉ được xét khi đã có bằng chứng X *gây ra lỗi* của baseline (bước 2), không chỉ là X *có mặt* trong feature hay trong data.
+- Mọi probe hay đối chứng phải có cùng độ khó với điều kiện chính (bài học P11: mức ngẫu nhiên của CTC đặt sai).
+- Không bắt đầu từ một dataset mới chỉ vì nó ít người làm; dataset là phương tiện để kiểm chứng nguyên nhân.
+
 ---
 
 ## 5. Chế độ tư vấn ý tưởng và thiết kế thực nghiệm
@@ -264,3 +282,4 @@ Còn mở:
 | 2026-11-23 | **e06 (MER2024 baseline, notebook 06, commit 09caf41) xong**: 5.029/5.030 clip có feature. Tái lập trong ngưỡng sanity 5 điểm: A_hub 72,68 (bài 73,02), V_clip 64,62 (66,66), T_rob 50,02 (52,66), AVT 78,58 (79,31–80,34) → pipeline dùng được. MDE so sánh cặp ≈ 1,32 WAF. Lát cắt: AVT − AV = −0,04 [−0,97; +0,90] (text không đóng góp khi fusion bằng LR); surprise recall 50,5, worried 59,7; oracle 'ít nhất một modality đúng' 90,3% so với AVT 78,7%. Lỗi: cột valence có NaN làm hỏng lát cắt theo |valence| (đã sửa screen). Kaggle API key của user lưu làm network secret cho www.kaggle.com. Report: `explore/mer24/results/e06_report_2026-11-23.md`. |
 | 2026-11-23 | **User đồng ý tải cache feature MER2024 về container** (21 file `part_*.npz`, `text.npz`, 2 CSV nhãn; 177 MB) qua Kaggle API. Chỉ lưu ở scratchpad của phiên, **không bao giờ commit hay chia sẻ**; output trong repo vẫn chỉ là thống kê tổng hợp. Kiểm tra: 5.030 clip, 5.029 có feature; valence NaN ở 834 clip (khớp n = 834 của Q1 bị lỗi trong e06). Container bị xóa khi phiên kết thúc → phiên sau phải tải lại. |
 | 2026-11-23 | **P11 (hướng T, thanh điệu là nhiễu) → DOES NOT HOLD → T ĐÃ LOẠI.** M3ED, split chính thức, test 4.201. chinese-hubert mã hóa thanh điệu mạnh (TER 0,282 so với 0,812; R² 0,487) nhưng chiếu bỏ không gian con thanh điệu không giúp: D1 = −0,35 [−1,02; +0,28] (MDE 0,91), D2 = −0,43, D3 = −3,33. Phản biện của user (encoder pretrain tiếng Trung) đúng. Bài học: thiết kế probe phải có đối chứng cùng độ khó (lỗi CTC chance đã sửa trước khi chạy thật). |
+| 2026-11-23 | **User gác V và yêu cầu sửa cách tìm RQ.** Thêm **§4.7 Quy trình tìm RQ v3**: đi từ lỗi của baseline thật (bản đồ headroom ≥ 2 dataset → chẩn đoán phân biệt nguyên nhân → cận trên bằng thông tin đặc quyền ≥ 2 × MDE → novelty theo cặp nguyên nhân–cách sửa → phương pháp). Ý tưởng 'loại nhiễu X' chỉ được xét khi X đã được chứng minh gây lỗi. Bắt đầu bước 1 trên MER2024 (cache) và M3ED (audio + text, 3 annotator). |
