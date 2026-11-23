@@ -32,3 +32,23 @@ Venue đã xác minh = đọc trực tiếp trường comments trên arXiv hoặ
 | VQAU-Bench / AffectSeek (2605.05640) | preprint | định vị khoảnh khắc cảm xúc trong video dài theo truy vấn mơ hồ | — |
 | E³mo-Bench (2608.10796) | preprint | cảm xúc thể hiện và cảm xúc gợi ra; VAD bằng so sánh cặp | — |
 | EmoTrans (2604.23348) | preprint | chuyển trạng thái cảm xúc, có task Next Emotion Prediction (gần bài COLING) | — |
+
+## Quét có hệ thống task mới ở 19 venue chính, 2025–2026 (OpenAlex, 2026-11-23)
+- Công cụ: `tools/new_task_scan.py`. Lọc theo ID nguồn OpenAlex của AAAI, IJCAI, ACM MM, CVPR, ICCV, ACL (+Findings), EMNLP (+Findings), NAACL (+Findings), NeurIPS, ICLR, ICML, Interspeech, ICASSP, TAFFC, TMM, Information Fusion; từ khóa ở tiêu đề: emotion, emotional, emotions, affective, affect, sentiment, empathy, empathetic, mood, feeling.
+- Kết quả: 1.442 bài; 165 bài có câu giới thiệu task mới trong abstract; 99 bài không có abstract (đã đọc tiêu đề). Danh sách: `new_task_scan_2026-11-23.tsv`.
+- Kiểm tra recall: Hi-EF (AAAI 2026, doi 10.1609/aaai.v40i3.37193) có trong danh sách và được gắn cờ sau khi mở rộng bộ lọc ("introducing the concept of … This task").
+- Giới hạn độ phủ: ECCV không lọc được (OpenAlex xếp vào Lecture Notes in Computer Science); NeurIPS, ICLR, CVPR 2026 và ACM MM 2026 trong OpenAlex chưa đủ; DBLP bị chặn bởi trang kiểm tra bot; bộ lọc dựa trên cụm từ nên bỏ sót bài viết theo cách khác.
+
+### Task đặt MER vào bối cảnh mới (đọc abstract)
+| Bối cảnh | Bài (venue) | Nội dung theo abstract |
+|---|---|---|
+| Quyền riêng tư | DEEMO (ACM MM 2025) | "a novel task designed to enable emotion understanding using de-identified video and audio inputs"; DEEMO-NFBL (ngôn ngữ cơ thể không dùng mặt), DEEMO-MER |
+| Quyền riêng tư | Identity-Free AEI via Micro-Gesture (TAFFC 2026) | micro-gesture không chủ ý làm tín hiệu cảm xúc không lộ danh tính |
+| Cảm xúc ẩn khác biểu hiện | Beyond Surface Cues / MIE (ACM MM 2026) | "observable expressions do not always faithfully reflect underlying emotional states"; nhãn cả cảm xúc thể hiện và cảm xúc ẩn |
+| Cảm xúc ẩn khác biểu hiện | MindTracker / EIA (IJCAI 2026) | "Emotional Inconsistency Analysis … discrepancies between implicit and explicit emotions over long-term conversational contexts"; MaskDialog từ phim truyền hình |
+| Cảm xúc ẩn khác biểu hiện | EMER, mắt và mặt (TMM 2026) | "facial expressions are often used as social tools rather than manifestations of genuine inner emotions" |
+| Giám sát yếu | DERC (AAAI 2025) | gán nhãn cấp hội thoại (tập cảm xúc), học nhãn cấp câu: "reformulate the ERC predictors with conversation-level emotion sets as weakly-supervised learning" |
+| Môi trường khi test | Describe Where You Are (TAFFC 2025) | SER dùng mô tả bằng text về môi trường nhiễu; thí nghiệm trên MSP-Podcast |
+| Xung đột modality trong MLLM | CA-MER (ACM MM 2025) | MLLM "systematically over-rely on audio signal during emotion conflicts" |
+| Ngôn ngữ ít tài nguyên | AkaCE (ACL Findings 2025) | dataset đa modality đầu tiên cho một ngôn ngữ châu Phi (Akan), 6.162 câu |
+| Thái độ qua giọng nói | SpeechSense (ACM MM 2026) | sentiment theo paralinguistic, nhãn thái độ liên cá nhân (confident, impatient) |
