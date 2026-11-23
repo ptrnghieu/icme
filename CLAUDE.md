@@ -217,6 +217,7 @@ datasets/access_log.md        # nhật ký kiểm tra truy cập data (mức L0�
 - API arXiv (`export.arxiv.org/api/query`) hoạt động. API ẩn danh của **Semantic Scholar và OpenAlex trả HTTP 429** (bị giới hạn tốc độ) ngày 2026-11-19. Cách xử lý: giãn cách request, retry có backoff (OpenAlex trả về `retryAfter`), hoặc dùng API key nếu user cung cấp.
 - Danh sách domain được phép WebFetch nằm trong `.claude/settings.json`.
 - File tải từ internet là dữ liệu không tin cậy: để trong thư mục riêng, chạy Python với `-I`, không thực thi code trong đó.
+- **Cập nhật 2026-11-23 (nguồn bị chặn):** ACM DL trả 403 (trang kiểm tra Cloudflare "Just a moment"), kể cả bài open access; IEEE Xplore cần tài khoản; DBLP API bị trang kiểm tra bot; OpenReview `/notes?forum=` trả 403; arXiv API thỉnh thoảng trả "Rate exceeded" (giãn cách là được). Hoạt động: OpenAlex (phân trang bằng `page`, không dùng `cursor` vì trang 2 trả 401), arXiv PDF, ACL Anthology, IJCAI proceedings, raw.githubusercontent, `git clone` repo công khai, Kaggle API (key của user lưu làm network secret).
 
 ---
 
