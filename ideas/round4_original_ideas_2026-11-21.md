@@ -161,3 +161,5 @@ Novelty nhanh: `literature/gap_mining/round4d_neutral_quick_2026-11-22.txt`.
 
 
 **Cập nhật 2026-11-23: P9 (E2, hoán đổi nhạc nền) DOES NOT HOLD.** CH-SIMS: Δflip +1,9 [−0,7; +4,9] (MDE 3,9) < +5. Dừng M3ED theo quyết định của user vì kết luận không đổi. **Nhánh E đóng hẳn.** Chi tiết: `explore/editorial/p9_report_2026-11-23.md`.
+
+**Cập nhật 2026-11-23: nhánh peak-end ĐÃ ĐÓNG theo quyết định của user**, trước khi P10 có kết quả (dừng ở bước trích feature, 300/2.281 clip CH-SIMS). Lý do: phản biện của user rằng attention pooling học được bao trùm peak-end về mặt biểu diễn, nên một quy tắc cố định khó thành đóng góp phương pháp (C3); clip CH-SIMS ngắn (median 3,21 s, khoảng 3 segment) nên peak, end và mean gần trùng nhau. Không có kết quả nào của P10/P10b. Script giữ lại: `explore/peakend/p10_peakend.py`, `p10b_attention.py`; screen `peakend` trong `explore/mer24/mer24_screen.py` không chạy.
