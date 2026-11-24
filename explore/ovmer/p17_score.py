@@ -4,8 +4,8 @@ with 5-fold cross-fitting so that every clip is scored and no parameter is chose
 PRE-REGISTERED 2026-11-24, before the full P17 run (only the 21-clip timing run exists; its descriptions were inspected for
 STRUCTURE only, with p17_inspect.py; no label was extracted and no score was computed).
 P17 data and protocol:
-  - phase 1: p17_describe.py (Qwen2.5-Omni-7B thinker, bf16, transformers 5.24.0, audio from the video track; greedy + 16 samples;
-    OV-MERD+ 3 sample seeds);
+  - phase 1: p17_describe.py (Qwen2.5-Omni-7B thinker, bf16, transformers 5.24.0, audio from the video track; greedy + 16 samples,
+    1 sample seed; user decision 2026-11-24: OV-MERD+ seeds 2-3 deferred, run later with run_p17.sh describe_seeds);
   - phase 2: p17_extract_vllm.py (Qwen2.5-7B-Instruct, vLLM, official AffectGPT-RL prompt and parameters, no translation);
   - sets: OV-MERD+ 532, MER2025-FG 1,000, EmoS-MELD all 2,732 clips with a non-empty GT.
 Cut rule (fixed from the timing run): --cut turn, i.e. drop everything from the first invented dialogue turn ("Human:" in 215 of 218
@@ -40,7 +40,7 @@ Power (computed before registration from the P14′ data and the P16 bootstrap; 
 PRIMARY (decides P17): for BOTH calibrated rules (Agent-MER vote, MultiMER rule with clip), the pooled CONSTRUCT-D - rule is > 0
   with CI lower bound > 0, AND on no set is CONSTRUCT-D worse than either rule with CI upper bound < 0.
 BENCHMARK ROW (OV-MERD+, comparable with published numbers, no OV-MERD+ label used): parameter-free CONSTRUCT (frozen,
-  beta = 1) and GREEDY (the zero-shot baseline), each as mean ± sd over the 3 sample seeds (16 samples per seed).
+  beta = 1) and GREEDY (the zero-shot baseline); seed 0 now, mean ± sd over 3 sample seeds once seeds 2-3 are run.
   CONSTRUCT-D (cross-fitted) uses OV-MERD+ labels to choose beta and is therefore an analysis, not a benchmark entry.
 SECONDARY: per-set differences; CONSTRUCT - GREEDY / TOPK / MBR per set; the curve over N = 1, 2, 4, 8, 16 samples (first N
   samples, for every method).

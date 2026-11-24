@@ -6,7 +6,8 @@
 #   bash run_p17.sh setup          # once: system packages, two Python environments, GPU / bf16 / vLLM checks
 #   bash run_p17.sh prepare        # data: MER2026 human zip, MELD train clips, items.jsonl
 #   bash run_p17.sh timing         # about 20 clips: seconds per clip and the structure of the descriptions
-#   bash run_p17.sh describe       # phase 1 (resumable): all clips, 1 seed; then OV-MERD+ with 3 seeds
+#   bash run_p17.sh describe       # phase 1 (resumable): all clips, 1 sample seed
+#   bash run_p17.sh describe_seeds # optional, later: OV-MERD+ sample seeds 2 and 3
 #   bash run_p17.sh extract        # phase 2 (resumable): official extractor on all descriptions
 #   bash run_p17.sh pack           # p17_out.tar.gz: descriptions and labels only (no media, no annotations)
 set -euo pipefail
@@ -49,8 +50,10 @@ timing)
   ;;
 describe)
   $PY_OMNI $OV/p17_describe.py --items $ITEMS --out $DESC ${AUDIO_MODE:+--audio_mode $AUDIO_MODE}
-  $PY_OMNI $OV/p17_describe.py --items $ITEMS --out $DESC --only_ds OV-MERD+ --n_seeds 3 ${AUDIO_MODE:+--audio_mode $AUDIO_MODE}
   $PY_OMNI $OV/p17_inspect.py $DESC
+  ;;
+describe_seeds)  # optional, later: 2 more sample seeds on OV-MERD+ (greedy and seed 0 are reused)
+  $PY_OMNI $OV/p17_describe.py --items $ITEMS --out $DESC --only_ds OV-MERD+ --n_seeds 3 ${AUDIO_MODE:+--audio_mode $AUDIO_MODE}
   ;;
 extract)
   CUT=${CUT:-turn}
@@ -62,5 +65,5 @@ pack)
   tar -czf $W/p17_out.tar.gz -C $W $(cd $W && ls desc.jsonl labels*.jsonl timing.jsonl 2>/dev/null)
   ls -la $W/p17_out.tar.gz
   ;;
-*) echo "usage: bash run_p17.sh setup|prepare|timing|describe|extract|pack"; exit 1 ;;
+*) echo "usage: bash run_p17.sh setup|prepare|timing|describe|describe_seeds|extract|pack"; exit 1 ;;
 esac
