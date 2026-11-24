@@ -77,7 +77,7 @@ def main(a):
         if r.get("ok"):
             recs[r["key"]] = r  # last ok record per key
     done = {json.loads(l)["key"] for l in open(a.out)} if os.path.exists(a.out) else set()
-    todo = [r for k, r in recs.items() if k not in done]
+    todo = [r for k, r in recs.items() if k not in done and (not a.only_ds or r["ds"] in a.only_ds.split(","))]
     print(f"descriptions {len(recs)} | already extracted {len(done)} | to do {len(todo)}", flush=True)
     if not todo:
         return
@@ -109,5 +109,6 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--descs"); ap.add_argument("--out"); ap.add_argument("--cut", default="turn", choices=["none", "turn", "firstline"])
     ap.add_argument("--prompt", default="rl", choices=["rl", "old"]); ap.add_argument("--seed", type=int, default=0)
+    ap.add_argument("--only_ds", default="")
     ap.add_argument("--batch_clips", type=int, default=200); ap.add_argument("--gpu_mem", type=float, default=0.85)
     main(ap.parse_args())

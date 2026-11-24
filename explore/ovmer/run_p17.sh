@@ -61,9 +61,18 @@ extract)
   $PY_VLLM $OV/p17_extract_vllm.py --descs $DESC --out $W/labels_seed1.jsonl --cut $CUT --prompt rl --seed 1
   $PY_VLLM $OV/p17_extract_vllm.py --descs $DESC --out $W/labels_oldprompt.jsonl --cut $CUT --prompt old --seed 0
   ;;
+count)  # clips described so far, per dataset
+  $PY_OMNI -c "import json,collections; c=collections.Counter(json.loads(l)['ds'] for l in open('$DESC') if json.loads(l).get('ok')); print(dict(c))"
+  ;;
+extract_ov)  # OV-MERD+ only (run after stopping describe with Ctrl-C once OV-MERD+ is complete; describe resumes later)
+  CUT=${CUT:-turn}
+  $PY_VLLM $OV/p17_extract_vllm.py --descs $DESC --out $LAB --cut $CUT --prompt rl --seed 0 --only_ds OV-MERD+
+  $PY_VLLM $OV/p17_extract_vllm.py --descs $DESC --out $W/labels_seed1.jsonl --cut $CUT --prompt rl --seed 1 --only_ds OV-MERD+
+  $PY_VLLM $OV/p17_extract_vllm.py --descs $DESC --out $W/labels_oldprompt.jsonl --cut $CUT --prompt old --seed 0 --only_ds OV-MERD+
+  ;;
 pack)
   tar -czf $W/p17_out.tar.gz -C $W $(cd $W && ls desc.jsonl labels*.jsonl timing.jsonl 2>/dev/null)
   ls -la $W/p17_out.tar.gz
   ;;
-*) echo "usage: bash run_p17.sh setup|prepare|timing|describe|describe_seeds|extract|pack"; exit 1 ;;
+*) echo "usage: bash run_p17.sh setup|prepare|timing|describe|describe_seeds|count|extract_ov|extract|pack"; exit 1 ;;
 esac
