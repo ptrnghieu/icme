@@ -80,7 +80,11 @@ def main(a):
                     _, img, vid = process_mm_info(conv, use_audio_in_video=False); aud = [load_audio(it["video"], tmp)]
                 else:
                     aud, img, vid = process_mm_info(conv, use_audio_in_video=False)
-                inp = proc(text=text, audio=aud, images=img, videos=vid, return_tensors="pt", padding=True, use_audio_in_video=in_video)
+                if in_video:  # transformers >= 5.24: audio slot 0 is the track of video 0, interleaved with its frames
+                    inp = proc(text=text, audio=aud, images=img, videos=vid, return_tensors="pt", padding=True,
+                               load_audio_from_video=True, audio_from_video_indices=[0])
+                else:
+                    inp = proc(text=text, audio=aud, images=img, videos=vid, return_tensors="pt", padding=True)
                 inp = {k: (v.to("cuda").to(torch.bfloat16) if torch.is_floating_point(v) else v.to("cuda")) for k, v in inp.items()}
                 L0 = inp["input_ids"].shape[1]
                 with torch.no_grad():

@@ -26,7 +26,7 @@ setup)
   python3 -m venv $W/venv_omni && python3 -m venv $W/venv_vllm
   $PY_OMNI -m pip -q install -U pip
   $PY_OMNI -m pip -q install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128
-  $PY_OMNI -m pip -q install -U transformers accelerate "qwen-omni-utils[decord]" soundfile librosa audioread av huggingface_hub pandas openpyxl numpy
+  $PY_OMNI -m pip -q install -U "transformers==5.24.0" accelerate "qwen-omni-utils[decord]" soundfile librosa audioread av huggingface_hub pandas openpyxl numpy
   $PY_VLLM -m pip -q install -U pip && $PY_VLLM -m pip -q install -U vllm numpy
   echo "== checks"; nvidia-smi --query-gpu=name,memory.total,driver_version --format=csv
   $PY_OMNI -c "import torch,transformers; print('torch',torch.__version__,'cuda',torch.version.cuda,'bf16',torch.cuda.is_bf16_supported(),'gpu',torch.cuda.get_device_name(0)); x=torch.randn(64,64,device='cuda',dtype=torch.bfloat16); print('transformers',transformers.__version__)"
