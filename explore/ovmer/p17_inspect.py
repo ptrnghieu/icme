@@ -30,3 +30,21 @@ for ds, R in by.items():
     fails = [r.get("err", "")[:120] for r in R if not r.get("ok")]
     if fails:
         print("   failures:", len(fails), fails[:3])
+
+# ---- cut-rule statistics (structure only): what each candidate --cut rule would keep
+sys.path.insert(0, __import__("os").path.dirname(__import__("os").path.abspath(__file__)))
+from p17_extract_vllm import cut  # noqa: E402
+from collections import Counter
+MARK = re.compile(r"\n\s*(Human|User|Assistant|用户|助手)\s*[:：]|<\|im_start\|>")
+for ds, R in by.items():
+    T = [t for r in R if r.get("ok") for t in [r["greedy"]] + r["samples"]]
+    if not T:
+        continue
+    mean = lambda xs: sum(xs) / max(len(xs), 1)
+    kinds = Counter((m.group(1) or "<|im_start|>") for t in T for m in [MARK.search(t)] if m)
+    print(f"-- {ds}: first marker types {dict(kinds)} | texts >= 1,900 chars (near the 512-token cap) {mean([len(t) >= 1900 for t in T]):.3f}")
+    for mode in ("none", "turn", "firstline"):
+        K = [cut(t, mode) for t in T]
+        print(f"   cut={mode:9s} kept chars mean {mean([len(k) for k in K]):.0f} | CJK {mean([bool(CJK.search(k)) for k in K]):.3f}"
+              f" | mostly CJK (>30% of chars) {mean([len(CJK.findall(k)) > 0.3 * max(len(k), 1) for k in K]):.3f} | empty {mean([not k.strip() for k in K]):.3f}"
+              f" | still multi-line {mean([len([x for x in k.split(chr(10)) if x.strip()]) > 1 for k in K]):.3f}")
