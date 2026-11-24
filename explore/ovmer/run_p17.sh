@@ -17,7 +17,7 @@ ITEMS=$W/items.jsonl; DESC=$W/desc.jsonl; LAB=$W/labels.jsonl
 
 case "${1:-}" in
 setup)
-  apt-get update -qq && apt-get install -y -qq ffmpeg tmux git curl >/dev/null
+  apt-get update -qq && apt-get install -y -qq ffmpeg tmux git curl python3-venv >/dev/null
   [ -d "$REPO" ] || git clone -q -b main https://github.com/ptrnghieu/icme.git "$REPO"
   git -C "$REPO" pull -q
   [ -d $W/affectgpt ] || git clone -q --depth 1 https://github.com/zeroQiaoba/AffectGPT $W/affectgpt
