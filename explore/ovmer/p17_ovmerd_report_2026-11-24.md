@@ -96,3 +96,15 @@ Agent-MER's own threshold (4 of 10 runs, about 40%) does not transfer to these s
 | AffectGPT (published) | SFT 7B | 62.52 |
 | AffectGPT-R1 / -RL (published; best of epochs 5–60 on OV-MERD+) | SFT + RL 7B | 68.39 |
 | MER-R1 (published, final checkpoint) | SFT + RL, Qwen2.5-Omni (size not reported) | 70.68 |
+
+## Headroom of sample-based decoding (exploratory; the oracles use the GT, so they are ceilings, not methods)
+
+| Decoder | EW-F | Note |
+|---|---|---|
+| CONSTRUCT (label-free) | 68.91 | P 69.4 / R 68.5 |
+| Oracle: best single sampled list per clip | 84.73 | uses GT |
+| Oracle: best subset of the sampled labels per clip (greedy on the per-clip F against GT) | 91.48 | uses GT |
+
+In 93.8% of the (clip, wheel) pairs, the pooled sampled labels contain at least one correct group.
+
+**Reading:** the 16 samples already hold sets far above every published result. The bottleneck is the label-free selection signal (sample frequency), not the coverage of the samples.
