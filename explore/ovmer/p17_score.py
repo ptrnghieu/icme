@@ -1,8 +1,9 @@
 """P17 scorer: CONSTRUCT / CONSTRUCT-D vs standard decoders and vs the calibrated aggregation rules of Agent-MER and MultiMER,
 with 5-fold cross-fitting so that every clip is scored and no parameter is chosen on the clip it is scored on.
 
-DRAFT 2026-11-24 (not yet registered: the protocol is awaiting the user's confirmation; no P17 output exists). P17 data: official OV-MER protocol, see 12_p17_descriptions.ipynb and
-p17_extract_vllm.py, both still to be written; OV-MERD+ 532, MER2025-FG 1,000, EmoS-MELD all 2,732 clips with a non-empty GT.
+DRAFT 2026-11-24 (protocol confirmed by the user; becomes REGISTERED when the --cut rule is fixed from the timing run, before the
+full extraction; no P17 output exists). P17 data: official OV-MER protocol, p17_describe.py (Qwen2.5-Omni-7B) and
+p17_extract_vllm.py (Qwen2.5-7B-Instruct, vLLM); OV-MERD+ 532, MER2025-FG 1,000, EmoS-MELD all 2,732 clips with a non-empty GT.
 
 Inputs per clip: greedy + 16 sampled label lists from the same backbone and extractor. Every method aggregates the same lists.
 
@@ -29,6 +30,9 @@ Power (computed before registration from the P14′ data and the P16 bootstrap; 
 
 PRIMARY (decides P17): for BOTH calibrated rules (Agent-MER vote, MultiMER rule with clip), the pooled CONSTRUCT-D - rule is > 0
   with CI lower bound > 0, AND on no set is CONSTRUCT-D worse than either rule with CI upper bound < 0.
+BENCHMARK ROW (OV-MERD+, comparable with published numbers, no OV-MERD+ label used): parameter-free CONSTRUCT (frozen,
+  beta = 1) and GREEDY (the zero-shot baseline), each as mean ± sd over the 3 sample seeds (16 samples per seed).
+  CONSTRUCT-D (cross-fitted) uses OV-MERD+ labels to choose beta and is therefore an analysis, not a benchmark entry.
 SECONDARY: per-set differences; CONSTRUCT - GREEDY / TOPK / MBR per set; the curve over N = 1, 2, 4, 8, 16 samples (first N
   samples, for every method).
 
@@ -110,6 +114,15 @@ def main(a):
         for y in ("GREEDY", "TOPK", "MBR"):
             dd = bs["CONSTRUCT"] - bs[y]
             L.append(f"- CONSTRUCT - {y} = {sc['CONSTRUCT'] - sc[y]:+.2f} [{np.percentile(dd, 2.5):+.2f}, {np.percentile(dd, 97.5):+.2f}]")
+        nseed = min(len(r["samples"]) for r in RR) // 16
+        if nseed > 1:
+            per_seed = {k: [] for k in ("GREEDY", "TOPK", "MBR", "CONSTRUCT")}
+            for s in range(nseed):
+                Ds = [decode(r, ew, r["samples"][16 * s:16 * (s + 1)]) for r in RR]
+                for k in per_seed:
+                    per_seed[k].append(ew.corpus(gts, [d[k] for d in Ds])[0])
+            L.append(f"- benchmark row ({nseed} sample seeds, no label used): " +
+                     ", ".join(f"{k} {np.mean(v):.2f} ± {np.std(v):.2f}" for k, v in per_seed.items()))
         if a.ncurve:
             row = []
             for nS in (1, 2, 4, 8):
