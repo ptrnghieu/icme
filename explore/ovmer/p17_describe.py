@@ -7,7 +7,8 @@ Prompt and inputs:
   - official OV-MER description prompt (p13_mbr.PROMPT_OFFICIAL) with the clip's subtitle;
   - official Qwen2.5-Omni system prompt;
   - video read by qwen-omni-utils with its default sampling;
-  - audio taken from the video track (use_audio_in_video=True, the Qwen2.5-Omni recommended usage);
+  - audio taken from the video track (use_audio_in_video=True, the Qwen2.5-Omni recommended usage), decoded by load_audio()
+    exactly as qwen-omni-utils would (librosa.load, 16 kHz) but from an ffmpeg-decoded wav (its audioread path fails);
     --audio_mode wav instead passes a separately extracted 16 kHz track (fallback if the in-video path fails).
 max_new_tokens 512. The raw text is stored; any cutting of invented dialogue turns happens at extraction (p17_extract_vllm.py).
 Resume: the last ok record per key counts. A clip whose record has fewer than n_seeds x 16 samples gets the missing seeds.
@@ -22,6 +23,15 @@ from p13_mbr import PROMPT_OFFICIAL, SYSTEM  # noqa: E402
 
 MODEL = "Qwen/Qwen2.5-Omni-7B"
 N_PER_SEED, CHUNK = 16, int(os.environ.get("P17_CHUNK", "8"))
+
+
+def load_audio(video, tmp):
+    """The video's audio track as qwen-omni-utils 0.0.9 would load it (librosa.load at 16 kHz, mono), decoded with ffmpeg to a
+    native-rate wav first: its own path hands an audioread object to librosa.load, which current librosa rejects."""
+    import librosa
+    wav = os.path.join(tmp, "native.wav")
+    subprocess.run(["ffmpeg", "-loglevel", "error", "-y", "-i", video, "-vn", "-acodec", "pcm_s16le", wav], check=True, timeout=120)
+    return librosa.load(wav, sr=16000)[0]
 
 
 def load_done(path):
@@ -66,7 +76,10 @@ def main(a):
                 content.append({"type": "text", "text": PROMPT_OFFICIAL.format(sub=it.get("sub", ""))})
                 conv = [{"role": "system", "content": [{"type": "text", "text": SYSTEM}]}, {"role": "user", "content": content}]
                 text = proc.apply_chat_template(conv, add_generation_prompt=True, tokenize=False)
-                aud, img, vid = process_mm_info(conv, use_audio_in_video=in_video)
+                if in_video:  # audio of the video track, interleaved with the frames by the processor (use_audio_in_video=True)
+                    _, img, vid = process_mm_info(conv, use_audio_in_video=False); aud = [load_audio(it["video"], tmp)]
+                else:
+                    aud, img, vid = process_mm_info(conv, use_audio_in_video=False)
                 inp = proc(text=text, audio=aud, images=img, videos=vid, return_tensors="pt", padding=True, use_audio_in_video=in_video)
                 inp = {k: (v.to("cuda").to(torch.bfloat16) if torch.is_floating_point(v) else v.to("cuda")) for k, v in inp.items()}
                 L0 = inp["input_ids"].shape[1]
