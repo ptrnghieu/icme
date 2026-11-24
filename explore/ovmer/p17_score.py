@@ -1,9 +1,18 @@
 """P17 scorer: CONSTRUCT / CONSTRUCT-D vs standard decoders and vs the calibrated aggregation rules of Agent-MER and MultiMER,
 with 5-fold cross-fitting so that every clip is scored and no parameter is chosen on the clip it is scored on.
 
-DRAFT 2026-11-24 (protocol confirmed by the user; becomes REGISTERED when the --cut rule is fixed from the timing run, before the
-full extraction; no P17 output exists). P17 data: official OV-MER protocol, p17_describe.py (Qwen2.5-Omni-7B) and
-p17_extract_vllm.py (Qwen2.5-7B-Instruct, vLLM); OV-MERD+ 532, MER2025-FG 1,000, EmoS-MELD all 2,732 clips with a non-empty GT.
+PRE-REGISTERED 2026-11-24, before the full P17 run (only the 21-clip timing run exists; its descriptions were inspected for
+STRUCTURE only, with p17_inspect.py; no label was extracted and no score was computed).
+P17 data and protocol:
+  - phase 1: p17_describe.py (Qwen2.5-Omni-7B thinker, bf16, transformers 5.24.0, audio from the video track; greedy + 16 samples;
+    OV-MERD+ 3 sample seeds);
+  - phase 2: p17_extract_vllm.py (Qwen2.5-7B-Instruct, vLLM, official AffectGPT-RL prompt and parameters, no translation);
+  - sets: OV-MERD+ 532, MER2025-FG 1,000, EmoS-MELD all 2,732 clips with a non-empty GT.
+Cut rule (fixed from the timing run): --cut turn, i.e. drop everything from the first invented dialogue turn ("Human:" in 215 of 218
+  first markers, "Assistant:" 2, "User:" 1); the model's own text before it is kept. Reason: Omni-7B invents a "Human:" turn in
+  44-73% of descriptions. 'turn' is the smallest change to the official input (which is the full text): it keeps multi-paragraph
+  answers (47-89% stay multi-line), whereas 'firstline' would drop 33-60% of the model's own text. Sensitivity runs: extraction
+  seed 1; the older prompt without the four-label limit.
 
 Inputs per clip: greedy + 16 sampled label lists from the same backbone and extractor. Every method aggregates the same lists.
 

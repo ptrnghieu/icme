@@ -53,7 +53,8 @@ describe)
   $PY_OMNI $OV/p17_inspect.py $DESC
   ;;
 extract)
-  $PY_VLLM $OV/p17_extract_vllm.py --descs $DESC --out $LAB --cut ${CUT:?set CUT=none|turn|firstline as decided after the timing run} --prompt rl --seed 0
+  CUT=${CUT:-turn}
+  $PY_VLLM $OV/p17_extract_vllm.py --descs $DESC --out $LAB --cut $CUT --prompt rl --seed 0
   $PY_VLLM $OV/p17_extract_vllm.py --descs $DESC --out $W/labels_seed1.jsonl --cut $CUT --prompt rl --seed 1
   $PY_VLLM $OV/p17_extract_vllm.py --descs $DESC --out $W/labels_oldprompt.jsonl --cut $CUT --prompt old --seed 0
   ;;
