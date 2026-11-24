@@ -13,6 +13,9 @@ PRE-REGISTERED (2026-11-23, before any P14' output exists):
   HOLDS iff on BOTH primary sets: CONSTRUCT - GREEDY >= +3.0 with CI lower bound > 0; CONSTRUCT - TOPK > 0 (point estimate);
     level2 CONSTRUCT - GREEDY >= 0; AND CONSTRUCT - TOPK >= +1.5 with CI lower bound > 0 on at least one of the two primary sets.
   A set with < 90% of its clips extracted is "missing" and the verdict is labelled "partial".
+AMENDMENT 1 (2026-11-24, after run 1): label extraction re-run with the fixed official pipeline (p14_official.py --amend 1:
+  description cut at its first line; official extraction call and post-processing; Chinese labels translated with the official
+  prompt). Decision criteria above UNCHANGED. Run-1 numbers kept in explore/ovmer/p14_report_2026-11-24.md.
 Usage: python p14o_score.py --items items.jsonl --labels l1.jsonl,l2.jsonl,l3.jsonl --mapping wheel_mapping.npz --report r.md
 """
 import argparse, json, os, sys

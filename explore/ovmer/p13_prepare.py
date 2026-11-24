@@ -90,9 +90,10 @@ if __name__ == "__main__":
     for k in ("affectgpt", "emos", "mer24zip", "meld_tar", "work", "out"):
         ap.add_argument("--" + k)
     ap.add_argument("--p14", action="store_true", help="P14': OV-MERD+ and MER2025-FG (MER2026 human zip) + 400 fresh EmoS-MELD clips")
+    ap.add_argument("--mer26_only", action="store_true", help="P14' amendment 1: only OV-MERD+ and MER2025-FG media (no MELD streaming)")
     ap.add_argument("--mer26zip", default=""); ap.add_argument("--zip_pw", default=os.environ.get("MER2026_ZIP_PW", ""))
     a = ap.parse_args(); os.makedirs(a.work, exist_ok=True)
-    items = (mer26_human(a) + emos_meld(a, seed=1, ds="EmoS-MELD-fresh")) if a.p14 else (ovmerd(a) + emos_meld(a))
+    items = mer26_human(a) if a.mer26_only else (mer26_human(a) + emos_meld(a, seed=1, ds="EmoS-MELD-fresh")) if a.p14 else (ovmerd(a) + emos_meld(a))
     with open(a.out, "w", encoding="utf-8") as f:
         for it in items:
             f.write(json.dumps(it, ensure_ascii=False) + "\n")
