@@ -1,4 +1,4 @@
-# Decode What You Evaluate: Training-Free Emotion-Wheel Bayes-Risk Set Decoding for Open-Vocabulary Multimodal Emotion Recognition
+# From Samples to Sets: Training-Free Emotion-Wheel Decoding for Open-Vocabulary Multimodal Emotion Recognition
 
 *Internal working draft, status as of 2026-11-25. All numbers are taken from the run reports in `explore/ovmer/`. Published numbers come from the full texts listed in `literature/reading_log.md`. The main experiment is still in progress (Section 6.6).*
 
