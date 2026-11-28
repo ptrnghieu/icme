@@ -8,7 +8,7 @@ Builds items.jsonl = {key, ds, video, sub, gt} for:
 Subtitles: ENGLISH for the MER sets (AffectGPT-RL/dataset/subtitle_chieng.csv, column 'english', as in the official
 ovmerdplus_dataset.py); the MELD utterance text for EmoS-MELD.
 Media: MER2026 video_7z/video_track2_train_human/video_split.zip (OV-MERD+ and MER2025-FG); MELD.Raw.tar.gz (MELD train) streamed.
-Usage: python p17_prepare.py --affectgpt DIR --emos DIR --mer26zip ZIP --meld_tar URL --work DIR --out items.jsonl
+Usage: python p17_prepare.py --affectgpt DIR --emos DIR --mer26zip ZIP --meld_tar URL --work DIR --out items.jsonl [--sets A,B]
 """
 import argparse, csv, json, os, subprocess, zipfile
 import pandas as pd
@@ -24,6 +24,8 @@ def mer_sets(a):
     byname = {os.path.splitext(os.path.basename(n))[0]: n for n in z.namelist() if n.lower().endswith((".mp4", ".avi", ".mkv"))}
     out_dir = os.path.join(a.work, "mer26human"); os.makedirs(out_dir, exist_ok=True); items = []
     for fn, ds in (("ovmerdplus-emotion.csv", "OV-MERD+"), ("mer2025ov1000-emotion.csv", "MER2025-FG")):
+        if ds not in a.sets.split(","):
+            continue
         R = list(csv.DictReader(open(os.path.join(a.affectgpt, "AffectGPT-RL/dataset", fn), encoding="utf-8"))); k = 0
         for r in R:
             n = r["name"]
@@ -66,8 +68,10 @@ if __name__ == "__main__":
     for k in ("affectgpt", "emos", "mer26zip", "meld_tar", "work", "out"):
         ap.add_argument("--" + k)
     ap.add_argument("--zip_pw", default=os.environ.get("MER2026_ZIP_PW", ""))
+    ap.add_argument("--sets", default="OV-MERD+,MER2025-FG,EmoS-MELD",
+                    help="tuning on Kaggle uses MER2025-FG only, so OV-MERD+ media and labels are never touched")
     a = ap.parse_args(); os.makedirs(a.work, exist_ok=True)
-    items = mer_sets(a) + emos_meld(a)
+    items = mer_sets(a) + (emos_meld(a) if "EmoS-MELD" in a.sets.split(",") else [])
     with open(a.out, "w", encoding="utf-8") as f:
         for it in items:
             f.write(json.dumps(it, ensure_ascii=False) + "\n")

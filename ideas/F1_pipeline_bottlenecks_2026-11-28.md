@@ -13,7 +13,7 @@ Mọi số đo trong file này đều **không dùng nhãn**, trừ các dòng �
 ```mermaid
 flowchart TD
     D0["0. Dữ liệu<br/>clip mp4 + phụ đề tiếng Anh"] --> D1["1. Mã hóa đầu vào<br/>frame 2 fps đều + audio 16 kHz xen kẽ + prompt"]
-    D1 --> D2["2. Sinh (MLLM1: Omni-7B thinker)<br/>1 greedy + 16 mẫu, T = 1,0, top_p = 0,95, ≤ 512 token"]
+    D1 --> D2["2. Sinh (MLLM1: Omni-7B thinker)<br/>1 greedy + 16 mẫu, T = 1,0, top_p = 0,95, top_k = 50, ≤ 512 token"]
     D2 --> D3["3. Làm sạch mô tả<br/>lấy &lt;answer&gt; nếu có; cắt lượt hội thoại bịa"]
     D3 --> D4["4. Trích nhãn (MLLM2: Qwen2.5-7B-Instruct)<br/>1 lần/mô tả, T = 0,7, prompt chính thức"]
     D4 --> D5["5. CONSTRUCT<br/>kho ≤ 12 nhãn → R̂ → ghép tham lam ≤ 6 nhãn"]
@@ -39,7 +39,7 @@ flowchart TD
 ### Bước 2. Sinh mô tả (MLLM1)
 - Qwen2.5-Omni-7B, chỉ khối thinker, bf16, transformers 5.24.0, 1× A100 40 GB.
 - 1 lần greedy (`do_sample = False`).
-- 16 mẫu lấy theo kiểu ancestral sampling (T = 1,0, top_p = 0,95), sinh theo lô ≤ 8 chuỗi (`num_return_sequences`), seed torch 1000 + s.
+- 16 mẫu lấy theo kiểu ancestral sampling (T = 1,0, top_p = 0,95, **top_k = 50**: code không đặt top_k nên transformers 5.24 tự điền 50, theo `GenerationConfig._get_default_generation_params`, kiểm tra ngày 28/11), sinh theo lô ≤ 8 chuỗi (`num_return_sequences`), seed torch 1000 + s.
 - Tối đa 512 token mới. Thời gian khoảng 46 giây/clip.
 
 ### Bước 3. Làm sạch mô tả (đăng ký trước, P17)

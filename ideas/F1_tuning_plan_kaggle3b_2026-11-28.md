@@ -41,7 +41,7 @@ So với các mô hình chỉ sinh 1 lần, chi phí thêm chủ yếu nằm ở
 
 | Tầng | Nút | Biến thể | Bottleneck nhắm tới | Cơ chế dự kiến (kiểm bằng thống kê không dùng nhãn) |
 |---|---|---|---|---|
-| **S** (sinh, đắt) | Cách lấy mẫu | **S0** T = 1,0, top_p = 0,95 (hiện tại) · **S1** T = 0,7, top_p = 0,95 · **S2** T = 1,0, min_p = 0,05 · **S3** T = 1,0, epsilon_cutoff = 3e-4 | B2 (21,1% mẫu thoái hóa ở 7B) | Giảm tỉ lệ chạy hết 512 token, giảm mẫu rỗng và mẫu chỉ có từ ngoài từ vựng; không làm sập độ đa dạng (độ khớp giữa các mẫu không được tăng lên gần 1) |
+| **S** (sinh, đắt) | Cách lấy mẫu | **S0** T = 1,0, top_p = 0,95, top_k = 50 (đúng như P17 đã chạy: transformers tự điền top_k = 50) · **S1** T = 0,7, top_p = 0,95, top_k = 50 · **S2** T = 1,0, min_p = 0,05, top_k = 0, top_p = 1 · **S3** T = 1,0, epsilon_cutoff = 3e-4, top_k = 0, top_p = 1 | B2 (21,1% mẫu thoái hóa ở 7B) | Giảm tỉ lệ chạy hết 512 token, giảm mẫu rỗng và mẫu chỉ có từ ngoài từ vựng; không làm sập độ đa dạng (độ khớp giữa các mẫu không được tăng lên gần 1) |
 | S | Stop string ("Human:", "User:", …) | Bật cho mọi cấu hình | B3 | **Không phải nút tune:** phần văn bản trước lượt bịa có cùng phân phối, nên chỉ tiết kiệm token. Kiểm tra: tỉ lệ lượt bịa sau khi cắt bằng 0 |
 | S | max_new_tokens | 256 / 384 / 512 | Chi phí | **Giả lập chính xác** bằng cách cắt hậu kỳ mô tả 512 token (cùng phân phối tiền tố), nên không cần chạy thêm |
 | S | Số mẫu N | 4 / 8 / 16 / 32 | D3 | Chỉ S0 sinh 32 mẫu; các N nhỏ hơn lấy bằng tập con. Đường cong EW-F theo N |
@@ -117,3 +117,25 @@ Tổng trên Kaggle khoảng 50–65 GPU-giờ, trong khả năng 200 giờ/tu�
 | fp16 tràn số với Omni-3B | P13/P14′ đã chạy fp16 trên T4; cổng 0 kiểm tra NaN và tỉ lệ mô tả rỗng |
 | Nhiều so sánh trên cùng dev | Thứ tự quyết định cố định, ngưỡng CI, kết quả cuối chỉ từ test |
 | ε-sampling và min-p: tài liệu gốc chưa đọc | Đọc full text trước khi trích dẫn trong bài; không ảnh hưởng thực nghiệm |
+
+---
+
+## 6. Hiện thực (28/11)
+
+| File | Vai trò |
+|---|---|
+| `explore/ovmer/t1_describe.py` | Sinh mô tả theo cấu hình S0–S3 (đầu vào và prompt như P17), stop string, lưu số token mỗi mẫu, resume theo block 16 mẫu |
+| `explore/ovmer/t1_extract.py` | Extractor chính thức, fp16; engine vLLM (tensor parallel 2) hoặc transformers (top_k = 0 cho khớp vLLM); chế độ X0 / X1 / X2 |
+| `explore/ovmer/t1_inspect.py` | Thống kê không dùng nhãn và dự báo thời gian |
+| `explore/ovmer/kaggle_t1.py` | Cài đặt, kiểm tra phiên bản, chuẩn bị dữ liệu (chỉ MER2025-FG), hàng đợi job theo GPU, snapshot, resume |
+| `explore/ovmer/12_t0_smoke.ipynb` | Tầng 0 |
+| `explore/ovmer/13_t1_generate.ipynb` | Tầng 1 |
+
+**Kiểm thử ngày 28/11** (container không có GPU và torch): chạy với mock torch, transformers và qwen-omni-utils.
+- Script sinh mô tả: block 16 mẫu và greedy, chia đôi lô khi OOM, resume và sinh bù block thiếu, tham số đúng cho S0–S3.
+- Extractor (engine transformers): 3 chế độ và resume.
+- Hàng đợi job, bỏ qua job khi hết giờ, snapshot.
+- Mọi stop string đều là một trường hợp của luật cắt.
+- `t1_inspect` trên output thật của P17 cho lại đúng các số ngày 27/11 (12,2% mẫu rỗng, 5,8% mẫu chỉ có từ ngoài từ vựng, 1,38 nhóm/mẫu).
+
+**Chưa chạy được ở đây** (chính là việc của tầng 0): Omni-3B fp16 thật trên T4, vLLM trên Turing, tải dữ liệu từ HF, và chạy notebook từ đầu đến cuối.

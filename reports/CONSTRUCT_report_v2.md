@@ -196,7 +196,7 @@ Bước A và B **giống hệt** cách benchmark chạy một mô hình zero-sh
 |---|---|
 | Mô hình | Qwen2.5-Omni-7B, chỉ khối "thinker" (khối hiểu ảnh, âm thanh, chữ), bf16 |
 | Đầu vào | khung hình video; âm thanh lấy từ video, xen kẽ với khung hình; **phụ đề tiếng Anh** (như code chính thức); prompt mô tả chính thức của OV-MER |
-| Số lần sinh | 1 greedy (luôn chọn từ có xác suất cao nhất) + 16 lần lấy mẫu ngẫu nhiên (temperature 1,0, top_p 0,95) |
+| Số lần sinh | 1 greedy (luôn chọn từ có xác suất cao nhất) + 16 lần lấy mẫu ngẫu nhiên (temperature 1,0, top_p 0,95, top_k 50; top_k không được đặt trong code nên transformers tự điền 50) |
 | Độ dài tối đa | 512 token |
 | Xử lý sau | Omni-7B hay tự viết tiếp một lượt hội thoại giả "Human: …" (44–73% mô tả trong lần chạy thử). Phần đó bị cắt. Luật cắt được chốt chỉ dựa trên cấu trúc văn bản, trước khi tính bất kỳ điểm nào. |
 
