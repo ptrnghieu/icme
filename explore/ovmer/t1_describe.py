@@ -13,10 +13,18 @@ Differences from p17_describe.py, all intended:
     (p17_extract_vllm.TURN: newline, optional spaces, Human|User|Assistant, colon), so the text kept by the cut has the same
     distribution with or without them; they only save decoding time;
   - --greedy 0 skips the greedy description (it changes no CONSTRUCT selection: 0/532 OV-MERD+ clips, 2026-11-28);
-  - per sample, the number of generated tokens (n_tok) is stored, to count descriptions that hit max_new_tokens.
+  - per sample, the number of generated tokens before the end-of-turn token (n_tok) and whether the model ended its turn
+    (ended) are stored;
+  - eos_token_id = [<|im_end|>, <|endoftext|>] and pad_token_id = <|endoftext|> are passed to generate. The Omni
+    generation_config.json sets no eos_token_id, so without them generate never stops at the end of the answer: every sequence runs
+    to max_new_tokens and, after its own end token, writes invented dialogue turns (tier 0, 2026-11-28: every one of 864 samples held
+    >= 1 <|endoftext|>; P17 used the same code path). With them, stop strings also take effect (finished rows are padded);
+  - the batch of samples restarts at --chunk for every clip; a clip that runs out of memory at batch 1 is retried at lower video
+    resolution (PIXEL_LEVELS), recorded as max_pixels.
 Seeds: torch.manual_seed(1000 + s) before the s-th block of 16 samples, as in P17 (common random numbers across configs).
 Resume: the last ok record per key counts; a clip with fewer than n_samples samples gets the missing blocks.
-Output lines: {key, ds, ok, cfg, model, greedy, samples, n_tok, seeds, sec, prompt_tokens}.
+Output lines: {key, ds, ok, cfg, model, greedy, greedy_n_tok, greedy_ended, samples, n_tok, ended, seeds, sec, prompt_tokens,
+              chunk, max_pixels}.
 Usage: python t1_describe.py --items items.jsonl --out desc_S0_0.jsonl --cfg S0 --n_samples 32 --greedy 1
         [--shard i/n] [--limit N] [--hours H] [--model ...] [--dtype float16]
 """
@@ -32,6 +40,10 @@ CFGS = {
     "S2": dict(temperature=1.0, top_p=1.0, top_k=0, min_p=0.05),       # min-p sampling alone
     "S3": dict(temperature=1.0, top_p=1.0, top_k=0, epsilon_cutoff=3e-4),  # epsilon sampling alone
 }
+END_TOKENS = ["<|im_end|>", "<|endoftext|>"]  # end-of-turn ids passed to generate (the Omni generation_config.json sets none)
+# None = qwen-omni-utils default frame size; smaller levels only for clips that run out of memory at batch 1 (same frames and
+# timestamps, lower resolution; the level used is stored per clip so that every configuration can be compared on the same input)
+PIXEL_LEVELS = [None, 256 * 28 * 28, 128 * 28 * 28]
 STOPS = ["\nHuman:", "\nUser:", "\nAssistant:", "\n用户:", "\n助手:", "\n用户：", "\n助手："]
 BLOCK = 16
 MAX_NEW = 512
@@ -57,60 +69,80 @@ def main(a):
         return
     proc = Qwen2_5OmniProcessor.from_pretrained(a.model)
     model = Qwen2_5OmniThinkerForConditionalGeneration.from_pretrained(a.model, dtype=dt, attn_implementation="sdpa").to("cuda").eval()
-    pad = proc.tokenizer.pad_token_id
-    gen = dict(max_new_tokens=MAX_NEW)
+    tk = proc.tokenizer
+    eos = [tk.convert_tokens_to_ids(t) for t in END_TOKENS]; pad = tk.convert_tokens_to_ids("<|endoftext|>")
+    assert all(isinstance(x, int) and x >= 0 for x in eos + [pad]), (eos, pad)
+    gen = dict(max_new_tokens=MAX_NEW, eos_token_id=eos, pad_token_id=pad)
     if a.stop:
-        gen.update(stop_strings=STOPS, tokenizer=proc.tokenizer)
-    t0 = time.time(); n = nfail = 0; tmp = tempfile.mkdtemp(); chunk = a.chunk
+        gen.update(stop_strings=STOPS, tokenizer=tk)
+    print("end-of-turn ids", eos, "| pad id", pad, flush=True)
+    t0 = time.time(); n = nfail = 0; tmp = tempfile.mkdtemp()
 
-    def ntok(rows):
-        return [int((r != pad).sum()) for r in rows]
+    def ntok(rows):  # generated tokens before the first end-of-turn token; ended = the model ended its turn
+        out = []
+        for r in rows:
+            r = [int(x) for x in r]; idx = [i for i, x in enumerate(r) if x in eos]
+            out.append((idx[0] if idx else len(r), bool(idx)))
+        return out
+
+    def describe(it, prev, max_pixels):
+        video = {"type": "video", "video": it["video"]}
+        if max_pixels:
+            video["max_pixels"] = max_pixels
+        content = [video, {"type": "text", "text": PROMPT_OFFICIAL.format(sub=it.get("sub", ""))}]
+        conv = [{"role": "system", "content": [{"type": "text", "text": SYSTEM}]}, {"role": "user", "content": content}]
+        text = proc.apply_chat_template(conv, add_generation_prompt=True, tokenize=False)
+        _, img, vid = process_mm_info(conv, use_audio_in_video=False); aud = [load_audio(it["video"], tmp)]
+        inp = proc(text=text, audio=aud, images=img, videos=vid, return_tensors="pt", padding=True,
+                   load_audio_from_video=True, audio_from_video_indices=[0])
+        inp = {k: (v.to("cuda").to(dt) if torch.is_floating_point(v) else v.to("cuda")) for k, v in inp.items()}
+        L0 = inp["input_ids"].shape[1]; chunk = a.chunk
+        greedy, greedy_n, greedy_end = prev.get("greedy"), prev.get("greedy_n_tok"), prev.get("greedy_ended")
+        samples = list(prev.get("samples", [])); nt = list(prev.get("n_tok", [])); ended = list(prev.get("ended", []))
+        seeds = list(prev.get("seeds", []))
+        with torch.no_grad():
+            if a.greedy and greedy is None:
+                g = model.generate(**inp, use_audio_in_video=True, do_sample=False, **gen)
+                greedy = proc.batch_decode(g[:, L0:], skip_special_tokens=True)[0]; greedy_n, greedy_end = ntok(g[:, L0:])[0]
+            for s in range(len(samples) // BLOCK, a.n_samples // BLOCK):
+                torch.manual_seed(1000 + s); got, gn = [], []
+                while len(got) < BLOCK:
+                    k = min(chunk, BLOCK - len(got))
+                    try:
+                        o = model.generate(**inp, use_audio_in_video=True, do_sample=True, num_return_sequences=k, **CFGS[a.cfg], **gen)
+                        got += proc.batch_decode(o[:, L0:], skip_special_tokens=True); gn += ntok(o[:, L0:]); del o
+                    except torch.cuda.OutOfMemoryError:
+                        torch.cuda.empty_cache()
+                        if chunk == 1:
+                            raise
+                        chunk = max(1, chunk // 2); print("OOM: chunk ->", chunk, it["key"], flush=True)
+                samples += got; nt += [x for x, _ in gn]; ended += [e for _, e in gn]; seeds.append(s)
+        return dict(key=it["key"], ds=it["ds"], ok=True, cfg=a.cfg, model=a.model, greedy=greedy, greedy_n_tok=greedy_n,
+                    greedy_ended=greedy_end, samples=samples, n_tok=nt, ended=ended, seeds=seeds, prompt_tokens=L0, chunk=chunk,
+                    max_pixels=max_pixels)
 
     with open(a.out, "a") as fo:
         for it in todo:
             if (time.time() - t0) / 3600 > a.hours:
                 print("time budget reached; rerun to resume", flush=True); break
-            t1 = time.time(); prev = done.get(it["key"]) or {}
-            try:
-                content = [{"type": "video", "video": it["video"]},
-                           {"type": "text", "text": PROMPT_OFFICIAL.format(sub=it.get("sub", ""))}]
-                conv = [{"role": "system", "content": [{"type": "text", "text": SYSTEM}]}, {"role": "user", "content": content}]
-                text = proc.apply_chat_template(conv, add_generation_prompt=True, tokenize=False)
-                _, img, vid = process_mm_info(conv, use_audio_in_video=False); aud = [load_audio(it["video"], tmp)]
-                inp = proc(text=text, audio=aud, images=img, videos=vid, return_tensors="pt", padding=True,
-                           load_audio_from_video=True, audio_from_video_indices=[0])
-                inp = {k: (v.to("cuda").to(dt) if torch.is_floating_point(v) else v.to("cuda")) for k, v in inp.items()}
-                L0 = inp["input_ids"].shape[1]
-                greedy = prev.get("greedy"); greedy_n = prev.get("greedy_n_tok")
-                samples = list(prev.get("samples", [])); nt = list(prev.get("n_tok", [])); seeds = list(prev.get("seeds", []))
-                with torch.no_grad():
-                    if a.greedy and greedy is None:
-                        g = model.generate(**inp, use_audio_in_video=True, do_sample=False, **gen)
-                        greedy = proc.batch_decode(g[:, L0:], skip_special_tokens=True)[0]; greedy_n = ntok(g[:, L0:])[0]
-                    for s in range(len(samples) // BLOCK, a.n_samples // BLOCK):
-                        torch.manual_seed(1000 + s); got, gn = [], []
-                        while len(got) < BLOCK:
-                            k = min(chunk, BLOCK - len(got))
-                            try:
-                                o = model.generate(**inp, use_audio_in_video=True, do_sample=True, num_return_sequences=k,
-                                                   **CFGS[a.cfg], **gen)
-                                got += proc.batch_decode(o[:, L0:], skip_special_tokens=True); gn += ntok(o[:, L0:]); del o
-                            except torch.cuda.OutOfMemoryError:
-                                torch.cuda.empty_cache()
-                                if chunk == 1:
-                                    raise
-                                chunk = max(1, chunk // 2); print("OOM: chunk ->", chunk, flush=True)
-                        samples += got; nt += gn; seeds.append(s)
-                rec = dict(key=it["key"], ds=it["ds"], ok=True, cfg=a.cfg, model=a.model, greedy=greedy, greedy_n_tok=greedy_n,
-                           samples=samples, n_tok=nt, seeds=seeds, sec=round(time.time() - t1, 1), prompt_tokens=L0, chunk=chunk)
-            except Exception as e:  # noqa: BLE001
-                rec = dict(key=it["key"], ds=it["ds"], ok=False, cfg=a.cfg, err=f"{type(e).__name__}: {str(e)[:300]}")
+            t1 = time.time(); prev = done.get(it["key"]) or {}; rec = None
+            levels = [prev["max_pixels"]] if prev.get("max_pixels") else PIXEL_LEVELS  # a resumed clip keeps its input size
+            for mp in levels:
+                try:
+                    rec = describe(it, prev if mp == prev.get("max_pixels") else {}, mp); break
+                except torch.cuda.OutOfMemoryError as e:
+                    torch.cuda.empty_cache(); print("OOM at batch 1:", it["key"], "max_pixels", mp, "-> next level", flush=True)
+                    rec = dict(key=it["key"], ds=it["ds"], ok=False, cfg=a.cfg, err=f"OutOfMemoryError: {str(e)[:200]}")
+                except Exception as e:  # noqa: BLE001
+                    rec = dict(key=it["key"], ds=it["ds"], ok=False, cfg=a.cfg, err=f"{type(e).__name__}: {str(e)[:300]}"); break
+            rec["sec"] = round(time.time() - t1, 1)
+            if not rec["ok"]:
                 print("fail", it["key"], rec["err"], flush=True)
             fo.write(json.dumps(rec, ensure_ascii=False) + "\n"); fo.flush(); n += 1; nfail += int(not rec["ok"])
             if n >= 5 and nfail == n:
                 raise SystemExit("the first clips all failed: stopping (see the fail lines above)")
             torch.cuda.empty_cache()
-            if n % 10 == 0 or n == len(todo):
+            if n % 5 == 0 or n == len(todo):
                 el = time.time() - t0
                 print(f"{n}/{len(todo)} clips, {el:.0f}s, {el / n:.1f} s/clip, fails {nfail}", flush=True)
     print("describe finished", n, flush=True)

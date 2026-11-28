@@ -1,5 +1,12 @@
 # F1 / CONSTRUCT: pipeline chi tiết và toàn bộ bottleneck (2026-11-28)
 
+> **Cập nhật cùng ngày, sau tầng 0 (`explore/ovmer/12_t0_smoke.ipynb`, 12 clip MER2025-FG, Omni-3B): B2 và B3 chủ yếu là lỗi của code sinh, không phải tính chất của mô hình.**
+> - Code sinh (cả `p17_describe.py` của P17) không truyền `eos_token_id`, và `generation_config.json` của Qwen2.5-Omni-3B/7B cũng không đặt giá trị này. Vì vậy `generate` **không bao giờ dừng ở cuối câu trả lời**: mọi chuỗi chạy tới 512 token và tiếp tục viết lượt hội thoại bịa sau token kết thúc của chính nó.
+> - Bằng chứng: cả 864/864 mẫu đều chứa ≥ 1 token `<|endoftext|>`. Số lượt bịa tăng theo số token kết thúc: trung bình 0,52 / 1,13 / 1,71 / 2,01 / 2,47 lượt với 1 / 2 / 3 / 4 / 5 token.
+> - Vì `skip_special_tokens` xóa token kết thúc khi decode, ranh giới giữa câu trả lời thật và phần bịa bị mất. Đó là lý do một phần mẫu "chạy hết 512 token" mà không có dấu hiệu lượt bịa, và gần một nửa số đó không cho nhãn nào dùng được.
+> - Đã sửa trong `explore/ovmer/t1_describe.py`: truyền `eos_token_id = [<|im_end|>, <|endoftext|>]` và `pad_token_id`.
+> - Hệ quả: (i) các số đo B2 và B3 dưới đây mô tả **pipeline P17 như đã chạy**, không phải giới hạn của mô hình; (ii) dòng GREEDY 60,46 và CONSTRUCT 68,91 của P17 đều được tạo bởi pipeline có lỗi này, nên lần chạy 7B cuối phải dùng bản đã sửa.
+
 Phạm vi: cấu hình P17 trên OV-MERD+ (532 clip, Qwen2.5-Omni-7B zero-shot, extractor chính thức).
 
 Mọi số đo trong file này đều **không dùng nhãn**, trừ các dòng đánh dấu "(đã công bố trong P17)".

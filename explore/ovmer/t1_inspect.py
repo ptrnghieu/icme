@@ -45,6 +45,7 @@ def desc_stats(recs, a):
                 proj_hours=round(sec * a.n_clips / a.gpus / 3600, 2),
                 tok_per_sample=round(float(np.mean(nt)), 1) if nt else None,
                 hit_max_pct=round(100 * float(np.mean([x >= 512 for x in nt])), 1) if nt else None,
+                ended_pct=(round(100 * float(np.mean([e for r in ok for e in r["ended"]])), 1) if all("ended" in r for r in ok) else None),
                 text_after_turn_pct=round(100 * float(np.mean([after_turn(t) for t in S])), 1),
                 no_end_punct_pct=round(100 * float(np.mean([not END.search(cut(t, "turn")) for t in S])), 1),
                 empty_text_pct=round(100 * float(np.mean([not cut(t, "turn") for t in S])), 1),
