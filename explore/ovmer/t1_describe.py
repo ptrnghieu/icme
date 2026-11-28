@@ -49,6 +49,15 @@ BLOCK = 16
 MAX_NEW = 512
 
 
+def start_chunk(L0, a):
+    """First batch size for a clip. Rule from tier 0 (Omni-3B float16 on a 16 GB T4, 12 MER2025-FG clips, 2026-11-28): prompts up
+    to 1,656 tokens ran at 8, 2,365-2,527 needed 4, 5,516 needed 1; starting there skips the out-of-memory attempts. An OOM still
+    halves the batch. --chunk_by_len 0 starts every clip at --chunk."""
+    if not a.chunk_by_len:
+        return a.chunk
+    return min(a.chunk, 8 if L0 <= 2000 else 4 if L0 <= 3000 else 2 if L0 <= 4500 else 1)
+
+
 def main(a):
     import torch
     from transformers import Qwen2_5OmniThinkerForConditionalGeneration, Qwen2_5OmniProcessor
@@ -96,7 +105,7 @@ def main(a):
         inp = proc(text=text, audio=aud, images=img, videos=vid, return_tensors="pt", padding=True,
                    load_audio_from_video=True, audio_from_video_indices=[0])
         inp = {k: (v.to("cuda").to(dt) if torch.is_floating_point(v) else v.to("cuda")) for k, v in inp.items()}
-        L0 = inp["input_ids"].shape[1]; chunk = a.chunk
+        L0 = inp["input_ids"].shape[1]; chunk = start_chunk(L0, a)
         greedy, greedy_n, greedy_end = prev.get("greedy"), prev.get("greedy_n_tok"), prev.get("greedy_ended")
         samples = list(prev.get("samples", [])); nt = list(prev.get("n_tok", [])); ended = list(prev.get("ended", []))
         seeds = list(prev.get("seeds", []))
@@ -155,7 +164,7 @@ if __name__ == "__main__":
     ap.add_argument("--stop", type=int, default=1); ap.add_argument("--only_ds", default=""); ap.add_argument("--shard", default="")
     ap.add_argument("--limit", type=int, default=0); ap.add_argument("--hours", type=float, default=99)
     ap.add_argument("--model", default="Qwen/Qwen2.5-Omni-3B"); ap.add_argument("--dtype", default="float16")
-    ap.add_argument("--chunk", type=int, default=8)
+    ap.add_argument("--chunk", type=int, default=8); ap.add_argument("--chunk_by_len", type=int, default=1)
     a = ap.parse_args()
     assert a.n_samples % BLOCK == 0, "n_samples must be a multiple of 16"
     main(a)
